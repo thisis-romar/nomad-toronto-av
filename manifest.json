@@ -1,0 +1,1122 @@
+{
+  "project": "Nomad AV Rack",
+  "project_uuid": "019dcacc-4479-778d-9be8-6d705f5b113d",
+  "claude_project_url": "https://claude.ai/project/019dcacc-4479-778d-9be8-6d705f5b113d",
+  "generated_at": "2026-04-26T20:03:35.749Z",
+  "total_files": 105,
+  "downloaded": 101,
+  "not_downloadable": 4,
+  "conversations": [
+    {
+      "uuid": "77927477-ddf9-4a6e-8507-652816224db0",
+      "name": "SVG Rack Elevation Diagram Code Generation Skill",
+      "date": "2026-02-20",
+      "folder": "2026-02-20_77927477_svg-rack-elevation-diagram-code-generati",
+      "claudeUrl": "https://claude.ai/chat/77927477-ddf9-4a6e-8507-652816224db0",
+      "files": [
+        {
+          "uuid": "a7c461d5-4c25-4828-af4f-7728504806eb",
+          "name": "69B1A488-B3A1-4A71-ABC6-52C68F98E3F9.png",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "69B1A488-B3A1-4A71-ABC6-52C68F98E3F9.webp",
+          "downloaded": true,
+          "localPath": "2026-02-20_77927477_svg-rack-elevation-diagram-code-generati\\photos\\69B1A488-B3A1-4A71-ABC6-52C68F98E3F9.webp"
+        },
+        {
+          "uuid": "da65759d-b998-44d3-ad69-27f2d1416fd1",
+          "name": "501E6C82-7007-4B25-A952-4D264C2630BF.png",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "501E6C82-7007-4B25-A952-4D264C2630BF.webp",
+          "downloaded": true,
+          "localPath": "2026-02-20_77927477_svg-rack-elevation-diagram-code-generati\\photos\\501E6C82-7007-4B25-A952-4D264C2630BF.webp"
+        },
+        {
+          "uuid": "46603a5f-1d02-46fb-a0a5-d8bdd23f4e21",
+          "name": "9F6FC6F4-48A5-4CAA-A79B-97D280D9703D.png",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "9F6FC6F4-48A5-4CAA-A79B-97D280D9703D.webp",
+          "downloaded": true,
+          "localPath": "2026-02-20_77927477_svg-rack-elevation-diagram-code-generati\\photos\\9F6FC6F4-48A5-4CAA-A79B-97D280D9703D.webp"
+        }
+      ]
+    },
+    {
+      "uuid": "81ef8190-238f-4f37-901d-ead397b7a6e1",
+      "name": "Nomad Amp Rack Cable Schedule and Connection Diagram",
+      "date": "2026-02-21",
+      "folder": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec",
+      "claudeUrl": "https://claude.ai/chat/81ef8190-238f-4f37-901d-ead397b7a6e1",
+      "files": [
+        {
+          "uuid": "c5a2fe6a-6abf-457d-b519-321b37feb44f",
+          "name": "IMG_7164.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_7164.webp",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\photos\\IMG_7164.webp"
+        },
+        {
+          "uuid": "0356e304-1702-481e-9aff-4174cae6949f",
+          "name": "IMG_7165.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_7165.webp",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\photos\\IMG_7165.webp"
+        },
+        {
+          "uuid": "683b5522-f9fc-407e-8409-ef77c117947c",
+          "name": "IMG_7167.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_7167.webp",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\photos\\IMG_7167.webp"
+        },
+        {
+          "uuid": "2919f4e9-461b-4877-9f40-6fba73f948fd",
+          "name": "IMG_7168.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_7168.webp",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\photos\\IMG_7168.webp"
+        },
+        {
+          "uuid": "ec1c6675-4f30-4c34-b0c3-0d1f06bc4617",
+          "name": "IMG_7169.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_7169.webp",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\photos\\IMG_7169.webp"
+        },
+        {
+          "uuid": "99fff29f-d67c-475e-b4ff-0eafafa36ddb",
+          "name": "IMG_7113.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_7113.webp",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\photos\\IMG_7113.webp"
+        },
+        {
+          "uuid": "4584570d-766d-47e5-93dd-be11d2299a9e",
+          "name": "IMG_7117.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_7117.webp",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\photos\\IMG_7117.webp"
+        },
+        {
+          "uuid": "8cd2fa47-edeb-4e75-8d75-29aa87980ac3",
+          "name": "Bias_V3_V9_user_manual.pdf",
+          "kind": "document",
+          "sender": "human",
+          "category": "sources",
+          "savedAs": "Bias_V3_V9_user_manual.pdf",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\sources\\Bias_V3_V9_user_manual.pdf"
+        },
+        {
+          "uuid": "c1a92185-827d-4f71-80e8-0e0b455e554e",
+          "name": "Bias Q2Q1D1 user guide V1.0 web.pdf",
+          "kind": "document",
+          "sender": "human",
+          "category": "sources",
+          "savedAs": "Bias Q2Q1D1 user guide V1.0 web.pdf",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\sources\\Bias Q2Q1D1 user guide V1.0 web.pdf"
+        },
+        {
+          "uuid": "a57cac20-25c1-40eb-b5b1-c80a5dff10e1",
+          "name": "sp2120_operators_manual.pdf",
+          "kind": "document",
+          "sender": "human",
+          "category": "sources",
+          "savedAs": "sp2120_operators_manual.pdf",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\sources\\sp2120_operators_manual.pdf"
+        },
+        {
+          "uuid": "5ac9029d-a0c3-4dc3-8313-92ce435b8349",
+          "name": "IMG_7167.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_7167.webp",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\photos\\IMG_7167.webp"
+        },
+        {
+          "uuid": "6fd8c15d-d69c-444b-9013-de727645b836",
+          "name": "IMG_7165.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_7165.webp",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\photos\\IMG_7165.webp"
+        },
+        {
+          "uuid": "cd3e9d6e-ba3e-4da4-95f4-c817b1c42cfe",
+          "name": "IMG_7165.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_7165.webp",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\photos\\IMG_7165.webp"
+        },
+        {
+          "uuid": "22715a4c-25ba-4736-a1b9-205ff0dd0308",
+          "name": "IMG_7169.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_7169.webp",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\photos\\IMG_7169.webp"
+        },
+        {
+          "uuid": "cd2149c4-b3b2-48c9-9f46-2adc973ad2e6",
+          "name": "IMG_7164.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_7164.webp",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\photos\\IMG_7164.webp"
+        },
+        {
+          "uuid": "4766d4c9-62f5-4de2-af1e-e5dfc057edfd",
+          "name": "IMG_7168.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_7168.webp",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\photos\\IMG_7168.webp"
+        },
+        {
+          "uuid": "d3633585-a8a6-4300-9927-f29cce6361c0",
+          "name": "IMG_7113.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_7113.webp",
+          "downloaded": true,
+          "localPath": "2026-02-21_81ef8190_nomad-amp-rack-cable-schedule-and-connec\\photos\\IMG_7113.webp"
+        }
+      ]
+    },
+    {
+      "uuid": "fb56aa22-37a8-4633-825c-6dd1c91f4db5",
+      "name": "19-Inch Rack Architectures and 12U Enclosure Standards",
+      "date": "2026-02-23",
+      "folder": "2026-02-23_fb56aa22_19-inch-rack-architectures-and-12u-enclo",
+      "claudeUrl": "https://claude.ai/chat/fb56aa22-37a8-4633-825c-6dd1c91f4db5",
+      "files": []
+    },
+    {
+      "uuid": "61c49787-7fd9-4227-ae32-2f3c8301d7f6",
+      "name": "Audio Rack Equipment Audit and System Rewiring",
+      "date": "2026-03-16",
+      "folder": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re",
+      "claudeUrl": "https://claude.ai/chat/61c49787-7fd9-4227-ae32-2f3c8301d7f6",
+      "files": [
+        {
+          "uuid": "1ffb10b4-ebdf-490a-b246-f1af49bc7211",
+          "name": "nomad cable schedule.docx",
+          "kind": "blob",
+          "sender": "human",
+          "category": "sources",
+          "savedAs": "nomad cable schedule.docx.NOT_DOWNLOADABLE.txt",
+          "downloaded": false,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\sources\\nomad cable schedule.docx.NOT_DOWNLOADABLE.txt"
+        },
+        {
+          "uuid": "5ff003f6-9bcf-413b-b09a-561e60f8cf1d",
+          "name": "nomad system spec.pdf",
+          "kind": "document",
+          "sender": "human",
+          "category": "sources",
+          "savedAs": "nomad system spec.pdf",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\sources\\nomad system spec.pdf"
+        },
+        {
+          "uuid": "ae2f9cf8-7ea8-496f-8283-d70e95961b77",
+          "name": "IMG_0924.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_0924.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\IMG_0924.webp"
+        },
+        {
+          "uuid": "41c78a6d-0092-4d47-a282-69fce376210e",
+          "name": "page_1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "page_1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\page_1.webp"
+        },
+        {
+          "uuid": "7f3ddded-de76-42ed-a3d3-beeaf264b7ed",
+          "name": "page_2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "page_2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\page_2.webp"
+        },
+        {
+          "uuid": "373539d2-e357-4045-b430-4312f78e1d6d",
+          "name": "v2_page_1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "v2_page_1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\v2_page_1.webp"
+        },
+        {
+          "uuid": "30fd2094-968e-456a-91e1-34861ce90d94",
+          "name": "v2_page_2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "v2_page_2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\v2_page_2.webp"
+        },
+        {
+          "uuid": "f4b88f9c-a76f-478e-9fdf-ec93e02ece21",
+          "name": "v3_page_1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "v3_page_1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\v3_page_1.webp"
+        },
+        {
+          "uuid": "31641e8d-1672-4981-874b-dc9f1a24f55f",
+          "name": "v4_page_1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "v4_page_1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\v4_page_1.webp"
+        },
+        {
+          "uuid": "87ee3bb0-ed7e-4a91-8e2c-f9b44206d359",
+          "name": "v4_page_2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "v4_page_2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\v4_page_2.webp"
+        },
+        {
+          "uuid": "f5191d57-aed9-4528-bc4f-d52fc1f3edb7",
+          "name": "idx_page_1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "idx_page_1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\idx_page_1.webp"
+        },
+        {
+          "uuid": "51d1cd26-0007-46ac-bd1e-a3c8c0c01e43",
+          "name": "idx_page_4.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "idx_page_4.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\idx_page_4.webp"
+        },
+        {
+          "uuid": "5f99fa53-9d04-4962-8005-65f40e8a3092",
+          "name": "nomad wiring diagram final.pdf",
+          "kind": "document",
+          "sender": "human",
+          "category": "sources",
+          "savedAs": "nomad wiring diagram final.pdf",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\sources\\nomad wiring diagram final.pdf"
+        },
+        {
+          "uuid": "65e2a602-b643-4e8a-843a-6b51da259e2d",
+          "name": "audit_p1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "audit_p1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\audit_p1.webp"
+        },
+        {
+          "uuid": "f2d51c78-a348-4bc9-a854-331d0a41bf6e",
+          "name": "ortho_p1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "ortho_p1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\ortho_p1.webp"
+        },
+        {
+          "uuid": "bff2ba0a-9145-43a7-ab05-bb6dd27e6797",
+          "name": "ortho_p2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "ortho_p2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\ortho_p2.webp"
+        },
+        {
+          "uuid": "4cf42525-671b-4088-bd2a-15e9eac85c08",
+          "name": "v4_page_1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "v4_page_1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\v4_page_1.webp"
+        },
+        {
+          "uuid": "d3563174-dafe-46f1-a5f2-a2de47924e32",
+          "name": "ortho_p1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "ortho_p1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\ortho_p1.webp"
+        },
+        {
+          "uuid": "6416b5ab-ae81-4dd4-99cf-4da62de90057",
+          "name": "ortho_p2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "ortho_p2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\ortho_p2.webp"
+        },
+        {
+          "uuid": "31c6b052-c804-453f-a89a-aadeda0b8d58",
+          "name": "photo.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "photo.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\photo.webp"
+        },
+        {
+          "uuid": "c46bbbc9-6953-4c09-ae66-77d0877bdb41",
+          "name": "photo.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "photo.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\photo.webp"
+        },
+        {
+          "uuid": "f822e881-5965-48dc-b3c3-62b27c2dc193",
+          "name": "photo.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "photo.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\photo.webp"
+        },
+        {
+          "uuid": "0e099e40-a359-4889-af4d-27372d396a74",
+          "name": "photo.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "photo.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\photo.webp"
+        },
+        {
+          "uuid": "fa0a819c-952a-450f-8bbd-d27ed340d678",
+          "name": "room_p1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "room_p1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\room_p1.webp"
+        },
+        {
+          "uuid": "e8843b85-221d-40d4-bcad-e5cf0b4375d6",
+          "name": "room_p2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "room_p2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\room_p2.webp"
+        },
+        {
+          "uuid": "7355a8a7-7fca-4762-8112-1723c18c76ae",
+          "name": "final16_p1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "final16_p1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\final16_p1.webp"
+        },
+        {
+          "uuid": "b6fde6d0-4b63-450e-84d6-2ded98c7c4c7",
+          "name": "final16_p2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "final16_p2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\final16_p2.webp"
+        },
+        {
+          "uuid": "585b28ca-4115-4519-b257-3ca0fced21da",
+          "name": "IMG_9420.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9420.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\IMG_9420.webp"
+        },
+        {
+          "uuid": "39c7ecde-0181-490d-bf45-eb9df5ffb21e",
+          "name": "w18_p1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "w18_p1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\w18_p1.webp"
+        },
+        {
+          "uuid": "f184a344-005e-4567-aed4-fb618215b522",
+          "name": "r18_p1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "r18_p1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\r18_p1.webp"
+        },
+        {
+          "uuid": "180051c1-3512-4044-a1e4-9eafe02e1f8d",
+          "name": "audit_w_1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "audit_w_1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\audit_w_1.webp"
+        },
+        {
+          "uuid": "0cb56469-e09a-49ab-b119-d736bed31cbf",
+          "name": "audit_w_2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "audit_w_2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\audit_w_2.webp"
+        },
+        {
+          "uuid": "fe359822-ea0a-4f13-b01d-604fe5579612",
+          "name": "audit_r_1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "audit_r_1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\audit_r_1.webp"
+        },
+        {
+          "uuid": "2a8ad501-20d4-4517-939c-6eec6eb31ef3",
+          "name": "audit_r_2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "audit_r_2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\audit_r_2.webp"
+        },
+        {
+          "uuid": "ec22e144-f486-4e65-847f-b0c16efb3856",
+          "name": "fc_w_1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "fc_w_1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\fc_w_1.webp"
+        },
+        {
+          "uuid": "fcbc9d4a-7596-459e-972e-adfb697b91ca",
+          "name": "fc_r_1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "fc_r_1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\fc_r_1.webp"
+        },
+        {
+          "uuid": "4207a57c-dc50-4d7b-8b96-1767c17c26ee",
+          "name": "fc_r_2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "fc_r_2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\fc_r_2.webp"
+        },
+        {
+          "uuid": "a87c1438-8021-40d1-9cfb-5a832789acf4",
+          "name": "hires_w_1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "hires_w_1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\hires_w_1.webp"
+        },
+        {
+          "uuid": "3bef1979-f067-4bb2-9f18-c69cabb45315",
+          "name": "hires_w_2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "hires_w_2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\hires_w_2.webp"
+        },
+        {
+          "uuid": "9e4dfa1a-1b27-4295-9562-61aa04954a18",
+          "name": "verify_p1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "verify_p1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\verify_p1.webp"
+        },
+        {
+          "uuid": "bd4f4206-f5cb-4db4-9835-53466ecac880",
+          "name": "audit350_p1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "audit350_p1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\audit350_p1.webp"
+        },
+        {
+          "uuid": "22948934-cb89-411a-9c54-6f81f5a785b1",
+          "name": "audit350_p2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "audit350_p2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\audit350_p2.webp"
+        },
+        {
+          "uuid": "5bb17e05-57b6-4913-a414-d1dbf33db3e3",
+          "name": "final_verify.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "final_verify.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\final_verify.webp"
+        },
+        {
+          "uuid": "d99bb103-f362-4d3e-a55b-29bee337c799",
+          "name": "IMG_9445.png",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9445.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\IMG_9445.webp"
+        },
+        {
+          "uuid": "0117196f-b486-4105-bfd9-11fd00a4e7a7",
+          "name": "fix_verify.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "fix_verify.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\fix_verify.webp"
+        },
+        {
+          "uuid": "9d97815b-8e61-4265-baf6-99d897ce4e65",
+          "name": "links_p2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "links_p2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\links_p2.webp"
+        },
+        {
+          "uuid": "d5e630ee-12cd-4eca-9437-4bd200e8df5d",
+          "name": "refactored_p1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "refactored_p1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\refactored_p1.webp"
+        },
+        {
+          "uuid": "be9ae50a-6d2e-457f-9504-543e3acdc6db",
+          "name": "opt_p1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "opt_p1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\opt_p1.webp"
+        },
+        {
+          "uuid": "7b8a7ab0-e556-4df8-9863-ebd0bed75f8a",
+          "name": "opt_p2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "opt_p2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\opt_p2.webp"
+        },
+        {
+          "uuid": "89dc5baa-0cda-4d50-8ef4-8471dc0a3347",
+          "name": "diag_p1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "diag_p1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\diag_p1.webp"
+        },
+        {
+          "uuid": "ac83d269-bd3e-4ba0-b3c0-94dfe4fa491d",
+          "name": "v3_lineout_detail.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "v3_lineout_detail.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\v3_lineout_detail.webp"
+        },
+        {
+          "uuid": "6d4b33a8-037b-4b6b-b5bc-20c0401df0c0",
+          "name": "v3_fix_detail.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "v3_fix_detail.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\v3_fix_detail.webp"
+        },
+        {
+          "uuid": "dfd14a10-f49c-405f-b2f6-0dfeb87707d4",
+          "name": "fix_overview.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "fix_overview.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\fix_overview.webp"
+        },
+        {
+          "uuid": "20186c4a-2edd-4802-a244-1762255a2718",
+          "name": "IMG_9510.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9510.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\IMG_9510.webp"
+        },
+        {
+          "uuid": "791fd1b1-c255-40cd-82bc-3ebdf2fff43f",
+          "name": "IMG_9511.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9511.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\IMG_9511.webp"
+        },
+        {
+          "uuid": "cae77e16-e363-4593-aae0-a5a3d8f2f934",
+          "name": "arm_p1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "arm_p1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\arm_p1.webp"
+        },
+        {
+          "uuid": "3770d873-4584-4bca-a925-59749bc8b085",
+          "name": "arm_p2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "arm_p2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\arm_p2.webp"
+        },
+        {
+          "uuid": "5768b443-43de-4422-9337-1a65f3ceb5d9",
+          "name": "IMG_9513.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9513.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\IMG_9513.webp"
+        },
+        {
+          "uuid": "f2b21069-c2b7-4e55-ac67-ca2d38e7dce4",
+          "name": "IMG_9512.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9512.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\IMG_9512.webp"
+        },
+        {
+          "uuid": "171fa3a8-d838-41ce-861a-bc747eb67a1c",
+          "name": "IMG_9510.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9510.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\IMG_9510.webp"
+        },
+        {
+          "uuid": "0f77b26e-ba27-437e-9d51-d28764775462",
+          "name": "IMG_9514.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9514.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\IMG_9514.webp"
+        },
+        {
+          "uuid": "130f33d1-ded3-4c2f-b48c-561d606f9b3f",
+          "name": "IMG_9515.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9515.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\IMG_9515.webp"
+        },
+        {
+          "uuid": "e3fb9e77-c992-4a1e-9c79-e8586a8ed460",
+          "name": "IMG_9516.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9516.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\IMG_9516.webp"
+        },
+        {
+          "uuid": "5dc080b7-975c-473a-a790-c8922e11b7fa",
+          "name": "ip_p1.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "ip_p1.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\ip_p1.webp"
+        },
+        {
+          "uuid": "85920be1-d78a-46d8-b34d-72d83bd2e841",
+          "name": "ip_p2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "ip_p2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\ip_p2.webp"
+        },
+        {
+          "uuid": "caef7d59-a4d6-4a8e-8982-00d95dec286f",
+          "name": "adapt_p2.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "adapt_p2.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\adapt_p2.webp"
+        },
+        {
+          "uuid": "b6a84d59-ca43-4360-b86e-ee1f9221603b",
+          "name": "zone_top.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "zone_top.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\zone_top.webp"
+        },
+        {
+          "uuid": "ac349c6e-bfda-4b8f-8e93-a49992d710e7",
+          "name": "zone_mid.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "zone_mid.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\zone_mid.webp"
+        },
+        {
+          "uuid": "2a74b50e-f943-4ce4-b4fd-9dab16f9c7c9",
+          "name": "zone_bot.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "zone_bot.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\zone_bot.webp"
+        },
+        {
+          "uuid": "5c73354d-0e40-4fe9-bcb9-4b9aafb77189",
+          "name": "fixed_bot.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "fixed_bot.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\fixed_bot.webp"
+        },
+        {
+          "uuid": "f46b8dbc-9b82-40f9-b670-6fedd7162a3c",
+          "name": "fixed_full.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "fixed_full.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\fixed_full.webp"
+        },
+        {
+          "uuid": "397a10ed-4458-4921-aeec-72595f490f31",
+          "name": "q5_detail.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "q5_detail.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\q5_detail.webp"
+        },
+        {
+          "uuid": "bd415c54-2aee-42e5-b78a-154edc523c55",
+          "name": "IMG_9517.png",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9517.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\photos\\IMG_9517.webp"
+        },
+        {
+          "uuid": "b6c88305-9e13-4d50-8a96-41b3051cf0ec",
+          "name": "cable_detail.png",
+          "kind": "image",
+          "sender": "assistant",
+          "category": "generated",
+          "savedAs": "cable_detail.webp",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\cable_detail.webp"
+        }
+      ]
+    },
+    {
+      "uuid": "bfe45378-1df0-4646-b3a1-dde53b1db8c4",
+      "name": "Yamaha MG12 Mixer Input Output Validation Corrections",
+      "date": "2026-03-16",
+      "folder": "2026-03-16_bfe45378_yamaha-mg12-mixer-input-output-validatio",
+      "claudeUrl": "https://claude.ai/chat/bfe45378-1df0-4646-b3a1-dde53b1db8c4",
+      "files": [
+        {
+          "uuid": "493baec0-6b38-4459-9999-52b3dd80e00a",
+          "name": "nomad725-Sound-System-Spec-Mar16-2k26.docx",
+          "kind": "blob",
+          "sender": "human",
+          "category": "sources",
+          "savedAs": "nomad725-Sound-System-Spec-Mar16-2k26.docx.NOT_DOWNLOADABLE.txt",
+          "downloaded": false,
+          "localPath": "2026-03-16_bfe45378_yamaha-mg12-mixer-input-output-validatio\\sources\\nomad725-Sound-System-Spec-Mar16-2k26.docx.NOT_DOWNLOADABLE.txt"
+        }
+      ]
+    },
+    {
+      "uuid": "c8999358-0d6d-42d2-8abd-d5e1b06ff2d8",
+      "name": "CQ12 Mixer System Diagram Audit and Refactor",
+      "date": "2026-03-24",
+      "folder": "2026-03-24_c8999358_cq12-mixer-system-diagram-audit-and-refa",
+      "claudeUrl": "https://claude.ai/chat/c8999358-0d6d-42d2-8abd-d5e1b06ff2d8",
+      "files": [
+        {
+          "uuid": "019d2088-656e-7736-960f-5143a5b82fa1",
+          "name": "IMG_0516.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_0516.webp",
+          "downloaded": true,
+          "localPath": "2026-03-24_c8999358_cq12-mixer-system-diagram-audit-and-refa\\photos\\IMG_0516.webp"
+        },
+        {
+          "uuid": "019d2157-7e95-758b-97f9-1a0b36ee50c9",
+          "name": "IMG_9674.png",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9674.webp",
+          "downloaded": true,
+          "localPath": "2026-03-24_c8999358_cq12-mixer-system-diagram-audit-and-refa\\photos\\IMG_9674.webp"
+        },
+        {
+          "uuid": "019d2169-a492-77dc-97a2-6c317502e136",
+          "name": "nomad wiring 18spk armonia.pdf",
+          "kind": "document",
+          "sender": "human",
+          "category": "sources",
+          "savedAs": "nomad wiring 18spk armonia.pdf",
+          "downloaded": true,
+          "localPath": "2026-03-24_c8999358_cq12-mixer-system-diagram-audit-and-refa\\sources\\nomad wiring 18spk armonia.pdf"
+        },
+        {
+          "uuid": "019d2169-a865-737c-b736-ea2ef60378b7",
+          "name": "nomad system spec armonia.docx",
+          "kind": "blob",
+          "sender": "human",
+          "category": "sources",
+          "savedAs": "nomad system spec armonia.docx.NOT_DOWNLOADABLE.txt",
+          "downloaded": false,
+          "localPath": "2026-03-24_c8999358_cq12-mixer-system-diagram-audit-and-refa\\sources\\nomad system spec armonia.docx.NOT_DOWNLOADABLE.txt"
+        },
+        {
+          "uuid": "019d2173-6047-7126-8307-e6c2923a1747",
+          "name": "nomad system spec armonia.docx",
+          "kind": "blob",
+          "sender": "human",
+          "category": "sources",
+          "savedAs": "nomad system spec armonia.docx.NOT_DOWNLOADABLE.txt",
+          "downloaded": false,
+          "localPath": "2026-03-24_c8999358_cq12-mixer-system-diagram-audit-and-refa\\sources\\nomad system spec armonia.docx.NOT_DOWNLOADABLE.txt"
+        },
+        {
+          "uuid": "019d2188-71b5-7546-aa58-dd23bc476afc",
+          "name": "IMG_9512.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9512.webp",
+          "downloaded": true,
+          "localPath": "2026-03-24_c8999358_cq12-mixer-system-diagram-audit-and-refa\\photos\\IMG_9512.webp"
+        },
+        {
+          "uuid": "019d2188-72d4-7048-9c59-00f7cb4213c2",
+          "name": "IMG_9513.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9513.webp",
+          "downloaded": true,
+          "localPath": "2026-03-24_c8999358_cq12-mixer-system-diagram-audit-and-refa\\photos\\IMG_9513.webp"
+        },
+        {
+          "uuid": "019d2188-72ad-76e6-a778-a9a8fe397640",
+          "name": "IMG_9514.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9514.webp",
+          "downloaded": true,
+          "localPath": "2026-03-24_c8999358_cq12-mixer-system-diagram-audit-and-refa\\photos\\IMG_9514.webp"
+        },
+        {
+          "uuid": "019d2188-6b75-7790-8ea6-75dc1d236780",
+          "name": "IMG_9515.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9515.webp",
+          "downloaded": true,
+          "localPath": "2026-03-24_c8999358_cq12-mixer-system-diagram-audit-and-refa\\photos\\IMG_9515.webp"
+        },
+        {
+          "uuid": "019d2188-6f74-7613-82b6-35698312fbc6",
+          "name": "IMG_9516.jpeg",
+          "kind": "image",
+          "sender": "human",
+          "category": "photos",
+          "savedAs": "IMG_9516.webp",
+          "downloaded": true,
+          "localPath": "2026-03-24_c8999358_cq12-mixer-system-diagram-audit-and-refa\\photos\\IMG_9516.webp"
+        }
+      ]
+    },
+    {
+      "uuid": "7927f9e3-7bbe-454b-ab40-46ff6a3412b5",
+      "name": "Ma2 MCP Repository Audit Against Jensen Ideals",
+      "date": "2026-03-28",
+      "folder": "2026-03-28_7927f9e3_ma2-mcp-repository-audit-against-jensen-",
+      "claudeUrl": "https://claude.ai/chat/7927f9e3-7bbe-454b-ab40-46ff6a3412b5",
+      "files": []
+    }
+  ]
+}

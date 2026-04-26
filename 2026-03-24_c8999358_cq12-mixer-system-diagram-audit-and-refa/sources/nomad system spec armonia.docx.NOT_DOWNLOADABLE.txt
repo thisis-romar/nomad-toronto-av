@@ -1,0 +1,4 @@
+File: nomad system spec armonia.docx
+UUID: 019d2173-6047-7126-8307-e6c2923a1747
+Kind: blob
+Reason: Claude.ai does not expose a download endpoint for 'blob' files.

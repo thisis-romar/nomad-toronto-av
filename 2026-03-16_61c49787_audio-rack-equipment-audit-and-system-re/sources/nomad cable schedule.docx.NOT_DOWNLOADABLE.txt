@@ -1,0 +1,4 @@
+File: nomad cable schedule.docx
+UUID: 1ffb10b4-ebdf-490a-b246-f1af49bc7211
+Kind: blob
+Reason: Claude.ai does not expose a download endpoint for 'blob' files.
