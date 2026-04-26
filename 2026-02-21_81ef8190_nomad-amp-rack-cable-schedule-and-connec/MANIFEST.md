@@ -8,20 +8,20 @@
 
 | Category | Original name | Saved as | Downloadable |
 |---|---|---|---|
-| photos | `IMG_7164.jpeg` | `IMG_7164.jpg` | ✓ |
-| photos | `IMG_7165.jpeg` | `IMG_7165.jpg` | ✓ |
-| photos | `IMG_7167.jpeg` | `IMG_7167.jpg` | ✓ |
-| photos | `IMG_7168.jpeg` | `IMG_7168.jpg` | ✓ |
-| photos | `IMG_7169.jpeg` | `IMG_7169.jpg` | ✓ |
-| photos | `IMG_7113.jpeg` | `IMG_7113.jpg` | ✓ |
-| photos | `IMG_7117.jpeg` | `IMG_7117.jpg` | ✓ |
+| photos | `IMG_7164.jpeg` | `nomad-amp-rack-2026-02-21-001.jpg` | ✓ |
+| photos | `IMG_7165.jpeg` | `nomad-amp-rack-2026-02-21-002.jpg` | ✓ |
+| photos | `IMG_7167.jpeg` | `nomad-amp-rack-2026-02-21-003.jpg` | ✓ |
+| photos | `IMG_7168.jpeg` | `nomad-amp-rack-2026-02-21-004.jpg` | ✓ |
+| photos | `IMG_7169.jpeg` | `nomad-amp-rack-2026-02-21-005.jpg` | ✓ |
+| photos | `IMG_7113.jpeg` | `nomad-amp-rack-2026-02-21-006.jpg` | ✓ |
+| photos | `IMG_7117.jpeg` | `nomad-amp-rack-2026-02-21-007.jpg` | ✓ |
 | sources | `Bias_V3_V9_user_manual.pdf` | `Bias_V3_V9_user_manual.pdf` | ✓ |
 | sources | `Bias Q2Q1D1 user guide V1.0 web.pdf` | `Bias Q2Q1D1 user guide V1.0 web.pdf` | ✓ |
 | sources | `sp2120_operators_manual.pdf` | `sp2120_operators_manual.pdf` | ✓ |
-| photos | `IMG_7167.jpeg` | `IMG_7167.jpg` | ✓ |
-| photos | `IMG_7165.jpeg` | `IMG_7165.jpg` | ✓ |
-| photos | `IMG_7165.jpeg` | `IMG_7165.jpg` | ✓ |
-| photos | `IMG_7169.jpeg` | `IMG_7169.jpg` | ✓ |
-| photos | `IMG_7164.jpeg` | `IMG_7164.jpg` | ✓ |
-| photos | `IMG_7168.jpeg` | `IMG_7168.jpg` | ✓ |
-| photos | `IMG_7113.jpeg` | `IMG_7113.jpg` | ✓ |
+| photos | `IMG_7167.jpeg` | `nomad-amp-rack-2026-02-21-008.jpg` | ✓ |
+| photos | `IMG_7165.jpeg` | `nomad-amp-rack-2026-02-21-009.jpg` | ✓ |
+| photos | `IMG_7165.jpeg` | `nomad-amp-rack-2026-02-21-010.jpg` | ✓ |
+| photos | `IMG_7169.jpeg` | `nomad-amp-rack-2026-02-21-011.jpg` | ✓ |
+| photos | `IMG_7164.jpeg` | `nomad-amp-rack-2026-02-21-012.jpg` | ✓ |
+| photos | `IMG_7168.jpeg` | `nomad-amp-rack-2026-02-21-013.jpg` | ✓ |
+| photos | `IMG_7113.jpeg` | `nomad-amp-rack-2026-02-21-014.jpg` | ✓ |

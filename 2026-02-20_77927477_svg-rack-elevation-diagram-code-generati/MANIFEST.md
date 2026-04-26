@@ -8,9 +8,9 @@
 
 | Category | Original name | Saved as | Downloadable |
 |---|---|---|---|
-| photos | `69B1A488-B3A1-4A71-ABC6-52C68F98E3F9.png` | `69B1A488-B3A1-4A71-ABC6-52C68F98E3F9.jpg` | ✓ |
-| photos | `501E6C82-7007-4B25-A952-4D264C2630BF.png` | `501E6C82-7007-4B25-A952-4D264C2630BF.jpg` | ✓ |
-| photos | `9F6FC6F4-48A5-4CAA-A79B-97D280D9703D.png` | `9F6FC6F4-48A5-4CAA-A79B-97D280D9703D.jpg` | ✓ |
+| photos | `69B1A488-B3A1-4A71-ABC6-52C68F98E3F9.png` | `svg-rack-elevation-2026-02-20-001.jpg` | ✓ |
+| photos | `501E6C82-7007-4B25-A952-4D264C2630BF.png` | `svg-rack-elevation-2026-02-20-002.jpg` | ✓ |
+| photos | `9F6FC6F4-48A5-4CAA-A79B-97D280D9703D.png` | `svg-rack-elevation-2026-02-20-003.jpg` | ✓ |
 
 ## Artifacts (1)
 
