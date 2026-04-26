@@ -2,9 +2,9 @@
   "project": "Nomad AV Rack",
   "project_uuid": "019dcacc-4479-778d-9be8-6d705f5b113d",
   "claude_project_url": "https://claude.ai/project/019dcacc-4479-778d-9be8-6d705f5b113d",
-  "generated_at": "2026-04-26T20:03:35.749Z",
-  "total_files": 105,
-  "downloaded": 101,
+  "generated_at": "2026-04-26T20:20:54.559Z",
+  "total_files": 108,
+  "downloaded": 104,
   "not_downloadable": 4,
   "conversations": [
     {
@@ -43,6 +43,16 @@
           "savedAs": "9F6FC6F4-48A5-4CAA-A79B-97D280D9703D.webp",
           "downloaded": true,
           "localPath": "2026-02-20_77927477_svg-rack-elevation-diagram-code-generati\\photos\\9F6FC6F4-48A5-4CAA-A79B-97D280D9703D.webp"
+        },
+        {
+          "uuid": "compass_artifact_wf-4353083b-90f6-4c21-815a-773d47608796_text/markdown",
+          "name": "SVG Rack Elevation Diagrams: A Complete Technical Reference",
+          "kind": "artifact",
+          "sender": "assistant",
+          "category": "artifacts",
+          "savedAs": "svg-rack-elevation-diagrams-a-complete-technical-reference.md",
+          "downloaded": true,
+          "localPath": "2026-02-20_77927477_svg-rack-elevation-diagram-code-generati\\artifacts\\svg-rack-elevation-diagrams-a-complete-technical-reference.md"
         }
       ]
     },
@@ -231,7 +241,18 @@
       "date": "2026-02-23",
       "folder": "2026-02-23_fb56aa22_19-inch-rack-architectures-and-12u-enclo",
       "claudeUrl": "https://claude.ai/chat/fb56aa22-37a8-4633-825c-6dd1c91f4db5",
-      "files": []
+      "files": [
+        {
+          "uuid": "compass_artifact_wf-228479f4-6eca-44b2-9b22-eaccbcb8cec6_text/markdown",
+          "name": "Verifying 19-Inch Rack Standards and Specifications: Claim-by-Claim Analysis",
+          "kind": "artifact",
+          "sender": "assistant",
+          "category": "artifacts",
+          "savedAs": "verifying-19-inch-rack-standards-and-specifications-claim-by.md",
+          "downloaded": true,
+          "localPath": "2026-02-23_fb56aa22_19-inch-rack-architectures-and-12u-enclo\\artifacts\\verifying-19-inch-rack-standards-and-specifications-claim-by.md"
+        }
+      ]
     },
     {
       "uuid": "61c49787-7fd9-4227-ae32-2f3c8301d7f6",
@@ -979,6 +1000,16 @@
           "savedAs": "cable_detail.webp",
           "downloaded": true,
           "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\generated\\cable_detail.webp"
+        },
+        {
+          "uuid": "compass_artifact_wf-2279e8cc-6abe-4735-b6e4-dd9c049da059_text/markdown",
+          "name": "Professional Audio System Wiring Diagram Design Standards: A Comprehensive Analysis of Industry Standards, Conventions, and SVG Rendering Techniques",
+          "kind": "artifact",
+          "sender": "assistant",
+          "category": "artifacts",
+          "savedAs": "professional-audio-system-wiring-diagram-design-standards-a-.md",
+          "downloaded": true,
+          "localPath": "2026-03-16_61c49787_audio-rack-equipment-audit-and-system-re\\artifacts\\professional-audio-system-wiring-diagram-design-standards-a-.md"
         }
       ]
     },

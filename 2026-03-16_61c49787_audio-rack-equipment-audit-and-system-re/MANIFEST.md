@@ -28,6 +28,12 @@
 | photos | `IMG_9516.jpeg` | `IMG_9516.webp` | ✓ |
 | photos | `IMG_9517.png` | `IMG_9517.webp` | ✓ |
 
+## Artifacts (1)
+
+| Title | File | Size |
+|---|---|---|
+| Professional Audio System Wiring Diagram Design Standards: A Comprehensive Analysis of Industry Standards, Conventions, and SVG Rendering Techniques | `professional-audio-system-wiring-diagram-design-standards-a-.md` | — |
+
 ## Generated files (55)
 
 - `page_1.webp`
