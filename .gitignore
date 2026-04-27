@@ -2,3 +2,7 @@
 
 # Claude Code local session settings (machine-specific, not for repo)
 .claude/
+
+# graphify pipeline temp files
+.graphify_*.json
+.graphify_*.txt
