@@ -8,11 +8,16 @@ last_updated: 2026-04-27T00:00:00Z
 
 # Nomad Toronto — Technical Available Rider
 
-**Venue:** Nomad Toronto · Toronto, ON  
-**Booking contact:** *(add production contact — Issue #5)*  
-**Technical contact:** *(add — Issue #5)*  
-**Capacity:** *(confirm and add)*  
-**Load-in access:** *(confirm and add)*
+**Venue:** NØMAD Toronto  
+**Address:** 725 Queen Street East, Toronto, ON M4M 1H1  
+**Phone:** 647-643-8823  
+**General email:** info@nomad725.ca  
+**Website:** nomad725.ca  
+**Instagram / Facebook:** @nomadtorontoofficial  
+**Capacity:** 550 (standing)  
+**Booking contact:** *(named production contact TBC — Issue #5)*  
+**Technical contact:** *(TBC — Issue #5)*  
+**Load-in access:** *(confirm with venue)*
 
 ---
 

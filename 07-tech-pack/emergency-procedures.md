@@ -124,7 +124,8 @@ last_updated: 2026-04-27T00:00:00Z
 
 | Role | Contact |
 |------|---------|
-| In-house technician | *(TBC — Issue #5)* |
+| Venue general | 647-643-8823 · info@nomad725.ca |
+| In-house technician | *(named contact TBC — Issue #5)* |
 | VOID Acoustics support | +44 (0) 1202 666 006 · hello@voidacoustics.com |
 | Allen & Heath support | support@allen-heath.com |
 | Emblem Projects | admin+claude@emblemprojects.com |

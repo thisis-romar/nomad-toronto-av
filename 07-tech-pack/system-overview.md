@@ -8,7 +8,8 @@ last_updated: 2026-04-27T00:00:00Z
 
 # Nomad Toronto — System Overview
 
-**Venue:** Nomad Toronto · Toronto, ON  
+**Venue:** NØMAD Toronto · 725 Queen Street East, Toronto, ON M4M 1H1 · 647-643-8823 · info@nomad725.ca  
+**Capacity:** 550 standing  
 **System type:** Permanent VOID Acoustics installation  
 **Operated by:** In-house production team  
 **Prepared by:** Emblem Projects Inc. · admin+claude@emblemprojects.com  
