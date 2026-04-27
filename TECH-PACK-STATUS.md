@@ -14,7 +14,7 @@
 | 1. System Overview | ❌ Not started | — |
 | 2. Equipment Inventory | ⚠️ Partial | CQ-12T now confirmed; needs compile |
 | 3. Signal Flow Diagram (SVG) | ✅ Complete | `07-tech-pack/signal-flow.svg` |
-| 4. Rack Elevation (SVG) | ❌ Not started | Need new rack photo first (Issue #2) |
+| 4. Rack Elevation (SVG) | ✅ Complete | `07-tech-pack/rack-elevation.svg` — sourced from Armonía screenshot (March 2026). V9 shown offline. Q5 position provisional. |
 | 5. Speaker Zone Map (SVG) | ✅ Complete | `07-tech-pack/speaker-zone-map.svg` |
 | 6. Amplifier Assignments | ✅ Complete | Data in README |
 | 7. CQ-12T I/O List | ✅ Confirmed from photos | Data in README |
@@ -42,10 +42,10 @@
 | Conv | Purpose | Source files | Blocker | Status |
 |---|---|---|---|---|
 | A | Signal Flow SVG | JSX from c8999358 | None | ✅ Done — `07-tech-pack/signal-flow.svg` |
-| B | Rack Elevation SVG | New rack photo + nomad system spec.pdf | 🔴 Need rack photo first | ❌ Blocked |
+| B | Rack Elevation SVG | Armonía screenshot (Mar 2026) | None | ✅ Done — `07-tech-pack/rack-elevation.svg` |
 | C | Updated Cable Schedule | nomad cable schedule.docx + wiring PDF | None | ✅ Done — `07-tech-pack/cable-schedule.md` |
 | D | Speaker Zone Map SVG | Zone data from README | None | ✅ Done — `07-tech-pack/speaker-zone-map.svg` |
-| E | Master tech pack compile | All of the above | Needs A + B complete | ⏳ Blocked on B |
+| E | Master tech pack compile | All SVGs complete | None | ⏳ In progress |
 
 ---
 

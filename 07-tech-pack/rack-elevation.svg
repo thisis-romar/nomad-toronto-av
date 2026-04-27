@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" width="900" height="680"
+     role="img" aria-labelledby="re-title re-desc">
+<title id="re-title">Nomad Toronto — Amp Rack Elevation</title>
+<desc id="re-desc">8U amp rack elevation. Rack order confirmed via Armonía Pro Audio Suite March 2026. Source: audio-rack-equipment-2026-03-17-003.jpg</desc>
+
+<defs>
+  <style>
+    text { font-family: 'Segoe UI', Arial, sans-serif; }
+    .hdr  { fill:#f0f6fc; font-size:16px; font-weight:700; text-anchor:middle; }
+    .sub  { fill:#8b949e; font-size:10px; text-anchor:middle; }
+    .ulbl { fill:#4b5563; font-size:10px; font-family:'Segoe UI Mono',monospace; text-anchor:end; dominant-baseline:central; }
+    .dlbl { fill:#f0f6fc; font-size:12px; font-weight:700; dominant-baseline:central; }
+    .dsub { fill:#8b949e; font-size:9.5px; dominant-baseline:central; }
+    .dtag { fill:#fcd34d; font-size:9px; font-family:'Segoe UI Mono',monospace; dominant-baseline:central; }
+    .dip  { fill:#6b7280; font-size:8.5px; font-family:'Segoe UI Mono',monospace; dominant-baseline:central; }
+    .offl { fill:#6b7280; font-size:11px; font-weight:700; dominant-baseline:central; }
+    .leg  { fill:#c9d1d9; font-size:10px; dominant-baseline:central; }
+    .zone { fill:#4b5563; font-size:10px; font-weight:600; }
+    .foot { fill:#4b5563; font-size:9px; text-anchor:middle; }
+  </style>
+</defs>
+
+<!-- Background -->
+<rect width="900" height="680" fill="#0d1117"/>
+
+<!-- Header -->
+<text x="450" y="20" class="hdr">NOMAD TORONTO — AMP RACK ELEVATION</text>
+<text x="450" y="35" class="sub">8U rack · 5 active amps + 1 offline · Armonía-verified March 2026 · Source: audio-rack-equipment-2026-03-17-003.jpg</text>
+
+<!-- ══════════════════════════════════════════════════════════════
+     EIA-310-D RACK FRAME
+     1U = 60px (proportional scale, not 1:1 mm)
+     Rail width: 28px each side
+     Equipment opening: 560px wide
+     Rack frame x: 120 to 736
+     Equipment x: 148 to 708
+     U positions: U1 top at y=60
+     ══════════════════════════════════════════════════════════════ -->
+
+<!-- Rack outer frame -->
+<rect x="120" y="55" width="616" height="520" rx="4" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+
+<!-- Left rail -->
+<rect x="120" y="55" width="28" height="520" fill="#253344" stroke="#475569" stroke-width="1"/>
+<!-- Right rail -->
+<rect x="708" y="55" width="28" height="520" fill="#253344" stroke="#475569" stroke-width="1"/>
+
+<!-- Rack top cap (vented) -->
+<rect x="148" y="55" width="560" height="20" fill="#1a2030" stroke="#334155" stroke-width="0.5"/>
+<text x="428" y="68" class="dsub" fill="#374151" text-anchor="middle">·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·</text>
+
+<!-- Rack bottom cap -->
+<rect x="148" y="555" width="560" height="20" fill="#1a2030" stroke="#334155" stroke-width="0.5"/>
+
+<!-- Rail mounting holes (left — 3 per U, decorative) -->
+<!-- U-number labels to the left of rack -->
+
+<!-- ══════════════════════════════════════════════════════════════
+     RACK UNITS (U1–U10)
+     Each U: y_top = 75 + (U-1)*60
+     U1 → y=75,  U2 → y=135, U3 → y=195 ...
+     ══════════════════════════════════════════════════════════════ -->
+
+<!-- ── U1: 1U Blank Panel ─────────────────────────────────────── -->
+<rect x="148" y="75" width="560" height="58" fill="#111827" stroke="#1e293b" stroke-width="0.5"/>
+<text x="428" y="104" class="dsub" fill="#374151" text-anchor="middle">1U blank</text>
+<!-- U label -->
+<text x="114" y="104" class="ulbl">U1</text>
+<!-- Mounting holes visual -->
+<circle cx="136" cy="89"  r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="136" cy="104" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="136" cy="119" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="89"  r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="104" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="119" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+
+<!-- ── U2: Drawmer SP2120 ──────────────────────────────────────── -->
+<rect x="148" y="135" width="560" height="58" rx="2" fill="#3b1078" stroke="#a855f7" stroke-width="1.5"/>
+<text x="168" y="155" class="dlbl">Drawmer SP2120</text>
+<text x="168" y="169" class="dsub">Stereo Processor / Limiter</text>
+<text x="168" y="181" class="dip">IEC C14 · 9 VA · 115/230 V · PDU</text>
+<!-- Role badge -->
+<rect x="578" y="143" width="120" height="18" rx="3" fill="#4a1d96"/>
+<text x="638" y="155" class="dtag" text-anchor="middle">PROCESSOR</text>
+<text x="114" y="164" class="ulbl">U2</text>
+<circle cx="136" cy="149" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="136" cy="164" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="136" cy="179" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="149" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="164" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="179" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+
+<!-- ── U3: Bias V3 #1 "air ten v3" ───────────────────────────── -->
+<rect x="148" y="195" width="560" height="58" rx="2" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
+<text x="168" y="215" class="dlbl">Bias V3 #1</text>
+<text x="168" y="228" class="dsub">"air ten v3" · S/N 341130 · IP 192.168.10.13</text>
+<text x="168" y="241" class="dip">−8 dB / 28.23 ms · Airten V3 L (CH1) · Airten V3 R (CH2) · IEC C20</text>
+<rect x="578" y="203" width="120" height="18" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1"/>
+<text x="638" y="215" class="dtag" text-anchor="middle">FOH FILL</text>
+<text x="114" y="224" class="ulbl">U3</text>
+<circle cx="136" cy="209" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="136" cy="224" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="136" cy="239" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="209" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="224" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="239" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+
+<!-- ── U4: Bias Q2 #1 "DJ Monitors" ──────────────────────────── -->
+<rect x="148" y="255" width="560" height="58" rx="2" fill="#1c3065" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="168" y="275" class="dlbl">Bias Q2 #1</text>
+<text x="168" y="288" class="dsub">"DJ Monitors" · S/N 951058 · IP 192.168.10.12</text>
+<text x="168" y="301" class="dip">−4 dB / 0 ms · Air Vantage L/R (CH1/2) · Venu 215 L/R (CH3/4) · IEC C20</text>
+<rect x="578" y="263" width="120" height="18" rx="3" fill="#1e3a6b" stroke="#3b82f6" stroke-width="1"/>
+<text x="638" y="275" class="dtag" text-anchor="middle" fill="#60a5fa">DJ BOOTH</text>
+<text x="114" y="284" class="ulbl">U4</text>
+<circle cx="136" cy="269" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="136" cy="284" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="136" cy="299" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="269" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="284" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="299" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+
+<!-- ── U5: Bias V9 OFFLINE ─────────────────────────────────────── -->
+<rect x="148" y="315" width="560" height="58" rx="2" fill="#111827" stroke="#374151" stroke-width="1" stroke-dasharray="6,3" opacity="0.8"/>
+<text x="168" y="337" class="offl">Bias V9  —  OFFLINE</text>
+<text x="168" y="351" class="dsub" fill="#4b5563">"DELAY SUBS" · CPC 45A breaker OFF · all NL4 disconnected · physically present</text>
+<text x="168" y="364" class="dip" fill="#374151">Do not reconnect without dedicated commissioning session</text>
+<rect x="578" y="323" width="120" height="18" rx="3" fill="#1a1a1a" stroke="#374151" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="638" y="335" class="dtag" text-anchor="middle" fill="#4b5563">OFFLINE</text>
+<text x="114" y="344" class="ulbl">U5</text>
+<circle cx="136" cy="329" r="3" fill="#0f172a" stroke="#374151" stroke-width="1" opacity="0.5"/>
+<circle cx="136" cy="344" r="3" fill="#0f172a" stroke="#374151" stroke-width="1" opacity="0.5"/>
+<circle cx="136" cy="359" r="3" fill="#0f172a" stroke="#374151" stroke-width="1" opacity="0.5"/>
+<circle cx="720" cy="329" r="3" fill="#0f172a" stroke="#374151" stroke-width="1" opacity="0.5"/>
+<circle cx="720" cy="344" r="3" fill="#0f172a" stroke="#374151" stroke-width="1" opacity="0.5"/>
+<circle cx="720" cy="359" r="3" fill="#0f172a" stroke="#374151" stroke-width="1" opacity="0.5"/>
+
+<!-- ── U6: Bias Q2 #2 "Air Motion" ───────────────────────────── -->
+<rect x="148" y="375" width="560" height="58" rx="2" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
+<text x="168" y="395" class="dlbl">Bias Q2 #2</text>
+<text x="168" y="408" class="dsub">"Air Motion" · S/N 00543758 · IP 192.168.10.11</text>
+<text x="168" y="421" class="dip">+0.5 dB / 1.0 ms · Air Motion L LF/HMF (CH1/2) · Air Motion R LF/HMF (CH3/4) · IEC C20</text>
+<rect x="578" y="383" width="120" height="18" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1"/>
+<text x="638" y="395" class="dtag" text-anchor="middle">FOH MAINS</text>
+<text x="114" y="404" class="ulbl">U6</text>
+<circle cx="136" cy="389" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="136" cy="404" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="136" cy="419" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="389" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="404" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="419" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+
+<!-- ── U7: Bias V3 #2 "Outside Subs" ─────────────────────────── -->
+<rect x="148" y="435" width="560" height="58" rx="2" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
+<text x="168" y="455" class="dlbl">Bias V3 #2</text>
+<text x="168" y="468" class="dsub">"Outside Subs" · S/N 341132 · IP 192.168.10.14  ·  Signal distribution hub</text>
+<text x="168" y="481" class="dip">−3 dB / 0 ms · Xair L-3 (CH1) · Xair R-3 (CH2) · 3× XLR-M line outs → Q5, Q2#2, V3#1 · IEC C20</text>
+<rect x="578" y="443" width="120" height="18" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1"/>
+<text x="638" y="455" class="dtag" text-anchor="middle">FOH SUBS HUB</text>
+<text x="114" y="464" class="ulbl">U7</text>
+<circle cx="136" cy="449" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="136" cy="464" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="136" cy="479" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="449" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="464" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="479" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+
+<!-- ── U8: Bias Q5 "Subs Middle" ──────────────────────────────── -->
+<rect x="148" y="495" width="560" height="58" rx="2" fill="#7c2d12" stroke="#f97316" stroke-width="1.5"/>
+<!-- Provisional position indicator -->
+<rect x="148" y="495" width="4" height="58" fill="#fcd34d" opacity="0.6"/>
+<text x="172" y="515" class="dlbl">Bias Q5</text>
+<text x="172" y="528" class="dsub">"Subs Middle" · S/N 777758 · IP 192.168.10.10  ·  ⚠ Rack position provisional</text>
+<text x="172" y="541" class="dip">0 dB / 0 ms · Xair L-1 (CH1) · Xair L-2 (CH2) · Xair R-1 (CH3) · Xair R-2 (CH4) · Phoenix 5-pin AC</text>
+<rect x="578" y="503" width="120" height="18" rx="3" fill="#7c2d12" stroke="#f97316" stroke-width="1"/>
+<text x="638" y="515" class="dtag" text-anchor="middle">FOH SUBS</text>
+<text x="114" y="524" class="ulbl">U8</text>
+<circle cx="136" cy="509" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="136" cy="524" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="136" cy="539" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="509" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="524" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+<circle cx="720" cy="539" r="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+
+<!-- Rack bottom cap (U9–U10 condensed to PDU label) -->
+<rect x="148" y="555" width="560" height="20" fill="#111820" stroke="#1e293b" stroke-width="0.5"/>
+<text x="168" y="567" class="dip" fill="#4b5563">U9–U10: Tripp Lite PDU (control PC + SP2120 power distribution)</text>
+<text x="114" y="567" class="ulbl">U9</text>
+
+<!-- ══════════════════════════════════════════════════════════════
+     LEGEND
+     ══════════════════════════════════════════════════════════════ -->
+<rect x="10" y="590" width="880" height="75" rx="4" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<text x="22" y="608" class="zone">LEGEND  &amp;  NOTES</text>
+
+<!-- Color key -->
+<rect x="22" y="617" width="14" height="10" rx="2" fill="#7c2d12" stroke="#f97316" stroke-width="1"/>
+<text x="40" y="625" class="leg">FOH amplifier (V3 #1, V3 #2, Q2 #2, Q5)</text>
+<rect x="22" y="633" width="14" height="10" rx="2" fill="#1c3065" stroke="#3b82f6" stroke-width="1"/>
+<text x="40" y="641" class="leg">Booth amplifier (Q2 #1)</text>
+<rect x="22" y="649" width="14" height="10" rx="2" fill="#3b1078" stroke="#a855f7" stroke-width="1"/>
+<text x="40" y="657" class="leg">Processor (SP2120)</text>
+<rect x="22" y="649" width="14" height="10" rx="2" fill="#1a1a1a" stroke="#374151" stroke-width="1" stroke-dasharray="4,3"/>
+
+<rect x="240" y="617" width="14" height="10" rx="2" fill="#111827" stroke="#374151" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="258" y="625" class="leg">OFFLINE — V9 physically present, CPC 45A breaker off, all NL4 disconnected</text>
+<text x="240" y="641" class="leg">⚠ Yellow bar on Q5 = rack position provisional — confirm exact U position on next site visit (Issue #7)</text>
+<text x="240" y="657" class="leg">Source: Armonía Pro Audio Suite workspace view (audio-rack-equipment-2026-03-17-003.jpg)</text>
+
+<text x="680" y="625" class="leg" fill="#8b949e">1U = 44.45 mm (EIA-310-D)</text>
+<text x="680" y="641" class="leg" fill="#8b949e">Rack: 8U equipment + 2U PDU</text>
+<text x="680" y="657" class="leg" fill="#8b949e">V9 in U5 — remove when rack is serviced</text>
+
+<!-- Footer -->
+<text x="450" y="672" class="foot">Generated 2026-04-27 · EMBLEM PROJECTS INC. · Nomad Toronto · VOID Acoustics 18-speaker system</text>
+
+</svg>
