@@ -153,10 +153,10 @@ Complete venue tech pack for **Nomad Toronto** — two deliverable documents:
 | ~~1~~ | ~~6× Xair at 1.33Ω on V3 channels~~ | ~~🔴 Critical~~ | ✅ **Resolved** — each Xair driven individually at 4Ω (Q5 provides 4 channels) | No action needed |
 | 2 | Rack elevation photo ≠ documented spec order; V9 still physically present (offline) | 🟡 Medium | Open | Take new rack photo |
 | 3 | Out4/5/6 on CQ-12T at 0 dB — purpose unknown | 🟡 Medium | Open | Confirm if in use |
-| 4 | Athens entrance speaker model not documented | 🟢 Low | Open | Identify model on-site |
+| 4 | Athens entrance speaker model — **Turbosound Athens TCS-AN series** confirmed; exact submodel (TCS122 or TCS152 variant) TBC | 🟢 Low | ⚠️ Partial — manufacturer confirmed, submodel needs rear type-plate photo | Photograph rear type-plate on next site visit |
 | 5 | No production contact details | 🟢 Low | Open | Add to available rider |
-| 6 | Airten V3 PDF missing — wrong URL in asset registry | 🟢 Low | Open | Source correct PDF |
-| 7 | Q5 mains connector is Phoenix 5-pin — confirm circuit/breaker spec | 🟡 Medium | Open | Verify on-site |
+| ~~6~~ | ~~Airten V3 PDF missing~~ | ~~🟢 Low~~ | ✅ **Resolved** — `VOID-Airten-V3-User-Manual-v2.1.pdf` downloaded (UG10517 V2.1) | No action needed |
+| 7 | Q5 mains connector is Phoenix 5-pin — confirm circuit/breaker spec | 🟡 Medium | Open — Q5 manual downloaded (`Bias_Q5_user_guide_v1.1.pdf`), confirms Phoenix 5-pin AC mains input | Verify breaker rating on-site |
 
 ---
 
