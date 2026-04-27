@@ -151,15 +151,15 @@
 
 <!-- Line Out 1 → Q5 -->
 <path d="M 268,423 V 452 H 375 V 488" fill="none" stroke="#f97316" stroke-width="2" marker-end="url(#ah-foh)"/>
-<text x="321" y="447" class="conn">Line Out 1 · XLR-M</text>
+<text x="310" y="444" class="conn">Line Out 1 · XLR-M</text>
 
 <!-- Line Out 2 → Q2 #2 -->
-<path d="M 295,423 V 460 H 515 V 488" fill="none" stroke="#f97316" stroke-width="2" marker-end="url(#ah-foh)"/>
-<text x="405" y="455" class="conn">Line Out 2 · XLR-M</text>
+<path d="M 295,423 V 462 H 515 V 488" fill="none" stroke="#f97316" stroke-width="2" marker-end="url(#ah-foh)"/>
+<text x="420" y="457" class="conn">Line Out 2 · XLR-M</text>
 
 <!-- Line Out 3 → V3 #1 -->
-<path d="M 322,423 V 468 H 655 V 488" fill="none" stroke="#f97316" stroke-width="2" marker-end="url(#ah-foh)"/>
-<text x="488" y="463" class="conn">Line Out 3 · XLR-M</text>
+<path d="M 322,423 V 472 H 655 V 488" fill="none" stroke="#f97316" stroke-width="2" marker-end="url(#ah-foh)"/>
+<text x="545" y="469" class="conn">Line Out 3 · XLR-M</text>
 
 <!-- ══════════════════════════════════════════════════════════════
      Q2 #1 FAN-OUT
@@ -229,42 +229,46 @@
      Secondary amp → final speaker connections
      ══════════════════════════════════════════════════════════════ -->
 
-<!-- Q5 → 4× Xair middle -->
-<path d="M 375,540 V 600" fill="none" stroke="#f97316" stroke-width="2" marker-end="url(#ah-foh)"/>
-<text x="390" y="573" class="conn" text-anchor="start">4× NL4 · 4 Ω each</text>
+<!-- Q5 → 4× Xair middle (line from amp cx=375, angled to box cx=345) -->
+<path d="M 375,540 V 570 H 345 V 600" fill="none" stroke="#f97316" stroke-width="2" marker-end="url(#ah-foh)"/>
+<text x="350" y="564" class="conn" text-anchor="end">4× NL4 · 4 Ω each</text>
 
-<!-- Q2 #2 → Air Motion (bi-amp) -->
+<!-- Q2 #2 → Air Motion (straight down, amp cx=515 → box cx=517) -->
 <path d="M 515,540 V 600" fill="none" stroke="#f97316" stroke-width="2" marker-end="url(#ah-foh)"/>
 <text x="530" y="573" class="conn" text-anchor="start">4× Phoenix→NL4</text>
 
-<!-- V3 #1 → Airten V3 -->
+<!-- V3 #1 → Airten V3 (straight down, amp cx=655 → box cx=667) -->
 <path d="M 655,540 V 600" fill="none" stroke="#f97316" stroke-width="2" marker-end="url(#ah-foh)"/>
 <text x="670" y="573" class="conn" text-anchor="start">2× NL4 · 8 Ω</text>
 
 <!-- ══════════════════════════════════════════════════════════════
      ROW 7 · Final FOH speakers  y: 600–655
+     Boxes spaced with 10px gaps:
+       4× Xair: x=260–430 (cx=345)
+       Air Motion: x=440–595 (cx=517)
+       Airten: x=605–730 (cx=667)
      ══════════════════════════════════════════════════════════════ -->
 
 <!-- 4× Xair middle subs -->
-<rect x="285" y="600" width="180" height="52" rx="4" fill="#1e293b" stroke="#f97316" stroke-width="1.5"/>
-<text x="375" y="618" class="lbl" font-size="11">Stasys Xair ×4</text>
-<text x="375" y="631" class="sub">L-1, L-2, R-1, R-2</text>
-<text x="375" y="644" class="sub">3,200 W each · 4 Ω</text>
-<text x="375" y="661" class="conn">Middle sub cluster</text>
+<rect x="260" y="600" width="170" height="52" rx="4" fill="#1e293b" stroke="#f97316" stroke-width="1.5"/>
+<text x="345" y="618" class="lbl" font-size="11">Stasys Xair ×4</text>
+<text x="345" y="631" class="sub">L-1, L-2, R-1, R-2</text>
+<text x="345" y="644" class="sub">3,200 W each · 4 Ω</text>
+<text x="345" y="661" class="conn">Middle sub cluster</text>
 
 <!-- Air Motion V2 (FOH mains, bi-amp) -->
-<rect x="435" y="600" width="160" height="52" rx="4" fill="#1e293b" stroke="#f97316" stroke-width="1.5"/>
-<text x="515" y="618" class="lbl" font-size="11">Air Motion V2 ×2</text>
-<text x="515" y="631" class="sub">Bi-amp · LF + HMF</text>
-<text x="515" y="644" class="sub">500 W LF · 250 W HMF</text>
-<text x="515" y="661" class="conn">FOH Mains</text>
+<rect x="440" y="600" width="155" height="52" rx="4" fill="#1e293b" stroke="#f97316" stroke-width="1.5"/>
+<text x="517" y="618" class="lbl" font-size="11">Air Motion V2 ×2</text>
+<text x="517" y="631" class="sub">Bi-amp · LF + HMF</text>
+<text x="517" y="644" class="sub">500 W LF · 250 W HMF</text>
+<text x="517" y="661" class="conn">FOH Mains</text>
 
 <!-- Airten V3 (FOH fill) -->
-<rect x="590" y="600" width="130" height="52" rx="4" fill="#1e293b" stroke="#f97316" stroke-width="1.5"/>
-<text x="655" y="618" class="lbl" font-size="11">Airten V3 ×2</text>
-<text x="655" y="631" class="sub">L · R · 8 Ω</text>
-<text x="655" y="644" class="sub">Specs TBC</text>
-<text x="655" y="661" class="conn">FOH Fill</text>
+<rect x="605" y="600" width="125" height="52" rx="4" fill="#1e293b" stroke="#f97316" stroke-width="1.5"/>
+<text x="667" y="618" class="lbl" font-size="11">Airten V3 ×2</text>
+<text x="667" y="631" class="sub">L · R · 8 Ω</text>
+<text x="667" y="644" class="sub">Specs TBC</text>
+<text x="667" y="661" class="conn">FOH Fill</text>
 
 <!-- ══════════════════════════════════════════════════════════════
      LEGEND
