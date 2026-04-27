@@ -11,8 +11,8 @@
 
 | Section | Status | Blocker |
 |---|---|---|
-| 1. System Overview | ❌ Not started | — |
-| 2. Equipment Inventory | ⚠️ Partial | CQ-12T now confirmed; needs compile |
+| 1. System Overview | ✅ Complete | `07-tech-pack/system-overview.md` |
+| 2. Equipment Inventory | ✅ Complete | `01-source-documents/nomad-system-spec-v2.md` §2–§7 |
 | 3. Signal Flow Diagram (SVG) | ✅ Complete | `07-tech-pack/signal-flow.svg` |
 | 4. Rack Elevation (SVG) | ✅ Complete | `07-tech-pack/rack-elevation.svg` — sourced from Armonía screenshot (March 2026). V9 shown offline. Q5 position provisional. |
 | 5. Speaker Zone Map (SVG) | ✅ Complete | `07-tech-pack/speaker-zone-map.svg` |
@@ -21,19 +21,19 @@
 | 8. Cable Schedule | ✅ Complete | `07-tech-pack/cable-schedule.md` (41 cables, CQ-12T current) |
 | 9. Armonía DSP Config | ⚠️ Partial | Delays/gains in conversations; no preset export |
 | 10. Power Requirements | ⚠️ Partial | Amp mains noted; no load calc |
-| 11. Emergency Procedures | ❌ Not started | — |
+| 11. Emergency Procedures | ✅ Complete | `07-tech-pack/emergency-procedures.md` |
 
 ## Sections — Document 2 (Available Rider)
 
 | Section | Status |
 |---|---|
-| Venue overview (name, address, capacity) | ❌ Not started |
+| Venue overview (name, address, capacity) | ⚠️ Partial — address/capacity TBC (Issue #5) |
 | DJ equipment list | ✅ Ready (CDJ-3000 ×4, CQ-12T) |
 | PA system overview | ✅ Ready (VOID 18-speaker system) |
 | Available inputs | ✅ Ready (from CQ-12T photos) |
 | Monitor outputs | ✅ Ready (MonOut, BakFil) |
 | Power spec | ⚠️ Needs confirmation |
-| Production contact | ❌ Not started |
+| Production contact | ❌ Not started — `07-tech-pack/available-rider.md` has placeholder (Issue #5) |
 
 ---
 
