@@ -256,15 +256,16 @@ Source: VOID Acoustics Air Motion V2 manual.</desc>
   <!-- Centre point -->
   <circle cx="245" cy="513" r="4"   fill="#475569"/>
 
-  <!-- ── RIGHT 18″ WOOFER — centred at (725, 513) ── -->
-  <!-- (Mirror of left, same radii) -->
-  <circle cx="755" cy="513" r="113" fill="#253344" stroke="#475569" stroke-width="1.5"/>
-  <circle cx="755" cy="513" r="91"  fill="#1e293b" stroke="#475569" stroke-width="1"/>
-  <circle cx="755" cy="513" r="72"  fill="#253344" stroke="#475569" stroke-width="1"/>
-  <circle cx="755" cy="513" r="50"  fill="#1a2535" stroke="#475569" stroke-width="1"/>
-  <circle cx="755" cy="513" r="34"  fill="#1e293b" stroke="#64748b" stroke-width="0.75"/>
-  <circle cx="755" cy="513" r="20"  fill="#253344" stroke="#64748b" stroke-width="1"/>
-  <circle cx="755" cy="513" r="4"   fill="#475569"/>
+  <!-- ── RIGHT 18″ WOOFER — centred at (635, 513) ── -->
+  <!-- Symmetric with left: cabinet left=110, right=770, centre=440.
+       Left woofer at 245 → 440-245=195px from centre → right at 440+195=635 -->
+  <circle cx="635" cy="513" r="113" fill="#253344" stroke="#475569" stroke-width="1.5"/>
+  <circle cx="635" cy="513" r="91"  fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <circle cx="635" cy="513" r="72"  fill="#253344" stroke="#475569" stroke-width="1"/>
+  <circle cx="635" cy="513" r="50"  fill="#1a2535" stroke="#475569" stroke-width="1"/>
+  <circle cx="635" cy="513" r="34"  fill="#1e293b" stroke="#64748b" stroke-width="0.75"/>
+  <circle cx="635" cy="513" r="20"  fill="#253344" stroke="#64748b" stroke-width="1"/>
+  <circle cx="635" cy="513" r="4"   fill="#475569"/>
 
   <!-- ── CENTRE MID DRIVER (300mm / 12″) — centred at (500, 443) ── -->
   <!-- 300mm → radius 150mm → 116px; scaled to ~42px for layout fit -->
@@ -324,8 +325,8 @@ Source: VOID Acoustics Air Motion V2 manual.</desc>
   <text x="186" y="379" class="slbl" text-anchor="end">18″ LF WOOFER (L)</text>
 
   <!-- Right woofer -->
-  <line x1="755" y1="400" x2="810" y2="383" stroke="#4b5563" stroke-width="0.75" stroke-dasharray="3,2"/>
-  <text x="814" y="379" class="slbl" text-anchor="start">18″ LF WOOFER (R)</text>
+  <line x1="635" y1="400" x2="710" y2="383" stroke="#4b5563" stroke-width="0.75" stroke-dasharray="3,2"/>
+  <text x="714" y="379" class="slbl" text-anchor="start">18″ LF WOOFER (R)</text>
 
   <!-- Mid + horn at top -->
   <line x1="500" y1="381" x2="500" y2="368" stroke="#4b5563" stroke-width="0.75" stroke-dasharray="3,2"/>
