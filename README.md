@@ -239,13 +239,18 @@ See full details: [firmware-changelog.md](06-reference-docs/firmware-changelog.m
 
 ## Open Issues
 
-| # | Issue | Severity | Status | Owner |
-|---|-------|----------|--------|-------|
-| 2 | Rack elevation photo not yet updated — V9 still physically present | 🟡 Medium | Open | Venue tech — photograph rack on next visit |
-| 3 | CQ-12T Out4/5/6 at 0 dB — purpose unconfirmed | 🟡 Medium | Open | Integrator — verify before patching any signal |
-| 4 | Turbosound Athens TCS-AN exact submodel unconfirmed | 🟡 Medium | Open | Venue tech — photograph rear type-plate label |
-| 5 | Production / technical contact not documented | 🟢 Low | Open | Venue management — add named contact |
-| 7 | Bias Q5 Phoenix 5-pin mains — breaker spec unconfirmed | 🟡 Medium | Open | Venue electrician — verify panel circuit rating |
+Tracked on [GitHub Project #5 — Nomad Toronto AV](https://github.com/users/thisis-romar/projects/5)
+
+| GH | Issue | Severity | Owner |
+|----|-------|----------|-------|
+| [#1](https://github.com/thisis-romar/nomad-toronto-av/issues/1) | Rack photo — V9 physically present | 🟡 Medium | Venue tech |
+| [#2](https://github.com/thisis-romar/nomad-toronto-av/issues/2) | CQ-12T Out4/5/6 purpose unconfirmed — do not patch | 🟡 Medium | Integrator |
+| [#3](https://github.com/thisis-romar/nomad-toronto-av/issues/3) | Turbosound Athens TCS-AN exact submodel unconfirmed | 🟡 Medium | Venue tech |
+| [#4](https://github.com/thisis-romar/nomad-toronto-av/issues/4) | Production / technical contact not documented | 🟢 Low | Venue management |
+| [#5](https://github.com/thisis-romar/nomad-toronto-av/issues/5) | Bias Q5 Phoenix 5-pin mains — breaker spec unconfirmed | 🟡 Medium | Venue electrician |
+| [#6](https://github.com/thisis-romar/nomad-toronto-av/issues/6) | Export Armonía DSP preset backup (.aps file) | 🟢 Low | Integrator |
+| [#7](https://github.com/thisis-romar/nomad-toronto-av/issues/7) | Compile tech pack deliverables to PDF | 🟢 Low | Integrator |
+| [#8](https://github.com/thisis-romar/nomad-toronto-av/issues/8) | Measure DJ booth floor dimensions for available rider | 🟢 Low | Venue tech |
 
 ---
 

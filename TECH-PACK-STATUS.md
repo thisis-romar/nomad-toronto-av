@@ -51,9 +51,15 @@
 
 ## Open Issues Before Sign-Off
 
+All issues tracked on [GitHub Project #5 — Nomad Toronto AV](https://github.com/users/thisis-romar/projects/5)
+
 - ~~🔴 **Issue 1 — Xair impedance**~~ ✅ Resolved
-- 🟡 **Issue 2 — Rack photo:** Physical rack ≠ documented spec order. V9 still physically present but offline. Need current photo.
-- 🟡 **Issue 3 — Out4/5/6:** CQ-12T outputs at 0 dB, unlabelled. In use or spare?
-- 🟡 **Issue 4 — Athens speakers:** Manufacturer confirmed = **Turbosound Athens TCS-AN series** (Music Tribe). Exact submodel (TCS122 vs TCS152, dispersion variant) TBC — photograph rear type-plate on next site visit. QSG covers full family but DNS blocked download; try from browser: `https://mediadl.musictribe.com/media/PLM/data/docs/P0B71/QSG_TS_P0B48_TCS-AN-Series_A4_WW.pdf`
-- 🟢 **Issue 5 — Production contact:** Needed for available rider.
+- 🟡 [**GH #1**](https://github.com/thisis-romar/nomad-toronto-av/issues/1) **Rack photo:** V9 physically present. Photograph rack on next site visit.
+- 🟡 [**GH #2**](https://github.com/thisis-romar/nomad-toronto-av/issues/2) **CQ-12T Out4/5/6:** Do not patch until purpose confirmed on-site.
+- 🟡 [**GH #3**](https://github.com/thisis-romar/nomad-toronto-av/issues/3) **Athens submodel:** Turbosound TCS-AN confirmed; exact variant TBC — photograph rear type-plate.
+- 🟢 [**GH #4**](https://github.com/thisis-romar/nomad-toronto-av/issues/4) **Production contact:** Needed for available rider. Call 647-643-8823.
+- 🟡 [**GH #5**](https://github.com/thisis-romar/nomad-toronto-av/issues/5) **Q5 breaker spec:** Phoenix 5-pin mains — verify rating with venue electrician.
 - ~~🟢 **Issue 6 — Airten V3 PDF**~~ ✅ Resolved — `VOID-Airten-V3-User-Manual-v2.1.pdf` downloaded
+- 🟢 [**GH #6**](https://github.com/thisis-romar/nomad-toronto-av/issues/6) **Armonía DSP backup:** Export .aps preset file via ArmoníaPlus on LAN.
+- 🟢 [**GH #7**](https://github.com/thisis-romar/nomad-toronto-av/issues/7) **PDF compile:** Both tech pack deliverables ready to compile.
+- 🟢 [**GH #8**](https://github.com/thisis-romar/nomad-toronto-av/issues/8) **Booth dimensions:** Measure on next site visit for available rider.

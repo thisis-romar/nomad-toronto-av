@@ -1,0 +1,115 @@
+{
+  "project": {
+    "title": "Nomad Toronto AV",
+    "owner": "thisis-romar",
+    "repo": "nomad-toronto-av"
+  },
+  "fields": [
+    {
+      "name": "Status",
+      "type": "SINGLE_SELECT",
+      "options": ["Backlog", "Todo", "In Progress", "On-Site", "Blocked", "Done"]
+    },
+    {
+      "name": "Priority",
+      "type": "SINGLE_SELECT",
+      "options": ["P1-High", "P2-Normal", "P3-Low"]
+    },
+    {
+      "name": "Owner",
+      "type": "SINGLE_SELECT",
+      "options": ["Venue Tech", "Venue Management", "Integrator", "Venue Electrician", "Any"]
+    },
+    {
+      "name": "Site Visit",
+      "type": "SINGLE_SELECT",
+      "options": ["Required", "Not Required"]
+    }
+  ],
+  "labels": [
+    { "name": "site-visit-required", "color": "e4e669", "description": "Requires physical on-site access" },
+    { "name": "integrator",          "color": "0075ca", "description": "Emblem Projects action required" },
+    { "name": "venue-management",    "color": "0e8a16", "description": "Venue staff action required" },
+    { "name": "electrical",          "color": "b60205", "description": "Electrical/power safety" },
+    { "name": "firmware",            "color": "d93f0b", "description": "Firmware or software update" },
+    { "name": "area:foh",            "color": "f9d0c4", "description": "Front-of-house zone" },
+    { "name": "area:booth",          "color": "bfd4f2", "description": "DJ Booth zone" },
+    { "name": "area:entrance",       "color": "ededed", "description": "Entrance/foyer zone" },
+    { "name": "area:rack",           "color": "d4c5f9", "description": "Amp rack" },
+    { "name": "area:full-system",    "color": "84b6eb", "description": "Affects whole system" }
+  ],
+  "items": [
+    {
+      "title": "Take new rack photo — V9 physically present in rack",
+      "body": "Physical rack order doesn't match documented spec order. Bias V9 is still physically present in U5 despite being offline (all channels disconnected, CPC 45A breaker off). Need a current rack photo to:\n- Update `07-tech-pack/rack-elevation.svg` with actual physical state\n- Confirm Bias Q5 actual rack position (currently marked provisional at U8)\n\n**Action:** Photograph the full rack front panel on next site visit.",
+      "labels": ["site-visit-required", "area:rack", "documentation"],
+      "status": "Todo",
+      "priority": "P2-Normal",
+      "owner": "Venue Tech",
+      "siteVisit": "Required"
+    },
+    {
+      "title": "Verify CQ-12T Out4/5/6 purpose before patching",
+      "body": "CQ-12T outputs Out4, Out5, and Out6 are currently set at 0 dB with no documented routing or load. Must be verified before any signal is patched to these outputs — unintended audio or feedback risk.\n\n**Current state:** 0 dB, unlabelled, unknown if in use or spare.\n**Risk:** Do not connect any equipment to these outputs until purpose is confirmed.\n\n**Action:** Integrator to trace signal on-site and update `07-tech-pack/cable-schedule.md` and CQ-12T I/O table in README.",
+      "labels": ["site-visit-required", "integrator", "area:full-system"],
+      "status": "Todo",
+      "priority": "P1-High",
+      "owner": "Integrator",
+      "siteVisit": "Required"
+    },
+    {
+      "title": "Identify Turbosound Athens TCS-AN exact submodel",
+      "body": "Entrance speakers confirmed as **Turbosound Athens TCS-AN series** (Music Tribe). Exact model unconfirmed:\n- TCS122/xx-AN (12\") or TCS152/xx-AN (15\")\n- Dispersion variant (64°, 94°, or 96°)\n\n**Actions:**\n1. Photograph the **rear type-plate label** on next site visit\n2. Download QSG PDF (DNS-blocked on primary machine — use phone or different network):\n   `https://mediadl.musictribe.com/media/PLM/data/docs/P0B71/QSG_TS_P0B48_TCS-AN-Series_A4_WW.pdf`\n3. Drop QSG into `02-equipment-manuals/speakers/Turbosound-Athens-TCS-AN-Series-QSG.pdf`\n4. Update README issue #4 and `01-source-documents/nomad-system-spec-v2.md` §6.6",
+      "labels": ["site-visit-required", "documentation", "area:entrance"],
+      "status": "Todo",
+      "priority": "P2-Normal",
+      "owner": "Venue Tech",
+      "siteVisit": "Required"
+    },
+    {
+      "title": "Document production and technical contacts",
+      "body": "Named production manager and technical/systems contacts are TBC. Required for:\n- `07-tech-pack/available-rider.md` contact table\n- `07-tech-pack/emergency-procedures.md` Tier 1 escalation\n- Artist/agency coordination\n\n**Contact venue:** 647-643-8823 · info@nomad725.ca\n\n**Action:** Add named contact(s) to both documents and remove `*(TBC — Issue #5)*` placeholders.",
+      "labels": ["venue-management", "documentation"],
+      "status": "Todo",
+      "priority": "P2-Normal",
+      "owner": "Venue Management",
+      "siteVisit": "Not Required"
+    },
+    {
+      "title": "Confirm Bias Q5 Phoenix 5-pin mains — breaker spec",
+      "body": "Bias Q5 at rack U8 uses a **non-standard Phoenix 5-pin AC mains connector**. Circuit breaker rating not yet confirmed.\n\n**Risk:** Electrical safety — cannot complete power distribution documentation without this.\n\n**References:**\n- `02-equipment-manuals/amplifiers/Bias_Q5_user_guide_v1.1.pdf` confirms Phoenix 5-pin input\n- README Power Distribution table (Q5 row shows TBC)\n- `07-tech-pack/cable-schedule.md` line P7\n\n**Action:** Venue electrician to identify Q5 circuit in panel, confirm breaker rating. Update README and cable schedule.",
+      "labels": ["site-visit-required", "electrical", "area:rack"],
+      "status": "Todo",
+      "priority": "P1-High",
+      "owner": "Venue Electrician",
+      "siteVisit": "Required"
+    },
+    {
+      "title": "Export Armonía DSP preset backup (.aps workspace file)",
+      "body": "TECH-PACK-STATUS §9 (Armonía DSP Config) is marked ⚠️ Partial. Gains and delays are documented in README but no preset export exists.\n\n**Action:** Connect control PC to Armonía network (192.168.10.x), launch ArmoníaPlus 2.8, export workspace as `.aps` file. Commit to `01-source-documents/` or `06-reference-docs/`.\n\n**Prerequisite:** Update ArmoníaPlus to v2.8 first — see `06-reference-docs/firmware-changelog.md`.",
+      "labels": ["integrator", "area:rack"],
+      "status": "Backlog",
+      "priority": "P2-Normal",
+      "owner": "Integrator",
+      "siteVisit": "Required"
+    },
+    {
+      "title": "Compile tech pack deliverables to PDF",
+      "body": "TECH-PACK-STATUS Conv E (Master tech pack compile) is marked ⏳ In Progress. All source documents are complete and committed.\n\n**Deliverable 1:** Internal Technical Reference PDF\n**Deliverable 2:** Technical Available Rider PDF\n\n**Source files in `07-tech-pack/`:**\n- `system-overview.md`, `cable-schedule.md`, `emergency-procedures.md`, `available-rider.md`\n- SVGs: `signal-flow.svg`, `rack-elevation.svg`, `speaker-zone-map.svg`\n\n**Action:** Use Pandoc + wkhtmltopdf or Weasyprint. Commit PDFs to `07-tech-pack/`.",
+      "labels": ["documentation", "integrator"],
+      "status": "Backlog",
+      "priority": "P2-Normal",
+      "owner": "Integrator",
+      "siteVisit": "Not Required"
+    },
+    {
+      "title": "Measure DJ booth floor dimensions for available rider",
+      "body": "Available rider §Stage/Booth Layout has a placeholder: `*(Floor plan to be added — pending venue measurement)*`\n\n**Required measurements:**\n- Booth overall dimensions (W × D)\n- CDJ table width and depth\n- Clearance from booth front to dance floor\n- Height of booth platform (if raised)\n\n**Action:** Measure on-site and update `07-tech-pack/available-rider.md` §Stage/Booth Layout.",
+      "labels": ["site-visit-required", "venue-management", "documentation"],
+      "status": "Backlog",
+      "priority": "P3-Low",
+      "owner": "Venue Tech",
+      "siteVisit": "Required"
+    }
+  ]
+}

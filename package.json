@@ -1,0 +1,11 @@
+{
+  "name": "nomad-toronto-av",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "NØMAD Toronto AV system documentation and tech pack",
+  "scripts": {
+    "gh:setup": "node scripts/gh-project-setup.js",
+    "gh:sync": "node scripts/gh-project-sync.js"
+  }
+}
