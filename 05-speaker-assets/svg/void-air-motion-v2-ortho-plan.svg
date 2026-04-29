@@ -42,6 +42,8 @@
 
 <!-- ── Background ─────────────────────────────────────────────────── -->
 <rect width="800" height="600" fill="#0d1117"/>
+<text x="400" y="305" font-family="'Segoe UI', Arial, sans-serif" font-size="14px" font-weight="700" fill="#f0f6fc" text-anchor="middle">VOID AIR MOTION V2 — ORTHOGRAPHIC PLAN</text>
+<text x="400" y="317" font-family="'Segoe UI', Arial, sans-serif" font-size="9px" fill="#8b949e" text-anchor="middle">Top-down orthographic plan · 854mm (33.6″) × 672mm (26.5″)</text>
 
 <!-- ── Header ─────────────────────────────────────────────────────── -->
 <text x="400" y="18" class="hdr">VOID AIR MOTION V2 — TOP VIEW</text>
