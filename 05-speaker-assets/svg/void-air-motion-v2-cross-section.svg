@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  VOID Air Motion V2 — Technical Drawings (hand-crafted SVG)
+  Replaces VTracer 0.6.12 auto-trace with structured geometric primitives.
+
+  Source:  VOID Acoustics Air Motion V2 product manual (PNG extracts)
+  Author:  Nomad Toronto / Emblem Projects Inc.
+  Created: 2026-04-28
+
+  Geometry notes
+  ──────────────
+  Two views from the manual front PNG are reproduced here:
+
+  VIEW 1 — SIDE CROSS-SECTION  (upper half of canvas, y 45–355)
+    The Air Motion V2 is a three-way: two 18″ cardioid subwoofers + a
+    300mm (12″) mid cone driver + a horn-loaded compression driver (HF).
+    The side cross-section shows the horn profile as two large opposing
+    parabolic curves (bowl/mouth on left, smaller secondary on right),
+    with the driver/motor block in the centre.
+
+    Key dimensions from manual:
+      Total height    = 658 mm (26.5″)
+      Internal annot  = 361.5 mm (14.2″)  (motor block height annotation)
+
+  VIEW 2 — TOP-DOWN PLAN  (lower half of canvas, y 375–670)
+    Looking straight down you see:
+      • Two large 18″ woofer cones side-by-side (surround + cone rings)
+      • Horn waveguide cross-section at top-centre
+      • 300mm mid-range at centre between the woofers
+
+    Key dimensions from manual:
+      Width (L-R)  = 854 mm (33.6″)
+      Depth (F-R)  = 672 mm (26.5″)
+
+  All proportions are scaled from the source PNG; not pixel-perfect trace.
+  Canvas scale ≈ 0.77 px/mm (854mm → 660px width).
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" width="900" height="360" role="img">
+
+<title>VOID Air Motion V2 - Side Cross-Section</title>
+<desc id="am-desc">Side cross-section (upper) and top-down plan (lower) views.
+Source: VOID Acoustics Air Motion V2 manual.</desc>
+
+<defs>
+  <style>
+    text { font-family: 'Segoe UI', Arial, sans-serif; }
+    .hdr  { fill:#f0f6fc; font-size:14px; font-weight:700; text-anchor:middle; }
+    .sub  { fill:#8b949e; font-size:9px;  text-anchor:middle; }
+    .dim  { fill:#fcd34d; font-size:10px; font-family:'Segoe UI Mono',monospace; text-anchor:middle; }
+    .lbl  { fill:#f0f6fc; font-size:11px; font-weight:600; text-anchor:middle; }
+    .slbl { fill:#8b949e; font-size:9px;  text-anchor:middle; }
+    .foot { fill:#4b5563; font-size:8px;  text-anchor:middle; }
+  </style>
+
+  <!-- Dimension arrowhead markers -->
+  <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+    <path d="M0,0 L6,3 L0,6 Z" fill="#fcd34d"/>
+  </marker>
+  <marker id="arr-rev" markerWidth="6" markerHeight="6" refX="1" refY="3"
+          orient="auto-start-reverse">
+    <path d="M6,0 L0,3 L6,6 Z" fill="#fcd34d"/>
+  </marker>
+</defs>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     BACKGROUND
+     ══════════════════════════════════════════════════════════════════ -->
+<rect width="900" height="700" fill="#0d1117"/>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     HEADER
+     ══════════════════════════════════════════════════════════════════ -->
+<text x="450" y="18" class="hdr">VOID AIR MOTION V2 — TECHNICAL DRAWINGS</text>
+<text x="450" y="30" class="sub">Source: VOID Acoustics product documentation · Dimensions: mm (inches)</text>
+<line x1="60" y1="36" x2="840" y2="36" stroke="#1e293b" stroke-width="1"/>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     VIEW 1 — SIDE CROSS-SECTION
+     Canvas region: x 110–730, y 45–340
+     The horn mouth opens LEFT; throat narrows to the RIGHT where the
+     compression driver sits. The mid-range cone is on the right flank.
+     Cabinet perimeter rect spans the full width.
+     ══════════════════════════════════════════════════════════════════ -->
+<text x="420" y="50" class="lbl">SIDE CROSS-SECTION</text>
+
+<g id="side-view">
+
+  <!-- Cabinet outer perimeter (side elevation bounding box) -->
+  <!-- 658mm tall → 280px; 854mm wide (but side depth = 658mm) → 280px wide at scale -->
+  <!-- We show the cross-section within the enclosure width of ~500px at this scale -->
+  <rect x="160" y="58" width="530" height="278"
+        rx="5" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+
+  <!-- ────────────────────────────────────────────────────────────────
+       LEFT HORN — large parabolic mouth opening to the left
+       Throat at (x=400, y=197) centre of motor block.
+       Mouth rim at x=170 running from y=68 to y=326 (258px span).
+       Walls curve with a gentle convex arc outward from throat to rim.
+       ──────────────────────────────────────────────────────────────── -->
+
+  <!-- Horn interior fill -->
+  <path d="M 400,120
+           C 360,110  290,85  175,75
+           L 175,321
+           C 290,311  360,286  400,276
+           Z"
+        fill="#253344" stroke="none"/>
+
+  <!-- Horn upper wall -->
+  <path d="M 400,120  C 360,110  290,85  175,75"
+        fill="none" stroke="#64748b" stroke-width="1.5"/>
+  <!-- Horn lower wall -->
+  <path d="M 400,276  C 360,286  290,311  175,321"
+        fill="none" stroke="#64748b" stroke-width="1.5"/>
+  <!-- Horn mouth rim (left vertical line) -->
+  <line x1="175" y1="75" x2="175" y2="321"
+        stroke="#64748b" stroke-width="1.5"/>
+
+  <!-- Horn throat / flare junction lines (inner horn surface detail) -->
+  <!-- Inner horn upper edge (secondary flare) -->
+  <path d="M 400,140  C 365,132  310,115  240,104"
+        fill="none" stroke="#334155" stroke-width="0.75" stroke-dasharray="4,3"/>
+  <!-- Inner horn lower edge -->
+  <path d="M 400,256  C 365,264  310,281  240,292"
+        fill="none" stroke="#334155" stroke-width="0.75" stroke-dasharray="4,3"/>
+
+  <!-- ────────────────────────────────────────────────────────────────
+       RIGHT SECONDARY HORN / MID DRIVER HORN
+       Smaller mirror horn opening to the right.
+       Throat at (x=500, y=197). Mouth rim at x=680, y 100–295.
+       ──────────────────────────────────────────────────────────────── -->
+
+  <!-- Right horn interior fill -->
+  <path d="M 500,148
+           C 545,133  615,108  675,96
+           L 675,300
+           C 615,288  545,263  500,248
+           Z"
+        fill="#253344" stroke="none"/>
+
+  <!-- Right horn upper wall -->
+  <path d="M 500,148  C 545,133  615,108  675,96"
+        fill="none" stroke="#64748b" stroke-width="1.5"/>
+  <!-- Right horn lower wall -->
+  <path d="M 500,248  C 545,263  615,288  675,300"
+        fill="none" stroke="#64748b" stroke-width="1.5"/>
+  <!-- Right horn mouth rim -->
+  <line x1="675" y1="96" x2="675" y2="300"
+        stroke="#64748b" stroke-width="1.5"/>
+
+  <!-- ────────────────────────────────────────────────────────────────
+       MOTOR / DRIVER BLOCK — centre
+       Rectangular block 120px wide × 136px tall, centred at (450,197)
+       ──────────────────────────────────────────────────────────────── -->
+  <rect x="400" y="129" width="100" height="136"
+        rx="3" fill="#1a2535" stroke="#475569" stroke-width="1.5"/>
+
+  <!-- Centre-line (vertical dashed) -->
+  <line x1="450" y1="132" x2="450" y2="262"
+        stroke="#334155" stroke-width="0.75" stroke-dasharray="4,3"/>
+
+  <!-- ── Compression driver body (HF) — upper section of block ── -->
+  <rect x="420" y="129" width="60" height="42"
+        rx="2" fill="#253344" stroke="#64748b" stroke-width="1"/>
+  <!-- Phase plug ring -->
+  <ellipse cx="450" cy="170" rx="18" ry="7"
+           fill="#1a2535" stroke="#64748b" stroke-width="1"/>
+  <!-- Diaphragm detail (thin line) -->
+  <line x1="420" y1="148" x2="480" y2="148"
+        stroke="#475569" stroke-width="0.75"/>
+
+  <!-- ── Mid-range cone section — lower block ── -->
+  <!-- Cone body (trapezoidal side view) -->
+  <path d="M 410,175  L 435,195  L 435,255  L 410,262  Z"
+        fill="#253344" stroke="#64748b" stroke-width="1"/>
+  <path d="M 490,175  L 465,195  L 465,255  L 490,262  Z"
+        fill="#253344" stroke="#64748b" stroke-width="1"/>
+  <!-- Dust cap (ellipse at tip) -->
+  <ellipse cx="450" cy="225" rx="20" ry="8"
+           fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+  <!-- Surround ring inner edge -->
+  <ellipse cx="450" cy="178" rx="42" ry="6"
+           fill="none" stroke="#475569" stroke-width="0.75"/>
+
+  <!-- ── Wiring/cable detail below motor block ── -->
+  <path d="M 442,265  C 440,274  444,278  440,285  C 436,292  438,299  442,303"
+        fill="none" stroke="#4b5563" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <!-- ── Cabinet top and bottom baffle rails ── -->
+  <rect x="396" y="58" width="108" height="14"
+        fill="#1e2d40" stroke="#475569" stroke-width="1"/>
+  <rect x="396" y="322" width="108" height="14"
+        fill="#1e2d40" stroke="#475569" stroke-width="1"/>
+
+  <!-- ── Cabinet side panels (left and right vertical members) ── -->
+  <rect x="160" y="58" width="18" height="278"
+        fill="#1a2535" stroke="#334155" stroke-width="0.5"/>
+  <rect x="672" y="58" width="18" height="278"
+        fill="#1a2535" stroke="#334155" stroke-width="0.5"/>
+
+  <!-- ══ DIMENSION ANNOTATIONS — SIDE VIEW ══ -->
+
+  <!-- Overall height 658mm (26.5") — right-side vertical -->
+  <line x1="715" y1="58"  x2="715" y2="336"
+        stroke="#fcd34d" stroke-width="1"
+        marker-start="url(#arr-rev)" marker-end="url(#arr)"/>
+  <line x1="692" y1="58"  x2="720" y2="58"  stroke="#4b5563" stroke-width="0.75"/>
+  <line x1="692" y1="336" x2="720" y2="336" stroke="#4b5563" stroke-width="0.75"/>
+  <text transform="translate(736,197) rotate(90)" class="dim" text-anchor="middle">658 (26.5″)</text>
+
+  <!-- Internal annotation 361.5mm (14.2") — spans motor block height -->
+  <line x1="700" y1="129" x2="700" y2="265"
+        stroke="#fcd34d" stroke-width="1"
+        marker-start="url(#arr-rev)" marker-end="url(#arr)"/>
+  <line x1="480" y1="129" x2="705" y2="129" stroke="#4b5563" stroke-width="0.75" stroke-dasharray="3,2"/>
+  <line x1="480" y1="265" x2="705" y2="265" stroke="#4b5563" stroke-width="0.75" stroke-dasharray="3,2"/>
+  <text transform="translate(757,197) rotate(90)" class="dim" text-anchor="middle">361.5 (14.2″)</text>
+
+  <!-- View footer note -->
+  <text x="420" y="350" class="slbl">SIDE CROSS-SECTION — proportional scale, not 1:1</text>
+</g>
+
+<!-- Section divider -->
+<line x1="60" y1="358" x2="840" y2="358" stroke="#1e293b" stroke-width="1"/>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     VIEW 2 — TOP-DOWN PLAN
+     Canvas region: x 110–830, y 365–660
+     Looking straight down: two 18″ woofers L+R, mid horn at top-centre.
+     Cabinet perimeter 854mm wide × 672mm deep.
+     At 0.77 px/mm scale: 660px wide × 518px deep.
+     ══════════════════════════════════════════════════════════════════ -->
+<text x="420" y="370" class="lbl">TOP-DOWN PLAN</text>
+
+<g id="top-view">
+
+  <!-- Cabinet perimeter (plan view) -->
+  <rect x="110" y="378" width="660" height="270"
+        rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+
+  <!-- ── LEFT 18″ WOOFER — centred at (245, 513) ── -->
+  <!-- 18″ ≈ 457mm → radius ≈ 176mm → 135px at scale; scaled to 115 for fit -->
+  <!-- Outer surround ring -->
+  <circle cx="245" cy="513" r="113" fill="#253344" stroke="#475569" stroke-width="1.5"/>
+  <!-- Spider ring -->
+  <circle cx="245" cy="513" r="91"  fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <!-- Cone outer ring -->
+  <circle cx="245" cy="513" r="72"  fill="#253344" stroke="#475569" stroke-width="1"/>
+  <!-- Cone inner slope -->
+  <circle cx="245" cy="513" r="50"  fill="#1a2535" stroke="#475569" stroke-width="1"/>
+  <!-- Voice coil / gap ring -->
+  <circle cx="245" cy="513" r="34"  fill="#1e293b" stroke="#64748b" stroke-width="0.75"/>
+  <!-- Dust cap -->
+  <circle cx="245" cy="513" r="20"  fill="#253344" stroke="#64748b" stroke-width="1"/>
+  <!-- Centre point -->
+  <circle cx="245" cy="513" r="4"   fill="#475569"/>
+
+  <!-- ── RIGHT 18″ WOOFER — centred at (635, 513) ── -->
+  <!-- Symmetric with left: cabinet left=110, right=770, centre=440.
+       Left woofer at 245 → 440-245=195px from centre → right at 440+195=635 -->
+  <circle cx="635" cy="513" r="113" fill="#253344" stroke="#475569" stroke-width="1.5"/>
+  <circle cx="635" cy="513" r="91"  fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <circle cx="635" cy="513" r="72"  fill="#253344" stroke="#475569" stroke-width="1"/>
+  <circle cx="635" cy="513" r="50"  fill="#1a2535" stroke="#475569" stroke-width="1"/>
+  <circle cx="635" cy="513" r="34"  fill="#1e293b" stroke="#64748b" stroke-width="0.75"/>
+  <circle cx="635" cy="513" r="20"  fill="#253344" stroke="#64748b" stroke-width="1"/>
+  <circle cx="635" cy="513" r="4"   fill="#475569"/>
+
+  <!-- ── CENTRE MID DRIVER (300mm / 12″) — centred at (500, 443) ── -->
+  <!-- 300mm → radius 150mm → 116px; scaled to ~42px for layout fit -->
+  <circle cx="500" cy="443" r="44"  fill="#253344" stroke="#64748b" stroke-width="1.5"/>
+  <circle cx="500" cy="443" r="34"  fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+  <circle cx="500" cy="443" r="22"  fill="#1a2535" stroke="#64748b" stroke-width="1"/>
+  <circle cx="500" cy="443" r="10"  fill="#253344" stroke="#64748b" stroke-width="1"/>
+  <circle cx="500" cy="443" r="4"   fill="#475569"/>
+
+  <!-- ── HORN WAVEGUIDE FACE (plan cross-section at top of cabinet) ── -->
+  <!-- The horn opens forward (toward viewer in plan) at the top-centre of the cab -->
+  <rect x="463" y="381" width="74" height="32"
+        rx="5" fill="#253344" stroke="#64748b" stroke-width="1.5"/>
+  <!-- Cross-hairs on horn face -->
+  <line x1="500" y1="381" x2="500" y2="413" stroke="#334155" stroke-width="0.75" stroke-dasharray="3,2"/>
+  <line x1="463" y1="397" x2="537" y2="397" stroke="#334155" stroke-width="0.75" stroke-dasharray="3,2"/>
+  <!-- Horn throat detail — inner rect -->
+  <rect x="479" y="388" width="42" height="18"
+        rx="2" fill="#1a2535" stroke="#475569" stroke-width="0.75"/>
+
+  <!-- ── CROSSOVER / BRACKET detail at centre ── -->
+  <rect x="476" y="458" width="48" height="22"
+        rx="2" fill="#1a2535" stroke="#475569" stroke-width="1"/>
+  <!-- Bolt holes -->
+  <circle cx="484" cy="469" r="3" fill="#0d1117" stroke="#64748b" stroke-width="0.75"/>
+  <circle cx="516" cy="469" r="3" fill="#0d1117" stroke="#64748b" stroke-width="0.75"/>
+  <!-- Wiring run to mid driver -->
+  <line x1="500" y1="458" x2="500" y2="487"
+        stroke="#4b5563" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <!-- ── I/O connector panel at rear of cabinet ── -->
+  <rect x="472" y="633" width="56" height="12"
+        rx="2" fill="#1a2535" stroke="#4b5563" stroke-width="0.75"/>
+  <text x="500" y="641" class="slbl" font-size="7px">I/O</text>
+
+  <!-- ══ DIMENSION ANNOTATIONS — PLAN VIEW ══ -->
+
+  <!-- Width 854mm (33.6") — horizontal, below cabinet -->
+  <line x1="110" y1="660" x2="770" y2="660"
+        stroke="#fcd34d" stroke-width="1"
+        marker-start="url(#arr-rev)" marker-end="url(#arr)"/>
+  <line x1="110" y1="648" x2="110" y2="665" stroke="#4b5563" stroke-width="0.75"/>
+  <line x1="770" y1="648" x2="770" y2="665" stroke="#4b5563" stroke-width="0.75"/>
+  <text x="440" y="673" class="dim">854 (33.6″)</text>
+
+  <!-- Depth 672mm (26.5") — vertical, right side -->
+  <line x1="792" y1="378" x2="792" y2="648"
+        stroke="#fcd34d" stroke-width="1"
+        marker-start="url(#arr-rev)" marker-end="url(#arr)"/>
+  <line x1="780" y1="378" x2="797" y2="378" stroke="#4b5563" stroke-width="0.75"/>
+  <line x1="780" y1="648" x2="797" y2="648" stroke="#4b5563" stroke-width="0.75"/>
+  <text transform="translate(812,513) rotate(90)" class="dim" text-anchor="middle">672 (26.5″)</text>
+
+  <!-- Component call-outs -->
+  <!-- Left woofer -->
+  <line x1="245" y1="400" x2="190" y2="383" stroke="#4b5563" stroke-width="0.75" stroke-dasharray="3,2"/>
+  <text x="186" y="379" class="slbl" text-anchor="end">18″ LF WOOFER (L)</text>
+
+  <!-- Right woofer -->
+  <line x1="635" y1="400" x2="710" y2="383" stroke="#4b5563" stroke-width="0.75" stroke-dasharray="3,2"/>
+  <text x="714" y="379" class="slbl" text-anchor="start">18″ LF WOOFER (R)</text>
+
+  <!-- Mid + horn at top -->
+  <line x1="500" y1="381" x2="500" y2="368" stroke="#4b5563" stroke-width="0.75" stroke-dasharray="3,2"/>
+  <text x="500" y="364" class="slbl">HF HORN + MID DRIVER</text>
+
+  <!-- Plan view footer note -->
+  <text x="440" y="688" class="slbl">TOP-DOWN PLAN — proportional scale, not 1:1</text>
+</g>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════════════════════════════ -->
+<text x="450" y="698" class="foot">NOMAD TORONTO — EMBLEM PROJECTS INC. · void-air-motion-v2-front.svg · 2026-04-28</text>
+
+</svg>
