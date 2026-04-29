@@ -1,128 +1,154 @@
-# SVG drawing methodology: PNG source → validated SVG
+# SVG asset methodology: PDF extraction → clean vectors
 
-**Purpose:** This document defines the end-to-end workflow for redrawing the nine VOID speaker SVGs from source PNGs. All redrawn SVGs must match the dark-theme aesthetic established in `07-tech-pack/rack-elevation.svg`.
+**Purpose:** Defines the end-to-end workflow for sourcing clean equipment SVGs and PNGs for the tech pack. The primary approach is direct vector extraction from manufacturer PDF manuals using `pdftocairo`. Hand-crafting SVGs is a last resort.
 
-**Applies to:** Every file in `05-speaker-assets/svg/` that is currently a VTracer auto-trace (identified by `<!-- Generator: visioncortex VTracer -->` in the header). As of 2026-04-28, all nine speaker SVGs and both amp SVGs fall into this category — they are monochrome path-dumps unsuitable for use in the tech pack.
+**Last updated:** 2026-04-29
 
 ---
 
-## 1. Toolchain availability (as of 2026-04-28)
+## 1. Decision tree — how to source an equipment asset
 
-| Tool | Status | Command | Notes |
-|---|---|---|---|
-| **Node.js** | Unknown — not verified; shell execution restricted | `node --version` | Required for SVGO |
-| **SVGO** | Unknown | `npx svgo --version` | SVG optimiser; run after drawing |
-| **ImageMagick** | Unknown — not verified; shell execution restricted | `magick --version` | Pixel-diff validator |
-| **Browser (Chrome/Edge)** | Available | — | Primary render+screenshot validator |
+```
+Does a manufacturer PDF exist for the equipment?
+│
+├─ YES → Which page has the best diagram?
+│         ├─ Cover page (clean product illustration, no annotations) → pdftocairo → -front.svg or -cover.png
+│         ├─ Dimensions page (technical drawing with mm dims) → pdftocairo → -dims.svg
+│         └─ Labeled panel page (callout numbers/letters in black) → pdftocairo won't help; use Option B
+│
+└─ NO / PDF has only raster images →
+          ├─ Search retailer CDN for official product photo (Thomann, Sweetwater, B&H)
+          │   → download as PNG, save as -rear.png or -cover.png
+          └─ Last resort: hand-craft SVG using dark-theme template (§5)
+```
 
-**To verify locally, run:**
+### When pdftocairo fails
+- **All paths rendered black** (Pioneer CDJ-3000, DJM-V10): the PDF uses a color space pdftocairo flattens. Callout lines can't be filtered by color → source a clean page or use the cover image instead.
+- **Labeled diagrams with black callout letters** (Bias V3 rear panel, p.5): no automated way to remove callouts → source from a retailer CDN photo.
+
+---
+
+## 2. Extraction command — pdftocairo
+
 ```bash
-node --version
-npx svgo --version
-magick --version
+# Extract a single page as SVG (preferred for line-art/technical drawings)
+pdftocairo -svg -f <PAGE> -l <PAGE> "<path/to/manual.pdf>" "<output-prefix>"
+mv "<output-prefix>" "<output-prefix>.svg"   # pdftocairo omits .svg extension
+
+# Extract a single page as high-res PNG (preferred for photographic covers)
+pdftocairo -png -r 150 -f <PAGE> -l <PAGE> "<path/to/manual.pdf>" "<output-prefix>"
+# Output: <output-prefix>-<PAGE>.png  (zero-padded, e.g. -01.png)
+
+# Scout all pages at 72 DPI (for finding the right page)
+pdftocairo -png -r 72 "<path/to/manual.pdf>" "C:/tmp/<prefix>"
 ```
 
-If ImageMagick is absent, use the browser screenshot workflow described in §7.
+**Which page to use:**
+- `cover page (p.1)` — clean product illustration, no dimension lines → ideal for `-front.svg` or `-cover.png`
+- `dimensions/mechanical drawings page` — technical orthographic with mm callouts → ideal for `-dims.svg`
+- Avoid pages with numbered callout bubbles or labeled leader lines unless you can filter them by color.
 
 ---
 
-## 2. Source PNG format
+## 3. Current asset inventory and status
 
-The source PNGs live in `05-speaker-assets/png/`. Each speaker has four variants:
+### SVG assets (`05-speaker-assets/svg/`)
 
-| Suffix | Contents |
+| File | Source | Notes |
+|---|---|---|
+| `speakers/void-air-motion-v2-dims.svg` | Air Motion V2 User Guide p.8 | Multi-view + dims, clean ✅ |
+| `speakers/void-air-vantage-dims.svg` | Air Vantage User Guide p.8 | Multi-view + dims, clean ✅ |
+| `speakers/void-airten-v3-dims.svg` | Airten V3 User Manual p.8 | Multi-view + dims, clean ✅ |
+| `speakers/void-stasys-xair-dims.svg` | Stasys Xair User Guide p.7 | Dims + specs same page ✅ |
+| `speakers/void-venu-215-v2-dims.svg` | Venu V2 Series User Guide p.45 | Appendix B.9, clean ✅ |
+| `mixers/ah-cq-12t-front.svg` | CQ-12T datasheet p.1 | Clean I/O surface illustration ✅ |
+| `mixers/ah-cq-12t-dims.svg` | CQ-12T datasheet p.3 | 290.4×254.4mm ortho views ✅ |
+| `amplifiers/bias-q5-front.svg` | Bias Q5 User Guide p.1 | 1U rack front illustration ✅ |
+| `amplifiers/bias-q5-dims.svg` | Bias Q5 User Guide p.4 | 483×44.5mm dims ✅ |
+| `amplifiers/bias-v3-dims.svg` | Bias V3/V9 User Manual p.8 | Bias V3 mechanical drawing ✅ |
+| `amplifiers/bias-v9-dims.svg` | Bias V3/V9 User Manual p.9 | Bias V9 mechanical drawing ✅ |
+| `dj-gear/pioneer-cdj-3000-top.svg` | CDJ-3000 manual p.1 (cover) | Clean top panel, all controls ✅ |
+| `dj-gear/pioneer-djm-v10-panel.svg` | DJM-V10 manual p.1 | Clean top panel ✅ |
+| `dj-gear/pioneer-djm-v10-rear.svg` | DJM-V10 manual p.9 | Red callouts removed ✅ |
+| `connectors/xlr-female.svg` | Wikimedia Commons | ✅ |
+| `connectors/xlr-male.svg` | Wikimedia Commons | ✅ |
+| `connectors/iec-c14-inlet.svg` | Wikimedia Commons | ✅ |
+| `connectors/midi-din-5pin.svg` | Wikimedia Commons | ✅ |
+| `connectors/rj45-plug.svg` | Wikimedia Commons | ✅ |
+
+### PNG assets (`05-speaker-assets/png/`)
+
+**speakers/** — VOID speaker photos and dims renders  
+**mixers/** — Allen & Heath CQ-12T photos  
+**amplifiers/** — Bias Q5/V3 photos  
+**dj-gear/** — Pioneer CDJ-3000 / DJM-V10 photos  
+
+Key clean PNGs (no callouts):
+
+| File | Source | Notes |
+|---|---|---|
+| `speakers/void-*-cover.png` | Manual p.1 at 150 DPI | 1241×1754, dark bg product renders ✅ |
+| `mixers/ah-cq-12t-rear.png` | Thomann CDN (official A&H photo) | 1000×1000, top-down I/O view ✅ |
+| `mixers/ah-cq-12t-rear-angled.png` | Thomann CDN | 1000×1000, rear-quarter ✅ |
+| `dj-gear/pioneer-cdj-3000-rear-clean.png` | DJ TechTools CDN (Pioneer official) | 2000×1334, studio photo ✅ |
+| `dj-gear/pioneer-djm-v10-rear-clean.png` | sourced | Clean, no annotations ✅ |
+
+---
+
+## 4. File naming conventions
+
+```
+<brand>-<model>-<view>.<ext>
+
+brand:   ah (Allen & Heath), bias, pioneer, void
+model:   cdj-3000, djm-v10, cq-12t, q5, v3, v9,
+         air-motion-v2, air-vantage, airten-v3, stasys-xair, venu-215-v2
+view:    front, rear, side, top, dims, cover, panel
+ext:     .svg (vector), .png (raster)
+```
+
+Subfolders by category: `speakers/`, `mixers/`, `amplifiers/`, `dj-gear/`, `connectors/`
+
+---
+
+## 5. Dark-theme SVG template (hand-craft fallback only)
+
+Use only when PDF extraction is not possible. Match the palette from `07-tech-pack/rack-elevation.svg`:
+
+| Role | Value |
 |---|---|
-| *(none)* | Marketing/composite photo — skip |
-| `-front` | Front elevation with visible panel features |
-| `-side` | Side elevation — use for depth context only |
-| `-top` | Top-down view — rarely needed |
-| `-dims` | Dimensional drawing with mm annotations (primary reference) |
-
-**Always start with `-dims.png`.** This is the manufacturer spec sheet image and carries the accurate width × height × depth values.
-
-### Extracting dimensions via Claude vision
-
-Claude can read PNG files directly. Paste or attach `<speaker>-dims.png` and ask:
-
-```
-Read all dimension annotations from this drawing.
-Return: width (mm), height (mm), depth (mm), driver diameter(s) (mm),
-port dimensions if visible, and any other labelled measurements.
-```
-
-Record the values in a comment block at the top of the SVG (see §4 template).
-
----
-
-## 3. SVG element selection guide
-
-Choose the simplest element that accurately represents the shape.
-
-| Shape | Element | When to use |
-|---|---|---|
-| Rectangular panel, grille, port slot | `<rect>` | Any axis-aligned rectangle. Add `rx`/`ry` for rounded corners. |
-| Driver cone, port circle, LED | `<circle>` | Perfect circles. Use `cx`, `cy`, `r`. |
-| Elliptical tweeter horn | `<ellipse>` | Oval shapes. Use `cx`, `cy`, `rx`, `ry`. |
-| Straight dimension line, rule | `<line>` | Single straight segment with `x1 y1 x2 y2`. |
-| Angled or chamfered edge | `<polygon>` or `<path>` | Multi-point closed shapes that are not rectangles. |
-| Curved driver surround, complex grille cutout | `<path>` | Only when `rect`/`circle`/`ellipse` cannot represent it. Use SVG arc commands (`A`) rather than cubic Bézier approximations where possible. |
-| Reusable component (e.g. a rigging point repeated 4×) | `<symbol>` + `<use>` | Define once in `<defs>`, instantiate with `<use href="#id">`. |
-
-**Avoid:** Auto-traced `<path>` data from VTracer or Inkscape's "trace bitmap" — these produce thousands of points and are not maintainable.
-
----
-
-## 4. Dark-theme colour palette
-
-All speaker SVGs must use these exact values to match the rack elevation style.
-
-| Role | Property | Value |
-|---|---|---|
-| Document background | `fill` | `#0d1117` |
-| Enclosure body fill | `fill` | `#1e293b` |
-| Enclosure stroke | `stroke` | `#475569` |
-| Dimension lines | `stroke` | `#4b5563` |
-| Dimension text / annotations | `fill` | `#fcd34d` |
-| Primary label (model name) | `fill` | `#f0f6fc` |
-| Sub-label (spec line) | `fill` | `#8b949e` |
-| Driver cone fill | `fill` | `#111827` |
-| Driver surround stroke | `stroke` | `#334155` |
-| Grille fill | `fill` | `#0f172a` |
-| Grille stroke | `stroke` | `#1e293b` |
-| Port slot fill | `fill` | `#0a0f1a` |
-
----
-
-## 5. SVG document structure template
-
-Every redrawn speaker SVG must follow this structure exactly.
+| Document background | `#0d1117` |
+| Enclosure body fill | `#1e293b` |
+| Enclosure stroke | `#475569` stroke-width 1.5 |
+| Dimension lines | `#4b5563` stroke-width 0.5 |
+| Dimension text | `#fcd34d` |
+| Primary label | `#f0f6fc` |
+| Sub-label | `#8b949e` |
+| Driver cone | `#111827` fill, `#334155` stroke |
+| Port | `#0a0f1a` fill |
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Speaker: VOID <Model Name> — <view: front | side | top>
-  Source PNG: 05-speaker-assets/png/<filename>-dims.png
-  Actual dimensions: W <width>mm × H <height>mm × D <depth>mm
-  Driver(s): <size>mm LF, <size>mm HF
+  Equipment: <Brand Model> — <view>
+  Source: 05-speaker-assets/png/<category>/<filename>-dims.png
+  Dimensions: W<w>mm × H<h>mm × D<d>mm
   Drawn: YYYY-MM-DD
   Methodology: 06-reference-docs/svg-drawing-methodology.md
 -->
 <svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 <width> <height>"
-     width="<width>" height="<height>"
-     role="img"
-     aria-labelledby="<id>-title <id>-desc">
+     viewBox="0 0 <w> <h>" width="<w>" height="<h>"
+     role="img" aria-labelledby="id-title id-desc">
 
-  <title id="<id>-title">VOID <Model> — <View> Elevation</title>
-  <desc id="<id>-desc">Technical line drawing of the VOID <Model> <view> view.
-    Dimensions: W<width>mm × H<height>mm × D<depth>mm. Source: <filename>-dims.png.</desc>
+  <title id="id-title"><Brand Model> — <View></title>
+  <desc id="id-desc">Technical drawing. W<w>mm × H<h>mm × D<d>mm.</desc>
 
   <defs>
     <style>
       text { font-family: 'Segoe UI', Arial, sans-serif; }
       .lbl  { fill: #f0f6fc; font-size: 12px; font-weight: 700; text-anchor: middle; }
       .sub  { fill: #8b949e; font-size: 9px; text-anchor: middle; }
-      .dim  { fill: #fcd34d; font-size: 8px; font-family: 'Segoe UI Mono', monospace; text-anchor: middle; }
+      .dim  { fill: #fcd34d; font-size: 8px; font-family: monospace; text-anchor: middle; }
       .dln  { stroke: #4b5563; stroke-width: 0.5; fill: none; }
       .body { fill: #1e293b; stroke: #475569; stroke-width: 1.5; }
       .drv  { fill: #111827; stroke: #334155; stroke-width: 1; }
@@ -130,194 +156,41 @@ Every redrawn speaker SVG must follow this structure exactly.
     </style>
   </defs>
 
-  <!-- ── Background ─────────────────────────────────────────────── -->
-  <rect width="<width>" height="<height>" fill="#0d1117"/>
-
-  <!-- ── Enclosure body ─────────────────────────────────────────── -->
-  <!-- Replace with actual dimensions. x/y add margin for dim lines. -->
-  <rect class="body" x="40" y="40" width="<body-w>" height="<body-h>" rx="2"/>
-
-  <!-- ── Drivers ────────────────────────────────────────────────── -->
-  <!-- LF driver -->
-  <circle class="drv" cx="<cx>" cy="<cy>" r="<r>"/>
-  <!-- HF driver / tweeter -->
-  <circle class="drv" cx="<cx>" cy="<cy>" r="<r>"/>
-
-  <!-- ── Port(s) ────────────────────────────────────────────────── -->
-  <rect class="port" x="<x>" y="<y>" width="<w>" height="<h>"/>
-
-  <!-- ── Dimension lines ───────────────────────────────────────── -->
-  <!-- Width arrow — horizontal, above enclosure -->
-  <line class="dln" x1="40" y1="30" x2="<body-w+40>" y2="30"/>
-  <text class="dim" x="<mid>" y="26">W<width>mm</text>
-  <!-- Height arrow — vertical, left of enclosure -->
-  <line class="dln" x1="30" y1="40" x2="30" y2="<body-h+40>"/>
-  <text class="dim" x="20" y="<mid>" transform="rotate(-90,20,<mid>)">H<height>mm</text>
-
-  <!-- ── Labels ─────────────────────────────────────────────────── -->
-  <text class="lbl" x="<mid>" y="<bottom+18>">VOID <MODEL></text>
-  <text class="sub" x="<mid>" y="<bottom+30>"><spec line></text>
+  <rect width="<w>" height="<h>" fill="#0d1117"/>
+  <!-- add enclosure, drivers, ports, labels here -->
 
 </svg>
 ```
 
-### viewBox sizing convention
-
-- Add **40 px margin on each side** of the enclosure body for dimension lines and labels.
-- Scale: use **1 SVG user unit = 1 mm** where the drawing fits within ~600 × 800 px. Scale to 0.5 px/mm for large enclosures (e.g. the Venu 215, 600mm wide).
-- Always set both `width`/`height` attributes and `viewBox` to identical values so the SVG renders at its natural size without scaling artefacts.
+**Mandatory inspection before commit:** Read the SVG as an image, read the source PNG, compare side-by-side, list every discrepancy, fix before committing.
 
 ---
 
-## 6. SVGO optimisation step
+## 6. SVGO optimisation (optional)
 
-Run SVGO after completing the drawing and before committing. SVGO removes redundant attributes, normalises whitespace, and shrinks file size without altering visual output.
-
-**Requires Node.js.**
+Run after hand-crafting an SVG (not needed for PDF-extracted files — they're already minimal).
 
 ```bash
-# Single file
-npx svgo 05-speaker-assets/svg/<filename>.svg --output 05-speaker-assets/svg/<filename>.svg
-
-# All SVGs in the directory (destructive — commit first)
-npx svgo --folder 05-speaker-assets/svg/
-
-# Recommended config (creates svgo.config.js in project root if not present)
-# Disable plugins that alter semantics: removeTitle, removeDesc, removeViewBox
-npx svgo --config svgo.config.js 05-speaker-assets/svg/<filename>.svg
-```
-
-**Minimum safe SVGO config** (`svgo.config.js` at project root):
-
-```js
-module.exports = {
-  plugins: [
-    { name: 'preset-default', params: {
-        overrides: {
-          removeTitle: false,      // keep <title> for accessibility
-          removeDesc: false,       // keep <desc> for accessibility
-          removeViewBox: false,    // never remove viewBox
-          cleanupIds: false,       // keep aria-labelledby IDs
-        }
-    }}
-  ]
-};
-```
-
-**If SVGO / Node.js is unavailable:** skip this step. The unoptimised SVG is still valid. Record "SVGO not run" in the commit message.
-
----
-
-## 7. Validation — ImageMagick pixel-diff (primary)
-
-After drawing, render the SVG to PNG and compare it against the source PNG to verify proportions and driver placement are reasonable.
-
-### Step 1 — Render SVG to PNG
-
-```bash
-magick -background "#0d1117" 05-speaker-assets/svg/<name>-front.svg \
-       05-speaker-assets/svg/validation/<name>-front-rendered.png
-```
-
-### Step 2 — Compare rendered PNG vs source PNG
-
-```bash
-magick compare -metric RMSE \
-  05-speaker-assets/png/<name>-front.png \
-  05-speaker-assets/svg/validation/<name>-front-rendered.png \
-  05-speaker-assets/svg/validation/<name>-front-diff.png
-```
-
-The command prints `<RMSE value> (<normalised>)` to stderr. Because the source PNGs are manufacturer photos (not line drawings), a perfect pixel-match is neither expected nor required. The diff image is useful for **checking driver position, port location, and overall aspect ratio**, not for achieving a low RMSE score.
-
-**Interpreting the diff:**
-- Bright red pixels in the diff = large deviation at that location.
-- Focus on the enclosure outline and driver centres — these should roughly align.
-- Ignore colour differences entirely (source PNGs are colour photos; SVGs are dark-theme line drawings).
-
-**Store diff images** in `05-speaker-assets/svg/validation/` — this directory exists for exactly this purpose (`.gitkeep` included).
-
-### Step 3 — Side-by-side visual check
-
-Open both the source PNG and the rendered SVG in a browser or image viewer. Confirm:
-- [ ] Enclosure aspect ratio matches (W:H proportions)
-- [ ] LF driver is centred in the enclosure (or matches source position)
-- [ ] HF driver / tweeter is in the correct quadrant
-- [ ] Ports are at the correct edge (top, bottom, or front)
-- [ ] No clipping — enclosure body fully visible within viewBox
-
----
-
-## 8. Validation — browser screenshot (fallback, ImageMagick absent)
-
-If `magick` is not installed:
-
-1. Open the SVG file directly in Chrome or Edge (drag-and-drop to address bar, or `file:///...`).
-2. Use DevTools → toggle device toolbar → set a fixed viewport matching the SVG's `width`/`height`.
-3. Take a screenshot (`Ctrl+Shift+P` → "Capture screenshot").
-4. Open the source PNG alongside the screenshot.
-5. Visually check the five items in §7 Step 3.
-6. Save the screenshot to `05-speaker-assets/svg/validation/<name>-front-browser.png`.
-
----
-
-## 9. Accessibility requirements
-
-Every SVG must include:
-
-```xml
-<!-- On the root <svg> element: -->
-role="img"
-aria-labelledby="<id>-title <id>-desc"
-
-<!-- As first children of <svg>: -->
-<title id="<id>-title">...</title>
-<desc id="<id>-desc">...</desc>
-```
-
-The `<title>` should name the speaker and view. The `<desc>` should include physical dimensions and source reference. This pattern matches `rack-elevation.svg` exactly.
-
----
-
-## 10. Commit convention
-
-```
-feat(speaker-svg): redraw <model> <view> from dims PNG
-
-Source: 05-speaker-assets/png/<name>-dims.png
-Dimensions: W<w>mm × H<h>mm × D<d>mm
-SVGO: run / not run (Node.js unavailable)
-ImageMagick diff: <pass | browser screenshot saved>
+npx svgo 05-speaker-assets/svg/<category>/<filename>.svg \
+         --output 05-speaker-assets/svg/<category>/<filename>.svg
 ```
 
 ---
 
-## 11. Speaker redraw queue
+## 7. Validation
 
-| SVG file | Source PNG | Status |
-|---|---|---|
-| `void-air-motion-v2-front.svg` | `void-air-motion-v2-dims.png` | VOID — needs redraw |
-| `void-air-motion-v2-side.svg` | `void-air-motion-v2-dims.png` | VOID — needs redraw |
-| `void-air-motion-v2-top.svg` | `void-air-motion-v2-dims.png` | VOID — needs redraw |
-| `void-venu-215-v2-front.svg` | `void-venu-215-v2-dims.png` | VOID — needs redraw |
-| `void-venu-215-v2-side.svg` | `void-venu-215-v2-dims.png` | VOID — needs redraw |
-| `void-venu-215-v2-top.svg` | `void-venu-215-v2-dims.png` | VOID — needs redraw |
-| `void-air-vantage-front.svg` | `void-air-vantage-dims.png` | VOID — needs redraw |
-| `void-air-vantage-side.svg` | `void-air-vantage-dims.png` | VOID — needs redraw |
-| `void-air-vantage-top.svg` | `void-air-vantage-dims.png` | VOID — needs redraw |
+For PDF-extracted SVGs: render the source PDF page at 120 DPI (`pdftocairo -png -r 120`) and visually compare against the extracted SVG to confirm the correct page was used.
 
-The two Bias amp SVGs (`bias-v3-amp-front.svg`, `bias-v3-amp-side.svg`) are also VTracer dumps but are lower priority — the rack elevation SVG already renders the amp visually.
+For hand-crafted SVGs: mandatory inspect loop — SVG rendered vs source PNG — no commit until they match.
 
 ---
 
-## 12. Reference: rack-elevation.svg style patterns
+## 8. Commit convention
 
-The established style (from `07-tech-pack/rack-elevation.svg`) uses these specific patterns — all speaker SVGs should be consistent:
+```
+feat(assets): extract <equipment> <view> SVG/PNG from <source>
 
-- `font-family: 'Segoe UI', Arial, sans-serif` for all text
-- `font-family: 'Segoe UI Mono', monospace` for spec/dimension labels
-- `dominant-baseline: central` for vertically-centred inline text
-- `stroke-width: 1.5` for primary enclosure outlines
-- `stroke-width: 0.5` for internal detail lines (grille dots, port slots)
-- `rx="2"` on enclosure `<rect>` elements for slightly rounded corners
-- Mounting hole circles: `fill="#0f172a" stroke="#475569" stroke-width="1"`
+Source: <PDF filename> p.<page> / <retailer> CDN
+Resolution/format: <e.g. pdftocairo -svg / 1000×1000 JPEG>
+No annotation overlays: confirmed
+```
