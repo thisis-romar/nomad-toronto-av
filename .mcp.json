@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "codex-imagegen": {
+      "command": "node",
+      "args": ["scripts/codex-mcp-server.mjs"],
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+      }
+    }
+  }
+}
