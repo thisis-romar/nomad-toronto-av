@@ -14,7 +14,8 @@
  *   node scripts/chatgpt-imagegen.mjs --preset djm-v10-rear
  */
 
-import { chromium } from 'C:/Users/romar/projects/claude-conversation-reader/node_modules/playwright/index.js';
+import pkg from 'file:///C:/Users/romar/projects/claude-conversation-reader/node_modules/playwright/index.js';
+const { chromium } = pkg;
 import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { resolve, join, dirname } from 'node:path';
 import { parseArgs } from 'node:util';
@@ -28,12 +29,30 @@ const PRESETS = {
   'djm-v10-rear': {
     source: 'C:/tmp/djm-rear-preview.png',
     output: '05-speaker-assets/png/pioneer-djm-v10-rear-clean.png',
-    prompt: `This is the rear panel of a Pioneer DJ DJM-V10 mixer with annotation overlays. Please regenerate it as a clean technical illustration:
+    prompt: `Generate an image: A clean, high-resolution technical illustration of the rear panel of a Pioneer DJ DJM-V10 mixer. The mixer is shown in a perfectly straight-on, horizontal orientation, centered on a pure white background. Lighting is flat and even, with no shadows or dramatic contrast, resembling a product manual illustration.
 
-- Remove ALL callout numbers (1–17), red annotation boxes, leader lines, and pointer arrows
-- Keep the full chassis with all its silkscreen labels: Pioneer Dj logo, power button, AC IN inlet, SIGNAL GND posts, MULTI I/O / EXT 2 / EXT 1 RETURN RCA jacks, six channel inputs CH1–CH6 with PHONO and LINE RCA pairs, MIC 1 TRS and MIC 3 XLR, REC OUT, MASTER 2, MASTER 1 XLR jacks, BOOTH TRS, MASTER OUT XLR, DIGITAL RCA section, LINK RJ-45, MIDI OUT DIN, Kensington slot, UNBALANCED label
-- White background, straight-on horizontal view, flat even lighting
-- No numeric callouts anywhere — only the silkscreen text printed on the chassis itself`,
+The full chassis is visible edge-to-edge, including:
+- Pioneer DJ logo on the left
+- Power button and AC IN power inlet
+- SIGNAL GND terminal
+- MULTI I/O, EXT 2, and EXT 1 RETURN RCA sections
+- Six input channels labeled CH1 through CH6, each with clearly labeled PHONO and LINE RCA input pairs
+- Microphone inputs: MIC 1 (TRS) and MIC 3 (XLR)
+- REC OUT and MASTER 2 RCA outputs
+- MASTER 1 balanced XLR outputs
+- BOOTH outputs (TRS)
+- MASTER OUT XLR section
+- DIGITAL RCA input/output section
+- LINK (RJ-45 Ethernet port)
+- MIDI OUT (5-pin DIN)
+- Kensington lock slot
+- UNBALANCED label under the appropriate RCA section
+
+All original silkscreen labels and port labels are clearly legible and preserved exactly as on the hardware.
+
+IMPORTANT: Remove all annotation overlays. No red boxes, no arrows, no leader lines, no numbers or callouts anywhere. Only the original printed labels on the device remain.
+
+Style: precise, minimal, technical product illustration, similar to a professional user manual or catalog image.`,
   },
 };
 
@@ -131,17 +150,18 @@ async function run({ source, output, prompt }) {
 
   mkdirSync(dirname(output), { recursive: true });
 
-  // Launch with persistent Chrome context (inherits ChatGPT login)
-  console.log('Launching Chrome with your profile...');
-  const context = await chromium.launchPersistentContext(CHROME_PROFILE, {
+  // Launch a fresh Chrome window — user will need to log into ChatGPT once
+  console.log('Launching Chrome (you may need to log into ChatGPT)...');
+  const browser = await chromium.launch({
     channel: 'chrome',
     headless: false,
     args: [
       '--window-size=1400,900',
       '--disable-blink-features=AutomationControlled',
+      '--no-sandbox',
     ],
-    ignoreDefaultArgs: ['--enable-automation'],
   });
+  const context = await browser.newContext();
 
   const page = await context.newPage();
 
@@ -154,14 +174,20 @@ async function run({ source, output, prompt }) {
     });
     await page.waitForTimeout(2000);
 
-    // Check if login is needed
-    const url = page.url();
-    if (url.includes('auth') || url.includes('login')) {
-      console.log('⚠ Not logged in — please log in manually in the browser window.');
-      console.log('  Waiting up to 60 seconds for login...');
-      await page.waitForURL('**/chat.openai.com/**', { timeout: 60_000 });
-      await page.waitForTimeout(2000);
-    }
+    // Always pause for user to confirm they are logged into ChatGPT
+    await page.waitForTimeout(1500);
+    console.log('');
+    console.log('════════════════════════════════════════════');
+    console.log('  CHECK the Chrome window that just opened.');
+    console.log('  Make sure you are LOGGED INTO ChatGPT.');
+    console.log('  If not logged in, click "Log in" and sign in now.');
+    console.log('  Then come back here and press ENTER to continue.');
+    console.log('════════════════════════════════════════════');
+    await new Promise(resolve => {
+      process.stdin.resume();
+      process.stdin.once('data', () => { process.stdin.pause(); resolve(); });
+    });
+    await page.waitForTimeout(1000);
 
     // Start a new chat
     console.log('Starting new chat...');
@@ -292,6 +318,7 @@ async function run({ source, output, prompt }) {
   } finally {
     await page.waitForTimeout(1000);
     await context.close();
+    await browser.close();
   }
 }
 
