@@ -1,0 +1,78 @@
+name: Update project status on close/merge
+
+on:
+  issues:
+    types: [closed]
+  pull_request:
+    types: [closed]
+
+jobs:
+  update-status:
+    name: Move item to Done when closed
+    runs-on: ubuntu-latest
+    if: github.event.issue.state == 'closed' || github.event.pull_request.merged == true
+    env:
+      GH_TOKEN: ${{ secrets.PROJECT_PAT }}
+      PROJECT_ID: PVT_kwHODNwyZM4BV7qq
+    steps:
+      - name: Get item and status field IDs
+        id: ids
+        run: |
+          ITEM_URL="${{ github.event.issue.html_url || github.event.pull_request.html_url }}"
+          echo "item_url=$ITEM_URL" >> $GITHUB_OUTPUT
+
+          # Get the project's Status field ID and Done option ID
+          FIELD_DATA=$(gh api graphql -f query='
+          {
+            node(id: "'"$PROJECT_ID"'") {
+              ... on ProjectV2 {
+                field(name: "Status") {
+                  ... on ProjectV2SingleSelectField {
+                    id
+                    options { id name }
+                  }
+                }
+              }
+            }
+          }')
+          STATUS_FIELD_ID=$(echo "$FIELD_DATA" | jq -r '.data.node.field.id')
+          DONE_OPTION_ID=$(echo "$FIELD_DATA" | jq -r '.data.node.field.options[] | select(.name == "Done") | .id')
+          echo "status_field_id=$STATUS_FIELD_ID" >> $GITHUB_OUTPUT
+          echo "done_option_id=$DONE_OPTION_ID" >> $GITHUB_OUTPUT
+
+      - name: Find project item ID for this issue/PR
+        id: item
+        run: |
+          # Search project items for one matching this issue/PR number
+          NUMBER="${{ github.event.issue.number || github.event.pull_request.number }}"
+          ITEM_ID=$(gh api graphql -f query='
+          {
+            node(id: "'"$PROJECT_ID"'") {
+              ... on ProjectV2 {
+                items(first: 100) {
+                  nodes {
+                    id
+                    content {
+                      ... on Issue { number }
+                      ... on PullRequest { number }
+                    }
+                  }
+                }
+              }
+            }
+          }' | jq -r --argjson num "$NUMBER" '.data.node.items.nodes[] | select(.content.number == $num) | .id')
+          echo "item_id=$ITEM_ID" >> $GITHUB_OUTPUT
+
+      - name: Set status to Done
+        if: steps.item.outputs.item_id != ''
+        run: |
+          gh api graphql -f query='
+          mutation {
+            updateProjectV2ItemFieldValue(input: {
+              projectId: "'"$PROJECT_ID"'"
+              itemId: "'"${{ steps.item.outputs.item_id }}"'"
+              fieldId: "'"${{ steps.ids.outputs.status_field_id }}"'"
+              value: { singleSelectOptionId: "'"${{ steps.ids.outputs.done_option_id }}"'" }
+            }) { projectV2Item { id } }
+          }'
+          echo "✓ Moved item ${{ steps.item.outputs.item_id }} to Done"
