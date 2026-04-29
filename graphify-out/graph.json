@@ -357,6 +357,339 @@
   },
   "nodes": [
     {
+      "label": "build-tech-pack.py",
+      "file_type": "code",
+      "source_file": "scripts\\build-tech-pack.py",
+      "source_location": "L1",
+      "id": "build_tech_pack_py",
+      "community": 14,
+      "norm_label": "build-tech-pack.py"
+    },
+    {
+      "label": "md_to_html()",
+      "file_type": "code",
+      "source_file": "scripts\\build-tech-pack.py",
+      "source_location": "L7",
+      "id": "build_tech_pack_md_to_html",
+      "community": 14,
+      "norm_label": "md_to_html()"
+    },
+    {
+      "label": "inline_svg()",
+      "file_type": "code",
+      "source_file": "scripts\\build-tech-pack.py",
+      "source_location": "L98",
+      "id": "build_tech_pack_inline_svg",
+      "community": 14,
+      "norm_label": "inline_svg()"
+    },
+    {
+      "label": "chatgpt-imagegen.mjs",
+      "file_type": "code",
+      "source_file": "scripts\\chatgpt-imagegen.mjs",
+      "source_location": "L1",
+      "id": "chatgpt_imagegen_mjs",
+      "community": 12,
+      "norm_label": "chatgpt-imagegen.mjs"
+    },
+    {
+      "label": "tryClick()",
+      "file_type": "code",
+      "source_file": "scripts\\chatgpt-imagegen.mjs",
+      "source_location": "L114",
+      "id": "chatgpt_imagegen_tryclick",
+      "community": 12,
+      "norm_label": "tryclick()"
+    },
+    {
+      "label": "tryLocator()",
+      "file_type": "code",
+      "source_file": "scripts\\chatgpt-imagegen.mjs",
+      "source_location": "L124",
+      "id": "chatgpt_imagegen_trylocator",
+      "community": 12,
+      "norm_label": "trylocator()"
+    },
+    {
+      "label": "run()",
+      "file_type": "code",
+      "source_file": "scripts\\chatgpt-imagegen.mjs",
+      "source_location": "L137",
+      "id": "chatgpt_imagegen_run",
+      "community": 12,
+      "norm_label": "run()"
+    },
+    {
+      "label": "codex-imagegen.py",
+      "file_type": "code",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L1",
+      "id": "codex_imagegen_py",
+      "community": 8,
+      "norm_label": "codex-imagegen.py"
+    },
+    {
+      "label": "get_client()",
+      "file_type": "code",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L47",
+      "id": "codex_imagegen_get_client",
+      "community": 8,
+      "norm_label": "get_client()"
+    },
+    {
+      "label": "generate_image()",
+      "file_type": "code",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L55",
+      "id": "codex_imagegen_generate_image",
+      "community": 8,
+      "norm_label": "generate_image()"
+    },
+    {
+      "label": "score_image()",
+      "file_type": "code",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L69",
+      "id": "codex_imagegen_score_image",
+      "community": 8,
+      "norm_label": "score_image()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L98",
+      "id": "codex_imagegen_main",
+      "community": 8,
+      "norm_label": "main()"
+    },
+    {
+      "label": "Call gpt-image-2 image edit endpoint with source as reference.",
+      "file_type": "rationale",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L56",
+      "community": 8,
+      "norm_label": "call gpt-image-2 image edit endpoint with source as reference.",
+      "id": "codex_imagegen_rationale_56"
+    },
+    {
+      "label": "Use gpt-4o-mini vision to score the generated image 1-10.",
+      "file_type": "rationale",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L70",
+      "community": 8,
+      "norm_label": "use gpt-4o-mini vision to score the generated image 1-10.",
+      "id": "codex_imagegen_rationale_70"
+    },
+    {
+      "label": "codex-mcp-server.mjs",
+      "file_type": "code",
+      "source_file": "scripts\\codex-mcp-server.mjs",
+      "source_location": "L1",
+      "id": "codex_mcp_server_mjs",
+      "community": 11,
+      "norm_label": "codex-mcp-server.mjs"
+    },
+    {
+      "label": "callOpenAI()",
+      "file_type": "code",
+      "source_file": "scripts\\codex-mcp-server.mjs",
+      "source_location": "L75",
+      "id": "codex_mcp_server_callopenai",
+      "community": 11,
+      "norm_label": "callopenai()"
+    },
+    {
+      "label": "handleGenerateImage()",
+      "file_type": "code",
+      "source_file": "scripts\\codex-mcp-server.mjs",
+      "source_location": "L118",
+      "id": "codex_mcp_server_handlegenerateimage",
+      "community": 11,
+      "norm_label": "handlegenerateimage()"
+    },
+    {
+      "label": "handleCheckQuota()",
+      "file_type": "code",
+      "source_file": "scripts\\codex-mcp-server.mjs",
+      "source_location": "L144",
+      "id": "codex_mcp_server_handlecheckquota",
+      "community": 11,
+      "norm_label": "handlecheckquota()"
+    },
+    {
+      "label": "handleRequest()",
+      "file_type": "code",
+      "source_file": "scripts\\codex-mcp-server.mjs",
+      "source_location": "L161",
+      "id": "codex_mcp_server_handlerequest",
+      "community": 11,
+      "norm_label": "handlerequest()"
+    },
+    {
+      "label": "download-missing-manuals.mjs",
+      "file_type": "code",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L1",
+      "id": "download_missing_manuals_mjs",
+      "community": 9,
+      "norm_label": "download-missing-manuals.mjs"
+    },
+    {
+      "label": "downloadBuffer()",
+      "file_type": "code",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L51",
+      "id": "download_missing_manuals_downloadbuffer",
+      "community": 9,
+      "norm_label": "downloadbuffer()"
+    },
+    {
+      "label": "saveBuffer()",
+      "file_type": "code",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L69",
+      "id": "download_missing_manuals_savebuffer",
+      "community": 9,
+      "norm_label": "savebuffer()"
+    },
+    {
+      "label": "downloadAlphatheta()",
+      "file_type": "code",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L78",
+      "id": "download_missing_manuals_downloadalphatheta",
+      "community": 9,
+      "norm_label": "downloadalphatheta()"
+    },
+    {
+      "label": "downloadTurbosound()",
+      "file_type": "code",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L160",
+      "id": "download_missing_manuals_downloadturbosound",
+      "community": 9,
+      "norm_label": "downloadturbosound()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L221",
+      "id": "download_missing_manuals_main",
+      "community": 9,
+      "norm_label": "main()"
+    },
+    {
+      "label": "gh-project-setup.js",
+      "file_type": "code",
+      "source_file": "scripts\\gh-project-setup.js",
+      "source_location": "L1",
+      "id": "gh_project_setup_js",
+      "community": 16,
+      "norm_label": "gh-project-setup.js"
+    },
+    {
+      "label": "ghRaw()",
+      "file_type": "code",
+      "source_file": "scripts\\gh-project-setup.js",
+      "source_location": "L16",
+      "id": "gh_project_setup_ghraw",
+      "community": 16,
+      "norm_label": "ghraw()"
+    },
+    {
+      "label": "gh-project-sync.js",
+      "file_type": "code",
+      "source_file": "scripts\\gh-project-sync.js",
+      "source_location": "L1",
+      "id": "gh_project_sync_js",
+      "community": 10,
+      "norm_label": "gh-project-sync.js"
+    },
+    {
+      "label": "ghRaw()",
+      "file_type": "code",
+      "source_file": "scripts\\gh-project-sync.js",
+      "source_location": "L18",
+      "id": "gh_project_sync_ghraw",
+      "community": 10,
+      "norm_label": "ghraw()"
+    },
+    {
+      "label": "buildOptionMaps()",
+      "file_type": "code",
+      "source_file": "scripts\\gh-project-sync.js",
+      "source_location": "L23",
+      "id": "gh_project_sync_buildoptionmaps",
+      "community": 10,
+      "norm_label": "buildoptionmaps()"
+    },
+    {
+      "label": "getExistingIssues()",
+      "file_type": "code",
+      "source_file": "scripts\\gh-project-sync.js",
+      "source_location": "L38",
+      "id": "gh_project_sync_getexistingissues",
+      "community": 10,
+      "norm_label": "getexistingissues()"
+    },
+    {
+      "label": "setField()",
+      "file_type": "code",
+      "source_file": "scripts\\gh-project-sync.js",
+      "source_location": "L47",
+      "id": "gh_project_sync_setfield",
+      "community": 10,
+      "norm_label": "setfield()"
+    },
+    {
+      "label": "ensureLabels()",
+      "file_type": "code",
+      "source_file": "scripts\\gh-project-sync.js",
+      "source_location": "L53",
+      "id": "gh_project_sync_ensurelabels",
+      "community": 10,
+      "norm_label": "ensurelabels()"
+    },
+    {
+      "label": "gql.mjs",
+      "file_type": "code",
+      "source_file": "scripts\\lib\\gql.mjs",
+      "source_location": "L1",
+      "id": "lib_gql_mjs",
+      "community": 13,
+      "norm_label": "gql.mjs"
+    },
+    {
+      "label": "gql()",
+      "file_type": "code",
+      "source_file": "scripts\\lib\\gql.mjs",
+      "source_location": "L19",
+      "id": "gql_gql",
+      "community": 13,
+      "norm_label": "gql()"
+    },
+    {
+      "label": "gqlAll()",
+      "file_type": "code",
+      "source_file": "scripts\\lib\\gql.mjs",
+      "source_location": "L51",
+      "id": "gql_gqlall",
+      "community": 13,
+      "norm_label": "gqlall()"
+    },
+    {
+      "label": "gh()",
+      "file_type": "code",
+      "source_file": "scripts\\lib\\gql.mjs",
+      "source_location": "L72",
+      "id": "gql_gh",
+      "community": 13,
+      "norm_label": "gh()"
+    },
+    {
       "label": "N\u00d8MAD Toronto Venue",
       "file_type": "document",
       "source_file": "01-source-documents/nomad-system-spec-v2.md",
@@ -365,9 +698,9 @@
       "captured_at": "2026-04-27",
       "author": "Emblem Projects Inc.",
       "contributor": null,
-      "id": "venue_nomad_toronto",
-      "community": 2,
-      "norm_label": "n\u00f8mad toronto venue"
+      "community": 1,
+      "norm_label": "n\u00f8mad toronto venue",
+      "id": "venue_nomad_toronto"
     },
     {
       "label": "Nomad AV System Spec Rev 2.0",
@@ -378,9 +711,9 @@
       "captured_at": "2026-04-27",
       "author": "Emblem Projects Inc.",
       "contributor": null,
-      "id": "sysspec_v2",
-      "community": 2,
-      "norm_label": "nomad av system spec rev 2.0"
+      "community": 1,
+      "norm_label": "nomad av system spec rev 2.0",
+      "id": "sysspec_v2"
     },
     {
       "label": "System Overview (Tech Pack)",
@@ -391,9 +724,9 @@
       "captured_at": "2026-04-27",
       "author": "Emblem Projects Inc.",
       "contributor": null,
-      "id": "sysoverview_techpack",
-      "community": 2,
-      "norm_label": "system overview (tech pack)"
+      "community": 1,
+      "norm_label": "system overview (tech pack)",
+      "id": "sysoverview_techpack"
     },
     {
       "label": "Technical Available Rider",
@@ -404,9 +737,9 @@
       "captured_at": "2026-04-27",
       "author": "Emblem Projects Inc.",
       "contributor": null,
-      "id": "available_rider",
-      "community": 2,
-      "norm_label": "technical available rider"
+      "community": 1,
+      "norm_label": "technical available rider",
+      "id": "available_rider"
     },
     {
       "label": "Cable Schedule (41 cables)",
@@ -417,9 +750,9 @@
       "captured_at": "2026-04-27",
       "author": "Emblem Projects Inc.",
       "contributor": null,
-      "id": "cable_schedule",
-      "community": 2,
-      "norm_label": "cable schedule (41 cables)"
+      "community": 1,
+      "norm_label": "cable schedule (41 cables)",
+      "id": "cable_schedule"
     },
     {
       "label": "Emergency Procedures (AV System)",
@@ -430,9 +763,9 @@
       "captured_at": "2026-04-27",
       "author": "Emblem Projects Inc.",
       "contributor": null,
-      "id": "emergency_procedures",
       "community": 1,
-      "norm_label": "emergency procedures (av system)"
+      "norm_label": "emergency procedures (av system)",
+      "id": "emergency_procedures"
     },
     {
       "label": "Firmware & Software Changelog",
@@ -443,9 +776,9 @@
       "captured_at": "2026-04-27",
       "author": "Emblem Projects Inc.",
       "contributor": null,
-      "id": "firmware_changelog",
-      "community": 2,
-      "norm_label": "firmware & software changelog"
+      "community": 1,
+      "norm_label": "firmware & software changelog",
+      "id": "firmware_changelog"
     },
     {
       "label": "19-Inch Rack Standards Reference",
@@ -456,9 +789,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ref_rack_standards",
-      "community": 8,
-      "norm_label": "19-inch rack standards reference"
+      "community": 15,
+      "norm_label": "19-inch rack standards reference",
+      "id": "ref_rack_standards"
     },
     {
       "label": "Professional Audio Wiring Standards",
@@ -469,9 +802,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ref_audio_wiring_standards",
-      "community": 2,
-      "norm_label": "professional audio wiring standards"
+      "community": 1,
+      "norm_label": "professional audio wiring standards",
+      "id": "ref_audio_wiring_standards"
     },
     {
       "label": "SVG Rack Elevation Methodology",
@@ -482,9 +815,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ref_svg_rack_methodology",
-      "community": 8,
-      "norm_label": "svg rack elevation methodology"
+      "community": 15,
+      "norm_label": "svg rack elevation methodology",
+      "id": "ref_svg_rack_methodology"
     },
     {
       "label": "Pioneer CDJ-3000 Instruction Manual",
@@ -495,9 +828,9 @@
       "captured_at": null,
       "author": "Pioneer DJ",
       "contributor": null,
-      "id": "cdj3000_manual",
-      "community": 2,
-      "norm_label": "pioneer cdj-3000 instruction manual"
+      "community": 1,
+      "norm_label": "pioneer cdj-3000 instruction manual",
+      "id": "cdj3000_manual"
     },
     {
       "label": "Pioneer DJM-V10 Instruction Manual",
@@ -508,9 +841,9 @@
       "captured_at": null,
       "author": "Pioneer DJ",
       "contributor": null,
-      "id": "djmv10_manual",
-      "community": 2,
-      "norm_label": "pioneer djm-v10 instruction manual"
+      "community": 1,
+      "norm_label": "pioneer djm-v10 instruction manual",
+      "id": "djmv10_manual"
     },
     {
       "label": "Bias Q2/Q1/D1 User Guide V1.0",
@@ -521,9 +854,9 @@
       "captured_at": null,
       "author": "Void Acoustics Research Ltd.",
       "contributor": null,
-      "id": "bias_q2q1d1_guide",
-      "community": 1,
-      "norm_label": "bias q2/q1/d1 user guide v1.0"
+      "community": 2,
+      "norm_label": "bias q2/q1/d1 user guide v1.0",
+      "id": "bias_q2q1d1_guide"
     },
     {
       "label": "Bias Q5 User Guide V1.1",
@@ -534,9 +867,9 @@
       "captured_at": null,
       "author": "Void Acoustics Research Ltd.",
       "contributor": null,
-      "id": "bias_q5_guide",
-      "community": 1,
-      "norm_label": "bias q5 user guide v1.1"
+      "community": 2,
+      "norm_label": "bias q5 user guide v1.1",
+      "id": "bias_q5_guide"
     },
     {
       "label": "Bias V3/V9 User Manual V1.0",
@@ -547,9 +880,9 @@
       "captured_at": null,
       "author": "Void Acoustics Research Ltd.",
       "contributor": null,
-      "id": "bias_v3v9_manual",
-      "community": 1,
-      "norm_label": "bias v3/v9 user manual v1.0"
+      "community": 2,
+      "norm_label": "bias v3/v9 user manual v1.0",
+      "id": "bias_v3v9_manual"
     },
     {
       "label": "Pioneer CDJ-3000 (\u00d74 units)",
@@ -560,9 +893,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "cdj3000_unit",
-      "community": 2,
-      "norm_label": "pioneer cdj-3000 (\u00d74 units)"
+      "community": 1,
+      "norm_label": "pioneer cdj-3000 (\u00d74 units)",
+      "id": "cdj3000_unit"
     },
     {
       "label": "Pioneer DJM-V10 DJ Mixer",
@@ -573,9 +906,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "djmv10_unit",
-      "community": 2,
-      "norm_label": "pioneer djm-v10 dj mixer"
+      "community": 1,
+      "norm_label": "pioneer djm-v10 dj mixer",
+      "id": "djmv10_unit"
     },
     {
       "label": "Allen & Heath CQ-12T Matrix Mixer",
@@ -586,9 +919,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "cq12t_unit",
-      "community": 2,
-      "norm_label": "allen & heath cq-12t matrix mixer"
+      "community": 1,
+      "norm_label": "allen & heath cq-12t matrix mixer",
+      "id": "cq12t_unit"
     },
     {
       "label": "Drawmer SP2120 Stereo Limiter",
@@ -599,9 +932,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "sp2120_unit",
       "community": 1,
-      "norm_label": "drawmer sp2120 stereo limiter"
+      "norm_label": "drawmer sp2120 stereo limiter",
+      "id": "sp2120_unit"
     },
     {
       "label": "Bias V3 #2 \u2014 Outside Subs / Signal Hub",
@@ -612,9 +945,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_v3_2_unit",
-      "community": 1,
-      "norm_label": "bias v3 #2 \u2014 outside subs / signal hub"
+      "community": 2,
+      "norm_label": "bias v3 #2 \u2014 outside subs / signal hub",
+      "id": "bias_v3_2_unit"
     },
     {
       "label": "Bias Q5 \u2014 Subs Middle (4ch)",
@@ -625,9 +958,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_q5_unit",
-      "community": 1,
-      "norm_label": "bias q5 \u2014 subs middle (4ch)"
+      "community": 2,
+      "norm_label": "bias q5 \u2014 subs middle (4ch)",
+      "id": "bias_q5_unit"
     },
     {
       "label": "Bias Q2 #2 \u2014 Air Motion Bi-amp",
@@ -638,9 +971,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_q2_2_unit",
-      "community": 1,
-      "norm_label": "bias q2 #2 \u2014 air motion bi-amp"
+      "community": 2,
+      "norm_label": "bias q2 #2 \u2014 air motion bi-amp",
+      "id": "bias_q2_2_unit"
     },
     {
       "label": "Bias V3 #1 \u2014 Airten V3 FOH Fill",
@@ -651,9 +984,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_v3_1_unit",
-      "community": 1,
-      "norm_label": "bias v3 #1 \u2014 airten v3 foh fill"
+      "community": 2,
+      "norm_label": "bias v3 #1 \u2014 airten v3 foh fill",
+      "id": "bias_v3_1_unit"
     },
     {
       "label": "Bias Q2 #1 \u2014 DJ Monitors",
@@ -664,9 +997,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_q2_1_unit",
-      "community": 1,
-      "norm_label": "bias q2 #1 \u2014 dj monitors"
+      "community": 2,
+      "norm_label": "bias q2 #1 \u2014 dj monitors",
+      "id": "bias_q2_1_unit"
     },
     {
       "label": "Bias V9 \u2014 OFFLINE (Delay Subs)",
@@ -677,9 +1010,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_v9_unit",
       "community": 1,
-      "norm_label": "bias v9 \u2014 offline (delay subs)"
+      "norm_label": "bias v9 \u2014 offline (delay subs)",
+      "id": "bias_v9_unit"
     },
     {
       "label": "VOID Air Motion V2 Red \u2014 FOH Mains (\u00d72)",
@@ -690,9 +1023,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "spk_air_motion_v2",
-      "community": 1,
-      "norm_label": "void air motion v2 red \u2014 foh mains (\u00d72)"
+      "community": 2,
+      "norm_label": "void air motion v2 red \u2014 foh mains (\u00d72)",
+      "id": "spk_air_motion_v2"
     },
     {
       "label": "VOID Airten V3 \u2014 FOH Fill (\u00d72)",
@@ -703,9 +1036,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "spk_airten_v3",
-      "community": 1,
-      "norm_label": "void airten v3 \u2014 foh fill (\u00d72)"
+      "community": 2,
+      "norm_label": "void airten v3 \u2014 foh fill (\u00d72)",
+      "id": "spk_airten_v3"
     },
     {
       "label": "VOID Stasys Xair \u2014 Subs (\u00d76)",
@@ -716,9 +1049,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "spk_stasys_xair",
-      "community": 1,
-      "norm_label": "void stasys xair \u2014 subs (\u00d76)"
+      "community": 2,
+      "norm_label": "void stasys xair \u2014 subs (\u00d76)",
+      "id": "spk_stasys_xair"
     },
     {
       "label": "VOID Air Vantage \u2014 DJ Booth Monitors (\u00d72)",
@@ -729,9 +1062,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "spk_air_vantage",
-      "community": 1,
-      "norm_label": "void air vantage \u2014 dj booth monitors (\u00d72)"
+      "community": 2,
+      "norm_label": "void air vantage \u2014 dj booth monitors (\u00d72)",
+      "id": "spk_air_vantage"
     },
     {
       "label": "VOID Venu 215 V2 \u2014 DJ Booth Sub (\u00d72)",
@@ -742,9 +1075,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "spk_venu_215_v2",
-      "community": 1,
-      "norm_label": "void venu 215 v2 \u2014 dj booth sub (\u00d72)"
+      "community": 2,
+      "norm_label": "void venu 215 v2 \u2014 dj booth sub (\u00d72)",
+      "id": "spk_venu_215_v2"
     },
     {
       "label": "Turbosound Athens TCS-AN \u2014 Entrance (\u00d72)",
@@ -755,9 +1088,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "spk_athens_tcs_an",
       "community": 7,
-      "norm_label": "turbosound athens tcs-an \u2014 entrance (\u00d72)"
+      "norm_label": "turbosound athens tcs-an \u2014 entrance (\u00d72)",
+      "id": "spk_athens_tcs_an"
     },
     {
       "label": "Zone: FOH Mains",
@@ -768,9 +1101,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "zone_foh_mains",
-      "community": 1,
-      "norm_label": "zone: foh mains"
+      "community": 2,
+      "norm_label": "zone: foh mains",
+      "id": "zone_foh_mains"
     },
     {
       "label": "Zone: FOH Fill",
@@ -781,9 +1114,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "zone_foh_fill",
-      "community": 1,
-      "norm_label": "zone: foh fill"
+      "community": 2,
+      "norm_label": "zone: foh fill",
+      "id": "zone_foh_fill"
     },
     {
       "label": "Zone: Outside Subs",
@@ -794,9 +1127,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "zone_outside_subs",
-      "community": 1,
-      "norm_label": "zone: outside subs"
+      "community": 2,
+      "norm_label": "zone: outside subs",
+      "id": "zone_outside_subs"
     },
     {
       "label": "Zone: Middle Subs",
@@ -807,9 +1140,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "zone_middle_subs",
-      "community": 1,
-      "norm_label": "zone: middle subs"
+      "community": 2,
+      "norm_label": "zone: middle subs",
+      "id": "zone_middle_subs"
     },
     {
       "label": "Zone: DJ Booth Monitors + Sub",
@@ -820,9 +1153,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "zone_dj_booth",
-      "community": 1,
-      "norm_label": "zone: dj booth monitors + sub"
+      "community": 2,
+      "norm_label": "zone: dj booth monitors + sub",
+      "id": "zone_dj_booth"
     },
     {
       "label": "Zone: Entrance Fill",
@@ -833,9 +1166,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "zone_entrance",
       "community": 7,
-      "norm_label": "zone: entrance fill"
+      "norm_label": "zone: entrance fill",
+      "id": "zone_entrance"
     },
     {
       "label": "Armon\u00eda DSP Control Network (192.168.10.x)",
@@ -846,9 +1179,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "armonia_network",
-      "community": 1,
-      "norm_label": "armonia dsp control network (192.168.10.x)"
+      "community": 2,
+      "norm_label": "armonia dsp control network (192.168.10.x)",
+      "id": "armonia_network"
     },
     {
       "label": "Armon\u00edaPlus Control Software v2.8",
@@ -859,9 +1192,9 @@
       "captured_at": null,
       "author": "Powersoft",
       "contributor": null,
-      "id": "armoniaplus_software",
-      "community": 1,
-      "norm_label": "armoniaplus control software v2.8"
+      "community": 2,
+      "norm_label": "armoniaplus control software v2.8",
+      "id": "armoniaplus_software"
     },
     {
       "label": "Pro DJ Link Network (Cat5e)",
@@ -872,9 +1205,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pro_dj_link_network",
-      "community": 2,
-      "norm_label": "pro dj link network (cat5e)"
+      "community": 1,
+      "norm_label": "pro dj link network (cat5e)",
+      "id": "pro_dj_link_network"
     },
     {
       "label": "Rationale: V3 #2 as Signal Hub (no external splitter)",
@@ -885,9 +1218,9 @@
       "captured_at": null,
       "author": "Emblem Projects Inc.",
       "contributor": null,
-      "id": "rationale_v3_2_as_hub",
-      "community": 1,
-      "norm_label": "rationale: v3 #2 as signal hub (no external splitter)"
+      "community": 2,
+      "norm_label": "rationale: v3 #2 as signal hub (no external splitter)",
+      "id": "rationale_v3_2_as_hub"
     },
     {
       "label": "Rationale: Q5 Added for Individual 4\u03a9 Xair Channels",
@@ -898,9 +1231,9 @@
       "captured_at": null,
       "author": "Emblem Projects Inc.",
       "contributor": null,
-      "id": "rationale_q5_added_for_4ohm",
-      "community": 1,
-      "norm_label": "rationale: q5 added for individual 4\u03c9 xair channels"
+      "community": 2,
+      "norm_label": "rationale: q5 added for individual 4\u03c9 xair channels",
+      "id": "rationale_q5_added_for_4ohm"
     },
     {
       "label": "Rationale: Bias V9 Taken Offline (preset obsolete)",
@@ -911,9 +1244,9 @@
       "captured_at": null,
       "author": "Emblem Projects Inc.",
       "contributor": null,
-      "id": "rationale_v9_offline",
       "community": 1,
-      "norm_label": "rationale: bias v9 taken offline (preset obsolete)"
+      "norm_label": "rationale: bias v9 taken offline (preset obsolete)",
+      "id": "rationale_v9_offline"
     },
     {
       "label": "Rationale: CQ-12T Replaced Yamaha MG12 (April 2026)",
@@ -924,9 +1257,9 @@
       "captured_at": null,
       "author": "Emblem Projects Inc.",
       "contributor": null,
-      "id": "rationale_cq12t_replaced_mg12",
-      "community": 2,
-      "norm_label": "rationale: cq-12t replaced yamaha mg12 (april 2026)"
+      "community": 1,
+      "norm_label": "rationale: cq-12t replaced yamaha mg12 (april 2026)",
+      "id": "rationale_cq12t_replaced_mg12"
     },
     {
       "label": "Issue #3: CQ-12T Out4/5/6 Purpose Unknown",
@@ -937,9 +1270,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "issue_cq12t_out456",
-      "community": 2,
-      "norm_label": "issue #3: cq-12t out4/5/6 purpose unknown"
+      "community": 1,
+      "norm_label": "issue #3: cq-12t out4/5/6 purpose unknown",
+      "id": "issue_cq12t_out456"
     },
     {
       "label": "Issue #4: Athens TCS-AN Submodel Unconfirmed",
@@ -950,9 +1283,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "issue_athens_submodel",
       "community": 7,
-      "norm_label": "issue #4: athens tcs-an submodel unconfirmed"
+      "norm_label": "issue #4: athens tcs-an submodel unconfirmed",
+      "id": "issue_athens_submodel"
     },
     {
       "label": "Issue #7: Bias Q5 Phoenix 5-pin Breaker Rating TBC",
@@ -963,9 +1296,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "issue_q5_breaker",
-      "community": 1,
-      "norm_label": "issue #7: bias q5 phoenix 5-pin breaker rating tbc"
+      "community": 2,
+      "norm_label": "issue #7: bias q5 phoenix 5-pin breaker rating tbc",
+      "id": "issue_q5_breaker"
     },
     {
       "label": "Issue #5: No Production Contact Details",
@@ -976,9 +1309,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "issue_no_production_contact",
-      "community": 2,
-      "norm_label": "issue #5: no production contact details"
+      "community": 1,
+      "norm_label": "issue #5: no production contact details",
+      "id": "issue_no_production_contact"
     },
     {
       "label": "EIA-310-D / IEC 60297 Rack Standard",
@@ -989,9 +1322,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "eia310_standard",
-      "community": 8,
-      "norm_label": "eia-310-d / iec 60297 rack standard"
+      "community": 15,
+      "norm_label": "eia-310-d / iec 60297 rack standard",
+      "id": "eia310_standard"
     },
     {
       "label": "ANSI/AVIXA D401.01:2023 Documentation Standard",
@@ -1002,9 +1335,9 @@
       "captured_at": null,
       "author": "AVIXA",
       "contributor": null,
-      "id": "avixa_d40101",
-      "community": 2,
-      "norm_label": "ansi/avixa d401.01:2023 documentation standard"
+      "community": 1,
+      "norm_label": "ansi/avixa d401.01:2023 documentation standard",
+      "id": "avixa_d40101"
     },
     {
       "label": "AES14-1992 XLR Pin Assignment Standard",
@@ -1015,9 +1348,9 @@
       "captured_at": null,
       "author": "AES",
       "contributor": null,
-      "id": "aes14_xlr_pinout",
-      "community": 2,
-      "norm_label": "aes14-1992 xlr pin assignment standard"
+      "community": 1,
+      "norm_label": "aes14-1992 xlr pin assignment standard",
+      "id": "aes14_xlr_pinout"
     },
     {
       "label": "CQ-12T Firmware V1.2.2 (Latest)",
@@ -1028,9 +1361,9 @@
       "captured_at": null,
       "author": "Allen & Heath",
       "contributor": null,
-      "id": "fw_cq12t_v122",
-      "community": 2,
-      "norm_label": "cq-12t firmware v1.2.2 (latest)"
+      "community": 1,
+      "norm_label": "cq-12t firmware v1.2.2 (latest)",
+      "id": "fw_cq12t_v122"
     },
     {
       "label": "CDJ-3000 Firmware 3.22 (Latest)",
@@ -1041,9 +1374,9 @@
       "captured_at": null,
       "author": "AlphaTheta",
       "contributor": null,
-      "id": "fw_cdj3000_v322",
-      "community": 2,
-      "norm_label": "cdj-3000 firmware 3.22 (latest)"
+      "community": 1,
+      "norm_label": "cdj-3000 firmware 3.22 (latest)",
+      "id": "fw_cdj3000_v322"
     },
     {
       "label": "DJM-V10 Firmware 1.20 (Latest)",
@@ -1054,9 +1387,9 @@
       "captured_at": null,
       "author": "AlphaTheta",
       "contributor": null,
-      "id": "fw_djmv10_v120",
-      "community": 2,
-      "norm_label": "djm-v10 firmware 1.20 (latest)"
+      "community": 1,
+      "norm_label": "djm-v10 firmware 1.20 (latest)",
+      "id": "fw_djmv10_v120"
     },
     {
       "label": "Bias Q5 Firmware v1.12.0.76 (Latest)",
@@ -1067,9 +1400,9 @@
       "captured_at": null,
       "author": "Void Acoustics",
       "contributor": null,
-      "id": "fw_bias_q5_v11200",
-      "community": 1,
-      "norm_label": "bias q5 firmware v1.12.0.76 (latest)"
+      "community": 2,
+      "norm_label": "bias q5 firmware v1.12.0.76 (latest)",
+      "id": "fw_bias_q5_v11200"
     },
     {
       "label": "Bias Q2+ Firmware v1.12.0.84 (Latest \u2014 caution)",
@@ -1080,9 +1413,9 @@
       "captured_at": null,
       "author": "Void Acoustics",
       "contributor": null,
-      "id": "fw_bias_q2_v11200",
-      "community": 1,
-      "norm_label": "bias q2+ firmware v1.12.0.84 (latest \u2014 caution)"
+      "community": 2,
+      "norm_label": "bias q2+ firmware v1.12.0.84 (latest \u2014 caution)",
+      "id": "fw_bias_q2_v11200"
     },
     {
       "label": "Armon\u00eda Wiring PDF (18-speaker, March 2026)",
@@ -1093,9 +1426,9 @@
       "captured_at": "2026-03",
       "author": null,
       "contributor": null,
-      "id": "wiring_pdf_armonia",
-      "community": 2,
-      "norm_label": "armonia wiring pdf (18-speaker, march 2026)"
+      "community": 1,
+      "norm_label": "armonia wiring pdf (18-speaker, march 2026)",
+      "id": "wiring_pdf_armonia"
     },
     {
       "label": "Wiring Diagram Final PDF",
@@ -1106,9 +1439,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "wiring_pdf_final",
-      "community": 10,
-      "norm_label": "wiring diagram final pdf"
+      "community": 18,
+      "norm_label": "wiring diagram final pdf",
+      "id": "wiring_pdf_final"
     },
     {
       "label": "System Spec PDF (Rev 1 source)",
@@ -1119,9 +1452,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "sysspec_pdf_v1",
-      "community": 2,
-      "norm_label": "system spec pdf (rev 1 source)"
+      "community": 1,
+      "norm_label": "system spec pdf (rev 1 source)",
+      "id": "sysspec_pdf_v1"
     },
     {
       "label": "Allen & Heath CQ-12T Technical Datasheet",
@@ -1132,9 +1465,9 @@
       "captured_at": null,
       "author": "Allen & Heath",
       "contributor": null,
-      "id": "ahcq12t_datasheet",
       "community": 4,
-      "norm_label": "allen & heath cq-12t technical datasheet"
+      "norm_label": "allen & heath cq-12t technical datasheet",
+      "id": "ahcq12t_datasheet"
     },
     {
       "label": "Allen & Heath CQ-12T User Guide v1.2",
@@ -1145,9 +1478,9 @@
       "captured_at": null,
       "author": "Allen & Heath",
       "contributor": null,
-      "id": "ahcq12t_userguide",
       "community": 4,
-      "norm_label": "allen & heath cq-12t user guide v1.2"
+      "norm_label": "allen & heath cq-12t user guide v1.2",
+      "id": "ahcq12t_userguide"
     },
     {
       "label": "Allen & Heath CQ-12T Digital Mixer",
@@ -1158,9 +1491,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ahcq12t_mixer",
       "community": 4,
-      "norm_label": "allen & heath cq-12t digital mixer"
+      "norm_label": "allen & heath cq-12t digital mixer",
+      "id": "ahcq12t_mixer"
     },
     {
       "label": "CQ-12T Firmware V1.2.1",
@@ -1171,9 +1504,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ahcq12t_fw121",
       "community": 4,
-      "norm_label": "cq-12t firmware v1.2.1"
+      "norm_label": "cq-12t firmware v1.2.1",
+      "id": "ahcq12t_fw121"
     },
     {
       "label": "CQ-12T Network IP 169.254.182.156",
@@ -1184,9 +1517,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ahcq12t_ip",
       "community": 4,
-      "norm_label": "cq-12t network ip 169.254.182.156"
+      "norm_label": "cq-12t network ip 169.254.182.156",
+      "id": "ahcq12t_ip"
     },
     {
       "label": "CQ-12T Main LR Outputs (2x XLR Balanced)",
@@ -1197,9 +1530,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ahcq12t_mainlr_output",
       "community": 4,
-      "norm_label": "cq-12t main lr outputs (2x xlr balanced)"
+      "norm_label": "cq-12t main lr outputs (2x xlr balanced)",
+      "id": "ahcq12t_mainlr_output"
     },
     {
       "label": "CQ-12T Aux/Monitor Outputs 1-6 (TRS)",
@@ -1210,9 +1543,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ahcq12t_aux_outputs",
       "community": 4,
-      "norm_label": "cq-12t aux/monitor outputs 1-6 (trs)"
+      "norm_label": "cq-12t aux/monitor outputs 1-6 (trs)",
+      "id": "ahcq12t_aux_outputs"
     },
     {
       "label": "CQ-12T Bluetooth 4.1 Stereo Input",
@@ -1223,9 +1556,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ahcq12t_bluetooth",
       "community": 4,
-      "norm_label": "cq-12t bluetooth 4.1 stereo input"
+      "norm_label": "cq-12t bluetooth 4.1 stereo input",
+      "id": "ahcq12t_bluetooth"
     },
     {
       "label": "CQ-12T RJ45 Network Port (CQ as Client)",
@@ -1236,9 +1569,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ahcq12t_rj45",
       "community": 4,
-      "norm_label": "cq-12t rj45 network port (cq as client)"
+      "norm_label": "cq-12t rj45 network port (cq as client)",
+      "id": "ahcq12t_rj45"
     },
     {
       "label": "CQ-12T 96kHz Processing / 96-bit Depth",
@@ -1249,9 +1582,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ahcq12t_96khz",
       "community": 4,
-      "norm_label": "cq-12t 96khz processing / 96-bit depth"
+      "norm_label": "cq-12t 96khz processing / 96-bit depth",
+      "id": "ahcq12t_96khz"
     },
     {
       "label": "CQ-12T 2x Multi-FX Engines",
@@ -1262,9 +1595,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ahcq12t_2fx",
       "community": 4,
-      "norm_label": "cq-12t 2x multi-fx engines"
+      "norm_label": "cq-12t 2x multi-fx engines",
+      "id": "ahcq12t_2fx"
     },
     {
       "label": "CQ-12T Auto Mic Mixer (AMM)",
@@ -1275,9 +1608,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ahcq12t_amm",
       "community": 4,
-      "norm_label": "cq-12t auto mic mixer (amm)"
+      "norm_label": "cq-12t auto mic mixer (amm)",
+      "id": "ahcq12t_amm"
     },
     {
       "label": "CQ-MixPad Control App (iOS/Android/Win/Mac)",
@@ -1288,9 +1621,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ahcq12t_cqmixpad",
       "community": 4,
-      "norm_label": "cq-mixpad control app (ios/android/win/mac)"
+      "norm_label": "cq-mixpad control app (ios/android/win/mac)",
+      "id": "ahcq12t_cqmixpad"
     },
     {
       "label": "CQ-12T Physical Dimensions 291x242x89mm 2.4kg",
@@ -1301,9 +1634,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ahcq12t_dims",
-      "community": 9,
-      "norm_label": "cq-12t physical dimensions 291x242x89mm 2.4kg"
+      "community": 17,
+      "norm_label": "cq-12t physical dimensions 291x242x89mm 2.4kg",
+      "id": "ahcq12t_dims"
     },
     {
       "label": "Drawmer SP2120 Speaker Protector / Stereo Limiter",
@@ -1314,9 +1647,9 @@
       "captured_at": null,
       "author": "Drawmer Electronics Ltd.",
       "contributor": null,
-      "id": "drawmer_sp2120",
       "community": 4,
-      "norm_label": "drawmer sp2120 speaker protector / stereo limiter"
+      "norm_label": "drawmer sp2120 speaker protector / stereo limiter",
+      "id": "drawmer_sp2120"
     },
     {
       "label": "Drawmer SP2120 Operator's Manual",
@@ -1327,9 +1660,9 @@
       "captured_at": null,
       "author": "Drawmer Electronics Ltd.",
       "contributor": null,
-      "id": "sp2120_manual",
       "community": 4,
-      "norm_label": "drawmer sp2120 operator's manual"
+      "norm_label": "drawmer sp2120 operator's manual",
+      "id": "sp2120_manual"
     },
     {
       "label": "SP2120 Balanced XLR Inputs/Outputs (+4dBu nominal)",
@@ -1340,9 +1673,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "sp2120_xlr_io",
       "community": 4,
-      "norm_label": "sp2120 balanced xlr inputs/outputs (+4dbu nominal)"
+      "norm_label": "sp2120 balanced xlr inputs/outputs (+4dbu nominal)",
+      "id": "sp2120_xlr_io"
     },
     {
       "label": "SP2120 Specs: 20k Input Z, 100 Ohm Output Z, -103dB noise",
@@ -1353,9 +1686,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "sp2120_specs",
-      "community": 11,
-      "norm_label": "sp2120 specs: 20k input z, 100 ohm output z, -103db noise"
+      "community": 19,
+      "norm_label": "sp2120 specs: 20k input z, 100 ohm output z, -103db noise",
+      "id": "sp2120_specs"
     },
     {
       "label": "SP2120 Security Lock-Out / Tamper-Proof Bracket",
@@ -1366,9 +1699,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "sp2120_security_lock",
       "community": 4,
-      "norm_label": "sp2120 security lock-out / tamper-proof bracket"
+      "norm_label": "sp2120 security lock-out / tamper-proof bracket",
+      "id": "sp2120_security_lock"
     },
     {
       "label": "SP2120 VCA + AGC Protection Circuitry",
@@ -1379,9 +1712,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "sp2120_vca_agc",
       "community": 4,
-      "norm_label": "sp2120 vca + agc protection circuitry"
+      "norm_label": "sp2120 vca + agc protection circuitry",
+      "id": "sp2120_vca_agc"
     },
     {
       "label": "SP2120 Dimensions 482x44x160mm 2.2kg (1U rack)",
@@ -1392,9 +1725,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "sp2120_dims",
-      "community": 12,
-      "norm_label": "sp2120 dimensions 482x44x160mm 2.2kg (1u rack)"
+      "community": 20,
+      "norm_label": "sp2120 dimensions 482x44x160mm 2.2kg (1u rack)",
+      "id": "sp2120_dims"
     },
     {
       "label": "VOID Acoustics Air Motion V2 Speaker",
@@ -1405,9 +1738,9 @@
       "captured_at": null,
       "author": "Void Acoustics Research Ltd.",
       "contributor": null,
-      "id": "void_air_motion_v2",
       "community": 5,
-      "norm_label": "void acoustics air motion v2 speaker"
+      "norm_label": "void acoustics air motion v2 speaker",
+      "id": "void_air_motion_v2"
     },
     {
       "label": "VOID Air Motion V2 User Guide",
@@ -1418,9 +1751,9 @@
       "captured_at": null,
       "author": "Void Acoustics Research Ltd.",
       "contributor": null,
-      "id": "void_air_motion_v2_guide",
       "community": 5,
-      "norm_label": "void air motion v2 user guide"
+      "norm_label": "void air motion v2 user guide",
+      "id": "void_air_motion_v2_guide"
     },
     {
       "label": "Air Motion V2 Specs: 3-way bi-amp, 500W LF / 250W HMF AES, 134dB cont, 137dB peak",
@@ -1431,9 +1764,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "air_motion_specs",
       "community": 5,
-      "norm_label": "air motion v2 specs: 3-way bi-amp, 500w lf / 250w hmf aes, 134db cont, 137db peak"
+      "norm_label": "air motion v2 specs: 3-way bi-amp, 500w lf / 250w hmf aes, 134db cont, 137db peak",
+      "id": "air_motion_specs"
     },
     {
       "label": "Air Motion V2 Drivers: 12\" LF + 8\" MF + 1.5\" HF compression driver",
@@ -1444,9 +1777,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "air_motion_drivers",
       "community": 5,
-      "norm_label": "air motion v2 drivers: 12\" lf + 8\" mf + 1.5\" hf compression driver"
+      "norm_label": "air motion v2 drivers: 12\" lf + 8\" mf + 1.5\" hf compression driver",
+      "id": "air_motion_drivers"
     },
     {
       "label": "Air Motion V2 Connectors: 2x speakON NL4 (pins 1+/1- LF, pins 2+/2- MHF)",
@@ -1457,9 +1790,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "air_motion_connectors",
       "community": 5,
-      "norm_label": "air motion v2 connectors: 2x speakon nl4 (pins 1+/1- lf, pins 2+/2- mhf)"
+      "norm_label": "air motion v2 connectors: 2x speakon nl4 (pins 1+/1- lf, pins 2+/2- mhf)",
+      "id": "air_motion_connectors"
     },
     {
       "label": "Air Motion V2 Dimensions: 854x672x658mm 35.4kg",
@@ -1470,9 +1803,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "air_motion_dims",
       "community": 5,
-      "norm_label": "air motion v2 dimensions: 854x672x658mm 35.4kg"
+      "norm_label": "air motion v2 dimensions: 854x672x658mm 35.4kg",
+      "id": "air_motion_dims"
     },
     {
       "label": "VOID Acoustics Air Vantage Speaker",
@@ -1483,9 +1816,9 @@
       "captured_at": null,
       "author": "Void Acoustics Research Ltd.",
       "contributor": null,
-      "id": "void_air_vantage",
       "community": 3,
-      "norm_label": "void acoustics air vantage speaker"
+      "norm_label": "void acoustics air vantage speaker",
+      "id": "void_air_vantage"
     },
     {
       "label": "VOID Air Vantage User Guide V2.0",
@@ -1496,9 +1829,9 @@
       "captured_at": null,
       "author": "Void Acoustics Research Ltd.",
       "contributor": null,
-      "id": "void_air_vantage_guide",
       "community": 3,
-      "norm_label": "void air vantage user guide v2.0"
+      "norm_label": "void air vantage user guide v2.0",
+      "id": "void_air_vantage_guide"
     },
     {
       "label": "Air Vantage Specs: 2-way passive, 500W AES, 127dB cont/133dB peak, 8 Ohm",
@@ -1509,9 +1842,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "air_vantage_specs",
       "community": 3,
-      "norm_label": "air vantage specs: 2-way passive, 500w aes, 127db cont/133db peak, 8 ohm"
+      "norm_label": "air vantage specs: 2-way passive, 500w aes, 127db cont/133db peak, 8 ohm",
+      "id": "air_vantage_specs"
     },
     {
       "label": "Air Vantage Drivers: 12\" LF horn-loaded + 1.5\" HF coaxial",
@@ -1522,9 +1855,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "air_vantage_drivers",
       "community": 3,
-      "norm_label": "air vantage drivers: 12\" lf horn-loaded + 1.5\" hf coaxial"
+      "norm_label": "air vantage drivers: 12\" lf horn-loaded + 1.5\" hf coaxial",
+      "id": "air_vantage_drivers"
     },
     {
       "label": "Air Vantage Connectors: 1x speakON NL4",
@@ -1535,9 +1868,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "air_vantage_connectors",
       "community": 3,
-      "norm_label": "air vantage connectors: 1x speakon nl4"
+      "norm_label": "air vantage connectors: 1x speakon nl4",
+      "id": "air_vantage_connectors"
     },
     {
       "label": "Air Vantage Dimensions: 719x415x660mm 23.5kg",
@@ -1548,9 +1881,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "air_vantage_dims",
       "community": 3,
-      "norm_label": "air vantage dimensions: 719x415x660mm 23.5kg"
+      "norm_label": "air vantage dimensions: 719x415x660mm 23.5kg",
+      "id": "air_vantage_dims"
     },
     {
       "label": "VOID Airten V3 Spec Sheet",
@@ -1561,9 +1894,9 @@
       "captured_at": null,
       "author": "Void Acoustics Research Ltd.",
       "contributor": null,
-      "id": "void_airten_v3_specsheet",
       "community": 3,
-      "norm_label": "void airten v3 spec sheet"
+      "norm_label": "void airten v3 spec sheet",
+      "id": "void_airten_v3_specsheet"
     },
     {
       "label": "VOID Airten V3 User Manual V2.1",
@@ -1574,9 +1907,9 @@
       "captured_at": null,
       "author": "Void Acoustics Research Ltd.",
       "contributor": null,
-      "id": "void_airten_v3_manual",
       "community": 3,
-      "norm_label": "void airten v3 user manual v2.1"
+      "norm_label": "void airten v3 user manual v2.1",
+      "id": "void_airten_v3_manual"
     },
     {
       "label": "VOID Acoustics Airten V3 Speaker",
@@ -1587,9 +1920,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_airten_v3",
       "community": 3,
-      "norm_label": "void acoustics airten v3 speaker"
+      "norm_label": "void acoustics airten v3 speaker",
+      "id": "void_airten_v3"
     },
     {
       "label": "Airten V3 Specs: 2-way passive, 500W AES, 125dB cont/131dB peak, 4 Ohm",
@@ -1600,9 +1933,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "airten_v3_specs",
       "community": 3,
-      "norm_label": "airten v3 specs: 2-way passive, 500w aes, 125db cont/131db peak, 4 ohm"
+      "norm_label": "airten v3 specs: 2-way passive, 500w aes, 125db cont/131db peak, 4 ohm",
+      "id": "airten_v3_specs"
     },
     {
       "label": "Airten V3 Drivers: 2x10\" LF + 1.3\" exit HF compression driver (coaxial)",
@@ -1613,9 +1946,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "airten_v3_drivers",
       "community": 3,
-      "norm_label": "airten v3 drivers: 2x10\" lf + 1.3\" exit hf compression driver (coaxial)"
+      "norm_label": "airten v3 drivers: 2x10\" lf + 1.3\" exit hf compression driver (coaxial)",
+      "id": "airten_v3_drivers"
     },
     {
       "label": "Airten V3 Connectors: 2x speakON NL4",
@@ -1626,9 +1959,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "airten_v3_connectors",
       "community": 3,
-      "norm_label": "airten v3 connectors: 2x speakon nl4"
+      "norm_label": "airten v3 connectors: 2x speakon nl4",
+      "id": "airten_v3_connectors"
     },
     {
       "label": "Airten V3 Dimensions: 681x303x366mm 20kg",
@@ -1639,9 +1972,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "airten_v3_dims",
       "community": 3,
-      "norm_label": "airten v3 dimensions: 681x303x366mm 20kg"
+      "norm_label": "airten v3 dimensions: 681x303x366mm 20kg",
+      "id": "airten_v3_dims"
     },
     {
       "label": "VOID Acoustics Stasys Xair Subwoofer",
@@ -1652,9 +1985,9 @@
       "captured_at": null,
       "author": "Void Acoustics Research Ltd.",
       "contributor": null,
-      "id": "void_stasys_xair",
       "community": 6,
-      "norm_label": "void acoustics stasys xair subwoofer"
+      "norm_label": "void acoustics stasys xair subwoofer",
+      "id": "void_stasys_xair"
     },
     {
       "label": "VOID Stasys Xair User Guide V2.1",
@@ -1665,9 +1998,9 @@
       "captured_at": null,
       "author": "Void Acoustics Research Ltd.",
       "contributor": null,
-      "id": "void_stasys_xair_guide",
       "community": 6,
-      "norm_label": "void stasys xair user guide v2.1"
+      "norm_label": "void stasys xair user guide v2.1",
+      "id": "void_stasys_xair_guide"
     },
     {
       "label": "Stasys Xair Specs: double 18\" horn-loaded, 3200W AES, 139dB cont/145dB peak, 4 Ohm",
@@ -1678,9 +2011,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "stasys_xair_specs",
       "community": 6,
-      "norm_label": "stasys xair specs: double 18\" horn-loaded, 3200w aes, 139db cont/145db peak, 4 ohm"
+      "norm_label": "stasys xair specs: double 18\" horn-loaded, 3200w aes, 139db cont/145db peak, 4 ohm",
+      "id": "stasys_xair_specs"
     },
     {
       "label": "Stasys Xair Connectors: 2x speakON NL4 (pins 1+/1- LF 2x18\", pins 2+/2- n/c)",
@@ -1691,9 +2024,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "stasys_xair_connectors",
       "community": 6,
-      "norm_label": "stasys xair connectors: 2x speakon nl4 (pins 1+/1- lf 2x18\", pins 2+/2- n/c)"
+      "norm_label": "stasys xair connectors: 2x speakon nl4 (pins 1+/1- lf 2x18\", pins 2+/2- n/c)",
+      "id": "stasys_xair_connectors"
     },
     {
       "label": "Stasys Xair Dimensions: 1226x562x903mm 130kg",
@@ -1704,9 +2037,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "stasys_xair_dims",
       "community": 6,
-      "norm_label": "stasys xair dimensions: 1226x562x903mm 130kg"
+      "norm_label": "stasys xair dimensions: 1226x562x903mm 130kg",
+      "id": "stasys_xair_dims"
     },
     {
       "label": "Stasys Xair Bias Q5 speakON Wiring (output 1 or 2, max 2 parallel at 2 Ohm)",
@@ -1717,9 +2050,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "stasys_xair_bias_q5_wiring",
       "community": 6,
-      "norm_label": "stasys xair bias q5 speakon wiring (output 1 or 2, max 2 parallel at 2 ohm)"
+      "norm_label": "stasys xair bias q5 speakon wiring (output 1 or 2, max 2 parallel at 2 ohm)",
+      "id": "stasys_xair_bias_q5_wiring"
     },
     {
       "label": "VOID Venu V2 Series Speaker Family",
@@ -1730,9 +2063,9 @@
       "captured_at": null,
       "author": "Void Acoustics Research Ltd.",
       "contributor": null,
-      "id": "void_venu_v2_series",
       "community": 6,
-      "norm_label": "void venu v2 series speaker family"
+      "norm_label": "void venu v2 series speaker family",
+      "id": "void_venu_v2_series"
     },
     {
       "label": "VOID Venu V2 Series User Guide V2.0",
@@ -1743,9 +2076,9 @@
       "captured_at": null,
       "author": "Void Acoustics Research Ltd.",
       "contributor": null,
-      "id": "void_venu_v2_guide",
       "community": 6,
-      "norm_label": "void venu v2 series user guide v2.0"
+      "norm_label": "void venu v2 series user guide v2.0",
+      "id": "void_venu_v2_guide"
     },
     {
       "label": "Venu V2 Two-Way Passive Models: 6V2, 8V2, 10V2, 12V2, 15V2",
@@ -1756,9 +2089,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "venu_v2_two_way_models",
       "community": 6,
-      "norm_label": "venu v2 two-way passive models: 6v2, 8v2, 10v2, 12v2, 15v2"
+      "norm_label": "venu v2 two-way passive models: 6v2, 8v2, 10v2, 12v2, 15v2",
+      "id": "venu_v2_two_way_models"
     },
     {
       "label": "Venu V2 Low Frequency Models: 112V2, 115V2, 212V2, 215V2, 208V2",
@@ -1769,9 +2102,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "venu_v2_lf_models",
       "community": 6,
-      "norm_label": "venu v2 low frequency models: 112v2, 115v2, 212v2, 215v2, 208v2"
+      "norm_label": "venu v2 low frequency models: 112v2, 115v2, 212v2, 215v2, 208v2",
+      "id": "venu_v2_lf_models"
     },
     {
       "label": "Venu V2 Phoenix Connector (4-pin -+- + polarity)",
@@ -1782,9 +2115,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "venu_v2_phoenix_connector",
       "community": 6,
-      "norm_label": "venu v2 phoenix connector (4-pin -+- + polarity)"
+      "norm_label": "venu v2 phoenix connector (4-pin -+- + polarity)",
+      "id": "venu_v2_phoenix_connector"
     },
     {
       "label": "Venu V2 speakON NL4 Wiring (pins 1+/1- HF+LF, pins 2+/2- link)",
@@ -1795,9 +2128,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "venu_v2_speakon_wiring",
       "community": 6,
-      "norm_label": "venu v2 speakon nl4 wiring (pins 1+/1- hf+lf, pins 2+/2- link)"
+      "norm_label": "venu v2 speakon nl4 wiring (pins 1+/1- hf+lf, pins 2+/2- link)",
+      "id": "venu_v2_speakon_wiring"
     },
     {
       "label": "Bias Q5 Power Amplifier (Void Acoustics)",
@@ -1808,9 +2141,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_q5_amp",
       "community": 6,
-      "norm_label": "bias q5 power amplifier (void acoustics)"
+      "norm_label": "bias q5 power amplifier (void acoustics)",
+      "id": "bias_q5_amp"
     },
     {
       "label": "Bias Q5 speakON Output Connectors",
@@ -1821,9 +2154,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_q5_speakon_output",
       "community": 6,
-      "norm_label": "bias q5 speakon output connectors"
+      "norm_label": "bias q5 speakon output connectors",
+      "id": "bias_q5_speakon_output"
     },
     {
       "label": "Bias Q5 AC Input Phoenix 5-pin Mains Connector (non-standard)",
@@ -1834,9 +2167,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_q5_phoenix_input",
       "community": 6,
-      "norm_label": "bias q5 ac input phoenix 5-pin mains connector (non-standard)"
+      "norm_label": "bias q5 ac input phoenix 5-pin mains connector (non-standard)",
+      "id": "bias_q5_phoenix_input"
     },
     {
       "label": "Bias Q5 XLR Analog Inputs (ch1-5) and XLR Input ch6 analog",
@@ -1847,9 +2180,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_q5_xlr_inputs",
       "community": 6,
-      "norm_label": "bias q5 xlr analog inputs (ch1-5) and xlr input ch6 analog"
+      "norm_label": "bias q5 xlr analog inputs (ch1-5) and xlr input ch6 analog",
+      "id": "bias_q5_xlr_inputs"
     },
     {
       "label": "Bias Q5 Ethernet/eCON Primary and Secondary Ports",
@@ -1860,9 +2193,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_q5_ethernet",
       "community": 6,
-      "norm_label": "bias q5 ethernet/econ primary and secondary ports"
+      "norm_label": "bias q5 ethernet/econ primary and secondary ports",
+      "id": "bias_q5_ethernet"
     },
     {
       "label": "Bias Q5 Dimensional Drawing: 483mm W x 44.5mm H x 495mm D (1U rack)",
@@ -1873,9 +2206,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_q5_dims_drawing",
       "community": 6,
-      "norm_label": "bias q5 dimensional drawing: 483mm w x 44.5mm h x 495mm d (1u rack)"
+      "norm_label": "bias q5 dimensional drawing: 483mm w x 44.5mm h x 495mm d (1u rack)",
+      "id": "bias_q5_dims_drawing"
     },
     {
       "label": "Bias Q5 Front Panel (User Guide V1.1 cover diagram)",
@@ -1886,9 +2219,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_q5_front_panel",
       "community": 6,
-      "norm_label": "bias q5 front panel (user guide v1.1 cover diagram)"
+      "norm_label": "bias q5 front panel (user guide v1.1 cover diagram)",
+      "id": "bias_q5_front_panel"
     },
     {
       "label": "Bias V3 Power Amplifier (Void Acoustics)",
@@ -1899,9 +2232,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_v3_amp",
       "community": 5,
-      "norm_label": "bias v3 power amplifier (void acoustics)"
+      "norm_label": "bias v3 power amplifier (void acoustics)",
+      "id": "bias_v3_amp"
     },
     {
       "label": "Bias V3 Front Panel Drawing: 465mm W x 32.2mm H (1U rack), with display and controls",
@@ -1912,9 +2245,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_v3_front_panel",
       "community": 5,
-      "norm_label": "bias v3 front panel drawing: 465mm w x 32.2mm h (1u rack), with display and controls"
+      "norm_label": "bias v3 front panel drawing: 465mm w x 32.2mm h (1u rack), with display and controls",
+      "id": "bias_v3_front_panel"
     },
     {
       "label": "Bias V3 Dimensional Drawing (side view): 439mm depth, ventilation bottom",
@@ -1925,9 +2258,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_v3_dims_drawing",
       "community": 5,
-      "norm_label": "bias v3 dimensional drawing (side view): 439mm depth, ventilation bottom"
+      "norm_label": "bias v3 dimensional drawing (side view): 439mm depth, ventilation bottom",
+      "id": "bias_v3_dims_drawing"
     },
     {
       "label": "CQ-12T System Block Diagram (signal flow PNG)",
@@ -1938,9 +2271,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ahcq12t_block_diagram_img",
       "community": 4,
-      "norm_label": "cq-12t system block diagram (signal flow png)"
+      "norm_label": "cq-12t system block diagram (signal flow png)",
+      "id": "ahcq12t_block_diagram_img"
     },
     {
       "label": "CQ-12T Dimensions Drawing PNG: 290.4x254.4x88.2mm",
@@ -1951,9 +2284,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ahcq12t_dims_img",
-      "community": 9,
-      "norm_label": "cq-12t dimensions drawing png: 290.4x254.4x88.2mm"
+      "community": 17,
+      "norm_label": "cq-12t dimensions drawing png: 290.4x254.4x88.2mm",
+      "id": "ahcq12t_dims_img"
     },
     {
       "label": "CQ-12T Technical Datasheet Page 1 PNG (features overview)",
@@ -1964,9 +2297,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ahcq12t_datasheet_img",
       "community": 4,
-      "norm_label": "cq-12t technical datasheet page 1 png (features overview)"
+      "norm_label": "cq-12t technical datasheet page 1 png (features overview)",
+      "id": "ahcq12t_datasheet_img"
     },
     {
       "label": "Pioneer CDJ-3000 Rear Panel Diagram",
@@ -1977,9 +2310,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pioneer_cdj3000_rear",
       "community": 4,
-      "norm_label": "pioneer cdj-3000 rear panel diagram"
+      "norm_label": "pioneer cdj-3000 rear panel diagram",
+      "id": "pioneer_cdj3000_rear"
     },
     {
       "label": "CDJ-3000 Rear: Audio Out L/R, Digital Out, AC In, LINK terminal (LAN), USB port",
@@ -1990,9 +2323,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "cdj3000_rear_connectors",
       "community": 4,
-      "norm_label": "cdj-3000 rear: audio out l/r, digital out, ac in, link terminal (lan), usb port"
+      "norm_label": "cdj-3000 rear: audio out l/r, digital out, ac in, link terminal (lan), usb port",
+      "id": "cdj3000_rear_connectors"
     },
     {
       "label": "Bias D1/Q1/Q2 Phoenix Wiring to VOID Speakers",
@@ -2003,9 +2336,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_d1q1q2_phoenix_wiring",
       "community": 3,
-      "norm_label": "bias d1/q1/q2 phoenix wiring to void speakers"
+      "norm_label": "bias d1/q1/q2 phoenix wiring to void speakers",
+      "id": "bias_d1q1q2_phoenix_wiring"
     },
     {
       "label": "Bias Q3/Q5 speakON Wiring to VOID Speakers",
@@ -2016,9 +2349,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "bias_q3q5_speakon_wiring",
       "community": 5,
-      "norm_label": "bias q3/q5 speakon wiring to void speakers"
+      "norm_label": "bias q3/q5 speakon wiring to void speakers",
+      "id": "bias_q3q5_speakon_wiring"
     },
     {
       "label": "Pioneer CDJ-3000 Top Panel View",
@@ -2029,9 +2362,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pioneer_cdj3000_top_view",
       "community": 5,
-      "norm_label": "pioneer cdj-3000 top panel view"
+      "norm_label": "pioneer cdj-3000 top panel view",
+      "id": "pioneer_cdj3000_top_view"
     },
     {
       "label": "Pioneer CDJ-3000 Media Player",
@@ -2042,9 +2375,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pioneer_cdj3000_cover",
       "community": 5,
-      "norm_label": "pioneer cdj-3000 media player"
+      "norm_label": "pioneer cdj-3000 media player",
+      "id": "pioneer_cdj3000_cover"
     },
     {
       "label": "Pioneer DJM-V10 Rear Panel View",
@@ -2055,9 +2388,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pioneer_djmv10_rear_view",
       "community": 5,
-      "norm_label": "pioneer djm-v10 rear panel view"
+      "norm_label": "pioneer djm-v10 rear panel view",
+      "id": "pioneer_djmv10_rear_view"
     },
     {
       "label": "Pioneer DJM-V10 Top Panel View",
@@ -2068,9 +2401,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pioneer_djmv10_top_view",
       "community": 5,
-      "norm_label": "pioneer djm-v10 top panel view"
+      "norm_label": "pioneer djm-v10 top panel view",
+      "id": "pioneer_djmv10_top_view"
     },
     {
       "label": "Pioneer DJM-V10 DJ Mixer",
@@ -2081,9 +2414,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pioneer_djmv10_cover",
       "community": 5,
-      "norm_label": "pioneer djm-v10 dj mixer"
+      "norm_label": "pioneer djm-v10 dj mixer",
+      "id": "pioneer_djmv10_cover"
     },
     {
       "label": "VOID Air Motion V2 Dimensions Drawing",
@@ -2094,9 +2427,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_air_motion_v2_dims",
       "community": 5,
-      "norm_label": "void air motion v2 dimensions drawing"
+      "norm_label": "void air motion v2 dimensions drawing",
+      "id": "void_air_motion_v2_dims"
     },
     {
       "label": "VOID Air Motion V2 Front View",
@@ -2107,9 +2440,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_air_motion_v2_front",
       "community": 5,
-      "norm_label": "void air motion v2 front view"
+      "norm_label": "void air motion v2 front view",
+      "id": "void_air_motion_v2_front"
     },
     {
       "label": "VOID Air Motion V2 Side View",
@@ -2120,9 +2453,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_air_motion_v2_side",
       "community": 5,
-      "norm_label": "void air motion v2 side view"
+      "norm_label": "void air motion v2 side view",
+      "id": "void_air_motion_v2_side"
     },
     {
       "label": "VOID Air Motion V2 Top View",
@@ -2133,9 +2466,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_air_motion_v2_top",
       "community": 5,
-      "norm_label": "void air motion v2 top view"
+      "norm_label": "void air motion v2 top view",
+      "id": "void_air_motion_v2_top"
     },
     {
       "label": "VOID Air Motion V2 Red FOH Main Speaker",
@@ -2146,9 +2479,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_air_motion_v2_cover",
       "community": 5,
-      "norm_label": "void air motion v2 red foh main speaker"
+      "norm_label": "void air motion v2 red foh main speaker",
+      "id": "void_air_motion_v2_cover"
     },
     {
       "label": "VOID Air Vantage Dimensions Drawing",
@@ -2159,9 +2492,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_air_vantage_dims",
       "community": 3,
-      "norm_label": "void air vantage dimensions drawing"
+      "norm_label": "void air vantage dimensions drawing",
+      "id": "void_air_vantage_dims"
     },
     {
       "label": "VOID Air Vantage Front View",
@@ -2172,9 +2505,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_air_vantage_front",
       "community": 3,
-      "norm_label": "void air vantage front view"
+      "norm_label": "void air vantage front view",
+      "id": "void_air_vantage_front"
     },
     {
       "label": "VOID Air Vantage Side View",
@@ -2185,9 +2518,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_air_vantage_side",
       "community": 3,
-      "norm_label": "void air vantage side view"
+      "norm_label": "void air vantage side view",
+      "id": "void_air_vantage_side"
     },
     {
       "label": "VOID Air Vantage Top View",
@@ -2198,9 +2531,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_air_vantage_top",
       "community": 3,
-      "norm_label": "void air vantage top view"
+      "norm_label": "void air vantage top view",
+      "id": "void_air_vantage_top"
     },
     {
       "label": "VOID Air Vantage DJ Booth Monitor (Red)",
@@ -2211,9 +2544,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_air_vantage_cover",
       "community": 3,
-      "norm_label": "void air vantage dj booth monitor (red)"
+      "norm_label": "void air vantage dj booth monitor (red)",
+      "id": "void_air_vantage_cover"
     },
     {
       "label": "VOID Airten V3 Dimensions Drawing",
@@ -2224,9 +2557,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_airten_v3_dims",
       "community": 3,
-      "norm_label": "void airten v3 dimensions drawing"
+      "norm_label": "void airten v3 dimensions drawing",
+      "id": "void_airten_v3_dims"
     },
     {
       "label": "VOID Airten V3 Compact FOH Fill (Red)",
@@ -2237,9 +2570,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_airten_v3_cover",
       "community": 3,
-      "norm_label": "void airten v3 compact foh fill (red)"
+      "norm_label": "void airten v3 compact foh fill (red)",
+      "id": "void_airten_v3_cover"
     },
     {
       "label": "VOID Stasys Xair Subwoofer Dimensions Drawing",
@@ -2250,9 +2583,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_stasys_xair_dims",
       "community": 6,
-      "norm_label": "void stasys xair subwoofer dimensions drawing"
+      "norm_label": "void stasys xair subwoofer dimensions drawing",
+      "id": "void_stasys_xair_dims"
     },
     {
       "label": "VOID Stasys Xair Large Subwoofer",
@@ -2263,9 +2596,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_stasys_xair_cover",
       "community": 6,
-      "norm_label": "void stasys xair large subwoofer"
+      "norm_label": "void stasys xair large subwoofer",
+      "id": "void_stasys_xair_cover"
     },
     {
       "label": "VOID Venu 215 V2 DJ Booth Sub Dimensions Drawing",
@@ -2276,9 +2609,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_venu_215_v2_dims",
       "community": 3,
-      "norm_label": "void venu 215 v2 dj booth sub dimensions drawing"
+      "norm_label": "void venu 215 v2 dj booth sub dimensions drawing",
+      "id": "void_venu_215_v2_dims"
     },
     {
       "label": "Pioneer CDJ-3000 (Equipment Entity)",
@@ -2289,9 +2622,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pioneer_cdj3000",
       "community": 5,
-      "norm_label": "pioneer cdj-3000 (equipment entity)"
+      "norm_label": "pioneer cdj-3000 (equipment entity)",
+      "id": "pioneer_cdj3000"
     },
     {
       "label": "Pioneer DJM-V10 (Equipment Entity)",
@@ -2302,9 +2635,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pioneer_djmv10",
       "community": 5,
-      "norm_label": "pioneer djm-v10 (equipment entity)"
+      "norm_label": "pioneer djm-v10 (equipment entity)",
+      "id": "pioneer_djmv10"
     },
     {
       "label": "VOID Venu 215 V2 (Equipment Entity)",
@@ -2315,9 +2648,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "void_venu_215_v2",
       "community": 3,
-      "norm_label": "void venu 215 v2 (equipment entity)"
+      "norm_label": "void venu 215 v2 (equipment entity)",
+      "id": "void_venu_215_v2"
     },
     {
       "label": "Void Air Motion V2",
@@ -2328,9 +2661,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_air_motion_v2",
       "community": 0,
-      "norm_label": "void air motion v2"
+      "norm_label": "void air motion v2",
+      "id": "speaker_void_air_motion_v2"
     },
     {
       "label": "Void Air Motion V2 Front View SVG",
@@ -2341,9 +2674,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_air_motion_v2_front_svg",
       "community": 0,
-      "norm_label": "void air motion v2 front view svg"
+      "norm_label": "void air motion v2 front view svg",
+      "id": "speaker_void_air_motion_v2_front_svg"
     },
     {
       "label": "Void Air Motion V2 Side View SVG",
@@ -2354,9 +2687,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_air_motion_v2_side_svg",
       "community": 0,
-      "norm_label": "void air motion v2 side view svg"
+      "norm_label": "void air motion v2 side view svg",
+      "id": "speaker_void_air_motion_v2_side_svg"
     },
     {
       "label": "Void Air Motion V2 Top View SVG",
@@ -2367,9 +2700,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_air_motion_v2_top_svg",
       "community": 0,
-      "norm_label": "void air motion v2 top view svg"
+      "norm_label": "void air motion v2 top view svg",
+      "id": "speaker_void_air_motion_v2_top_svg"
     },
     {
       "label": "Void Air Vantage",
@@ -2380,9 +2713,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_air_vantage",
       "community": 7,
-      "norm_label": "void air vantage"
+      "norm_label": "void air vantage",
+      "id": "speaker_void_air_vantage"
     },
     {
       "label": "Void Air Vantage Front View SVG",
@@ -2393,9 +2726,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_air_vantage_front_svg",
       "community": 7,
-      "norm_label": "void air vantage front view svg"
+      "norm_label": "void air vantage front view svg",
+      "id": "speaker_void_air_vantage_front_svg"
     },
     {
       "label": "Void Air Vantage Side View SVG",
@@ -2406,9 +2739,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_air_vantage_side_svg",
       "community": 7,
-      "norm_label": "void air vantage side view svg"
+      "norm_label": "void air vantage side view svg",
+      "id": "speaker_void_air_vantage_side_svg"
     },
     {
       "label": "Void Air Vantage Top View SVG",
@@ -2419,9 +2752,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_air_vantage_top_svg",
       "community": 7,
-      "norm_label": "void air vantage top view svg"
+      "norm_label": "void air vantage top view svg",
+      "id": "speaker_void_air_vantage_top_svg"
     },
     {
       "label": "Void Venu 215 V2",
@@ -2432,9 +2765,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_venu_215_v2",
       "community": 7,
-      "norm_label": "void venu 215 v2"
+      "norm_label": "void venu 215 v2",
+      "id": "speaker_void_venu_215_v2"
     },
     {
       "label": "Void Venu 215 V2 Front View SVG",
@@ -2445,9 +2778,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_venu_215_v2_front_svg",
       "community": 7,
-      "norm_label": "void venu 215 v2 front view svg"
+      "norm_label": "void venu 215 v2 front view svg",
+      "id": "speaker_void_venu_215_v2_front_svg"
     },
     {
       "label": "Void Venu 215 V2 Side View SVG",
@@ -2458,9 +2791,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_venu_215_v2_side_svg",
       "community": 7,
-      "norm_label": "void venu 215 v2 side view svg"
+      "norm_label": "void venu 215 v2 side view svg",
+      "id": "speaker_void_venu_215_v2_side_svg"
     },
     {
       "label": "Void Venu 215 V2 Top View SVG",
@@ -2471,9 +2804,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_venu_215_v2_top_svg",
       "community": 7,
-      "norm_label": "void venu 215 v2 top view svg"
+      "norm_label": "void venu 215 v2 top view svg",
+      "id": "speaker_void_venu_215_v2_top_svg"
     },
     {
       "label": "Void Venu 215 V2 Front View PNG",
@@ -2484,9 +2817,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_venu_215_v2_front_png",
       "community": 7,
-      "norm_label": "void venu 215 v2 front view png"
+      "norm_label": "void venu 215 v2 front view png",
+      "id": "speaker_void_venu_215_v2_front_png"
     },
     {
       "label": "Void Venu 215 V2 Side View PNG",
@@ -2497,9 +2830,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_venu_215_v2_side_png",
       "community": 7,
-      "norm_label": "void venu 215 v2 side view png"
+      "norm_label": "void venu 215 v2 side view png",
+      "id": "speaker_void_venu_215_v2_side_png"
     },
     {
       "label": "Void Venu 215 V2 Top View PNG",
@@ -2510,9 +2843,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_venu_215_v2_top_png",
       "community": 7,
-      "norm_label": "void venu 215 v2 top view png"
+      "norm_label": "void venu 215 v2 top view png",
+      "id": "speaker_void_venu_215_v2_top_png"
     },
     {
       "label": "Void Venu 215 V2 PNG (general)",
@@ -2523,9 +2856,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_void_venu_215_v2_png",
       "community": 7,
-      "norm_label": "void venu 215 v2 png (general)"
+      "norm_label": "void venu 215 v2 png (general)",
+      "id": "speaker_void_venu_215_v2_png"
     },
     {
       "label": "Bias V3 Amplifier",
@@ -2536,9 +2869,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "amp_bias_v3_amp",
       "community": 0,
-      "norm_label": "bias v3 amplifier"
+      "norm_label": "bias v3 amplifier",
+      "id": "amp_bias_v3_amp"
     },
     {
       "label": "Bias V3 Amp Front View SVG",
@@ -2549,9 +2882,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "amp_bias_v3_amp_front_svg",
       "community": 0,
-      "norm_label": "bias v3 amp front view svg"
+      "norm_label": "bias v3 amp front view svg",
+      "id": "amp_bias_v3_amp_front_svg"
     },
     {
       "label": "Bias V3 Amp Side View SVG",
@@ -2562,9 +2895,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "amp_bias_v3_amp_side_svg",
       "community": 0,
-      "norm_label": "bias v3 amp side view svg"
+      "norm_label": "bias v3 amp side view svg",
+      "id": "amp_bias_v3_amp_side_svg"
     },
     {
       "label": "Nomad Toronto AV Signal Flow Diagram",
@@ -2575,9 +2908,9 @@
       "captured_at": "2026-04-27",
       "author": "EMBLEM PROJECTS INC.",
       "contributor": null,
-      "id": "techpack_signal_flow_svg",
       "community": 0,
-      "norm_label": "nomad toronto av signal flow diagram"
+      "norm_label": "nomad toronto av signal flow diagram",
+      "id": "techpack_signal_flow_svg"
     },
     {
       "label": "Nomad Toronto Amp Rack Elevation Diagram",
@@ -2588,9 +2921,9 @@
       "captured_at": "2026-04-27",
       "author": "EMBLEM PROJECTS INC.",
       "contributor": null,
-      "id": "techpack_rack_elevation_svg",
       "community": 0,
-      "norm_label": "nomad toronto amp rack elevation diagram"
+      "norm_label": "nomad toronto amp rack elevation diagram",
+      "id": "techpack_rack_elevation_svg"
     },
     {
       "label": "Nomad Toronto Speaker Zone Map",
@@ -2601,9 +2934,9 @@
       "captured_at": "2026-04-27",
       "author": "EMBLEM PROJECTS INC.",
       "contributor": null,
-      "id": "techpack_speaker_zone_map_svg",
       "community": 7,
-      "norm_label": "nomad toronto speaker zone map"
+      "norm_label": "nomad toronto speaker zone map",
+      "id": "techpack_speaker_zone_map_svg"
     },
     {
       "label": "Pioneer CDJ-3000 (\u00d74)",
@@ -2614,9 +2947,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "device_cdj3000",
       "community": 0,
-      "norm_label": "pioneer cdj-3000 (\u00d74)"
+      "norm_label": "pioneer cdj-3000 (\u00d74)",
+      "id": "device_cdj3000"
     },
     {
       "label": "Pioneer DJM-V10",
@@ -2627,9 +2960,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "device_djm_v10",
       "community": 0,
-      "norm_label": "pioneer djm-v10"
+      "norm_label": "pioneer djm-v10",
+      "id": "device_djm_v10"
     },
     {
       "label": "Allen & Heath CQ-12T",
@@ -2640,9 +2973,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "device_cq12t",
       "community": 0,
-      "norm_label": "allen & heath cq-12t"
+      "norm_label": "allen & heath cq-12t",
+      "id": "device_cq12t"
     },
     {
       "label": "Drawmer SP2120",
@@ -2653,9 +2986,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "device_sp2120",
       "community": 0,
-      "norm_label": "drawmer sp2120"
+      "norm_label": "drawmer sp2120",
+      "id": "device_sp2120"
     },
     {
       "label": "Bias V3 #2 (S/N 341132, IP 192.168.10.14)",
@@ -2666,9 +2999,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "device_bias_v3_2",
       "community": 0,
-      "norm_label": "bias v3 #2 (s/n 341132, ip 192.168.10.14)"
+      "norm_label": "bias v3 #2 (s/n 341132, ip 192.168.10.14)",
+      "id": "device_bias_v3_2"
     },
     {
       "label": "Bias Q2 #1 (S/N 951058, IP 192.168.10.12)",
@@ -2679,9 +3012,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "device_bias_q2_1",
       "community": 7,
-      "norm_label": "bias q2 #1 (s/n 951058, ip 192.168.10.12)"
+      "norm_label": "bias q2 #1 (s/n 951058, ip 192.168.10.12)",
+      "id": "device_bias_q2_1"
     },
     {
       "label": "Bias Q5 (S/N 777758, IP 192.168.10.10)",
@@ -2692,9 +3025,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "device_bias_q5",
       "community": 0,
-      "norm_label": "bias q5 (s/n 777758, ip 192.168.10.10)"
+      "norm_label": "bias q5 (s/n 777758, ip 192.168.10.10)",
+      "id": "device_bias_q5"
     },
     {
       "label": "Bias Q2 #2 (S/N 00543758, IP 192.168.10.11)",
@@ -2705,9 +3038,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "device_bias_q2_2",
       "community": 0,
-      "norm_label": "bias q2 #2 (s/n 00543758, ip 192.168.10.11)"
+      "norm_label": "bias q2 #2 (s/n 00543758, ip 192.168.10.11)",
+      "id": "device_bias_q2_2"
     },
     {
       "label": "Bias V3 #1 (S/N 341130, IP 192.168.10.13)",
@@ -2718,9 +3051,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "device_bias_v3_1",
       "community": 0,
-      "norm_label": "bias v3 #1 (s/n 341130, ip 192.168.10.13)"
+      "norm_label": "bias v3 #1 (s/n 341130, ip 192.168.10.13)",
+      "id": "device_bias_v3_1"
     },
     {
       "label": "Bias V9 (OFFLINE)",
@@ -2731,9 +3064,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "device_bias_v9_offline",
       "community": 0,
-      "norm_label": "bias v9 (offline)"
+      "norm_label": "bias v9 (offline)",
+      "id": "device_bias_v9_offline"
     },
     {
       "label": "Stasys Xair L-3 (Outside Sub L)",
@@ -2744,9 +3077,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_xair_l3",
       "community": 0,
-      "norm_label": "stasys xair l-3 (outside sub l)"
+      "norm_label": "stasys xair l-3 (outside sub l)",
+      "id": "speaker_xair_l3"
     },
     {
       "label": "Stasys Xair R-3 (Outside Sub R)",
@@ -2757,9 +3090,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_xair_r3",
       "community": 0,
-      "norm_label": "stasys xair r-3 (outside sub r)"
+      "norm_label": "stasys xair r-3 (outside sub r)",
+      "id": "speaker_xair_r3"
     },
     {
       "label": "Stasys Xair Middle Cluster (L-1, L-2, R-1, R-2)",
@@ -2770,9 +3103,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_xair_middle_cluster",
       "community": 0,
-      "norm_label": "stasys xair middle cluster (l-1, l-2, r-1, r-2)"
+      "norm_label": "stasys xair middle cluster (l-1, l-2, r-1, r-2)",
+      "id": "speaker_xair_middle_cluster"
     },
     {
       "label": "Air Motion V2 FOH Mains (\u00d72)",
@@ -2783,9 +3116,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_air_motion_v2_foh",
       "community": 0,
-      "norm_label": "air motion v2 foh mains (\u00d72)"
+      "norm_label": "air motion v2 foh mains (\u00d72)",
+      "id": "speaker_air_motion_v2_foh"
     },
     {
       "label": "Airten V3 FOH Fill (\u00d72)",
@@ -2796,9 +3129,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_airten_v3_foh",
       "community": 0,
-      "norm_label": "airten v3 foh fill (\u00d72)"
+      "norm_label": "airten v3 foh fill (\u00d72)",
+      "id": "speaker_airten_v3_foh"
     },
     {
       "label": "Air Vantage DJ Booth Monitors (\u00d72)",
@@ -2809,9 +3142,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_air_vantage_booth",
       "community": 7,
-      "norm_label": "air vantage dj booth monitors (\u00d72)"
+      "norm_label": "air vantage dj booth monitors (\u00d72)",
+      "id": "speaker_air_vantage_booth"
     },
     {
       "label": "Venu 215 V2 DJ Booth Sub (\u00d72)",
@@ -2822,9 +3155,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_venu_215_v2_booth",
       "community": 7,
-      "norm_label": "venu 215 v2 dj booth sub (\u00d72)"
+      "norm_label": "venu 215 v2 dj booth sub (\u00d72)",
+      "id": "speaker_venu_215_v2_booth"
     },
     {
       "label": "Athens Entrance Speakers (\u00d72, Self-powered)",
@@ -2835,9 +3168,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "speaker_athens_entrance",
       "community": 0,
-      "norm_label": "athens entrance speakers (\u00d72, self-powered)"
+      "norm_label": "athens entrance speakers (\u00d72, self-powered)",
+      "id": "speaker_athens_entrance"
     },
     {
       "label": "FOH Zone",
@@ -2848,9 +3181,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "zone_foh",
       "community": 0,
-      "norm_label": "foh zone"
+      "norm_label": "foh zone",
+      "id": "zone_foh"
     },
     {
       "label": "DJ Booth Zone",
@@ -2861,9 +3194,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "zone_booth",
       "community": 7,
-      "norm_label": "dj booth zone"
+      "norm_label": "dj booth zone",
+      "id": "zone_booth"
     },
     {
       "label": "Rack U1 - 1U Blank Panel",
@@ -2874,9 +3207,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rack_position_u1",
-      "community": 13,
-      "norm_label": "rack u1 - 1u blank panel"
+      "community": 21,
+      "norm_label": "rack u1 - 1u blank panel",
+      "id": "rack_position_u1"
     },
     {
       "label": "Rack U2 - Drawmer SP2120",
@@ -2887,9 +3220,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rack_position_u2",
       "community": 0,
-      "norm_label": "rack u2 - drawmer sp2120"
+      "norm_label": "rack u2 - drawmer sp2120",
+      "id": "rack_position_u2"
     },
     {
       "label": "Rack U3 - Bias V3 #1 (air ten v3)",
@@ -2900,9 +3233,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rack_position_u3",
       "community": 0,
-      "norm_label": "rack u3 - bias v3 #1 (air ten v3)"
+      "norm_label": "rack u3 - bias v3 #1 (air ten v3)",
+      "id": "rack_position_u3"
     },
     {
       "label": "Rack U4 - Bias Q2 #1 (DJ Monitors)",
@@ -2913,9 +3246,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rack_position_u4",
       "community": 7,
-      "norm_label": "rack u4 - bias q2 #1 (dj monitors)"
+      "norm_label": "rack u4 - bias q2 #1 (dj monitors)",
+      "id": "rack_position_u4"
     },
     {
       "label": "Rack U5 - Bias V9 OFFLINE",
@@ -2926,9 +3259,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rack_position_u5",
       "community": 0,
-      "norm_label": "rack u5 - bias v9 offline"
+      "norm_label": "rack u5 - bias v9 offline",
+      "id": "rack_position_u5"
     },
     {
       "label": "Rack U6 - Bias Q2 #2 (Air Motion)",
@@ -2939,9 +3272,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rack_position_u6",
       "community": 0,
-      "norm_label": "rack u6 - bias q2 #2 (air motion)"
+      "norm_label": "rack u6 - bias q2 #2 (air motion)",
+      "id": "rack_position_u6"
     },
     {
       "label": "Rack U7 - Bias V3 #2 (Outside Subs)",
@@ -2952,9 +3285,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rack_position_u7",
       "community": 0,
-      "norm_label": "rack u7 - bias v3 #2 (outside subs)"
+      "norm_label": "rack u7 - bias v3 #2 (outside subs)",
+      "id": "rack_position_u7"
     },
     {
       "label": "Rack U8 - Bias Q5 (Subs Middle, provisional)",
@@ -2965,9 +3298,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rack_position_u8",
       "community": 0,
-      "norm_label": "rack u8 - bias q5 (subs middle, provisional)"
+      "norm_label": "rack u8 - bias q5 (subs middle, provisional)",
+      "id": "rack_position_u8"
     },
     {
       "label": "Rack U9-U10 - Tripp Lite PDU",
@@ -2978,12 +3311,576 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rack_position_u9",
-      "community": 14,
-      "norm_label": "rack u9-u10 - tripp lite pdu"
+      "community": 22,
+      "norm_label": "rack u9-u10 - tripp lite pdu",
+      "id": "rack_position_u9"
     }
   ],
   "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\build-tech-pack.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "build_tech_pack_py",
+      "_tgt": "build_tech_pack_md_to_html",
+      "source": "build_tech_pack_py",
+      "target": "build_tech_pack_md_to_html",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\build-tech-pack.py",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_src": "build_tech_pack_py",
+      "_tgt": "build_tech_pack_inline_svg",
+      "source": "build_tech_pack_py",
+      "target": "build_tech_pack_inline_svg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\chatgpt-imagegen.mjs",
+      "source_location": "L114",
+      "weight": 1.0,
+      "_src": "chatgpt_imagegen_mjs",
+      "_tgt": "chatgpt_imagegen_tryclick",
+      "source": "chatgpt_imagegen_mjs",
+      "target": "chatgpt_imagegen_tryclick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\chatgpt-imagegen.mjs",
+      "source_location": "L124",
+      "weight": 1.0,
+      "_src": "chatgpt_imagegen_mjs",
+      "_tgt": "chatgpt_imagegen_trylocator",
+      "source": "chatgpt_imagegen_mjs",
+      "target": "chatgpt_imagegen_trylocator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\chatgpt-imagegen.mjs",
+      "source_location": "L137",
+      "weight": 1.0,
+      "_src": "chatgpt_imagegen_mjs",
+      "_tgt": "chatgpt_imagegen_run",
+      "source": "chatgpt_imagegen_mjs",
+      "target": "chatgpt_imagegen_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\chatgpt-imagegen.mjs",
+      "source_location": "L194",
+      "weight": 1.0,
+      "_src": "chatgpt_imagegen_run",
+      "_tgt": "chatgpt_imagegen_tryclick",
+      "source": "chatgpt_imagegen_tryclick",
+      "target": "chatgpt_imagegen_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\chatgpt-imagegen.mjs",
+      "source_location": "L253",
+      "weight": 1.0,
+      "_src": "chatgpt_imagegen_run",
+      "_tgt": "chatgpt_imagegen_trylocator",
+      "source": "chatgpt_imagegen_trylocator",
+      "target": "chatgpt_imagegen_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_src": "codex_imagegen_py",
+      "_tgt": "codex_imagegen_get_client",
+      "source": "codex_imagegen_py",
+      "target": "codex_imagegen_get_client",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_src": "codex_imagegen_py",
+      "_tgt": "codex_imagegen_generate_image",
+      "source": "codex_imagegen_py",
+      "target": "codex_imagegen_generate_image",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_src": "codex_imagegen_py",
+      "_tgt": "codex_imagegen_score_image",
+      "source": "codex_imagegen_py",
+      "target": "codex_imagegen_score_image",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_src": "codex_imagegen_py",
+      "_tgt": "codex_imagegen_main",
+      "source": "codex_imagegen_py",
+      "target": "codex_imagegen_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L121",
+      "weight": 1.0,
+      "_src": "codex_imagegen_main",
+      "_tgt": "codex_imagegen_get_client",
+      "source": "codex_imagegen_get_client",
+      "target": "codex_imagegen_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L138",
+      "weight": 1.0,
+      "_src": "codex_imagegen_main",
+      "_tgt": "codex_imagegen_generate_image",
+      "source": "codex_imagegen_generate_image",
+      "target": "codex_imagegen_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "codex_imagegen_rationale_56",
+      "_tgt": "codex_imagegen_generate_image",
+      "source": "codex_imagegen_generate_image",
+      "target": "codex_imagegen_rationale_56",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L152",
+      "weight": 1.0,
+      "_src": "codex_imagegen_main",
+      "_tgt": "codex_imagegen_score_image",
+      "source": "codex_imagegen_score_image",
+      "target": "codex_imagegen_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-imagegen.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "_src": "codex_imagegen_rationale_70",
+      "_tgt": "codex_imagegen_score_image",
+      "source": "codex_imagegen_score_image",
+      "target": "codex_imagegen_rationale_70",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-mcp-server.mjs",
+      "source_location": "L75",
+      "weight": 1.0,
+      "_src": "codex_mcp_server_mjs",
+      "_tgt": "codex_mcp_server_callopenai",
+      "source": "codex_mcp_server_mjs",
+      "target": "codex_mcp_server_callopenai",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-mcp-server.mjs",
+      "source_location": "L118",
+      "weight": 1.0,
+      "_src": "codex_mcp_server_mjs",
+      "_tgt": "codex_mcp_server_handlegenerateimage",
+      "source": "codex_mcp_server_mjs",
+      "target": "codex_mcp_server_handlegenerateimage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-mcp-server.mjs",
+      "source_location": "L144",
+      "weight": 1.0,
+      "_src": "codex_mcp_server_mjs",
+      "_tgt": "codex_mcp_server_handlecheckquota",
+      "source": "codex_mcp_server_mjs",
+      "target": "codex_mcp_server_handlecheckquota",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-mcp-server.mjs",
+      "source_location": "L161",
+      "weight": 1.0,
+      "_src": "codex_mcp_server_mjs",
+      "_tgt": "codex_mcp_server_handlerequest",
+      "source": "codex_mcp_server_mjs",
+      "target": "codex_mcp_server_handlerequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-mcp-server.mjs",
+      "source_location": "L145",
+      "weight": 1.0,
+      "_src": "codex_mcp_server_handlecheckquota",
+      "_tgt": "codex_mcp_server_callopenai",
+      "source": "codex_mcp_server_callopenai",
+      "target": "codex_mcp_server_handlecheckquota",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-mcp-server.mjs",
+      "source_location": "L184",
+      "weight": 1.0,
+      "_src": "codex_mcp_server_handlerequest",
+      "_tgt": "codex_mcp_server_handlegenerateimage",
+      "source": "codex_mcp_server_handlegenerateimage",
+      "target": "codex_mcp_server_handlerequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\codex-mcp-server.mjs",
+      "source_location": "L187",
+      "weight": 1.0,
+      "_src": "codex_mcp_server_handlerequest",
+      "_tgt": "codex_mcp_server_handlecheckquota",
+      "source": "codex_mcp_server_handlecheckquota",
+      "target": "codex_mcp_server_handlerequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_src": "download_missing_manuals_mjs",
+      "_tgt": "download_missing_manuals_downloadbuffer",
+      "source": "download_missing_manuals_mjs",
+      "target": "download_missing_manuals_downloadbuffer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_src": "download_missing_manuals_mjs",
+      "_tgt": "download_missing_manuals_savebuffer",
+      "source": "download_missing_manuals_mjs",
+      "target": "download_missing_manuals_savebuffer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_src": "download_missing_manuals_mjs",
+      "_tgt": "download_missing_manuals_downloadalphatheta",
+      "source": "download_missing_manuals_mjs",
+      "target": "download_missing_manuals_downloadalphatheta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L160",
+      "weight": 1.0,
+      "_src": "download_missing_manuals_mjs",
+      "_tgt": "download_missing_manuals_downloadturbosound",
+      "source": "download_missing_manuals_mjs",
+      "target": "download_missing_manuals_downloadturbosound",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L221",
+      "weight": 1.0,
+      "_src": "download_missing_manuals_mjs",
+      "_tgt": "download_missing_manuals_main",
+      "source": "download_missing_manuals_mjs",
+      "target": "download_missing_manuals_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L133",
+      "weight": 1.0,
+      "_src": "download_missing_manuals_downloadalphatheta",
+      "_tgt": "download_missing_manuals_downloadbuffer",
+      "source": "download_missing_manuals_downloadbuffer",
+      "target": "download_missing_manuals_downloadalphatheta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L134",
+      "weight": 1.0,
+      "_src": "download_missing_manuals_downloadalphatheta",
+      "_tgt": "download_missing_manuals_savebuffer",
+      "source": "download_missing_manuals_savebuffer",
+      "target": "download_missing_manuals_downloadalphatheta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L204",
+      "weight": 1.0,
+      "_src": "download_missing_manuals_downloadturbosound",
+      "_tgt": "download_missing_manuals_savebuffer",
+      "source": "download_missing_manuals_savebuffer",
+      "target": "download_missing_manuals_downloadturbosound",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L233",
+      "weight": 1.0,
+      "_src": "download_missing_manuals_main",
+      "_tgt": "download_missing_manuals_downloadalphatheta",
+      "source": "download_missing_manuals_downloadalphatheta",
+      "target": "download_missing_manuals_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\download-missing-manuals.mjs",
+      "source_location": "L235",
+      "weight": 1.0,
+      "_src": "download_missing_manuals_main",
+      "_tgt": "download_missing_manuals_downloadturbosound",
+      "source": "download_missing_manuals_downloadturbosound",
+      "target": "download_missing_manuals_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\gh-project-setup.js",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "gh_project_setup_js",
+      "_tgt": "gh_project_setup_ghraw",
+      "source": "gh_project_setup_js",
+      "target": "gh_project_setup_ghraw",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\gh-project-sync.js",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "gh_project_sync_js",
+      "_tgt": "gh_project_sync_ghraw",
+      "source": "gh_project_sync_js",
+      "target": "gh_project_sync_ghraw",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\gh-project-sync.js",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_src": "gh_project_sync_js",
+      "_tgt": "gh_project_sync_buildoptionmaps",
+      "source": "gh_project_sync_js",
+      "target": "gh_project_sync_buildoptionmaps",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\gh-project-sync.js",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_src": "gh_project_sync_js",
+      "_tgt": "gh_project_sync_getexistingissues",
+      "source": "gh_project_sync_js",
+      "target": "gh_project_sync_getexistingissues",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\gh-project-sync.js",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_src": "gh_project_sync_js",
+      "_tgt": "gh_project_sync_setfield",
+      "source": "gh_project_sync_js",
+      "target": "gh_project_sync_setfield",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\gh-project-sync.js",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_src": "gh_project_sync_js",
+      "_tgt": "gh_project_sync_ensurelabels",
+      "source": "gh_project_sync_js",
+      "target": "gh_project_sync_ensurelabels",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\gh-project-sync.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "gh_project_sync_buildoptionmaps",
+      "_tgt": "gh_project_sync_ghraw",
+      "source": "gh_project_sync_ghraw",
+      "target": "gh_project_sync_buildoptionmaps",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\gh-project-sync.js",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "gh_project_sync_getexistingissues",
+      "_tgt": "gh_project_sync_ghraw",
+      "source": "gh_project_sync_ghraw",
+      "target": "gh_project_sync_getexistingissues",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\gh-project-sync.js",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_src": "gh_project_sync_setfield",
+      "_tgt": "gh_project_sync_ghraw",
+      "source": "gh_project_sync_ghraw",
+      "target": "gh_project_sync_setfield",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\gh-project-sync.js",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_src": "gh_project_sync_ensurelabels",
+      "_tgt": "gh_project_sync_ghraw",
+      "source": "gh_project_sync_ghraw",
+      "target": "gh_project_sync_ensurelabels",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\lib\\gql.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "lib_gql_mjs",
+      "_tgt": "gql_gql",
+      "source": "lib_gql_mjs",
+      "target": "gql_gql",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\lib\\gql.mjs",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_src": "lib_gql_mjs",
+      "_tgt": "gql_gqlall",
+      "source": "lib_gql_mjs",
+      "target": "gql_gqlall",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\lib\\gql.mjs",
+      "source_location": "L72",
+      "weight": 1.0,
+      "_src": "lib_gql_mjs",
+      "_tgt": "gql_gh",
+      "source": "lib_gql_mjs",
+      "target": "gql_gh",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts\\lib\\gql.mjs",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_src": "gql_gqlall",
+      "_tgt": "gql_gql",
+      "source": "gql_gql",
+      "target": "gql_gqlall",
+      "confidence_score": 1.0
+    },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
@@ -2991,8 +3888,8 @@
       "source_file": "01-source-documents/nomad-system-spec-v2.md",
       "source_location": "\u00a71",
       "weight": 1.0,
-      "_src": "sysspec_v2",
-      "_tgt": "venue_nomad_toronto",
+      "_src": "venue_nomad_toronto",
+      "_tgt": "sysspec_v2",
       "source": "venue_nomad_toronto",
       "target": "sysspec_v2"
     },
@@ -3003,8 +3900,8 @@
       "source_file": "07-tech-pack/available-rider.md",
       "source_location": "header",
       "weight": 0.8,
-      "_src": "available_rider",
-      "_tgt": "venue_nomad_toronto",
+      "_src": "venue_nomad_toronto",
+      "_tgt": "available_rider",
       "source": "venue_nomad_toronto",
       "target": "available_rider"
     },
@@ -3015,8 +3912,8 @@
       "source_file": "07-tech-pack/system-overview.md",
       "source_location": "Key Reference Documents",
       "weight": 0.9,
-      "_src": "sysoverview_techpack",
-      "_tgt": "sysspec_v2",
+      "_src": "sysspec_v2",
+      "_tgt": "sysoverview_techpack",
       "source": "sysspec_v2",
       "target": "sysoverview_techpack"
     },
@@ -3027,8 +3924,8 @@
       "source_file": "07-tech-pack/cable-schedule.md",
       "source_location": "header",
       "weight": 0.9,
-      "_src": "cable_schedule",
-      "_tgt": "sysspec_v2",
+      "_src": "sysspec_v2",
+      "_tgt": "cable_schedule",
       "source": "sysspec_v2",
       "target": "cable_schedule"
     },
@@ -3039,8 +3936,8 @@
       "source_file": "07-tech-pack/emergency-procedures.md",
       "source_location": null,
       "weight": 0.8,
-      "_src": "emergency_procedures",
-      "_tgt": "sysspec_v2",
+      "_src": "sysspec_v2",
+      "_tgt": "emergency_procedures",
       "source": "sysspec_v2",
       "target": "emergency_procedures"
     },
@@ -3063,8 +3960,8 @@
       "source_file": "01-source-documents/nomad-system-spec-v2.md",
       "source_location": "\u00a78",
       "weight": 0.8,
-      "_src": "wiring_pdf_armonia",
-      "_tgt": "sysspec_v2",
+      "_src": "sysspec_v2",
+      "_tgt": "wiring_pdf_armonia",
       "source": "sysspec_v2",
       "target": "wiring_pdf_armonia"
     },
@@ -3099,8 +3996,8 @@
       "source_file": "07-tech-pack/available-rider.md",
       "source_location": "Contact",
       "weight": 0.9,
-      "_src": "issue_no_production_contact",
-      "_tgt": "available_rider",
+      "_src": "available_rider",
+      "_tgt": "issue_no_production_contact",
       "source": "available_rider",
       "target": "issue_no_production_contact"
     },
@@ -3171,8 +4068,8 @@
       "source_file": "07-tech-pack/emergency-procedures.md",
       "source_location": "\u00a76",
       "weight": 0.7,
-      "_src": "issue_q5_breaker",
-      "_tgt": "emergency_procedures",
+      "_src": "emergency_procedures",
+      "_tgt": "issue_q5_breaker",
       "source": "emergency_procedures",
       "target": "issue_q5_breaker"
     },
@@ -3267,8 +4164,8 @@
       "source_file": "06-reference-docs/svg-rack-elevation-methodology.md",
       "source_location": null,
       "weight": 0.8,
-      "_src": "ref_svg_rack_methodology",
-      "_tgt": "ref_rack_standards",
+      "_src": "ref_rack_standards",
+      "_tgt": "ref_svg_rack_methodology",
       "source": "ref_rack_standards",
       "target": "ref_svg_rack_methodology"
     },
@@ -3471,8 +4368,8 @@
       "source_file": "06-reference-docs/firmware-changelog.md",
       "source_location": "\u00a7CDJ-3000",
       "weight": 1.0,
-      "_src": "fw_cdj3000_v322",
-      "_tgt": "cdj3000_unit",
+      "_src": "cdj3000_unit",
+      "_tgt": "fw_cdj3000_v322",
       "source": "cdj3000_unit",
       "target": "fw_cdj3000_v322"
     },
@@ -3507,8 +4404,8 @@
       "source_file": "06-reference-docs/firmware-changelog.md",
       "source_location": "\u00a7DJM-V10",
       "weight": 1.0,
-      "_src": "fw_djmv10_v120",
-      "_tgt": "djmv10_unit",
+      "_src": "djmv10_unit",
+      "_tgt": "fw_djmv10_v120",
       "source": "djmv10_unit",
       "target": "fw_djmv10_v120"
     },
@@ -3555,8 +4452,8 @@
       "source_file": "01-source-documents/nomad-system-spec-v2.md",
       "source_location": "\u00a73.1",
       "weight": 1.0,
-      "_src": "rationale_cq12t_replaced_mg12",
-      "_tgt": "cq12t_unit",
+      "_src": "cq12t_unit",
+      "_tgt": "rationale_cq12t_replaced_mg12",
       "source": "cq12t_unit",
       "target": "rationale_cq12t_replaced_mg12"
     },
@@ -3567,8 +4464,8 @@
       "source_file": "01-source-documents/nomad-system-spec-v2.md",
       "source_location": "\u00a712",
       "weight": 1.0,
-      "_src": "issue_cq12t_out456",
-      "_tgt": "cq12t_unit",
+      "_src": "cq12t_unit",
+      "_tgt": "issue_cq12t_out456",
       "source": "cq12t_unit",
       "target": "issue_cq12t_out456"
     },
@@ -3579,8 +4476,8 @@
       "source_file": "06-reference-docs/firmware-changelog.md",
       "source_location": "\u00a7CQ-12T",
       "weight": 1.0,
-      "_src": "fw_cq12t_v122",
-      "_tgt": "cq12t_unit",
+      "_src": "cq12t_unit",
+      "_tgt": "fw_cq12t_v122",
       "source": "cq12t_unit",
       "target": "fw_cq12t_v122"
     },
@@ -3639,8 +4536,8 @@
       "source_file": "01-source-documents/nomad-system-spec-v2.md",
       "source_location": "\u00a75.1/\u00a75.4",
       "weight": 0.7,
-      "_src": "bias_v3_1_unit",
-      "_tgt": "bias_v3_2_unit",
+      "_src": "bias_v3_2_unit",
+      "_tgt": "bias_v3_1_unit",
       "source": "bias_v3_2_unit",
       "target": "bias_v3_1_unit"
     },
@@ -3675,8 +4572,8 @@
       "source_file": "06-reference-docs/firmware-changelog.md",
       "source_location": "\u00a7Bias V3",
       "weight": 0.9,
-      "_src": "armoniaplus_software",
-      "_tgt": "bias_v3_2_unit",
+      "_src": "bias_v3_2_unit",
+      "_tgt": "armoniaplus_software",
       "source": "bias_v3_2_unit",
       "target": "armoniaplus_software"
     },
@@ -3711,8 +4608,8 @@
       "source_file": "01-source-documents/nomad-system-spec-v2.md",
       "source_location": "\u00a76.3 note",
       "weight": 1.0,
-      "_src": "rationale_q5_added_for_4ohm",
-      "_tgt": "bias_q5_unit",
+      "_src": "bias_q5_unit",
+      "_tgt": "rationale_q5_added_for_4ohm",
       "source": "bias_q5_unit",
       "target": "rationale_q5_added_for_4ohm"
     },
@@ -3723,8 +4620,8 @@
       "source_file": "01-source-documents/nomad-system-spec-v2.md",
       "source_location": "\u00a712",
       "weight": 1.0,
-      "_src": "issue_q5_breaker",
-      "_tgt": "bias_q5_unit",
+      "_src": "bias_q5_unit",
+      "_tgt": "issue_q5_breaker",
       "source": "bias_q5_unit",
       "target": "issue_q5_breaker"
     },
@@ -3735,8 +4632,8 @@
       "source_file": "06-reference-docs/firmware-changelog.md",
       "source_location": "\u00a7Q5",
       "weight": 1.0,
-      "_src": "fw_bias_q5_v11200",
-      "_tgt": "bias_q5_unit",
+      "_src": "bias_q5_unit",
+      "_tgt": "fw_bias_q5_v11200",
       "source": "bias_q5_unit",
       "target": "fw_bias_q5_v11200"
     },
@@ -3747,8 +4644,8 @@
       "source_file": "06-reference-docs/firmware-changelog.md",
       "source_location": "\u00a7Q5",
       "weight": 0.9,
-      "_src": "armoniaplus_software",
-      "_tgt": "bias_q5_unit",
+      "_src": "bias_q5_unit",
+      "_tgt": "armoniaplus_software",
       "source": "bias_q5_unit",
       "target": "armoniaplus_software"
     },
@@ -3783,8 +4680,8 @@
       "source_file": "06-reference-docs/firmware-changelog.md",
       "source_location": "\u00a7Q2",
       "weight": 0.9,
-      "_src": "fw_bias_q2_v11200",
-      "_tgt": "bias_q2_2_unit",
+      "_src": "bias_q2_2_unit",
+      "_tgt": "fw_bias_q2_v11200",
       "source": "bias_q2_2_unit",
       "target": "fw_bias_q2_v11200"
     },
@@ -3795,8 +4692,8 @@
       "source_file": "01-source-documents/nomad-system-spec-v2.md",
       "source_location": "\u00a75.3/\u00a75.5",
       "weight": 0.7,
-      "_src": "bias_q2_1_unit",
-      "_tgt": "bias_q2_2_unit",
+      "_src": "bias_q2_2_unit",
+      "_tgt": "bias_q2_1_unit",
       "source": "bias_q2_2_unit",
       "target": "bias_q2_1_unit"
     },
@@ -3807,8 +4704,8 @@
       "source_file": "06-reference-docs/firmware-changelog.md",
       "source_location": "\u00a7Q2",
       "weight": 0.9,
-      "_src": "armoniaplus_software",
-      "_tgt": "bias_q2_2_unit",
+      "_src": "bias_q2_2_unit",
+      "_tgt": "armoniaplus_software",
       "source": "bias_q2_2_unit",
       "target": "armoniaplus_software"
     },
@@ -3843,8 +4740,8 @@
       "source_file": "06-reference-docs/firmware-changelog.md",
       "source_location": "\u00a7Bias V3",
       "weight": 0.9,
-      "_src": "armoniaplus_software",
-      "_tgt": "bias_v3_1_unit",
+      "_src": "bias_v3_1_unit",
+      "_tgt": "armoniaplus_software",
       "source": "bias_v3_1_unit",
       "target": "armoniaplus_software"
     },
@@ -3891,8 +4788,8 @@
       "source_file": "06-reference-docs/firmware-changelog.md",
       "source_location": "\u00a7Q2",
       "weight": 0.9,
-      "_src": "fw_bias_q2_v11200",
-      "_tgt": "bias_q2_1_unit",
+      "_src": "bias_q2_1_unit",
+      "_tgt": "fw_bias_q2_v11200",
       "source": "bias_q2_1_unit",
       "target": "fw_bias_q2_v11200"
     },
@@ -3903,8 +4800,8 @@
       "source_file": "06-reference-docs/firmware-changelog.md",
       "source_location": "\u00a7Q2",
       "weight": 0.9,
-      "_src": "armoniaplus_software",
-      "_tgt": "bias_q2_1_unit",
+      "_src": "bias_q2_1_unit",
+      "_tgt": "armoniaplus_software",
       "source": "bias_q2_1_unit",
       "target": "armoniaplus_software"
     },
@@ -4035,8 +4932,8 @@
       "source_file": "01-source-documents/nomad-system-spec-v2.md",
       "source_location": "\u00a712",
       "weight": 1.0,
-      "_src": "issue_athens_submodel",
-      "_tgt": "spk_athens_tcs_an",
+      "_src": "spk_athens_tcs_an",
+      "_tgt": "issue_athens_submodel",
       "source": "spk_athens_tcs_an",
       "target": "issue_athens_submodel"
     },
@@ -4047,8 +4944,8 @@
       "source_file": "07-tech-pack/speaker-zone-map.svg",
       "source_location": "Entrance / Foyer",
       "weight": 1.0,
-      "_src": "speaker_athens_entrance",
-      "_tgt": "zone_entrance",
+      "_src": "zone_entrance",
+      "_tgt": "speaker_athens_entrance",
       "source": "zone_entrance",
       "target": "speaker_athens_entrance"
     },
@@ -4059,8 +4956,8 @@
       "source_file": "07-tech-pack/speaker-zone-map.svg",
       "source_location": null,
       "weight": 1.0,
-      "_src": "techpack_speaker_zone_map_svg",
-      "_tgt": "zone_entrance",
+      "_src": "zone_entrance",
+      "_tgt": "techpack_speaker_zone_map_svg",
       "source": "zone_entrance",
       "target": "techpack_speaker_zone_map_svg"
     },
@@ -4071,8 +4968,8 @@
       "source_file": "06-reference-docs/firmware-changelog.md",
       "source_location": "\u00a7Bias Amps",
       "weight": 1.0,
-      "_src": "armoniaplus_software",
-      "_tgt": "armonia_network",
+      "_src": "armonia_network",
+      "_tgt": "armoniaplus_software",
       "source": "armonia_network",
       "target": "armoniaplus_software"
     },
@@ -4119,8 +5016,8 @@
       "source_file": "05-speaker-assets/png/ah-cq-12t.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "ahcq12t_datasheet_img",
-      "_tgt": "ahcq12t_mixer",
+      "_src": "ahcq12t_mixer",
+      "_tgt": "ahcq12t_datasheet_img",
       "source": "ahcq12t_mixer",
       "target": "ahcq12t_datasheet_img"
     },
@@ -4131,8 +5028,8 @@
       "source_file": "05-speaker-assets/png/ah-cq-12t-block.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "ahcq12t_block_diagram_img",
-      "_tgt": "ahcq12t_mixer",
+      "_src": "ahcq12t_mixer",
+      "_tgt": "ahcq12t_block_diagram_img",
       "source": "ahcq12t_mixer",
       "target": "ahcq12t_block_diagram_img"
     },
@@ -4251,8 +5148,8 @@
       "source_file": "02-equipment-manuals/mixers/Allen-Heath_CQ-12T_user_guide_v1.2.pdf",
       "source_location": "p.8",
       "weight": 1.0,
-      "_src": "ahcq12t_cqmixpad",
-      "_tgt": "ahcq12t_mixer",
+      "_src": "ahcq12t_mixer",
+      "_tgt": "ahcq12t_cqmixpad",
       "source": "ahcq12t_mixer",
       "target": "ahcq12t_cqmixpad"
     },
@@ -4263,8 +5160,8 @@
       "source_file": "05-speaker-assets/png/pioneer-cdj-3000-rear.png",
       "source_location": null,
       "weight": 0.8,
-      "_src": "cdj3000_rear_connectors",
-      "_tgt": "ahcq12t_mixer",
+      "_src": "ahcq12t_mixer",
+      "_tgt": "cdj3000_rear_connectors",
       "source": "ahcq12t_mixer",
       "target": "cdj3000_rear_connectors"
     },
@@ -4323,8 +5220,8 @@
       "source_file": "05-speaker-assets/png/ah-cq-12t-dims.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "ahcq12t_dims_img",
-      "_tgt": "ahcq12t_dims",
+      "_src": "ahcq12t_dims",
+      "_tgt": "ahcq12t_dims_img",
       "source": "ahcq12t_dims",
       "target": "ahcq12t_dims_img"
     },
@@ -4371,8 +5268,8 @@
       "source_file": "02-equipment-manuals/processing/sp2120_operators_manual.pdf",
       "source_location": "p.1",
       "weight": 1.0,
-      "_src": "sp2120_manual",
-      "_tgt": "drawmer_sp2120",
+      "_src": "drawmer_sp2120",
+      "_tgt": "sp2120_manual",
       "source": "drawmer_sp2120",
       "target": "sp2120_manual"
     },
@@ -4407,8 +5304,8 @@
       "source_file": "02-equipment-manuals/speakers/VOID-Air-Motion-V2-User-Guide.pdf",
       "source_location": "p.6",
       "weight": 1.0,
-      "_src": "void_air_motion_v2_guide",
-      "_tgt": "void_air_motion_v2",
+      "_src": "void_air_motion_v2",
+      "_tgt": "void_air_motion_v2_guide",
       "source": "void_air_motion_v2",
       "target": "void_air_motion_v2_guide"
     },
@@ -4467,8 +5364,8 @@
       "source_file": "02-equipment-manuals/speakers/VOID-Air-Motion-V2-User-Guide.pdf",
       "source_location": "p.11 TOC 4.5",
       "weight": 0.95,
-      "_src": "bias_q5_amp",
-      "_tgt": "void_air_motion_v2",
+      "_src": "void_air_motion_v2",
+      "_tgt": "bias_q5_amp",
       "source": "void_air_motion_v2",
       "target": "bias_q5_amp"
     },
@@ -4479,8 +5376,8 @@
       "source_file": "02-equipment-manuals/speakers/VOID-Air-Motion-V2-User-Guide.pdf",
       "source_location": "p.3 TOC 4.5",
       "weight": 0.9,
-      "_src": "bias_q3q5_speakon_wiring",
-      "_tgt": "void_air_motion_v2",
+      "_src": "void_air_motion_v2",
+      "_tgt": "bias_q3q5_speakon_wiring",
       "source": "void_air_motion_v2",
       "target": "bias_q3q5_speakon_wiring"
     },
@@ -4491,8 +5388,8 @@
       "source_file": "02-equipment-manuals/speakers/VOID-Air-Motion-V2-User-Guide.pdf",
       "source_location": "p.3 TOC 4.4",
       "weight": 0.9,
-      "_src": "bias_d1q1q2_phoenix_wiring",
-      "_tgt": "void_air_motion_v2",
+      "_src": "void_air_motion_v2",
+      "_tgt": "bias_d1q1q2_phoenix_wiring",
       "source": "void_air_motion_v2",
       "target": "bias_d1q1q2_phoenix_wiring"
     },
@@ -4515,8 +5412,8 @@
       "source_file": "05-speaker-assets/png/bias-v3-amp-front.png",
       "source_location": null,
       "weight": 0.6,
-      "_src": "bias_v3_amp",
-      "_tgt": "void_air_motion_v2",
+      "_src": "void_air_motion_v2",
+      "_tgt": "bias_v3_amp",
       "source": "void_air_motion_v2",
       "target": "bias_v3_amp"
     },
@@ -4527,8 +5424,8 @@
       "source_file": "05-speaker-assets/png/pioneer-djm-v10.png",
       "source_location": null,
       "weight": 0.9,
-      "_src": "pioneer_djmv10",
-      "_tgt": "void_air_motion_v2",
+      "_src": "void_air_motion_v2",
+      "_tgt": "pioneer_djmv10",
       "source": "void_air_motion_v2",
       "target": "pioneer_djmv10"
     },
@@ -4539,8 +5436,8 @@
       "source_file": "05-speaker-assets/png/void-air-motion-v2-dims.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "void_air_motion_v2_dims",
-      "_tgt": "void_air_motion_v2",
+      "_src": "void_air_motion_v2",
+      "_tgt": "void_air_motion_v2_dims",
       "source": "void_air_motion_v2",
       "target": "void_air_motion_v2_dims"
     },
@@ -4551,8 +5448,8 @@
       "source_file": "05-speaker-assets/png/void-air-motion-v2-front.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "void_air_motion_v2_front",
-      "_tgt": "void_air_motion_v2",
+      "_src": "void_air_motion_v2",
+      "_tgt": "void_air_motion_v2_front",
       "source": "void_air_motion_v2",
       "target": "void_air_motion_v2_front"
     },
@@ -4563,8 +5460,8 @@
       "source_file": "05-speaker-assets/png/void-air-motion-v2-side.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "void_air_motion_v2_side",
-      "_tgt": "void_air_motion_v2",
+      "_src": "void_air_motion_v2",
+      "_tgt": "void_air_motion_v2_side",
       "source": "void_air_motion_v2",
       "target": "void_air_motion_v2_side"
     },
@@ -4575,8 +5472,8 @@
       "source_file": "05-speaker-assets/png/void-air-motion-v2-top.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "void_air_motion_v2_top",
-      "_tgt": "void_air_motion_v2",
+      "_src": "void_air_motion_v2",
+      "_tgt": "void_air_motion_v2_top",
       "source": "void_air_motion_v2",
       "target": "void_air_motion_v2_top"
     },
@@ -4587,8 +5484,8 @@
       "source_file": "05-speaker-assets/png/void-air-motion-v2.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "void_air_motion_v2_cover",
-      "_tgt": "void_air_motion_v2",
+      "_src": "void_air_motion_v2",
+      "_tgt": "void_air_motion_v2_cover",
       "source": "void_air_motion_v2",
       "target": "void_air_motion_v2_cover"
     },
@@ -4599,8 +5496,8 @@
       "source_file": "05-speaker-assets/png/void-airten-v3.png",
       "source_location": null,
       "weight": 0.8,
-      "_src": "void_airten_v3",
-      "_tgt": "void_air_motion_v2",
+      "_src": "void_air_motion_v2",
+      "_tgt": "void_airten_v3",
       "source": "void_air_motion_v2",
       "target": "void_airten_v3"
     },
@@ -4611,8 +5508,8 @@
       "source_file": "05-speaker-assets/png/pioneer-djm-v10-rear.png",
       "source_location": null,
       "weight": 0.8,
-      "_src": "pioneer_djmv10_rear_view",
-      "_tgt": "void_air_motion_v2",
+      "_src": "void_air_motion_v2",
+      "_tgt": "pioneer_djmv10_rear_view",
       "source": "void_air_motion_v2",
       "target": "pioneer_djmv10_rear_view"
     },
@@ -4623,8 +5520,8 @@
       "source_file": "02-equipment-manuals/speakers/VOID-Air-Vantage-User-Guide.pdf",
       "source_location": "p.6",
       "weight": 1.0,
-      "_src": "void_air_vantage_guide",
-      "_tgt": "void_air_vantage",
+      "_src": "void_air_vantage",
+      "_tgt": "void_air_vantage_guide",
       "source": "void_air_vantage",
       "target": "void_air_vantage_guide"
     },
@@ -4683,8 +5580,8 @@
       "source_file": "02-equipment-manuals/speakers/VOID-Air-Vantage-User-Guide.pdf",
       "source_location": "p.10 sec 4.5",
       "weight": 0.9,
-      "_src": "bias_q5_amp",
-      "_tgt": "void_air_vantage",
+      "_src": "void_air_vantage",
+      "_tgt": "bias_q5_amp",
       "source": "void_air_vantage",
       "target": "bias_q5_amp"
     },
@@ -4695,8 +5592,8 @@
       "source_file": "02-equipment-manuals/speakers/VOID-Air-Vantage-User-Guide.pdf",
       "source_location": "p.10 sec 4.4",
       "weight": 0.9,
-      "_src": "bias_d1q1q2_phoenix_wiring",
-      "_tgt": "void_air_vantage",
+      "_src": "void_air_vantage",
+      "_tgt": "bias_d1q1q2_phoenix_wiring",
       "source": "void_air_vantage",
       "target": "bias_d1q1q2_phoenix_wiring"
     },
@@ -4719,8 +5616,8 @@
       "source_file": "05-speaker-assets/png/pioneer-djm-v10.png",
       "source_location": null,
       "weight": 0.85,
-      "_src": "pioneer_djmv10",
-      "_tgt": "void_air_vantage",
+      "_src": "void_air_vantage",
+      "_tgt": "pioneer_djmv10",
       "source": "void_air_vantage",
       "target": "pioneer_djmv10"
     },
@@ -4731,8 +5628,8 @@
       "source_file": "05-speaker-assets/png/void-air-vantage-dims.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "void_air_vantage_dims",
-      "_tgt": "void_air_vantage",
+      "_src": "void_air_vantage",
+      "_tgt": "void_air_vantage_dims",
       "source": "void_air_vantage",
       "target": "void_air_vantage_dims"
     },
@@ -4743,8 +5640,8 @@
       "source_file": "05-speaker-assets/png/void-air-vantage-front.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "void_air_vantage_front",
-      "_tgt": "void_air_vantage",
+      "_src": "void_air_vantage",
+      "_tgt": "void_air_vantage_front",
       "source": "void_air_vantage",
       "target": "void_air_vantage_front"
     },
@@ -4755,8 +5652,8 @@
       "source_file": "05-speaker-assets/png/void-air-vantage-side.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "void_air_vantage_side",
-      "_tgt": "void_air_vantage",
+      "_src": "void_air_vantage",
+      "_tgt": "void_air_vantage_side",
       "source": "void_air_vantage",
       "target": "void_air_vantage_side"
     },
@@ -4767,8 +5664,8 @@
       "source_file": "05-speaker-assets/png/void-air-vantage-top.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "void_air_vantage_top",
-      "_tgt": "void_air_vantage",
+      "_src": "void_air_vantage",
+      "_tgt": "void_air_vantage_top",
       "source": "void_air_vantage",
       "target": "void_air_vantage_top"
     },
@@ -4779,8 +5676,8 @@
       "source_file": "05-speaker-assets/png/void-air-vantage.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "void_air_vantage_cover",
-      "_tgt": "void_air_vantage",
+      "_src": "void_air_vantage",
+      "_tgt": "void_air_vantage_cover",
       "source": "void_air_vantage",
       "target": "void_air_vantage_cover"
     },
@@ -4875,8 +5772,8 @@
       "source_file": "02-equipment-manuals/speakers/VOID-Airten-V3-User-Manual-v2.1.pdf",
       "source_location": "p.10 sec 4.5",
       "weight": 0.9,
-      "_src": "bias_q5_amp",
-      "_tgt": "void_airten_v3",
+      "_src": "void_airten_v3",
+      "_tgt": "bias_q5_amp",
       "source": "void_airten_v3",
       "target": "bias_q5_amp"
     },
@@ -4887,8 +5784,8 @@
       "source_file": "02-equipment-manuals/speakers/VOID-Airten-V3-User-Manual-v2.1.pdf",
       "source_location": "p.10 sec 4.4",
       "weight": 0.9,
-      "_src": "bias_d1q1q2_phoenix_wiring",
-      "_tgt": "void_airten_v3",
+      "_src": "void_airten_v3",
+      "_tgt": "bias_d1q1q2_phoenix_wiring",
       "source": "void_airten_v3",
       "target": "bias_d1q1q2_phoenix_wiring"
     },
@@ -4899,8 +5796,8 @@
       "source_file": "05-speaker-assets/png/bias-v3-amp-front.png",
       "source_location": null,
       "weight": 0.6,
-      "_src": "bias_v3_amp",
-      "_tgt": "void_airten_v3",
+      "_src": "void_airten_v3",
+      "_tgt": "bias_v3_amp",
       "source": "void_airten_v3",
       "target": "bias_v3_amp"
     },
@@ -4911,8 +5808,8 @@
       "source_file": "05-speaker-assets/png/void-airten-v3-dims.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "void_airten_v3_dims",
-      "_tgt": "void_airten_v3",
+      "_src": "void_airten_v3",
+      "_tgt": "void_airten_v3_dims",
       "source": "void_airten_v3",
       "target": "void_airten_v3_dims"
     },
@@ -4923,8 +5820,8 @@
       "source_file": "05-speaker-assets/png/void-airten-v3.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "void_airten_v3_cover",
-      "_tgt": "void_airten_v3",
+      "_src": "void_airten_v3",
+      "_tgt": "void_airten_v3_cover",
       "source": "void_airten_v3",
       "target": "void_airten_v3_cover"
     },
@@ -4935,8 +5832,8 @@
       "source_file": "02-equipment-manuals/speakers/VOID-Stasys-Xair-User-Guide.pdf",
       "source_location": "p.6",
       "weight": 1.0,
-      "_src": "void_stasys_xair_guide",
-      "_tgt": "void_stasys_xair",
+      "_src": "void_stasys_xair",
+      "_tgt": "void_stasys_xair_guide",
       "source": "void_stasys_xair",
       "target": "void_stasys_xair_guide"
     },
@@ -4983,8 +5880,8 @@
       "source_file": "02-equipment-manuals/speakers/VOID-Stasys-Xair-User-Guide.pdf",
       "source_location": "p.9 sec 4.5",
       "weight": 1.0,
-      "_src": "bias_q5_amp",
-      "_tgt": "void_stasys_xair",
+      "_src": "void_stasys_xair",
+      "_tgt": "bias_q5_amp",
       "source": "void_stasys_xair",
       "target": "bias_q5_amp"
     },
@@ -4995,8 +5892,8 @@
       "source_file": "02-equipment-manuals/speakers/VOID-Stasys-Xair-User-Guide.pdf",
       "source_location": "p.9",
       "weight": 1.0,
-      "_src": "stasys_xair_bias_q5_wiring",
-      "_tgt": "void_stasys_xair",
+      "_src": "void_stasys_xair",
+      "_tgt": "stasys_xair_bias_q5_wiring",
       "source": "void_stasys_xair",
       "target": "stasys_xair_bias_q5_wiring"
     },
@@ -5007,8 +5904,8 @@
       "source_file": "05-speaker-assets/png/bias-q5-amp-rear.png",
       "source_location": "section B output channels 1-2 speakON",
       "weight": 1.0,
-      "_src": "bias_q5_speakon_output",
-      "_tgt": "void_stasys_xair",
+      "_src": "void_stasys_xair",
+      "_tgt": "bias_q5_speakon_output",
       "source": "void_stasys_xair",
       "target": "bias_q5_speakon_output"
     },
@@ -5019,8 +5916,8 @@
       "source_file": "05-speaker-assets/png/void-stasys-xair-dims.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "void_stasys_xair_dims",
-      "_tgt": "void_stasys_xair",
+      "_src": "void_stasys_xair",
+      "_tgt": "void_stasys_xair_dims",
       "source": "void_stasys_xair",
       "target": "void_stasys_xair_dims"
     },
@@ -5031,8 +5928,8 @@
       "source_file": "05-speaker-assets/png/void-stasys-xair.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "void_stasys_xair_cover",
-      "_tgt": "void_stasys_xair",
+      "_src": "void_stasys_xair",
+      "_tgt": "void_stasys_xair_cover",
       "source": "void_stasys_xair",
       "target": "void_stasys_xair_cover"
     },
@@ -5055,8 +5952,8 @@
       "source_file": "02-equipment-manuals/speakers/VOID-Venu-V2-Series-User-Guide.pdf",
       "source_location": "p.6",
       "weight": 1.0,
-      "_src": "void_venu_v2_guide",
-      "_tgt": "void_venu_v2_series",
+      "_src": "void_venu_v2_series",
+      "_tgt": "void_venu_v2_guide",
       "source": "void_venu_v2_series",
       "target": "void_venu_v2_guide"
     },
@@ -5115,8 +6012,8 @@
       "source_file": "02-equipment-manuals/speakers/VOID-Venu-V2-Series-User-Guide.pdf",
       "source_location": "p.10 fig 4.8",
       "weight": 0.9,
-      "_src": "bias_q5_amp",
-      "_tgt": "void_venu_v2_series",
+      "_src": "void_venu_v2_series",
+      "_tgt": "bias_q5_amp",
       "source": "void_venu_v2_series",
       "target": "bias_q5_amp"
     },
@@ -5127,8 +6024,8 @@
       "source_file": "05-speaker-assets/png/bias-q5-amp-dims.png",
       "source_location": "section A",
       "weight": 1.0,
-      "_src": "bias_q5_dims_drawing",
-      "_tgt": "bias_q5_amp",
+      "_src": "bias_q5_amp",
+      "_tgt": "bias_q5_dims_drawing",
       "source": "bias_q5_amp",
       "target": "bias_q5_dims_drawing"
     },
@@ -5139,8 +6036,8 @@
       "source_file": "05-speaker-assets/png/bias-q5-amp.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "bias_q5_front_panel",
-      "_tgt": "bias_q5_amp",
+      "_src": "bias_q5_amp",
+      "_tgt": "bias_q5_front_panel",
       "source": "bias_q5_amp",
       "target": "bias_q5_front_panel"
     },
@@ -5151,8 +6048,8 @@
       "source_file": "05-speaker-assets/png/bias-q5-amp-rear.png",
       "source_location": "rear panel connector A (5-pin Phoenix mains)",
       "weight": 1.0,
-      "_src": "bias_q5_phoenix_input",
-      "_tgt": "bias_q5_amp",
+      "_src": "bias_q5_amp",
+      "_tgt": "bias_q5_phoenix_input",
       "source": "bias_q5_amp",
       "target": "bias_q5_phoenix_input"
     },
@@ -5163,8 +6060,8 @@
       "source_file": "05-speaker-assets/png/bias-q5-amp-rear.png",
       "source_location": "rear panel section B ch1-6 XLR",
       "weight": 1.0,
-      "_src": "bias_q5_xlr_inputs",
-      "_tgt": "bias_q5_amp",
+      "_src": "bias_q5_amp",
+      "_tgt": "bias_q5_xlr_inputs",
       "source": "bias_q5_amp",
       "target": "bias_q5_xlr_inputs"
     },
@@ -5175,8 +6072,8 @@
       "source_file": "05-speaker-assets/png/bias-q5-amp-rear.png",
       "source_location": "rear panel section B eCON ports",
       "weight": 1.0,
-      "_src": "bias_q5_ethernet",
-      "_tgt": "bias_q5_amp",
+      "_src": "bias_q5_amp",
+      "_tgt": "bias_q5_ethernet",
       "source": "bias_q5_amp",
       "target": "bias_q5_ethernet"
     },
@@ -5187,8 +6084,8 @@
       "source_file": "05-speaker-assets/png/bias-v3-amp-front.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "bias_v3_front_panel",
-      "_tgt": "bias_v3_amp",
+      "_src": "bias_v3_amp",
+      "_tgt": "bias_v3_front_panel",
       "source": "bias_v3_amp",
       "target": "bias_v3_front_panel"
     },
@@ -5199,8 +6096,8 @@
       "source_file": "05-speaker-assets/png/bias-v3-amp-side.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "bias_v3_dims_drawing",
-      "_tgt": "bias_v3_amp",
+      "_src": "bias_v3_amp",
+      "_tgt": "bias_v3_dims_drawing",
       "source": "bias_v3_amp",
       "target": "bias_v3_dims_drawing"
     },
@@ -5319,8 +6216,8 @@
       "source_file": "05-speaker-assets/svg/void-air-motion-v2-front.svg",
       "source_location": null,
       "weight": 1.0,
-      "_src": "speaker_void_air_motion_v2_front_svg",
-      "_tgt": "speaker_void_air_motion_v2",
+      "_src": "speaker_void_air_motion_v2",
+      "_tgt": "speaker_void_air_motion_v2_front_svg",
       "source": "speaker_void_air_motion_v2",
       "target": "speaker_void_air_motion_v2_front_svg"
     },
@@ -5331,8 +6228,8 @@
       "source_file": "05-speaker-assets/svg/void-air-motion-v2-side.svg",
       "source_location": null,
       "weight": 1.0,
-      "_src": "speaker_void_air_motion_v2_side_svg",
-      "_tgt": "speaker_void_air_motion_v2",
+      "_src": "speaker_void_air_motion_v2",
+      "_tgt": "speaker_void_air_motion_v2_side_svg",
       "source": "speaker_void_air_motion_v2",
       "target": "speaker_void_air_motion_v2_side_svg"
     },
@@ -5343,8 +6240,8 @@
       "source_file": "05-speaker-assets/svg/void-air-motion-v2-top.svg",
       "source_location": null,
       "weight": 1.0,
-      "_src": "speaker_void_air_motion_v2_top_svg",
-      "_tgt": "speaker_void_air_motion_v2",
+      "_src": "speaker_void_air_motion_v2",
+      "_tgt": "speaker_void_air_motion_v2_top_svg",
       "source": "speaker_void_air_motion_v2",
       "target": "speaker_void_air_motion_v2_top_svg"
     },
@@ -5367,8 +6264,8 @@
       "source_file": "05-speaker-assets/svg/void-air-vantage-front.svg",
       "source_location": null,
       "weight": 1.0,
-      "_src": "speaker_void_air_vantage_front_svg",
-      "_tgt": "speaker_void_air_vantage",
+      "_src": "speaker_void_air_vantage",
+      "_tgt": "speaker_void_air_vantage_front_svg",
       "source": "speaker_void_air_vantage",
       "target": "speaker_void_air_vantage_front_svg"
     },
@@ -5379,8 +6276,8 @@
       "source_file": "05-speaker-assets/svg/void-air-vantage-side.svg",
       "source_location": null,
       "weight": 1.0,
-      "_src": "speaker_void_air_vantage_side_svg",
-      "_tgt": "speaker_void_air_vantage",
+      "_src": "speaker_void_air_vantage",
+      "_tgt": "speaker_void_air_vantage_side_svg",
       "source": "speaker_void_air_vantage",
       "target": "speaker_void_air_vantage_side_svg"
     },
@@ -5391,8 +6288,8 @@
       "source_file": "05-speaker-assets/svg/void-air-vantage-top.svg",
       "source_location": null,
       "weight": 1.0,
-      "_src": "speaker_void_air_vantage_top_svg",
-      "_tgt": "speaker_void_air_vantage",
+      "_src": "speaker_void_air_vantage",
+      "_tgt": "speaker_void_air_vantage_top_svg",
       "source": "speaker_void_air_vantage",
       "target": "speaker_void_air_vantage_top_svg"
     },
@@ -5415,8 +6312,8 @@
       "source_file": "05-speaker-assets/svg/void-venu-215-v2-front.svg",
       "source_location": null,
       "weight": 1.0,
-      "_src": "speaker_void_venu_215_v2_front_svg",
-      "_tgt": "speaker_void_venu_215_v2",
+      "_src": "speaker_void_venu_215_v2",
+      "_tgt": "speaker_void_venu_215_v2_front_svg",
       "source": "speaker_void_venu_215_v2",
       "target": "speaker_void_venu_215_v2_front_svg"
     },
@@ -5427,8 +6324,8 @@
       "source_file": "05-speaker-assets/svg/void-venu-215-v2-side.svg",
       "source_location": null,
       "weight": 1.0,
-      "_src": "speaker_void_venu_215_v2_side_svg",
-      "_tgt": "speaker_void_venu_215_v2",
+      "_src": "speaker_void_venu_215_v2",
+      "_tgt": "speaker_void_venu_215_v2_side_svg",
       "source": "speaker_void_venu_215_v2",
       "target": "speaker_void_venu_215_v2_side_svg"
     },
@@ -5439,8 +6336,8 @@
       "source_file": "05-speaker-assets/svg/void-venu-215-v2-top.svg",
       "source_location": null,
       "weight": 1.0,
-      "_src": "speaker_void_venu_215_v2_top_svg",
-      "_tgt": "speaker_void_venu_215_v2",
+      "_src": "speaker_void_venu_215_v2",
+      "_tgt": "speaker_void_venu_215_v2_top_svg",
       "source": "speaker_void_venu_215_v2",
       "target": "speaker_void_venu_215_v2_top_svg"
     },
@@ -5451,8 +6348,8 @@
       "source_file": "05-speaker-assets/png/void-venu-215-v2-front.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "speaker_void_venu_215_v2_front_png",
-      "_tgt": "speaker_void_venu_215_v2",
+      "_src": "speaker_void_venu_215_v2",
+      "_tgt": "speaker_void_venu_215_v2_front_png",
       "source": "speaker_void_venu_215_v2",
       "target": "speaker_void_venu_215_v2_front_png"
     },
@@ -5463,8 +6360,8 @@
       "source_file": "05-speaker-assets/png/void-venu-215-v2-side.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "speaker_void_venu_215_v2_side_png",
-      "_tgt": "speaker_void_venu_215_v2",
+      "_src": "speaker_void_venu_215_v2",
+      "_tgt": "speaker_void_venu_215_v2_side_png",
       "source": "speaker_void_venu_215_v2",
       "target": "speaker_void_venu_215_v2_side_png"
     },
@@ -5475,8 +6372,8 @@
       "source_file": "05-speaker-assets/png/void-venu-215-v2-top.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "speaker_void_venu_215_v2_top_png",
-      "_tgt": "speaker_void_venu_215_v2",
+      "_src": "speaker_void_venu_215_v2",
+      "_tgt": "speaker_void_venu_215_v2_top_png",
       "source": "speaker_void_venu_215_v2",
       "target": "speaker_void_venu_215_v2_top_png"
     },
@@ -5487,8 +6384,8 @@
       "source_file": "05-speaker-assets/png/void-venu-215-v2.png",
       "source_location": null,
       "weight": 1.0,
-      "_src": "speaker_void_venu_215_v2_png",
-      "_tgt": "speaker_void_venu_215_v2",
+      "_src": "speaker_void_venu_215_v2",
+      "_tgt": "speaker_void_venu_215_v2_png",
       "source": "speaker_void_venu_215_v2",
       "target": "speaker_void_venu_215_v2_png"
     },
@@ -5499,8 +6396,8 @@
       "source_file": "05-speaker-assets/svg/bias-v3-amp-front.svg",
       "source_location": null,
       "weight": 1.0,
-      "_src": "amp_bias_v3_amp_front_svg",
-      "_tgt": "amp_bias_v3_amp",
+      "_src": "amp_bias_v3_amp",
+      "_tgt": "amp_bias_v3_amp_front_svg",
       "source": "amp_bias_v3_amp",
       "target": "amp_bias_v3_amp_front_svg"
     },
@@ -5511,8 +6408,8 @@
       "source_file": "05-speaker-assets/svg/bias-v3-amp-side.svg",
       "source_location": null,
       "weight": 1.0,
-      "_src": "amp_bias_v3_amp_side_svg",
-      "_tgt": "amp_bias_v3_amp",
+      "_src": "amp_bias_v3_amp",
+      "_tgt": "amp_bias_v3_amp_side_svg",
       "source": "amp_bias_v3_amp",
       "target": "amp_bias_v3_amp_side_svg"
     },

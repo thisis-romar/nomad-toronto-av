@@ -5,55 +5,160 @@
     "repo": "nomad-toronto-av"
   },
   "views": [
-    { "name": "Board — By Status",     "layout": "board",  "groupBy": "Status" },
-    { "name": "Board — By Owner",      "layout": "board",  "groupBy": "Owner" },
-    { "name": "Active Work",           "layout": "table",  "filter": "-status:Done -status:Backlog" },
-    { "name": "Site Visits Required",  "layout": "table",  "filter": "label:site-visit-required" },
-    { "name": "SVG Assets",            "layout": "table",  "filter": "label:svg-assets" },
-    { "name": "Backlog",               "layout": "table",  "filter": "status:Backlog" }
+    {
+      "name": "Board — By Status",
+      "layout": "board",
+      "groupBy": "Status"
+    },
+    {
+      "name": "Board — By Owner",
+      "layout": "board",
+      "groupBy": "Owner"
+    },
+    {
+      "name": "Active Work",
+      "layout": "table",
+      "filter": "-status:Done -status:Backlog"
+    },
+    {
+      "name": "Site Visits Required",
+      "layout": "table",
+      "filter": "label:site-visit-required"
+    },
+    {
+      "name": "SVG Assets",
+      "layout": "table",
+      "filter": "label:svg-assets"
+    },
+    {
+      "name": "Backlog",
+      "layout": "table",
+      "filter": "status:Backlog"
+    }
   ],
   "fields": [
     {
       "name": "Status",
       "type": "SINGLE_SELECT",
-      "options": ["Backlog", "Todo", "In Progress", "On-Site", "Blocked", "Done"]
+      "options": [
+        "Backlog",
+        "Todo",
+        "In Progress",
+        "On-Site",
+        "Blocked",
+        "Done"
+      ]
     },
     {
       "name": "Priority",
       "type": "SINGLE_SELECT",
-      "options": ["P1-High", "P2-Normal", "P3-Low"]
+      "options": [
+        "P1-High",
+        "P2-Normal",
+        "P3-Low"
+      ]
     },
     {
       "name": "Owner",
       "type": "SINGLE_SELECT",
-      "options": ["Venue Tech", "Venue Management", "Integrator", "Venue Electrician", "Any"]
+      "options": [
+        "Venue Tech",
+        "Venue Management",
+        "Integrator",
+        "Venue Electrician",
+        "Any"
+      ]
     },
     {
       "name": "Site Visit",
       "type": "SINGLE_SELECT",
-      "options": ["Required", "Not Required"]
+      "options": [
+        "Required",
+        "Not Required"
+      ]
     }
   ],
   "labels": [
-    { "name": "site-visit-required", "color": "e4e669", "description": "Requires physical on-site access" },
-    { "name": "integrator",          "color": "0075ca", "description": "Emblem Projects action required" },
-    { "name": "venue-management",    "color": "0e8a16", "description": "Venue staff action required" },
-    { "name": "electrical",          "color": "b60205", "description": "Electrical/power safety" },
-    { "name": "firmware",            "color": "d93f0b", "description": "Firmware or software update" },
-    { "name": "area:foh",            "color": "f9d0c4", "description": "Front-of-house zone" },
-    { "name": "area:booth",          "color": "bfd4f2", "description": "DJ Booth zone" },
-    { "name": "area:entrance",       "color": "ededed", "description": "Entrance/foyer zone" },
-    { "name": "area:rack",           "color": "d4c5f9", "description": "Amp rack" },
-    { "name": "area:full-system",    "color": "84b6eb", "description": "Affects whole system" },
-    { "name": "documentation",       "color": "c5def5", "description": "Codebase documentation task" },
-    { "name": "svg-assets",          "color": "e1d5e7", "description": "SVG drawing and vector asset work" },
-    { "name": "validation",          "color": "fbca04", "description": "QA, visual diff, or methodology validation" }
+    {
+      "name": "site-visit-required",
+      "color": "e4e669",
+      "description": "Requires physical on-site access"
+    },
+    {
+      "name": "integrator",
+      "color": "0075ca",
+      "description": "Emblem Projects action required"
+    },
+    {
+      "name": "venue-management",
+      "color": "0e8a16",
+      "description": "Venue staff action required"
+    },
+    {
+      "name": "electrical",
+      "color": "b60205",
+      "description": "Electrical/power safety"
+    },
+    {
+      "name": "firmware",
+      "color": "d93f0b",
+      "description": "Firmware or software update"
+    },
+    {
+      "name": "area:foh",
+      "color": "f9d0c4",
+      "description": "Front-of-house zone"
+    },
+    {
+      "name": "area:booth",
+      "color": "bfd4f2",
+      "description": "DJ Booth zone"
+    },
+    {
+      "name": "area:entrance",
+      "color": "ededed",
+      "description": "Entrance/foyer zone"
+    },
+    {
+      "name": "area:rack",
+      "color": "d4c5f9",
+      "description": "Amp rack"
+    },
+    {
+      "name": "area:full-system",
+      "color": "84b6eb",
+      "description": "Affects whole system"
+    },
+    {
+      "name": "documentation",
+      "color": "c5def5",
+      "description": "Codebase documentation task"
+    },
+    {
+      "name": "svg-assets",
+      "color": "e1d5e7",
+      "description": "SVG drawing and vector asset work"
+    },
+    {
+      "name": "validation",
+      "color": "fbca04",
+      "description": "QA, visual diff, or methodology validation"
+    },
+    {
+      "name": "asset-cleanup",
+      "color": "f4a460",
+      "description": "SVG/PNG annotation removal and diagram repair"
+    }
   ],
   "items": [
     {
       "title": "Take new rack photo — V9 physically present in rack",
       "body": "Physical rack order doesn't match documented spec order. Bias V9 is still physically present in U5 despite being offline (all channels disconnected, CPC 45A breaker off). Need a current rack photo to:\n- Update `07-tech-pack/rack-elevation.svg` with actual physical state\n- Confirm Bias Q5 actual rack position (currently marked provisional at U8)\n\n**Action:** Photograph the full rack front panel on next site visit.",
-      "labels": ["site-visit-required", "area:rack", "documentation"],
+      "labels": [
+        "site-visit-required",
+        "area:rack",
+        "documentation"
+      ],
       "status": "Todo",
       "priority": "P2-Normal",
       "owner": "Venue Tech",
@@ -62,7 +167,11 @@
     {
       "title": "Verify CQ-12T Out4/5/6 purpose before patching",
       "body": "CQ-12T outputs Out4, Out5, and Out6 are currently set at 0 dB with no documented routing or load. Must be verified before any signal is patched to these outputs — unintended audio or feedback risk.\n\n**Current state:** 0 dB, unlabelled, unknown if in use or spare.\n**Risk:** Do not connect any equipment to these outputs until purpose is confirmed.\n\n**Action:** Integrator to trace signal on-site and update `07-tech-pack/cable-schedule.md` and CQ-12T I/O table in README.",
-      "labels": ["site-visit-required", "integrator", "area:full-system"],
+      "labels": [
+        "site-visit-required",
+        "integrator",
+        "area:full-system"
+      ],
       "status": "Todo",
       "priority": "P1-High",
       "owner": "Integrator",
@@ -71,7 +180,11 @@
     {
       "title": "Identify Turbosound Athens TCS-AN exact submodel",
       "body": "Entrance speakers confirmed as **Turbosound Athens TCS-AN series** (Music Tribe). Exact model unconfirmed:\n- TCS122/xx-AN (12\") or TCS152/xx-AN (15\")\n- Dispersion variant (64°, 94°, or 96°)\n\n**Actions:**\n1. Photograph the **rear type-plate label** on next site visit\n2. Download QSG PDF (DNS-blocked on primary machine — use phone or different network):\n   `https://mediadl.musictribe.com/media/PLM/data/docs/P0B71/QSG_TS_P0B48_TCS-AN-Series_A4_WW.pdf`\n3. Drop QSG into `02-equipment-manuals/speakers/Turbosound-Athens-TCS-AN-Series-QSG.pdf`\n4. Update README issue #4 and `01-source-documents/nomad-system-spec-v2.md` §6.6",
-      "labels": ["site-visit-required", "documentation", "area:entrance"],
+      "labels": [
+        "site-visit-required",
+        "documentation",
+        "area:entrance"
+      ],
       "status": "Todo",
       "priority": "P2-Normal",
       "owner": "Venue Tech",
@@ -80,7 +193,10 @@
     {
       "title": "Document production and technical contacts",
       "body": "Named production manager and technical/systems contacts are TBC. Required for:\n- `07-tech-pack/available-rider.md` contact table\n- `07-tech-pack/emergency-procedures.md` Tier 1 escalation\n- Artist/agency coordination\n\n**Contact venue:** 647-643-8823 · info@nomad725.ca\n\n**Action:** Add named contact(s) to both documents and remove `*(TBC — Issue #5)*` placeholders.",
-      "labels": ["venue-management", "documentation"],
+      "labels": [
+        "venue-management",
+        "documentation"
+      ],
       "status": "Todo",
       "priority": "P2-Normal",
       "owner": "Venue Management",
@@ -89,7 +205,11 @@
     {
       "title": "Confirm Bias Q5 Phoenix 5-pin mains — breaker spec",
       "body": "Bias Q5 at rack U8 uses a **non-standard Phoenix 5-pin AC mains connector**. Circuit breaker rating not yet confirmed.\n\n**Risk:** Electrical safety — cannot complete power distribution documentation without this.\n\n**References:**\n- `02-equipment-manuals/amplifiers/Bias_Q5_user_guide_v1.1.pdf` confirms Phoenix 5-pin input\n- README Power Distribution table (Q5 row shows TBC)\n- `07-tech-pack/cable-schedule.md` line P7\n\n**Action:** Venue electrician to identify Q5 circuit in panel, confirm breaker rating. Update README and cable schedule.",
-      "labels": ["site-visit-required", "electrical", "area:rack"],
+      "labels": [
+        "site-visit-required",
+        "electrical",
+        "area:rack"
+      ],
       "status": "Todo",
       "priority": "P1-High",
       "owner": "Venue Electrician",
@@ -98,7 +218,10 @@
     {
       "title": "Export Armonía DSP preset backup (.aps workspace file)",
       "body": "TECH-PACK-STATUS §9 (Armonía DSP Config) is marked ⚠️ Partial. Gains and delays are documented in README but no preset export exists.\n\n**Action:** Connect control PC to Armonía network (192.168.10.x), launch ArmoníaPlus 2.8, export workspace as `.aps` file. Commit to `01-source-documents/` or `06-reference-docs/`.\n\n**Prerequisite:** Update ArmoníaPlus to v2.8 first — see `06-reference-docs/firmware-changelog.md`.",
-      "labels": ["integrator", "area:rack"],
+      "labels": [
+        "integrator",
+        "area:rack"
+      ],
       "status": "Backlog",
       "priority": "P2-Normal",
       "owner": "Integrator",
@@ -107,7 +230,10 @@
     {
       "title": "Compile tech pack deliverables to PDF",
       "body": "TECH-PACK-STATUS Conv E (Master tech pack compile) is marked ⏳ In Progress. All source documents are complete and committed.\n\n**Deliverable 1:** Internal Technical Reference PDF\n**Deliverable 2:** Technical Available Rider PDF\n\n**Source files in `07-tech-pack/`:**\n- `system-overview.md`, `cable-schedule.md`, `emergency-procedures.md`, `available-rider.md`\n- SVGs: `signal-flow.svg`, `rack-elevation.svg`, `speaker-zone-map.svg`\n\n**Action:** Use Pandoc + wkhtmltopdf or Weasyprint. Commit PDFs to `07-tech-pack/`.",
-      "labels": ["documentation", "integrator"],
+      "labels": [
+        "documentation",
+        "integrator"
+      ],
       "status": "Backlog",
       "priority": "P2-Normal",
       "owner": "Integrator",
@@ -116,7 +242,11 @@
     {
       "title": "Measure DJ booth floor dimensions for available rider",
       "body": "Available rider §Stage/Booth Layout has a placeholder: `*(Floor plan to be added — pending venue measurement)*`\n\n**Required measurements:**\n- Booth overall dimensions (W × D)\n- CDJ table width and depth\n- Clearance from booth front to dance floor\n- Height of booth platform (if raised)\n\n**Action:** Measure on-site and update `07-tech-pack/available-rider.md` §Stage/Booth Layout.",
-      "labels": ["site-visit-required", "venue-management", "documentation"],
+      "labels": [
+        "site-visit-required",
+        "venue-management",
+        "documentation"
+      ],
       "status": "Backlog",
       "priority": "P3-Low",
       "owner": "Venue Tech",
@@ -125,7 +255,11 @@
     {
       "title": "[Epic] Redraw all 9 VOID speaker SVGs — replace VTracer auto-traces with hand-crafted technical drawings",
       "body": "All VOID speaker SVGs in `05-speaker-assets/svg/` were generated by VTracer 0.6.12 bitmap auto-trace. They are black outline blobs with no dimension annotations, no labels, and no styling — not usable as technical documentation.\n\n**Problem:** VTracer captures shape outlines only. It cannot recover dimension text, annotation leaders, or engineering drawing structure from a PNG technical drawing.\n\n**Source PNGs:** `05-speaker-assets/png/void-*-front.png`, `*-side.png`, `*-top.png`\n**Style reference:** `07-tech-pack/rack-elevation.svg` (dark bg `#0d1117`, hand-crafted geometry, `<text>` dimension labels)\n**Methodology:** Vision analysis of source PNG → hand-craft SVG geometry → `<text>` dimension annotations → dark theme → SVGO optimize → ImageMagick compare validation\n\n## Subtasks\n- [ ] Research & establish PNG→SVG validation pipeline\n- [ ] void-air-motion-v2-front.svg (side + top-down views, 658×854mm)\n- [ ] void-air-motion-v2-side.svg (horn profile, 658mm depth)\n- [ ] void-air-motion-v2-top.svg (3D perspective + flat plan)\n- [ ] void-air-vantage-front.svg (front face, 719mm wide)\n- [ ] void-air-vantage-side.svg\n- [ ] void-air-vantage-top.svg\n- [ ] void-venu-215-v2-front.svg (enclosure front, 860×446mm)\n- [ ] void-venu-215-v2-side.svg (636×454mm)\n- [ ] void-venu-215-v2-top.svg",
-      "labels": ["integrator", "svg-assets", "documentation"],
+      "labels": [
+        "integrator",
+        "svg-assets",
+        "documentation"
+      ],
       "status": "In Progress",
       "priority": "P2-Normal",
       "owner": "Integrator",
@@ -134,7 +268,11 @@
     {
       "title": "Research & establish PNG→SVG validation pipeline for speaker technical drawings",
       "body": "Before redrawing all 9 speaker SVGs, establish a repeatable validation methodology so each redrawn SVG can be verified against its source PNG.\n\n**Deliverables:**\n1. ImageMagick `compare` command that diffs rendered SVG against source PNG (pixel-level)\n2. Decision matrix: when to use `<path>` vs `<rect>`/`<circle>` for speaker geometry\n3. Dimension extraction method: Claude vision reads PNG → values go into `<text>` elements\n4. SVGO config that preserves `<title>`, `<desc>`, `<text>` while stripping VTracer cruft\n5. One-paragraph methodology doc committed to `06-reference-docs/svg-drawing-methodology.md`\n\n**Reference document:** Research on PNG→SVG conversion workflow (OCR, layout analysis, visual diff, accessibility structure per SVG 2.0 spec)\n\n**Tools to evaluate for future automation:**\n- Inkscape CLI (`inkscape --export-plain-svg`) — potential MCP wrapper\n- Potrace via ImageMagick pipeline for clean geometric shapes\n- SVGO Node.js CLI (already in `package.json` ecosystem)",
-      "labels": ["integrator", "validation", "svg-assets"],
+      "labels": [
+        "integrator",
+        "validation",
+        "svg-assets"
+      ],
       "status": "Todo",
       "priority": "P2-Normal",
       "owner": "Integrator",
@@ -143,7 +281,11 @@
     {
       "title": "Redraw void-air-motion-v2-front.svg from source PNG",
       "body": "**Source:** `05-speaker-assets/png/void-air-motion-v2-front.png`\n**Current SVG:** `05-speaker-assets/svg/void-air-motion-v2-front.svg` — VTracer blob, 86 lines, no dimensions\n\n**PNG contains two views:**\n- Upper: side cross-section of horn + mid driver (height 658mm / 26.5\", depth 361.5mm / 14.2\")\n- Lower: top-down plan showing two large circular drivers + horn (854mm / 33.6\" wide, 672mm / 26.5\" deep)\n\n**Requirements:**\n- Dark background `#0d1117`\n- White/gray strokes for geometry, `#fcd34d` for dimension annotations\n- Actual `<text>` elements for all dimension labels (not traced)\n- `<title>` and `<desc>` for accessibility\n- Labeled `<g>` groups per view\n- SVGO optimized after drawing\n- ImageMagick compare diff saved to `05-speaker-assets/svg/validation/`\n\n**Style reference:** `07-tech-pack/rack-elevation.svg`",
-      "labels": ["integrator", "svg-assets", "area:foh"],
+      "labels": [
+        "integrator",
+        "svg-assets",
+        "area:foh"
+      ],
       "status": "In Progress",
       "priority": "P2-Normal",
       "owner": "Integrator",
@@ -152,7 +294,11 @@
     {
       "title": "Redraw void-air-motion-v2-side.svg from source PNG",
       "body": "**Source:** `05-speaker-assets/png/void-air-motion-v2-side.png`\n**Current SVG:** `05-speaker-assets/svg/void-air-motion-v2-side.svg` — VTracer blob, only 27 lines\n\n**PNG shows:** Horn profile side view with depth annotation 658mm (25.9\")\n\n**Requirements:** Dark theme, `<text>` dimension labels, SVGO optimized, visual diff validation.\n**Style reference:** `07-tech-pack/rack-elevation.svg`",
-      "labels": ["integrator", "svg-assets", "area:foh"],
+      "labels": [
+        "integrator",
+        "svg-assets",
+        "area:foh"
+      ],
       "status": "Todo",
       "priority": "P2-Normal",
       "owner": "Integrator",
@@ -161,7 +307,11 @@
     {
       "title": "Redraw void-air-motion-v2-top.svg from source PNG",
       "body": "**Source:** `05-speaker-assets/png/void-air-motion-v2-top.png`\n**Current SVG:** `05-speaker-assets/svg/void-air-motion-v2-top.svg` — VTracer blob, 105 lines\n\n**PNG shows:** 3D perspective render (top) + flat top-down plan with 854mm / 33.6\" width and 672mm / 26.5\" depth annotations\n\n**Requirements:** Dark theme, `<text>` dimension labels, SVGO optimized, visual diff validation.\n**Style reference:** `07-tech-pack/rack-elevation.svg`",
-      "labels": ["integrator", "svg-assets", "area:foh"],
+      "labels": [
+        "integrator",
+        "svg-assets",
+        "area:foh"
+      ],
       "status": "Todo",
       "priority": "P2-Normal",
       "owner": "Integrator",
@@ -170,7 +320,11 @@
     {
       "title": "Redraw void-air-vantage-front.svg from source PNG",
       "body": "**Source:** `05-speaker-assets/png/void-air-vantage-front.png`\n**Current SVG:** `05-speaker-assets/svg/void-air-vantage-front.svg` — VTracer blob, 87 lines\n\n**PNG shows:** Front face of DJ monitor with waveguide horn — width 719mm (28.3\") annotated\n\n**Requirements:** Dark theme, `<text>` dimension labels, SVGO optimized, visual diff validation.\n**Style reference:** `07-tech-pack/rack-elevation.svg`",
-      "labels": ["integrator", "svg-assets", "area:booth"],
+      "labels": [
+        "integrator",
+        "svg-assets",
+        "area:booth"
+      ],
       "status": "Todo",
       "priority": "P2-Normal",
       "owner": "Integrator",
@@ -179,7 +333,11 @@
     {
       "title": "Redraw void-air-vantage-side.svg from source PNG",
       "body": "**Source:** `05-speaker-assets/png/void-air-vantage-side.png`\n**Current SVG:** `05-speaker-assets/svg/void-air-vantage-side.svg` — VTracer blob, 126 lines\n\n**PNG shows:** Side profile of Air Vantage DJ monitor\n\n**Requirements:** Dark theme, `<text>` dimension labels, SVGO optimized, visual diff validation.\n**Style reference:** `07-tech-pack/rack-elevation.svg`",
-      "labels": ["integrator", "svg-assets", "area:booth"],
+      "labels": [
+        "integrator",
+        "svg-assets",
+        "area:booth"
+      ],
       "status": "Todo",
       "priority": "P2-Normal",
       "owner": "Integrator",
@@ -188,7 +346,11 @@
     {
       "title": "Redraw void-air-vantage-top.svg from source PNG",
       "body": "**Source:** `05-speaker-assets/png/void-air-vantage-top.png`\n**Current SVG:** `05-speaker-assets/svg/void-air-vantage-top.svg` — VTracer blob, 146 lines\n\n**PNG shows:** Top-down plan of Air Vantage DJ monitor\n\n**Requirements:** Dark theme, `<text>` dimension labels, SVGO optimized, visual diff validation.\n**Style reference:** `07-tech-pack/rack-elevation.svg`",
-      "labels": ["integrator", "svg-assets", "area:booth"],
+      "labels": [
+        "integrator",
+        "svg-assets",
+        "area:booth"
+      ],
       "status": "Todo",
       "priority": "P2-Normal",
       "owner": "Integrator",
@@ -197,7 +359,11 @@
     {
       "title": "Redraw void-venu-215-v2-front.svg from source PNG",
       "body": "**Source:** `05-speaker-assets/png/void-venu-215-v2-front.png`\n**Current SVG:** `05-speaker-assets/svg/void-venu-215-v2-front.svg` — VTracer blob, only 30 lines — barely a rectangle\n\n**PNG shows:** Enclosure front with port circle and lock stud — 860mm (33.9\") wide × 446mm (17.6\") tall\n\n**Requirements:** Dark theme, `<text>` dimension labels, port and hardware detail, SVGO optimized, visual diff validation.\n**Style reference:** `07-tech-pack/rack-elevation.svg`",
-      "labels": ["integrator", "svg-assets", "area:booth"],
+      "labels": [
+        "integrator",
+        "svg-assets",
+        "area:booth"
+      ],
       "status": "Todo",
       "priority": "P2-Normal",
       "owner": "Integrator",
@@ -206,7 +372,11 @@
     {
       "title": "Redraw void-venu-215-v2-side.svg from source PNG",
       "body": "**Source:** `05-speaker-assets/png/void-venu-215-v2-side.png`\n**Current SVG:** `05-speaker-assets/svg/void-venu-215-v2-side.svg` — VTracer blob, 39 lines\n\n**PNG shows:** Side profile with 4 corner handle/feet circles — 636mm (25.0\") wide × 454mm (17.9\") tall\n\n**Requirements:** Dark theme, `<text>` dimension labels, handle detail, SVGO optimized, visual diff validation.\n**Style reference:** `07-tech-pack/rack-elevation.svg`",
-      "labels": ["integrator", "svg-assets", "area:booth"],
+      "labels": [
+        "integrator",
+        "svg-assets",
+        "area:booth"
+      ],
       "status": "Todo",
       "priority": "P2-Normal",
       "owner": "Integrator",
@@ -215,7 +385,74 @@
     {
       "title": "Redraw void-venu-215-v2-top.svg from source PNG",
       "body": "**Source:** `05-speaker-assets/png/void-venu-215-v2-top.png`\n**Current SVG:** `05-speaker-assets/svg/void-venu-215-v2-top.svg` — VTracer blob, 112 lines\n\n**PNG shows:** Top-down plan showing cabinet top with 4 corner feet and side panel seam details\n\n**Requirements:** Dark theme, `<text>` dimension labels, SVGO optimized, visual diff validation.\n**Style reference:** `07-tech-pack/rack-elevation.svg`",
-      "labels": ["integrator", "svg-assets", "area:booth"],
+      "labels": [
+        "integrator",
+        "svg-assets",
+        "area:booth"
+      ],
+      "status": "Todo",
+      "priority": "P2-Normal",
+      "owner": "Integrator",
+      "siteVisit": "Not Required"
+    },
+    {
+      "title": "[Epic] Clean all equipment diagrams — remove annotation overlays",
+      "body": "All equipment diagrams extracted from Pioneer/VOID manuals contain annotation overlays (red callout boxes, numbered leader lines, legend text) that must be removed before the diagrams can be used in the tech pack.\n\n## Subtasks\n- [ ] Deep inspect DJM-V10 rear panel — map white-line obstructions\n- [ ] Fix DJM-V10 rear panel SVG — repair annotation gaps\n- [ ] Extract CDJ-3000 panel diagrams from PDF\n- [ ] Clean CQ-12T diagrams\n- [ ] Clean Bias Q5 diagrams\n- [ ] Source connector type reference library (IEC, RCA, XLR, TRS, MIDI, RJ-45)",
+      "labels": [
+        "integrator",
+        "asset-cleanup",
+        "svg-assets"
+      ],
+      "status": "In Progress",
+      "priority": "P1-High",
+      "owner": "Integrator",
+      "siteVisit": "Not Required"
+    },
+    {
+      "title": "Deep inspect DJM-V10 rear panel — map white-line obstructions",
+      "body": "The current pioneer-djm-v10-rear.svg has white transparency gaps where 48 red annotation strokes were removed. Need to map EXACTLY what each gap obscures before fixing.\n\nKnown obscured elements:\n- R/L labels on RCA pairs (CH1-6 channel inputs)\n- \"BALANCED\" label on MIC 1 TRS input\n\nInspect all 4 quadrants at 600 DPI and produce bounding box map.",
+      "labels": [
+        "integrator",
+        "asset-cleanup"
+      ],
+      "status": "In Progress",
+      "priority": "P1-High",
+      "owner": "Integrator",
+      "siteVisit": "Not Required"
+    },
+    {
+      "title": "Fix DJM-V10 rear panel SVG — repair annotation gaps",
+      "body": "After obstruction mapping is complete, apply targeted fixes:\n- Surgical SVG edits where gaps are in annotation-only areas\n- Content repair (ChatGPT/inpainting) where gaps obscure chassis labels\n- Add chassis-colored background rect to eliminate transparency artifacts\n\nBlocked by: Deep inspect issue.",
+      "labels": [
+        "integrator",
+        "svg-assets",
+        "asset-cleanup"
+      ],
+      "status": "Backlog",
+      "priority": "P1-High",
+      "owner": "Integrator",
+      "siteVisit": "Not Required"
+    },
+    {
+      "title": "Extract CDJ-3000 panel diagrams from PDF",
+      "body": "Pioneer CDJ-3000 manual PDF exists at 02-equipment-manuals/dj-gear/Pioneer_CDJ-3000_manual.pdf. Use pdftocairo approach (same as DJM-V10 panel) to extract clean vector SVGs for:\n- Top panel (controls surface)\n- Front panel\n- Rear panel\n\nFree — no API credits needed.",
+      "labels": [
+        "integrator",
+        "svg-assets"
+      ],
+      "status": "Todo",
+      "priority": "P2-Normal",
+      "owner": "Integrator",
+      "siteVisit": "Not Required"
+    },
+    {
+      "title": "Source I/O connector reference library (IEC, RCA, XLR, TRS, MIDI, RJ-45)",
+      "body": "Build a library of clean technical SVG drawings for every connector type on the system:\n- IEC C14 inlet\n- RCA phono jack\n- XLR female 3-pin\n- XLR male 3-pin\n- 1/4\" TRS (balanced)\n- 1/4\" TS (unbalanced)\n- MIDI DIN 5-pin\n- RJ-45\n\nSources: Neutrik datasheets, Wikipedia/Wikimedia Commons SVGs (CC-licensed), Pioneer DJ manual connection diagrams.\n\nOutput: 05-speaker-assets/svg/connectors/",
+      "labels": [
+        "integrator",
+        "svg-assets",
+        "documentation"
+      ],
       "status": "Todo",
       "priority": "P2-Normal",
       "owner": "Integrator",
