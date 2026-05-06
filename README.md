@@ -23,6 +23,8 @@ The system was designed and installed by **Emblem Projects Inc.** and verified a
 
 ## Asset Summary
 
+> This section provides an inventory of key assets and their configuration. Financial details have been removed for confidentiality.
+
 ### DJ Source Chain
 
 | Item                      | Qty | Description                      |
@@ -64,6 +66,34 @@ The system was designed and installed by **Emblem Projects Inc.** and verified a
 | Bias amplifiers            | 10–15 years         | Powersoft platform — parts available          |
 | Bias V9 (offline)          | —                   | Remove from rack and dispose or repurpose     |
 | VOID speakers              | 15+ years           | Drivers replaceable — enclosures are permanent|
+
+---
+
+## Spare Parts Recommended
+
+| Part                        | Qty to Keep on Hand | Use Case                         |
+|-----------------------------|---------------------|-----------------------------------|
+| IEC C20 mains cable         | 2                   | Amp mains replacement            |
+| NL4 speaker cable (10 m)    | 2                   | Speaker cable replacement        |
+| XLR-M to Phoenix MC adapter | 2                   | V3 #2 line out → Q2/Q5 input     |
+| XLR balanced cable (5 m)    | 4                   | General patching                 |
+| Cat5e patch cable (1 m)     | 2                   | Armonía network connections       |
+| FAT32 USB stick (16 GB)     | 1                   | CQ-12T firmware/scene backup     |
+
+---
+
+## Vendor and Warranty Guidance
+
+### Service Contracts & Warranty
+
+| Equipment                     | Warranty Status              | Service Notes                                  |
+|-------------------------------|-----------------------------|-----------------------------------------------|
+| VOID Acoustics speakers       | Confirm with vendor (3 years typical) | Contact VOID for product registration.       |
+| Bias amplifiers               | Confirm with vendor         | Register through Powersoft’s service portal   |
+| Allen & Heath CQ-12T          | Confirm with vendor (2 years typical) | Warranty covers software serviceability.    |
+| Pioneer DJ gear (CDJ/DJM)     | Confirm with vendor (1 year typical) | Ensure firmware regularly updated.          |
+
+> Action Required: Confirm the purchase date for all equipment with **Emblem Projects** and register each product to activate warranty coverage as needed.
 
 ---
 
