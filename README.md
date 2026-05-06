@@ -23,36 +23,34 @@ The system was designed and installed by **Emblem Projects Inc.** and verified a
 
 ## Asset Summary
 
-> This section provides an inventory of key assets and their configuration. Financial details have been removed for confidentiality.
-
 ### DJ Source Chain
 
-| Item                      | Qty |
-|---------------------------|-----|
-| Pioneer CDJ-3000          | 4   |
-| Pioneer DJM-V10           | 1   |
-| Allen & Heath CQ-12T      | 1   |
+| Item                      | Qty | Description                      |
+|---------------------------|-----|----------------------------------|
+| Pioneer CDJ-3000          | 4   | Industry-standard media players  |
+| Pioneer DJM-V10           | 1   | Professional 6-channel DJ mixer  |
+| Allen & Heath CQ-12T      | 1   | Digital mixing console           |
 
 ### Amplifier Rack
 
-| Item                     | Qty |
-|--------------------------|-----|
-| Bias V3 amplifier        | 2   |
-| Bias Q5 amplifier        | 1   |
-| Bias Q2 amplifier        | 2   |
-| Bias V9 amplifier        | 1   |
-| Drawmer SP2120           | 1   |
+| Item                     | Qty | Description                   |
+|--------------------------|-----|-------------------------------|
+| Bias V3 amplifier        | 2   | Amplifiers for subwoofer zones|
+| Bias Q5 amplifier        | 1   | Mid-range amplifier            |
+| Bias Q2 amplifier        | 2   | High-frequency amplification   |
+| Bias V9 amplifier        | 1   | Currently offline              |
+| Drawmer SP2120           | 1   | System limiter and protector   |
 
 ### Speakers
 
-| Item                        | Qty |
-|-----------------------------|-----|
-| VOID Air Motion V2 Red      | 2   |
-| VOID Airten V3              | 2   |
-| VOID Stasys Xair            | 6   |
-| VOID Air Vantage            | 2   |
-| VOID Venu 215 V2            | 2   |
-| Turbosound Athens TCS-AN    | 2   |
+| Item                        | Qty | Description                                       |
+|-----------------------------|-----|-------------------------------------------------|
+| VOID Air Motion V2 Red      | 2   | FOH main speakers                                |
+| VOID Airten V3              | 2   | FOH fill speakers                                |
+| VOID Stasys Xair            | 6   | Subwoofers for low frequencies                   |
+| VOID Air Vantage            | 2   | DJ booth speakers                                |
+| VOID Venu 215 V2            | 2   | DJ subwoofers                                    |
+| Turbosound Athens TCS-AN    | 2   | Entrance fill zone                               |
 
 ---
 
@@ -66,6 +64,32 @@ The system was designed and installed by **Emblem Projects Inc.** and verified a
 | Bias amplifiers            | 10–15 years         | Powersoft platform — parts available          |
 | Bias V9 (offline)          | —                   | Remove from rack and dispose or repurpose     |
 | VOID speakers              | 15+ years           | Drivers replaceable — enclosures are permanent|
+
+---
+
+## Technical Overview
+
+### Signal Chain
+
+```
+4× Pioneer CDJ-3000 ──Pro DJ Link──▶ Pioneer DJM-V10
+                                            │
+                         ┌── Master XLR L/R (CH1+2 "Music")  ┐
+                         └── Booth XLR L/R  (CH3+4 "MonIn")  ┘
+                                            │
+                                   Allen & Heath CQ-12T
+                                   FW 1.2.1 · IP 169.254.182.156
+                                            │
+      ┌── Main LR XLR ──▶ Drawmer SP2120 ──▶ Bias V3 #2 ──┬──▶ Xair L-3 (CH1, 4Ω)
+      │                                                     └──▶ Xair R-3 (CH2, 4Ω)
+      │                                     V3 #2 line outs:
+      │                                       ├──▶ Bias Q5  ──▶ Xair L-1/2, R-1/2 (4ch, 4Ω)
+      │                                       ├──▶ Bias Q2 #2 ──▶ Air Motion L+R (bi-amp)
+      │                                       └──▶ Bias V3 #1 ──▶ Airten V3 L/R
+      │
+      ├── MonOut (−32 dB) ──▶ Bias Q2 #1 ──▶ Air Vantage L/R + Venu 215 L/R
+      └── BakFil (−34 dB) ──▶ Athens TCS-AN ×2 (self-powered, entrance)
+```
 
 ---
 
