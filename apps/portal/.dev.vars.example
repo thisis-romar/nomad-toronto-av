@@ -1,0 +1,18 @@
+# Local development secrets for the portal (Cloudflare Pages Functions).
+# Copy to `.dev.vars` (gitignored) and fill in real values:
+#     cp .dev.vars.example .dev.vars
+# In PRODUCTION these are set as encrypted env vars in the Cloudflare Pages dashboard,
+# never in the repo.
+
+# Shared password every approved stakeholder uses to sign in.
+SHARED_PASSWORD="nomad2026"
+
+# Secret used to HMAC-sign session cookies. Generate a fresh one:
+#     node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"
+SESSION_SECRET="change-me-to-a-long-random-string"
+
+# Comma-separated allowlist of permitted identifiers: emails and/or WhatsApp numbers.
+# Numbers are normalized to E.164 (10-digit North-American numbers auto-prefixed with +1).
+# NOTE: these are placeholders — put the real NOMAD stakeholder contacts in .dev.vars /
+# the Cloudflare dashboard, not in this committed example.
+ALLOWLIST="owner@example.com,+15551234567,+15557654321"

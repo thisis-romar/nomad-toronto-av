@@ -1,0 +1,44 @@
+# Mirror this public repo to the PRIVATE repo that Cloudflare Pages deploys from.
+# See ADR-0001 / root README "Repo topology".
+#
+# Setup (one-time, by a maintainer):
+#   1. Create the empty private repo (default: emblem-nlp/nomad-toronto-av).
+#   2. Add a repo secret MIRROR_PAT — a fine-grained PAT with "Contents: Read & Write"
+#      on the private repo. (Optionally MIRROR_REPO to override the target below.)
+name: Mirror to private
+
+on:
+  push:
+    branches: ["**"]
+  delete:
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    # Skips automatically on forks / when the secret is absent.
+    if: ${{ github.repository_owner == 'thisis-romar' }}
+    steps:
+      - name: Guard — require MIRROR_PAT
+        env:
+          MIRROR_PAT: ${{ secrets.MIRROR_PAT }}
+        run: |
+          if [ -z "$MIRROR_PAT" ]; then
+            echo "MIRROR_PAT not set — skipping mirror. Add the secret to enable."
+            exit 0
+          fi
+          echo "ENABLED=true" >> "$GITHUB_ENV"
+
+      - name: Checkout (full history + all refs)
+        if: env.ENABLED == 'true'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push mirror
+        if: env.ENABLED == 'true'
+        env:
+          MIRROR_PAT: ${{ secrets.MIRROR_PAT }}
+          MIRROR_REPO: ${{ vars.MIRROR_REPO || 'emblem-nlp/nomad-toronto-av' }}
+        run: |
+          git fetch --prune --unshallow || true
+          git push --mirror "https://x-access-token:${MIRROR_PAT}@github.com/${MIRROR_REPO}.git"

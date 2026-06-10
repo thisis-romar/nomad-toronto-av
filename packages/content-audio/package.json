@@ -1,0 +1,6 @@
+{
+  "name": "@nomad/content-audio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NOMAD Toronto — audio discipline: system documentation, wiring diagrams, equipment manuals, and tech pack. Source of truth consumed by the stakeholder portal."
+}

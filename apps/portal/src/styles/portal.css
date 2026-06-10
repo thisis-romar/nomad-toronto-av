@@ -1,0 +1,20 @@
+/* NOMAD Toronto portal theming — keep light; Starlight provides the rest. */
+:root {
+  --sl-color-accent-low: #3a0a10;
+  --sl-color-accent: #c8102e;
+  --sl-color-accent-high: #f4a6b0;
+}
+:root[data-theme="light"] {
+  --sl-color-accent-low: #f7c6cd;
+  --sl-color-accent: #b30e29;
+  --sl-color-accent-high: #5e0712;
+}
+
+/* Diagrams (signal flow, rack elevation, zone map) render better on a light card. */
+.sl-markdown-content img[src^="/diagrams/"] {
+  background: #ffffff;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  width: 100%;
+  height: auto;
+}
