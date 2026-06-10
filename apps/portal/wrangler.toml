@@ -1,0 +1,9 @@
+# Cloudflare Pages configuration for the NOMAD Toronto stakeholder portal.
+# Static Astro output in ./dist is served by Pages; ./functions provides the edge auth layer.
+#
+# Secrets (SHARED_PASSWORD, SESSION_SECRET, ALLOWLIST) are NOT defined here. Set them as
+# encrypted environment variables in the Cloudflare Pages dashboard (Production + Preview).
+# For local dev, wrangler reads them from apps/portal/.dev.vars (gitignored).
+name = "nomad-toronto-portal"
+compatibility_date = "2024-12-01"
+pages_build_output_dir = "dist"

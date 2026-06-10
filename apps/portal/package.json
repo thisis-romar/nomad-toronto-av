@@ -1,0 +1,27 @@
+{
+  "name": "@nomad/portal",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "NOMAD Toronto — gated stakeholder portal (Astro + Starlight on Cloudflare Pages).",
+  "scripts": {
+    "sync-content": "node scripts/sync-content.mjs",
+    "dev": "pnpm run sync-content && astro dev",
+    "build": "pnpm run sync-content && astro build",
+    "pages:dev": "wrangler pages dev ./dist",
+    "preview": "pnpm run build && wrangler pages dev ./dist",
+    "lint": "pnpm run sync-content && astro check"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.30.3",
+    "astro": "^5.1.5",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@cloudflare/workers-types": "^4.20241218.0",
+    "@nomad/tsconfig": "workspace:*",
+    "typescript": "^5.7.3",
+    "wrangler": "^3.99.0"
+  }
+}

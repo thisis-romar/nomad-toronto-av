@@ -119,7 +119,7 @@ async function handleGenerateImage(params) {
   const { source_path, output_path, prompt, size = '1024x1024' } = params;
 
   // Use the Python script for the actual generation (handles multipart/form-data)
-  const scriptPath = new URL('../scripts/codex-imagegen.py', import.meta.url).pathname
+  const scriptPath = new URL('./codex-imagegen.py', import.meta.url).pathname
     .replace(/^\/([A-Z]:)/, '$1');  // Windows path fix
 
   try {
