@@ -3,7 +3,7 @@ title: Nomad Toronto — Technical Available Rider
 description: Artist-facing technical rider for touring DJs and live acts. Lists all available DJ gear, PA system, inputs, outputs, and stage requirements.
 version: 1.0.0
 created: 2026-04-27T00:00:00Z
-last_updated: 2026-04-27T00:00:00Z
+last_updated: 2026-06-24T00:00:00Z
 ---
 
 # Nomad Toronto — Technical Available Rider
@@ -149,7 +149,24 @@ Managed by house technician. Handles routing to:
 **Not available:**
 - Analogue turntables / phono preamp
 - Outboard effects rack (unless DJM-V10 effects chain is suitable)
-- Stage lighting control *(confirm with venue)*
+- Guest lighting console control *(by prior arrangement only — see Lighting below)*
+
+---
+
+## Lighting
+
+NØMAD Toronto has a **house lighting rig** controlled from a grandMA2 console:
+
+- **Fixtures:** moving beams (Sharpy-type), moving washes, LED strobe bars, laser bars, plus
+  CO₂ jets and atmospheric haze.
+- **Operation:** programmed and run by the **house LD / technician**. Lighting is operated to the
+  music in-house; touring acts are not expected to bring lighting.
+- **Guest control / DMX patch-in:** possible **by prior arrangement only**. If you require
+  console access, a custom look, timecode, or to patch in your own control, **confirm with the
+  venue production contact in advance** (see Contact below).
+
+> Fixture makes/models, exact positions, and DMX patch-in provisions are being finalised — confirm
+> specifics with the venue before relying on them.
 
 ---
 
@@ -174,5 +191,5 @@ Managed by house technician. Handles routing to:
 
 ---
 
-*Nomad Toronto · Technical Available Rider · Rev 1.0 · April 2026 · EMBLEM PROJECTS INC.*  
+*Nomad Toronto · Technical Available Rider · Rev 1.1 · April 2026 (lighting added June 2026) · EMBLEM PROJECTS INC.*  
 *Subject to change — confirm all technical requirements with production contact no later than 72 hours before event.*

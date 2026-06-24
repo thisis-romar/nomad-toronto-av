@@ -1,0 +1,1176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="styles/fixture+layer+layers@html@default.xsl"?>
+<MA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.malighting.de/grandma2/xml/MA" xsi:schemaLocation="http://schemas.malighting.de/grandma2/xml/MA http://schemas.malighting.de/grandma2/xml/3.9.60/MA.xsd" major_vers="3" minor_vers="9" stream_vers="60">
+	<Info datetime="2026-06-24T15:15:38" showfile="nomad_2026-06-13_kayo-toronto-ft-pools" />
+	<Layer index="1" name="//LED" />
+	<Layer index="2" name="--LED.DJ-Decks">
+		<Fixture index="0" name="DJ-LED" fixture_id="1" channel_id="1">
+			<FixtureType name="3 LED Bar 2 11CH">
+				<No>3</No>
+			</FixtureType>
+			<AbsolutePosition>
+				<Location x="0" y="0" z="0" />
+				<Rotation x="0" y="-0" z="0" />
+				<Scaling x="1" y="1" z="1" />
+			</AbsolutePosition>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>11</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="1" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>13</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="-0.357" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+			</SubFixture>
+			<SubFixture index="2" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>16</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+			</SubFixture>
+			<SubFixture index="3" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>19</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0.357" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+			</SubFixture>
+		</Fixture>
+	</Layer>
+	<Layer index="3" name="--LED.STROBE-BAR">
+		<Fixture index="0" name="LED.Strobe-BAR 7" fixture_id="807">
+			<FixtureType name="4 rgbw-13ch 13CH">
+				<No>4</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>357</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+				<Channel index="9" />
+				<Channel index="10" />
+				<Channel index="11" />
+				<Channel index="12" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="1" name="LED.Strobe-BAR 6" fixture_id="806">
+			<FixtureType name="4 rgbw-13ch 13CH">
+				<No>4</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>383</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+				<Channel index="9" />
+				<Channel index="10" />
+				<Channel index="11" />
+				<Channel index="12" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="2" name="LED.Strobe-BAR 5" fixture_id="805">
+			<FixtureType name="4 rgbw-13ch 13CH">
+				<No>4</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>396</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+				<Channel index="9" />
+				<Channel index="10" />
+				<Channel index="11" />
+				<Channel index="12" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="3" name="LED.Strobe-BAR 4" fixture_id="804">
+			<FixtureType name="4 rgbw-13ch 13CH">
+				<No>4</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>409</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+				<Channel index="9" />
+				<Channel index="10" />
+				<Channel index="11" />
+				<Channel index="12" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="4" name="LED.Strobe-BAR 3" fixture_id="803">
+			<FixtureType name="4 rgbw-13ch 13CH">
+				<No>4</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>422</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+				<Channel index="9" />
+				<Channel index="10" />
+				<Channel index="11" />
+				<Channel index="12" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="5" name="LED.Strobe-BAR 2" fixture_id="802">
+			<FixtureType name="4 rgbw-13ch 13CH">
+				<No>4</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>435</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+				<Channel index="9" />
+				<Channel index="10" />
+				<Channel index="11" />
+				<Channel index="12" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="6" name="LED.Strobe-BAR 1" fixture_id="801">
+			<FixtureType name="4 rgbw-13ch 13CH">
+				<No>4</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>448</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+				<Channel index="9" />
+				<Channel index="10" />
+				<Channel index="11" />
+				<Channel index="12" />
+			</SubFixture>
+		</Fixture>
+	</Layer>
+	<Layer index="4" name="--M.WASH">
+		<Fixture index="0" name="M.Wash 10" fixture_id="110">
+			<FixtureType name="6 movingwash zone">
+				<No>6</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>712</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="1" name="M.Wash 9" fixture_id="109">
+			<FixtureType name="5 NEW WASH">
+				<No>5</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>722</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="2" name="M.Wash 8" fixture_id="108">
+			<FixtureType name="5 NEW WASH">
+				<No>5</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>253</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="3" name="M.Wash 7" fixture_id="107">
+			<FixtureType name="6 movingwash zone">
+				<No>6</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>262</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="4" name="M.Wash 6" fixture_id="106">
+			<FixtureType name="5 NEW WASH">
+				<No>5</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>489</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="5" name="M.Wash 5" fixture_id="105">
+			<FixtureType name="5 NEW WASH">
+				<No>5</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>271</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="6" name="M.Wash 2" fixture_id="102">
+			<FixtureType name="5 NEW WASH">
+				<No>5</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>469</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="7" name="M.Wash 1" fixture_id="101">
+			<FixtureType name="5 NEW WASH">
+				<No>5</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>498</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="8" name="M.Wash 4" fixture_id="104">
+			<FixtureType name="5 NEW WASH">
+				<No>5</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>235</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="9" name="M.Wash 3" fixture_id="103">
+			<FixtureType name="5 NEW WASH">
+				<No>5</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>244</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+			</SubFixture>
+		</Fixture>
+	</Layer>
+	<Layer index="5" name="//BEAMS" />
+	<Layer index="6" name="--M.Beam">
+		<Fixture index="0" name="M.BEAM 2" fixture_id="402">
+			<FixtureType name="9 Sharpy Standard Lamp on">
+				<No>9</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>280</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+				<Channel index="9" />
+				<Channel index="10" />
+				<Channel index="11" />
+				<Channel index="12" />
+				<Channel index="13" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="1" name="M.BEAM 3" fixture_id="403">
+			<FixtureType name="9 Sharpy Standard Lamp on">
+				<No>9</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>296</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+				<Channel index="9" />
+				<Channel index="10" />
+				<Channel index="11" />
+				<Channel index="12" />
+				<Channel index="13" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="2" name="M.BEAM 1" fixture_id="401">
+			<FixtureType name="9 Sharpy Standard Lamp on">
+				<No>9</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>312</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+				<Channel index="9" />
+				<Channel index="10" />
+				<Channel index="11" />
+				<Channel index="12" />
+				<Channel index="13" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="3" name="M.BEAM 4" fixture_id="404">
+			<FixtureType name="9 Sharpy Standard Lamp on">
+				<No>9</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>328</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+				<Channel index="7" />
+				<Channel index="8" />
+				<Channel index="9" />
+				<Channel index="10" />
+				<Channel index="11" />
+				<Channel index="12" />
+				<Channel index="13" />
+			</SubFixture>
+		</Fixture>
+	</Layer>
+	<Layer index="7" name="//SFX" />
+	<Layer index="8" name="--M.Laser-BAR">
+		<Fixture index="0" name="Laser.BAR(6) 9" fixture_id="1009">
+			<FixtureType name="8 LASER BARS 26CH">
+				<No>8</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>513</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+			</SubFixture>
+			<SubFixture index="1" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>514</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="2" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>515</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="3" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>516</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="4" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>517</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="5" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>518</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="6" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>519</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="1" name="Laser.BAR(6) 8" fixture_id="1008">
+			<FixtureType name="8 LASER BARS 26CH">
+				<No>8</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>27</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+			</SubFixture>
+			<SubFixture index="1" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>28</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="2" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>29</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="3" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>30</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="4" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>31</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="5" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>32</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="6" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>33</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="2" name="Laser.BAR(6) 7" fixture_id="1007">
+			<FixtureType name="8 LASER BARS 26CH">
+				<No>8</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>53</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+			</SubFixture>
+			<SubFixture index="1" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>54</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="2" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>55</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="3" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>56</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="4" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>57</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="5" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>58</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="6" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>59</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="3" name="Laser.BAR(6) 6" fixture_id="1006">
+			<FixtureType name="8 LASER BARS 26CH">
+				<No>8</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>79</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+			</SubFixture>
+			<SubFixture index="1" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>80</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="2" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>81</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="3" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>82</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="4" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>83</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="5" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>84</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="6" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>85</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="4" name="Laser.BAR(6) 5" fixture_id="1005">
+			<FixtureType name="8 LASER BARS 26CH">
+				<No>8</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>105</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+			</SubFixture>
+			<SubFixture index="1" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>106</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="2" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>107</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="3" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>108</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="4" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>109</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="5" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>110</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="6" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>111</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="5" name="Laser.BAR(6) 4" fixture_id="1004">
+			<FixtureType name="8 LASER BARS 26CH">
+				<No>8</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>131</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+			</SubFixture>
+			<SubFixture index="1" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>132</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="2" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>133</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="3" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>134</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="4" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>135</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="5" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>136</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="6" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>137</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="6" name="Laser.BAR(6) 3" fixture_id="1003">
+			<FixtureType name="8 LASER BARS 26CH">
+				<No>8</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>157</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+			</SubFixture>
+			<SubFixture index="1" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>158</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="2" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>159</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="3" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>160</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="4" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>161</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="5" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>162</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="6" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>163</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="7" name="Laser.BAR(6) 2" fixture_id="1002">
+			<FixtureType name="8 LASER BARS 26CH">
+				<No>8</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>183</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+			</SubFixture>
+			<SubFixture index="1" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>184</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="2" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>185</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="3" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>186</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="4" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>187</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="5" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>188</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="6" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>189</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="8" name="Laser.BAR(6) 1" fixture_id="1001">
+			<FixtureType name="7 LASER BARS - Invert 26CH">
+				<No>7</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>209</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+				<Channel index="2" />
+				<Channel index="3" />
+				<Channel index="4" />
+				<Channel index="5" />
+				<Channel index="6" />
+			</SubFixture>
+			<SubFixture index="1" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>215</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="2" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>214</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="3" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>213</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="4" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>212</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="5" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>211</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+			<SubFixture index="6" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>210</Address>
+				</Patch>
+				<Channel index="0" />
+				<Channel index="1" />
+			</SubFixture>
+		</Fixture>
+	</Layer>
+	<Layer index="9" name="--Co2(2x)">
+		<Fixture index="0" name="Co2-HL.HR" fixture_id="911" channel_id="911">
+			<FixtureType name="2 Dimmer 00">
+				<No>2</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>0</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+			</SubFixture>
+		</Fixture>
+		<Fixture index="1" name="Co2-HL.HR" fixture_id="911" channel_id="911" is_multipatch="true">
+			<FixtureType name="2 Dimmer 00">
+				<No>2</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff" is_multipatch="true">
+				<Patch>
+					<Address>0</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+			</SubFixture>
+		</Fixture>
+	</Layer>
+	<Layer index="10" name="~Atmos~">
+		<Fixture index="0" name="-Atmos-" fixture_id="420" channel_id="420">
+			<FixtureType name="2 Dimmer 00">
+				<No>2</No>
+			</FixtureType>
+			<SubFixture index="0" react_to_grandmaster="true" color="ffffff">
+				<Patch>
+					<Address>868</Address>
+				</Patch>
+				<AbsolutePosition>
+					<Location x="0" y="0" z="0" />
+					<Rotation x="0" y="-0" z="0" />
+					<Scaling x="1" y="1" z="1" />
+				</AbsolutePosition>
+				<Channel index="0" />
+			</SubFixture>
+		</Fixture>
+	</Layer>
+</MA>

@@ -99,7 +99,31 @@ Bias V3 #2  "Outside Subs"  [signal hub]
 | Rack elevation | `07-tech-pack/rack-elevation.svg` |
 | Speaker zone map | `07-tech-pack/speaker-zone-map.svg` |
 | Firmware changelog | `06-reference-docs/firmware-changelog.md` |
+| Lighting overview | `07-tech-pack/lighting-system-overview.md` |
+| DMX patch schedule | `07-tech-pack/dmx-patch-schedule.md` |
 
 ---
 
-*EMBLEM PROJECTS INC. · 2026-04-27*
+## Lighting (Summary)
+
+NØMAD Toronto also runs a **grandMA2-controlled lighting rig** (documented separately from the
+audio system). Decoded from the venue showfile (June 2026); physical positions, real fixture
+models, DMX-node topology, and power are pending site verification.
+
+| Group | Fixtures | Qty | Universe(s) |
+|-------|----------|----:|-------------|
+| DJ-deck LED bar | `3 LED Bar 2 11CH` | 1 | U1 |
+| LED strobe bars | `4 rgbw-13ch 13CH` | 7 | U1 |
+| Moving washes | `5 NEW WASH` / `6 movingwash zone` | 10 | U1 + U2 |
+| Moving beams (Sharpy) | `9 Sharpy Standard Lamp on` | 4 | U1 |
+| Laser bars | `8 LASER BARS 26CH` / invert | 9 | U1 + U2 |
+| CO₂ jets | `2 Dimmer 00` (×2, **unpatched**) | 1 | — |
+| Atmospheric haze | `2 Dimmer 00` | 1 | U2 |
+| **Total intelligent/LED** | | **31** | 2 universes |
+
+**Full detail:** lighting overview `07-tech-pack/lighting-system-overview.md` · DMX patch schedule
+`07-tech-pack/dmx-patch-schedule.md` · spec `08-lighting/nomad-lighting-spec-v1.md`.
+
+---
+
+*EMBLEM PROJECTS INC. · 2026-04-27 · lighting added 2026-06-24*

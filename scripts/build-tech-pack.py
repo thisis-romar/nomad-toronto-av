@@ -1,6 +1,10 @@
 import re
 from pathlib import Path
 
+# NOTE (flagged, not fixed — see ADR-0001 / lighting subsystem work):
+#   BASE and `out_html` below are hardcoded to a Windows developer path and will NOT run on
+#   Linux/CI as-is. Left unchanged to avoid an unrelated behavioural change; make these
+#   environment-relative (e.g. Path(__file__).resolve().parents[1]) in a dedicated fix.
 BASE = Path("C:/Users/romar/projects/nomad-toronto-av")
 TP   = BASE / "07-tech-pack"
 
@@ -104,10 +108,12 @@ def inline_svg(path):
         return f'<p>[SVG not found: {path}]</p>'
 
 docs = {
-    'overview':  (TP / 'system-overview.md').read_text(encoding='utf-8'),
-    'rider':     (TP / 'available-rider.md').read_text(encoding='utf-8'),
-    'cables':    (TP / 'cable-schedule.md').read_text(encoding='utf-8'),
-    'emergency': (TP / 'emergency-procedures.md').read_text(encoding='utf-8'),
+    'overview':          (TP / 'system-overview.md').read_text(encoding='utf-8'),
+    'rider':             (TP / 'available-rider.md').read_text(encoding='utf-8'),
+    'cables':            (TP / 'cable-schedule.md').read_text(encoding='utf-8'),
+    'emergency':         (TP / 'emergency-procedures.md').read_text(encoding='utf-8'),
+    'lighting_overview': (TP / 'lighting-system-overview.md').read_text(encoding='utf-8'),
+    'dmx':               (TP / 'dmx-patch-schedule.md').read_text(encoding='utf-8'),
 }
 
 rack_svg   = inline_svg(TP / 'rack-elevation.svg')
@@ -217,6 +223,16 @@ html = f"""<!DOCTYPE html>
 <div class="section">
   <div class="section-header"><span class="num">05</span><h1>Emergency Procedures</h1></div>
   {md_to_html(docs['emergency'])}
+</div>
+
+<div class="section">
+  <div class="section-header"><span class="num">06</span><h1>Lighting System Overview</h1></div>
+  {md_to_html(docs['lighting_overview'])}
+</div>
+
+<div class="section">
+  <div class="section-header"><span class="num">07</span><h1>DMX Patch Schedule</h1></div>
+  {md_to_html(docs['dmx'])}
 </div>
 
 </body>

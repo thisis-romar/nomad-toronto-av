@@ -19,6 +19,8 @@ A **Drawmer SP2120** stereo processor sits in the signal chain ahead of the ampl
 
 The system was designed and installed by **Emblem Projects Inc.** and verified against the Armonía DSP network in March 2026, with the CQ-12T installation confirmed April 2026.
 
+NØMAD Toronto also operates a **grandMA2-controlled lighting rig** — 31 intelligent/LED fixtures (4 Sharpy moving beams, 10 moving washes, 7 LED strobe bars, 9 laser bars, 1 DJ-deck LED bar) plus CO₂ jets and atmospheric haze across 2 DMX universes. The rig is **decoded from the venue showfile (June 2026)**; physical fixture positions, real-world fixture models, DMX-node topology, and lighting power are pending on-site verification. See the [Lighting Subsystem](08-lighting/README.md).
+
 ---
 
 ## System Status Dashboard
@@ -32,8 +34,12 @@ The system was designed and installed by **Emblem Projects Inc.** and verified a
 | CDJ-3000 firmware | ✅ Likely current | 2026-01 | Latest 3.22 released Jan 2026. Confirm on each unit. |
 | Bias Q5 breaker spec | ❓ Unconfirmed | — | Phoenix 5-pin mains connector — breaker rating not yet confirmed. Issue #7. |
 | Athens speaker submodel | ❓ Unconfirmed | — | Turbosound TCS-AN series confirmed; exact model TBC. Photograph rear label on next visit. |
+| Lighting rig | ⚠️ Documented from showfile | 2026-06-24 | grandMA2 patch decoded; physical verification pending. See [Lighting Subsystem](08-lighting/README.md). |
+| Lighting — CO₂ jets patch | ❓ Unpatched | — | Both CO₂ jets at DMX address 0 in showfile. Patch & verify on-site. |
+| Lighting — fixture positions | ❓ Unknown | — | All fixtures at 0,0,0 in showfile. Survey on next visit. |
+| Lighting — fixture makes/models | ❓ Unconfirmed | — | Only generic MA profiles in showfile (Sharpy name-suggestive). Identify on-site. |
 | Open issues | 5 | 2026-04-27 | See [Open Issues](#open-issues) section |
-| Tech pack | ✅ Complete | 2026-04-27 | All 7 documents produced. See [Tech Pack](#tech-pack) section. |
+| Tech pack | ✅ Complete | 2026-06-24 | 7 audio documents + lighting subsystem. See [Tech Pack](#tech-pack) section. |
 
 ---
 
@@ -45,6 +51,8 @@ The system was designed and installed by **Emblem Projects Inc.** and verified a
 | 🔌 [Signal Flow Diagram](07-tech-pack/signal-flow.svg) | Full signal chain | 🗺️ [Speaker Zone Map](07-tech-pack/speaker-zone-map.svg) | Top-down layout |
 | 🗄️ [Rack Elevation](07-tech-pack/rack-elevation.svg) | 8U amp rack | 📡 [Cable Schedule](07-tech-pack/cable-schedule.md) | 41 cables |
 | 🚨 [Emergency Procedures](07-tech-pack/emergency-procedures.md) | Fault response | 💾 [Firmware Changelog](06-reference-docs/firmware-changelog.md) | Update status |
+| 💡 [Lighting Overview](07-tech-pack/lighting-system-overview.md) | grandMA2 rig | 🎛️ [DMX Patch Schedule](07-tech-pack/dmx-patch-schedule.md) | 31 fixtures · 2 universes |
+| 🔦 [Lighting Spec](08-lighting/nomad-lighting-spec-v1.md) | Full fixture spec | 🗂️ [Lighting Subsystem](08-lighting/README.md) | Source + manuals |
 
 ---
 
