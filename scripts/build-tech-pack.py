@@ -119,6 +119,7 @@ docs = {
 rack_svg   = inline_svg(TP / 'rack-elevation.svg')
 signal_svg = inline_svg(TP / 'signal-flow.svg')
 zone_svg   = inline_svg(TP / 'speaker-zone-map.svg')
+patch_svg  = inline_svg(BASE / '08-lighting' / 'assets' / 'svg' / 'dmx-patch-map.svg')
 
 CSS = """
   :root { --brand:#1a1a2e; --accent:#e8b923; --text:#1a1a1a; --muted:#555; --border:#ddd; }
@@ -228,6 +229,8 @@ html = f"""<!DOCTYPE html>
 <div class="section">
   <div class="section-header"><span class="num">06</span><h1>Lighting System Overview</h1></div>
   {md_to_html(docs['lighting_overview'])}
+  <h2>DMX Patch Map</h2>
+  <div class="diagram-wrap">{patch_svg}<div class="diagram-label">Schematic DMX address allocation across 2 universes &middot; not a physical plot (positions unknown)</div></div>
 </div>
 
 <div class="section">

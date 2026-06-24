@@ -21,9 +21,14 @@ universes**, decoded from the venue showfile (June 2026).
 | Path | What |
 |------|------|
 | `nomad-lighting-spec-v1.md` | Full lighting system specification (fixtures, universes, profiles, open items) |
+| `fixture-inventory.md` | Fixture counts + per-fixture ID list |
+| `assets/svg/dmx-patch-map.svg` | Schematic DMX patch map (address allocation per universe) |
 | `source-showfile/NOMADFIXPATCHJUNE2026.xml` | Source-of-truth grandMA2 export |
 | `source-showfile/README.md` | Showfile provenance + decoding conventions |
 | `manuals/` | Vendor manuals (placeholders until fixtures are identified on-site) |
+
+> The SVG is **regenerable** from the showfile: `python3 scripts/build-lighting-patch-map.py`.
+> It is a patch/address map, **not** a physical plot (positions are unknown — all `0,0,0`).
 
 Deliverables that mirror the audio tech pack live alongside the audio docs:
 

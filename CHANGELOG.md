@@ -16,6 +16,9 @@ independent `version` in their YAML frontmatter.
 - `07-tech-pack/dmx-patch-schedule.md` — DMX patch schedule, the lighting analog of the cable
   schedule (v1.0.0).
 - `07-tech-pack/lighting-system-overview.md` — one-page lighting overview (v1.0.0).
+- `08-lighting/fixture-inventory.md` — fixture counts + per-fixture ID list (v1.0.0).
+- `08-lighting/assets/svg/dmx-patch-map.svg` — schematic DMX patch map (address allocation per
+  universe), plus `scripts/build-lighting-patch-map.py` to regenerate it from the showfile.
 - `08-lighting/source-showfile/` — source-of-truth showfile XML + provenance README.
 - `08-lighting/README.md`, `08-lighting/manuals/README.md` — slice index and vendor-manual
   placeholder index.

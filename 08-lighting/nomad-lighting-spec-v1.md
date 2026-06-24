@@ -256,7 +256,8 @@ verified").
 
 1. **CO₂ jets unpatched** — `Co2-HL.HR` at DMX address 0. Patch + verify on-site.
 2. **Fixture positions unknown** — every `<AbsolutePosition>` in the showfile is `0,0,0`. No
-   lighting plot can be drawn without a site survey.
+   to-scale **physical plot** can be drawn without a site survey. (A schematic **DMX patch map**
+   — address allocation, not geography — is provided at `assets/svg/dmx-patch-map.svg`.)
 3. **Real makes/models behind generic MA profiles** — only `9 Sharpy…` is name-suggestive.
    `5 NEW WASH`, `6 movingwash zone`, `8 LASER BARS`, `4 rgbw-13ch`, `3 LED Bar 2`, `2 Dimmer 00`
    need on-site identification.

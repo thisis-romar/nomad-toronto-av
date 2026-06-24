@@ -25,7 +25,8 @@
 | 12. Lighting System Overview | ✅ Complete | `07-tech-pack/lighting-system-overview.md` |
 | 13. DMX Patch Schedule | ✅ Complete | `07-tech-pack/dmx-patch-schedule.md` (31 fixtures + CO₂ + haze, 2 universes) |
 | 14. Lighting System Spec | ✅ Complete | `08-lighting/nomad-lighting-spec-v1.md` |
-| 15. Lighting Plot (SVG) | ❌ Blocked | Fixture positions unknown (all 0,0,0 in showfile). Survey required. |
+| 15a. DMX Patch Map (SVG) | ✅ Complete | `08-lighting/assets/svg/dmx-patch-map.svg` — schematic address allocation, generated from showfile |
+| 15b. Physical Lighting Plot (SVG) | ❌ Blocked | To-scale plot blocked — fixture positions unknown (all 0,0,0). Survey required. |
 | 16. Lighting Power / DMX Topology | ⚠️ Partial | No node/breaker/load data in showfile — TBC on-site |
 | 17. Lighting Vendor Manuals | ⚠️ Partial | `08-lighting/manuals/` — blocked on fixture identification |
 

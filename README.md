@@ -53,6 +53,7 @@ NØMAD Toronto also operates a **grandMA2-controlled lighting rig** — 31 intel
 | 🚨 [Emergency Procedures](07-tech-pack/emergency-procedures.md) | Fault response | 💾 [Firmware Changelog](06-reference-docs/firmware-changelog.md) | Update status |
 | 💡 [Lighting Overview](07-tech-pack/lighting-system-overview.md) | grandMA2 rig | 🎛️ [DMX Patch Schedule](07-tech-pack/dmx-patch-schedule.md) | 31 fixtures · 2 universes |
 | 🔦 [Lighting Spec](08-lighting/nomad-lighting-spec-v1.md) | Full fixture spec | 🗂️ [Lighting Subsystem](08-lighting/README.md) | Source + manuals |
+| 🗺️ [DMX Patch Map](08-lighting/assets/svg/dmx-patch-map.svg) | Schematic address map | 📇 [Fixture Inventory](08-lighting/fixture-inventory.md) | Counts + FIDs |
 
 ---
 

@@ -74,6 +74,8 @@ the absolute in parentheses.
 |----------|----------|
 | Lighting system spec (Rev 1.0) | `08-lighting/nomad-lighting-spec-v1.md` |
 | DMX patch schedule (33 entries) | `07-tech-pack/dmx-patch-schedule.md` |
+| Fixture inventory | `08-lighting/fixture-inventory.md` |
+| DMX patch map (SVG, schematic) | `08-lighting/assets/svg/dmx-patch-map.svg` |
 | Source showfile + provenance | `08-lighting/source-showfile/` |
 | Architecture decision (subsystem) | `docs/decisions/ADR-0001-lighting-subsystem.md` |
 

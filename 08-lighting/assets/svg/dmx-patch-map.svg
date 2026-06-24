@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 540" font-family="Segoe UI,Arial,sans-serif">
+<rect width="1120" height="540" fill="#ffffff"/>
+<rect x="0" y="0" width="1120" height="86" fill="#1a1a2e"/>
+<text x="40" y="40" fill="#ffffff" font-size="22" font-weight="700">N<tspan fill="#e8b923">O</tspan>MAD Toronto — DMX Patch Map</text>
+<text x="40" y="66" fill="#aaaaaa" font-size="12">grandMA2 "Nomad" v3.9.60 · showfile nomad_2026-06-13_kayo-toronto-ft-pools · schematic address allocation (NOT a physical plot — positions unknown)</text>
+<text x="40" y="126" fill="#1a1a2e" font-size="14" font-weight="700">Universe 1</text>
+<text x="40" y="142" fill="#777" font-size="10">1–512</text>
+<rect x="130" y="140" width="950" height="34" fill="#f2f2f4" stroke="#ddd"/>
+<line x1="130.0" y1="140" x2="130.0" y2="178" stroke="#ccc"/>
+<text x="130.0" y="190" fill="#999" font-size="8" text-anchor="middle">1</text>
+<line x1="248.8" y1="140" x2="248.8" y2="178" stroke="#ccc"/>
+<text x="248.8" y="190" fill="#999" font-size="8" text-anchor="middle">64</text>
+<line x1="367.5" y1="140" x2="367.5" y2="178" stroke="#ccc"/>
+<text x="367.5" y="190" fill="#999" font-size="8" text-anchor="middle">128</text>
+<line x1="486.2" y1="140" x2="486.2" y2="178" stroke="#ccc"/>
+<text x="486.2" y="190" fill="#999" font-size="8" text-anchor="middle">192</text>
+<line x1="605.0" y1="140" x2="605.0" y2="178" stroke="#ccc"/>
+<text x="605.0" y="190" fill="#999" font-size="8" text-anchor="middle">256</text>
+<line x1="723.8" y1="140" x2="723.8" y2="178" stroke="#ccc"/>
+<text x="723.8" y="190" fill="#999" font-size="8" text-anchor="middle">320</text>
+<line x1="842.5" y1="140" x2="842.5" y2="178" stroke="#ccc"/>
+<text x="842.5" y="190" fill="#999" font-size="8" text-anchor="middle">384</text>
+<line x1="961.2" y1="140" x2="961.2" y2="178" stroke="#ccc"/>
+<text x="961.2" y="190" fill="#999" font-size="8" text-anchor="middle">448</text>
+<line x1="1080.0" y1="140" x2="1080.0" y2="178" stroke="#ccc"/>
+<text x="1080.0" y="190" fill="#999" font-size="8" text-anchor="middle">512</text>
+<rect x="148.6" y="140" width="20.4" height="34" fill="#f1c40f" stroke="#1a1a2e" stroke-width="0.5"><title>DJ · DJ LED bar · abs 11 (U1/11) · 11ch</title></rect>
+<line x1="158.8" y1="136" x2="158.8" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="158.8" y="134" fill="#333" font-size="8.5" text-anchor="middle">DJ</text>
+<rect x="178.2" y="140" width="48.2" height="34" fill="#e67e22" stroke="#1a1a2e" stroke-width="0.5"><title>L8 · Laser bar · abs 27 (U1/27) · 26ch</title></rect>
+<line x1="202.4" y1="124" x2="202.4" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="202.4" y="122" fill="#333" font-size="8.5" text-anchor="middle">L8</text>
+<rect x="226.5" y="140" width="48.2" height="34" fill="#e67e22" stroke="#1a1a2e" stroke-width="0.5"><title>L7 · Laser bar · abs 53 (U1/53) · 26ch</title></rect>
+<line x1="250.6" y1="112" x2="250.6" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="250.6" y="110" fill="#333" font-size="8.5" text-anchor="middle">L7</text>
+<rect x="274.7" y="140" width="48.2" height="34" fill="#e67e22" stroke="#1a1a2e" stroke-width="0.5"><title>L6 · Laser bar · abs 79 (U1/79) · 26ch</title></rect>
+<line x1="298.8" y1="136" x2="298.8" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="298.8" y="134" fill="#333" font-size="8.5" text-anchor="middle">L6</text>
+<rect x="323.0" y="140" width="48.2" height="34" fill="#e67e22" stroke="#1a1a2e" stroke-width="0.5"><title>L5 · Laser bar · abs 105 (U1/105) · 26ch</title></rect>
+<line x1="347.1" y1="124" x2="347.1" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="347.1" y="122" fill="#333" font-size="8.5" text-anchor="middle">L5</text>
+<rect x="371.2" y="140" width="48.2" height="34" fill="#e67e22" stroke="#1a1a2e" stroke-width="0.5"><title>L4 · Laser bar · abs 131 (U1/131) · 26ch</title></rect>
+<line x1="395.3" y1="112" x2="395.3" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="395.3" y="110" fill="#333" font-size="8.5" text-anchor="middle">L4</text>
+<rect x="419.5" y="140" width="48.2" height="34" fill="#e67e22" stroke="#1a1a2e" stroke-width="0.5"><title>L3 · Laser bar · abs 157 (U1/157) · 26ch</title></rect>
+<line x1="443.6" y1="136" x2="443.6" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="443.6" y="134" fill="#333" font-size="8.5" text-anchor="middle">L3</text>
+<rect x="467.7" y="140" width="48.2" height="34" fill="#e67e22" stroke="#1a1a2e" stroke-width="0.5"><title>L2 · Laser bar · abs 183 (U1/183) · 26ch</title></rect>
+<line x1="491.8" y1="124" x2="491.8" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="491.8" y="122" fill="#333" font-size="8.5" text-anchor="middle">L2</text>
+<rect x="515.9" y="140" width="48.2" height="34" fill="#e67e22" stroke="#1a1a2e" stroke-width="0.5"><title>L1 · Laser bar · abs 209 (U1/209) · 26ch</title></rect>
+<line x1="540.1" y1="112" x2="540.1" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="540.1" y="110" fill="#333" font-size="8.5" text-anchor="middle">L1</text>
+<rect x="564.2" y="140" width="16.7" height="34" fill="#1abc9c" stroke="#1a1a2e" stroke-width="0.5"><title>W4 · Moving wash · abs 235 (U1/235) · 9ch</title></rect>
+<line x1="572.5" y1="136" x2="572.5" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="572.5" y="134" fill="#333" font-size="8.5" text-anchor="middle">W4</text>
+<rect x="580.9" y="140" width="16.7" height="34" fill="#1abc9c" stroke="#1a1a2e" stroke-width="0.5"><title>W3 · Moving wash · abs 244 (U1/244) · 9ch</title></rect>
+<line x1="589.2" y1="124" x2="589.2" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="589.2" y="122" fill="#333" font-size="8.5" text-anchor="middle">W3</text>
+<rect x="597.6" y="140" width="16.7" height="34" fill="#1abc9c" stroke="#1a1a2e" stroke-width="0.5"><title>W8 · Moving wash · abs 253 (U1/253) · 9ch</title></rect>
+<line x1="605.9" y1="112" x2="605.9" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="605.9" y="110" fill="#333" font-size="8.5" text-anchor="middle">W8</text>
+<rect x="614.3" y="140" width="16.7" height="34" fill="#1abc9c" stroke="#1a1a2e" stroke-width="0.5"><title>W7 · Moving wash · abs 262 (U1/262) · 9ch</title></rect>
+<line x1="622.6" y1="136" x2="622.6" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="622.6" y="134" fill="#333" font-size="8.5" text-anchor="middle">W7</text>
+<rect x="631.0" y="140" width="16.7" height="34" fill="#1abc9c" stroke="#1a1a2e" stroke-width="0.5"><title>W5 · Moving wash · abs 271 (U1/271) · 9ch</title></rect>
+<line x1="639.3" y1="124" x2="639.3" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="639.3" y="122" fill="#333" font-size="8.5" text-anchor="middle">W5</text>
+<rect x="647.7" y="140" width="26.0" height="34" fill="#3498db" stroke="#1a1a2e" stroke-width="0.5"><title>B2 · Moving beam (Sharpy) · abs 280 (U1/280) · 14ch</title></rect>
+<line x1="660.7" y1="112" x2="660.7" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="660.7" y="110" fill="#333" font-size="8.5" text-anchor="middle">B2</text>
+<rect x="677.4" y="140" width="26.0" height="34" fill="#3498db" stroke="#1a1a2e" stroke-width="0.5"><title>B3 · Moving beam (Sharpy) · abs 296 (U1/296) · 14ch</title></rect>
+<line x1="690.4" y1="136" x2="690.4" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="690.4" y="134" fill="#333" font-size="8.5" text-anchor="middle">B3</text>
+<rect x="707.1" y="140" width="26.0" height="34" fill="#3498db" stroke="#1a1a2e" stroke-width="0.5"><title>B1 · Moving beam (Sharpy) · abs 312 (U1/312) · 14ch</title></rect>
+<line x1="720.0" y1="124" x2="720.0" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="720.0" y="122" fill="#333" font-size="8.5" text-anchor="middle">B1</text>
+<rect x="736.7" y="140" width="26.0" height="34" fill="#3498db" stroke="#1a1a2e" stroke-width="0.5"><title>B4 · Moving beam (Sharpy) · abs 328 (U1/328) · 14ch</title></rect>
+<line x1="749.7" y1="112" x2="749.7" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="749.7" y="110" fill="#333" font-size="8.5" text-anchor="middle">B4</text>
+<rect x="790.5" y="140" width="24.1" height="34" fill="#e74c3c" stroke="#1a1a2e" stroke-width="0.5"><title>S7 · LED strobe bar · abs 357 (U1/357) · 13ch</title></rect>
+<line x1="802.6" y1="136" x2="802.6" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="802.6" y="134" fill="#333" font-size="8.5" text-anchor="middle">S7</text>
+<rect x="838.8" y="140" width="24.1" height="34" fill="#e74c3c" stroke="#1a1a2e" stroke-width="0.5"><title>S6 · LED strobe bar · abs 383 (U1/383) · 13ch</title></rect>
+<line x1="850.8" y1="124" x2="850.8" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="850.8" y="122" fill="#333" font-size="8.5" text-anchor="middle">S6</text>
+<rect x="862.9" y="140" width="24.1" height="34" fill="#e74c3c" stroke="#1a1a2e" stroke-width="0.5"><title>S5 · LED strobe bar · abs 396 (U1/396) · 13ch</title></rect>
+<line x1="875.0" y1="112" x2="875.0" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="875.0" y="110" fill="#333" font-size="8.5" text-anchor="middle">S5</text>
+<rect x="887.0" y="140" width="24.1" height="34" fill="#e74c3c" stroke="#1a1a2e" stroke-width="0.5"><title>S4 · LED strobe bar · abs 409 (U1/409) · 13ch</title></rect>
+<line x1="899.1" y1="136" x2="899.1" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="899.1" y="134" fill="#333" font-size="8.5" text-anchor="middle">S4</text>
+<rect x="911.2" y="140" width="24.1" height="34" fill="#e74c3c" stroke="#1a1a2e" stroke-width="0.5"><title>S3 · LED strobe bar · abs 422 (U1/422) · 13ch</title></rect>
+<line x1="923.2" y1="124" x2="923.2" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="923.2" y="122" fill="#333" font-size="8.5" text-anchor="middle">S3</text>
+<rect x="935.3" y="140" width="24.1" height="34" fill="#e74c3c" stroke="#1a1a2e" stroke-width="0.5"><title>S2 · LED strobe bar · abs 435 (U1/435) · 13ch</title></rect>
+<line x1="947.3" y1="112" x2="947.3" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="947.3" y="110" fill="#333" font-size="8.5" text-anchor="middle">S2</text>
+<rect x="959.4" y="140" width="24.1" height="34" fill="#e74c3c" stroke="#1a1a2e" stroke-width="0.5"><title>S1 · LED strobe bar · abs 448 (U1/448) · 13ch</title></rect>
+<line x1="971.5" y1="136" x2="971.5" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="971.5" y="134" fill="#333" font-size="8.5" text-anchor="middle">S1</text>
+<rect x="998.4" y="140" width="16.7" height="34" fill="#1abc9c" stroke="#1a1a2e" stroke-width="0.5"><title>W2 · Moving wash · abs 469 (U1/469) · 9ch</title></rect>
+<line x1="1006.7" y1="124" x2="1006.7" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="1006.7" y="122" fill="#333" font-size="8.5" text-anchor="middle">W2</text>
+<rect x="1035.5" y="140" width="16.7" height="34" fill="#1abc9c" stroke="#1a1a2e" stroke-width="0.5"><title>W6 · Moving wash · abs 489 (U1/489) · 9ch</title></rect>
+<line x1="1043.8" y1="112" x2="1043.8" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="1043.8" y="110" fill="#333" font-size="8.5" text-anchor="middle">W6</text>
+<rect x="1052.2" y="140" width="16.7" height="34" fill="#1abc9c" stroke="#1a1a2e" stroke-width="0.5"><title>W1 · Moving wash · abs 498 (U1/498) · 9ch</title></rect>
+<line x1="1060.5" y1="136" x2="1060.5" y2="140" stroke="#bbb" stroke-width="0.5"/>
+<text x="1060.5" y="134" fill="#333" font-size="8.5" text-anchor="middle">W1</text>
+<text x="40" y="246" fill="#1a1a2e" font-size="14" font-weight="700">Universe 2</text>
+<text x="40" y="262" fill="#777" font-size="10">513–1024</text>
+<rect x="130" y="260" width="950" height="34" fill="#f2f2f4" stroke="#ddd"/>
+<line x1="130.0" y1="260" x2="130.0" y2="298" stroke="#ccc"/>
+<text x="130.0" y="310" fill="#999" font-size="8" text-anchor="middle">1</text>
+<line x1="248.8" y1="260" x2="248.8" y2="298" stroke="#ccc"/>
+<text x="248.8" y="310" fill="#999" font-size="8" text-anchor="middle">64</text>
+<line x1="367.5" y1="260" x2="367.5" y2="298" stroke="#ccc"/>
+<text x="367.5" y="310" fill="#999" font-size="8" text-anchor="middle">128</text>
+<line x1="486.2" y1="260" x2="486.2" y2="298" stroke="#ccc"/>
+<text x="486.2" y="310" fill="#999" font-size="8" text-anchor="middle">192</text>
+<line x1="605.0" y1="260" x2="605.0" y2="298" stroke="#ccc"/>
+<text x="605.0" y="310" fill="#999" font-size="8" text-anchor="middle">256</text>
+<line x1="723.8" y1="260" x2="723.8" y2="298" stroke="#ccc"/>
+<text x="723.8" y="310" fill="#999" font-size="8" text-anchor="middle">320</text>
+<line x1="842.5" y1="260" x2="842.5" y2="298" stroke="#ccc"/>
+<text x="842.5" y="310" fill="#999" font-size="8" text-anchor="middle">384</text>
+<line x1="961.2" y1="260" x2="961.2" y2="298" stroke="#ccc"/>
+<text x="961.2" y="310" fill="#999" font-size="8" text-anchor="middle">448</text>
+<line x1="1080.0" y1="260" x2="1080.0" y2="298" stroke="#ccc"/>
+<text x="1080.0" y="310" fill="#999" font-size="8" text-anchor="middle">512</text>
+<rect x="130.0" y="260" width="48.2" height="34" fill="#e67e22" stroke="#1a1a2e" stroke-width="0.5"><title>L9 · Laser bar · abs 513 (U2/1) · 26ch</title></rect>
+<line x1="154.1" y1="256" x2="154.1" y2="260" stroke="#bbb" stroke-width="0.5"/>
+<text x="154.1" y="254" fill="#333" font-size="8.5" text-anchor="middle">L9</text>
+<rect x="499.2" y="260" width="16.7" height="34" fill="#1abc9c" stroke="#1a1a2e" stroke-width="0.5"><title>W10 · Moving wash · abs 712 (U2/200) · 9ch</title></rect>
+<line x1="507.6" y1="244" x2="507.6" y2="260" stroke="#bbb" stroke-width="0.5"/>
+<text x="507.6" y="242" fill="#333" font-size="8.5" text-anchor="middle">W10</text>
+<rect x="517.8" y="260" width="16.7" height="34" fill="#1abc9c" stroke="#1a1a2e" stroke-width="0.5"><title>W9 · Moving wash · abs 722 (U2/210) · 9ch</title></rect>
+<line x1="526.1" y1="232" x2="526.1" y2="260" stroke="#bbb" stroke-width="0.5"/>
+<text x="526.1" y="230" fill="#333" font-size="8.5" text-anchor="middle">W9</text>
+<rect x="788.7" y="260" width="2.0" height="34" fill="#95a5a6" stroke="#1a1a2e" stroke-width="0.5"><title>Haze · CO2 / haze (FX) · abs 868 (U2/356) · 1ch</title></rect>
+<line x1="789.7" y1="256" x2="789.7" y2="260" stroke="#bbb" stroke-width="0.5"/>
+<text x="789.7" y="254" fill="#333" font-size="8.5" text-anchor="middle">Haze</text>
+<rect x="40" y="370" width="1040" height="30" fill="#fff3cd" stroke="#f0c040"/>
+<text x="52" y="389" fill="#7a5c00" font-size="11">⚠ UNPATCHED (DMX address 0): CO2 — patch &amp; verify on-site.</text>
+<text x="40" y="434" fill="#1a1a2e" font-size="11" font-weight="700">Legend</text>
+<rect x="40" y="442" width="14" height="14" fill="#f1c40f" stroke="#1a1a2e" stroke-width="0.5"/>
+<text x="60" y="453" fill="#333" font-size="10">DJ LED bar</text>
+<rect x="215" y="442" width="14" height="14" fill="#e74c3c" stroke="#1a1a2e" stroke-width="0.5"/>
+<text x="235" y="453" fill="#333" font-size="10">LED strobe bar</text>
+<rect x="390" y="442" width="14" height="14" fill="#1abc9c" stroke="#1a1a2e" stroke-width="0.5"/>
+<text x="410" y="453" fill="#333" font-size="10">Moving wash</text>
+<rect x="565" y="442" width="14" height="14" fill="#3498db" stroke="#1a1a2e" stroke-width="0.5"/>
+<text x="585" y="453" fill="#333" font-size="10">Moving beam (Sharpy)</text>
+<rect x="740" y="442" width="14" height="14" fill="#e67e22" stroke="#1a1a2e" stroke-width="0.5"/>
+<text x="760" y="453" fill="#333" font-size="10">Laser bar</text>
+<rect x="915" y="442" width="14" height="14" fill="#95a5a6" stroke="#1a1a2e" stroke-width="0.5"/>
+<text x="935" y="453" fill="#333" font-size="10">CO2 / haze (FX)</text>
+<text x="40" y="480" fill="#888" font-size="9">Block width scales with DMX footprint. Full per-fixture detail: 07-tech-pack/dmx-patch-schedule.md · EMBLEM PROJECTS INC. · 2026-06-24</text>
+</svg>
