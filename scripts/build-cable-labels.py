@@ -25,7 +25,7 @@ except ImportError:  # width estimation falls back to a per-character average
     ImageFont = None
 
 sys.path.insert(0, str(Path(__file__).parent))
-from rack_palette import hex_of, short, ink_on  # noqa: E402
+from rack_palette import hex_of, short, ink_on, short_conn, ascii_label  # noqa: E402
 
 # --- Label geometry (mm) -----------------------------------------------------
 
@@ -64,6 +64,12 @@ MIN_SIZE = {"line1": 2.6, "line2": 1.9, "line3": 1.8}  # mm — floor before we 
 # carry a device AND a port.
 LAYOUT_2 = ((4.0, True, 3.6), (2.8, False, 7.0))
 LAYOUT_3 = ((3.4, True, 2.7), (2.4, False, 5.4), (2.2, False, 7.9))
+
+# Which CSV columns feed each face. Face B is no longer a rotated copy of Face
+# A -- it carries the connector at each end, so the tag reads "what is this
+# cable" on one side and "what plugs into it" on the other.
+FACE_A_FIELDS = ("line1", "line2")
+FACE_B_FIELDS = ("conn_a", "conn_b")
 _fit_warnings = []
 
 # --- Sheet layout (mm, A4 portrait) ------------------------------------------
@@ -162,12 +168,17 @@ def face(lines, invert, label_id=""):
     return "".join(out)
 
 
-def label_tag(lines, invert=False, label_id=""):
-    """A fold-over tag: lower half upright, upper half rotated 180 deg."""
-    body = face(lines, invert, label_id)
+def label_tag(lines_a, lines_b=None, invert=False, label_id=""):
+    """A fold-over tag: lower half upright, upper half rotated 180 deg.
+
+    lines_b defaults to lines_a (identical faces). Passing different content
+    gives a two-sided tag — identity on one face, connectors on the other.
+    """
+    body_a = face(lines_a, invert, label_id)
+    body_b = face(lines_b if lines_b is not None else lines_a, invert, label_id)
     return (
-        f'<g>{body}</g>'
-        f'<g transform="rotate(180 {L / 2:.2f} {L / 2:.2f})">{body}</g>'
+        f'<g>{body_a}</g>'
+        f'<g transform="rotate(180 {L / 2:.2f} {L / 2:.2f})">{body_b}</g>'
         # fold registration ticks on both edges
         f'<line x1="0" y1="{L / 2:.2f}" x2="{TICK:.2f}" y2="{L / 2:.2f}" '
         f'stroke="#000" stroke-width="0.25"/>'
@@ -231,10 +242,12 @@ def render(rows, out_path, set_name="POWER"):
             f'<line x1="0" y1="{L / 2}" x2="{L}" y2="{L / 2}" stroke="#0a84ff" '
             f'stroke-width="0.15" stroke-dasharray="1.5 1"/>'
         )
-        lines = [row["line1"], row["line2"]]
-        if (row.get("line3") or "").strip():
-            lines.append(row["line3"])
-        parts.append(label_tag(lines, row["invert"].strip().lower() == "yes", row["id"]))
+        a = [ascii_label(row.get(f, "")) for f in FACE_A_FIELDS
+             if (row.get(f) or "").strip()]
+        b = [ascii_label(short_conn(row.get(f, ""))) for f in FACE_B_FIELDS
+             if (row.get(f) or "").strip()]
+        parts.append(label_tag(a, b or None,
+                               row["invert"].strip().lower() == "yes", row["id"]))
         parts.append("</g>")
         # Device swatch, proof only: end A | end B, each carrying the device's
         # short name printed on its own colour. Naming it here is what stops the

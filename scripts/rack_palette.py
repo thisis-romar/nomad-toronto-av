@@ -183,6 +183,23 @@ ASCII_MAP = {
 }
 
 
+CONN = {
+    "Phoenix 12-pin": "PHNX 12P",
+    "Phoenix PC 5/8": "PHNX 5/8",
+    "Phoenix PC 5/5": "PHNX 5/5",
+    "Phoenix": "PHOENIX",
+    "etherCON RJ45": "etherCON",
+    "speakON NL4": "NL4",
+    "NEMA 5-15R": "NEMA 5-15",
+}
+
+
+def short_conn(c):
+    """Connector name trimmed to fit the headline slot on the connector face."""
+    c = (c or "").strip()
+    return CONN.get(c, c) if c and c != "—" else "-"
+
+
 def ascii_label(s):
     """Reduce a printed label string to ASCII. Non-label columns keep Unicode."""
     for a, b in ASCII_MAP.items():
