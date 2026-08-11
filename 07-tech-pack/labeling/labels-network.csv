@@ -1,0 +1,11 @@
+id,cable_ref,variant,invert,line1,line2,qty,from,to,connector,note
+NET-N05,5,TAG,no,CDJ 1,N05 · PRO DJ LINK,2,CDJ-3000 #1 LINK,DJM-V10 LINK / hub,RJ45→RJ45,Cat5e · Pro DJ Link segment
+NET-N06,6,TAG,no,CDJ 2,N06 · PRO DJ LINK,2,CDJ-3000 #2 LINK,DJM-V10 LINK / hub,RJ45→RJ45,Cat5e · Pro DJ Link segment
+NET-N07,7,TAG,no,CDJ 3,N07 · PRO DJ LINK,2,CDJ-3000 #3 LINK,DJM-V10 LINK / hub,RJ45→RJ45,Cat5e · Pro DJ Link segment
+NET-N08,8,TAG,no,CDJ 4,N08 · PRO DJ LINK,2,CDJ-3000 #4 LINK,DJM-V10 LINK / hub,RJ45→RJ45,Cat5e · Pro DJ Link segment
+NET-N36,36,TAG,no,V3 #2,N36 · 192.168.10.14,2,Switch (location TBC),Bias V3 #2 AESOP primary,RJ45→RJ45,Armonía control · switch unlocated (D8)
+NET-N37,37,TAG,no,Q5,N37 · 192.168.10.10,2,Switch (location TBC),Bias Q5 etherCON ETH1,RJ45→etherCON,Armonía control · switch unlocated (D8)
+NET-N38,38,TAG,no,Q2 #2,N38 · 192.168.10.11,2,Switch (location TBC),Bias Q2 #2 Ethernet,RJ45→RJ45,Armonía control · switch unlocated (D8)
+NET-N39,39,TAG,no,V3 #1,N39 · 192.168.10.13,2,Switch (location TBC),Bias V3 #1 AESOP primary,RJ45→RJ45,Armonía control · switch unlocated (D8)
+NET-N40,40,TAG,no,Q2 #1,N40 · 192.168.10.12,2,Switch (location TBC),Bias Q2 #1 Ethernet,RJ45→RJ45,Armonía control · switch unlocated (D8)
+NET-N41,41,TAG,no,CQ-12T,N41 · 169.254.182.156,2,Separate network / link-local,CQ-12T NETWORK port,RJ45→RJ45,NOT on the Armonía subnet — link-local only

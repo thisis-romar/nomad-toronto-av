@@ -9,6 +9,11 @@ status: draft — power/IEC set ready for a test print; data and audio sets to f
 
 ## Changelog
 
+- **0.3.0** — Audio, speaker and network sets drafted (39 designs, 78 labels), completing all
+  four cable classes. Line structure inverted for the new sets: the **identity** takes line 1 at
+  full size and the **cable ID + route** moves to line 2, because leading with `A11 · ` collapsed
+  line 1 to 2.5 mm. Connector-type corrections from the I/O audit (D3) are applied at source —
+  the TRS ends are labelled TRS. Two provisional labels are flagged inverse or noted; see §10.
 - **0.2.0** — Bias V9 fully removed from the power set (no longer just offline). Circuit IDs
   P5–P8 renumbered to P4–P7 to close the gap; U5's freed CPC 45A / 32A breaker gets its own
   spare-identification label (`PWR-U5`) rather than disappearing silently. Added
@@ -116,13 +121,13 @@ Cable IDs reuse the existing power IDs from `07-tech-pack/cable-schedule.md` §8
 so the label, the schedule, and the rack elevation all speak the same language. Label IDs are
 prefixed by class:
 
-| Prefix | Class | Source of IDs |
-|--------|-------|---------------|
-| `PWR-` | Mains / IEC | cable-schedule §8 (P1–P8) |
-| `NET-` | Control network / AESOP / Dante | cable-schedule §7 (36–41) — not yet drafted |
-| `AUD-` | Line-level audio | cable-schedule §1–4 (1–19) — not yet drafted |
-| `SPK-` | Speaker-level | cable-schedule §5–6 (20–35) — not yet drafted |
-| `DEV-` | Device ID plate (variant C) | rack elevation U-position |
+| Prefix | Class | Source of IDs | Designs |
+|--------|-------|---------------|--------:|
+| `PWR-` | Mains / IEC | cable-schedule §8, renumbered P1–P7 after V9 removal | 9 |
+| `AUD-` | Line-level audio | cable-schedule §1–4 (A01–A19) | 15 |
+| `SPK-` | Speaker-level | cable-schedule §5–6 (S20–S35) | 14 |
+| `NET-` | Control network / Pro DJ Link | cable-schedule §7 + §1 (N05–N41) | 10 |
+| `DEV-` | Device ID plate (variant C) | rack elevation U-position | — not yet drafted |
 
 Face content, power class:
 
@@ -130,6 +135,27 @@ Face content, power class:
 line 1   <cable ID> · <device short name>
 line 2   <rack U> · <connector> · <circuit>
 ```
+
+Face content, all other classes — **identity first, ID second**:
+
+```
+line 1   <what this cable is>          MASTER L · XAIR L-3 · V3 #2
+line 2   <cable ID> · <route or key fact>   A01 · DJM→CQ CH1
+```
+
+Power leads with the ID because `P4` *is* the circuit's name and there are only seven of them.
+The other classes have 39 cables between them, where the useful glance-value is *what the cable
+carries*, not its index — and leading with `A11 · ` pushed line 1 down to 2.5 mm, half the
+intended size. Line 2 absorbs the ID at small size, where it is still perfectly readable for
+cross-referencing the schedule.
+
+Class-specific line 2 conventions:
+
+| Class | Line 2 carries | Why |
+|-------|---------------|-----|
+| `AUD-` | `ID · FROM→TO` | Tracing a signal path is the whole job |
+| `SPK-` | `ID · amp CH · impedance` | Load matters — a 4 Ω sub on a channel set for 8 Ω is a bad afternoon |
+| `NET-` | `ID · IP address` | The IP is what you need when Armonía shows a device offline |
 
 ---
 
@@ -182,18 +208,26 @@ does not substitute for a proper LOTO tag on the V9 breaker.
 
 | File | What it is |
 |------|-----------|
-| `07-tech-pack/labeling/labels-power.csv` | Merge data — one row per label design, with the schedule cross-reference |
-| `07-tech-pack/labeling/dk1221-power-proof.svg` | 1:1 print proof, A4. Print at 100% to verify before running the roll |
-| `07-tech-pack/labeling/dk1221-power.lbx` | Best-effort P-touch Editor template. **Unverified** — Brother's `.lbx` schema is unpublished; this was reconstructed from memory and has not been opened in real Editor. Test it before trusting it |
+| `07-tech-pack/labeling/labels-{power,audio,speaker,network}.csv` | Merge data — one row per label design, with the schedule cross-reference |
+| `07-tech-pack/labeling/dk1221-{power,audio,speaker,network}-proof.svg` | 1:1 print proofs, A4. Print at 100% to verify before running the roll |
+| `07-tech-pack/labeling/dk1221-{power,audio,speaker,network}.lbx` | Best-effort P-touch Editor templates. **Unverified** — Brother's `.lbx` schema is unpublished; these were reconstructed from memory and have not been opened in real Editor. Test before trusting. All four share the identical 4-object layout, so if one opens correctly they all will |
 | `07-tech-pack/labeling/ptouch-field-mapping.md` | Reliable fallback — exact mm/degree/field-binding values to rebuild the same layout natively in Editor's UI if the `.lbx` doesn't open |
 | `scripts/build-cable-labels.py` | Regenerates the SVG proof from the CSV |
 | `scripts/build-lbx.py` | Regenerates the `.lbx` from the CSV (first TAG, non-inverse row as sample content) |
 
 ```bash
-python3 scripts/build-cable-labels.py \
-    07-tech-pack/labeling/labels-power.csv \
-    07-tech-pack/labeling/dk1221-power-proof.svg
+# regenerate every proof sheet and template
+for s in power audio speaker network; do
+  python3 scripts/build-cable-labels.py \
+      07-tech-pack/labeling/labels-$s.csv \
+      07-tech-pack/labeling/dk1221-$s-proof.svg
+  python3 scripts/build-lbx.py \
+      07-tech-pack/labeling/labels-$s.csv \
+      07-tech-pack/labeling/dk1221-$s.lbx
+done
 ```
+
+**Print run totals:** power 19 · audio 30 · speaker 28 · network 20 = **97 labels**.
 
 ---
 
@@ -201,13 +235,27 @@ python3 scripts/build-cable-labels.py \
 
 - [ ] **Device ID plates (variant C)** — the original goal. 4-line layout is defined in §2 but
       no artwork is drafted. Content per device: name, Armonía label, rack U + S/N, IP.
-- [ ] **Network set (`NET-`)** — 6 control links, but the switch they home to is still
-      unlocated (rack I/O inventory §12-D8). Labelling them before that is settled would bake
-      in a guess.
-- [ ] **Audio and speaker sets (`AUD-`, `SPK-`)** — blocked on the connector corrections in
-      rack I/O inventory §12-D1/D2/D3. Printing a label that says `Line Out 3` when the amp has
-      two line outputs would make the labelling wrong on day one.
+- [ ] **Q5 → middle-sub cabinet links** — see §10.
 - [ ] Confirm the QL model in use, and whether it is 300 dpi.
+
+---
+
+## §10 Provisional labels — print these last
+
+Three groups encode something the I/O audit could not confirm from the manuals
+(`07-tech-pack/rack-io-inventory.md` §12). They are drafted rather than withheld, because a
+labelled rack with two flagged unknowns beats an unlabelled rack — but they are the ones to
+re-print after the next site visit.
+
+| Label | What is uncertain | How it is handled |
+|-------|-------------------|-------------------|
+| `AUD-A19` | The cable feeding V3 #1's input. The spec calls it "V3 #2 Line Out 3", but the V3 has only **two** line outputs (D1), so that source cannot be right as written. | Printed **inverse** — `V3#1 INPUT` / `A19 · SOURCE ?`. States the end that is certain and visibly flags the end that is not. Trace it and reprint. |
+| `SPK-S22`, `SPK-S23` | The Q5 has **two** speakON outputs carrying two channels each, not four discrete NL4 runs (D2). How the four Xair cabinets are actually fed — breakout, or NL4 link-out cabinet to cabinet — is unconfirmed. | Only the **amp-end runs** are labelled, which are certain: `SUBS L 1+2` / `S22 · Q5 OUT1 · 4Ω`. Cabinet-to-cabinet link labels are deliberately not drafted — that would mean guessing the topology. |
+| `NET-N36`–`N40` | The switch these home to is unlocated (D8). | Labelled normally. The link's identity and IP are certain; only the far-end *location* is unknown, which a cable label does not need to assert. |
+
+**Not a guess, just corrected:** the TRS-vs-XLR items (D3) are settled facts from the manuals, so
+`AUD-A03/A04` (DJM Booth out) and `AUD-A11`–`A14` (CQ Out 1–6) are labelled TRS at the source end
+and are **not** provisional — even though `cable-schedule.md` still says XLR for all six.
 
 ---
 

@@ -103,7 +103,9 @@ def face(line1, line2, invert, label_id=""):
     """
     ink = "#fff" if invert else "#000"
     top = (L + FOLD_TAG) / 2          # 13.0
-    max_w = L - 2 * SAFE - (1.0 if invert else 0.0)   # inverse panels need side padding
+    # Inverse panels need real padding: white text butted against the edge of a
+    # black field reads as clipped, and thermal ink bleed eats the gap further.
+    max_w = L - 2 * SAFE - (3.0 if invert else 0.0)
     out = []
     if invert:
         out.append(
@@ -137,13 +139,13 @@ def label_tag(line1, line2, invert=False, label_id=""):
     )
 
 
-def render(rows, out_path):
+def render(rows, out_path, set_name="POWER"):
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{PAGE_W}mm" height="{PAGE_H}mm" '
         f'viewBox="0 0 {PAGE_W} {PAGE_H}">',
-        '<title>NOMAD Toronto - DK-1221 power cable label proof (1:1)</title>',
+        f'<title>NOMAD Toronto - DK-1221 {set_name.lower()} cable label proof (1:1)</title>',
         f'<rect width="{PAGE_W}" height="{PAGE_H}" fill="#fff"/>',
-        text(MARGIN_X, 12, "NØMAD TORONTO — DK-1221 POWER LABEL PROOF", 4.2, "bold", "#000", "start"),
+        text(MARGIN_X, 12, f"NØMAD TORONTO — DK-1221 {set_name} LABEL PROOF", 4.2, "bold", "#000", "start"),
         text(MARGIN_X, 16.5,
              "23 × 23 mm at 1:1 — print at 100% (no scale-to-fit) and measure a square before running the roll.",
              2.6, "normal", "#444", "start"),
@@ -185,8 +187,8 @@ def render(rows, out_path):
         text(MARGIN_X, y_legend + 15.5, "PRINTED ON THE ROLL: the two text faces and the two 1.2 mm fold ticks at the label edges.", 2.5, "normal", "#444", "start"),
         text(MARGIN_X, y_legend + 21.5, "FOLD: adhesive-to-adhesive over a cable-tie tail on the fold line. Both faces then read upright.", 2.5, "normal", "#444", "start"),
         text(MARGIN_X, y_legend + 26.5,
-             f"Direct-to-cable fold is only viable to ~8 mm OD (face {flag_face_height(FOLD_FLAG_OD):.1f} mm); "
-             f"a 12 mm C19 cord leaves {flag_face_height(12):.1f} mm — use the tie tag.",
+             f"Every set uses the tie tag for consistency. Folding straight onto the cable is only viable to "
+             f"~8 mm OD (face {flag_face_height(FOLD_FLAG_OD):.1f} mm) and is single-line at that size.",
              2.5, "normal", "#444", "start"),
         "</svg>",
     ]
@@ -198,9 +200,11 @@ def render(rows, out_path):
 def main():
     src = Path(sys.argv[1] if len(sys.argv) > 1 else "07-tech-pack/labeling/labels-power.csv")
     dst = Path(sys.argv[2] if len(sys.argv) > 2 else "07-tech-pack/labeling/dk1221-power-proof.svg")
+    # Set name for the sheet header: 3rd arg, else inferred from labels-<name>.csv
+    set_name = sys.argv[3] if len(sys.argv) > 3 else src.stem.replace("labels-", "").upper()
     with src.open(newline="", encoding="utf-8") as fh:
         rows = list(csv.DictReader(fh))
-    n = render(rows, dst)
+    n = render(rows, dst, set_name)
     total = sum(int(r["qty"]) for r in rows)
     print(f"{dst}: {n} label designs, {total} labels to print")
     for w in dict.fromkeys(_fit_warnings):
