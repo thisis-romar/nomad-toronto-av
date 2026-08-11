@@ -50,6 +50,7 @@ NØMAD Toronto also operates a **grandMA2-controlled lighting rig** — 31 intel
 | 📋 [System Overview](07-tech-pack/system-overview.md) | One-page summary | 🎚️ [Available Rider](07-tech-pack/available-rider.md) | For touring artists |
 | 🔌 [Signal Flow Diagram](07-tech-pack/signal-flow.svg) | Full signal chain | 🗺️ [Speaker Zone Map](07-tech-pack/speaker-zone-map.svg) | Top-down layout |
 | 🗄️ [Rack Elevation](07-tech-pack/rack-elevation.svg) | 8U amp rack | 📡 [Cable Schedule](07-tech-pack/cable-schedule.md) | 41 cables |
+| 🔟 [Rack I/O Inventory](07-tech-pack/rack-io-inventory.md) | Every port: power · data · audio | | |
 | 🚨 [Emergency Procedures](07-tech-pack/emergency-procedures.md) | Fault response | 💾 [Firmware Changelog](06-reference-docs/firmware-changelog.md) | Update status |
 | 💡 [Lighting Overview](07-tech-pack/lighting-system-overview.md) | grandMA2 rig | 🎛️ [DMX Patch Schedule](07-tech-pack/dmx-patch-schedule.md) | 31 fixtures · 2 universes |
 | 🔦 [Lighting Spec](08-lighting/nomad-lighting-spec-v1.md) | Full fixture spec | 🗂️ [Lighting Subsystem](08-lighting/README.md) | Source + manuals |

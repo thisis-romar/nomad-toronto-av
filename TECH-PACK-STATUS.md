@@ -19,6 +19,7 @@
 | 6. Amplifier Assignments | ✅ Complete | Data in README |
 | 7. CQ-12T I/O List | ✅ Confirmed from photos | Data in README |
 | 8. Cable Schedule | ✅ Complete | `07-tech-pack/cable-schedule.md` (41 cables, CQ-12T current) |
+| 8b. Rack I/O Inventory | ✅ Complete (desk audit) | `07-tech-pack/rack-io-inventory.md` — every power/data/audio port on every rack device, from the manufacturer manuals. 8 discrepancies vs. the as-built docs logged in §12 for site verification. |
 | 9. Armonía DSP Config | ⚠️ Partial | Delays/gains in conversations; no preset export |
 | 10. Power Requirements | ⚠️ Partial | Amp mains noted; no load calc |
 | 11. Emergency Procedures | ✅ Complete | `07-tech-pack/emergency-procedures.md` |
