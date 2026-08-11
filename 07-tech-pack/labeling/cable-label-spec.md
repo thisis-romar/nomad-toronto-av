@@ -1,16 +1,21 @@
 ---
 title: Nomad Toronto — Cable & Device Label Spec (Brother DK-1221)
 description: Print layout system for 23 mm square DK-1221 labels — fold geometry, safe areas, typography, naming convention, and P-touch Editor setup. Covers all four cable classes; CSV rows double as the source for the rack I/O schedule.
-version: 0.4.0
+version: 0.5.0
 created: 2026-08-11T00:00:00Z
 last_updated: 2026-08-11T00:00:00Z
-status: draft — all four classes drafted (99 labels); pending a test print and site verification of the rows in §10
+status: draft — rack-internal print set is 11 designs / 22 labels; pending a test print and site verification of the unresolved rows
 ---
 
 # Cable & Device Label Spec — DK-1221 (23 mm square)
 
 ## Changelog
 
+- **0.5.0** — Scope narrowed to **rack-internal cables only**. `labels-rack-internal.csv` is now
+  the print set: 11 designs / 22 labels, being the 5 cables with both ends on rack equipment plus
+  6 excluded only by an unresolved fact. **No labels are printed for CQ-12T or DJM-V10
+  connections.** The four class CSVs are retained as the full data set — the rack print set is
+  derived from them by `build-rack-io-schedule.py`, not maintained separately.
 - **0.4.0** — CSV schema extended with structured endpoint columns (`end_a/b_device`, `_port`,
   `_loc`, `conn_a/b`), so `07-tech-pack/rack-io-schedule.md` can be generated from the same rows
   that print the labels instead of being a third hand-maintained document. Added `PWR-P0` for the
@@ -246,7 +251,14 @@ for s in power audio speaker network; do
 done
 ```
 
-**Print run totals:** power 21 · audio 30 · speaker 28 · network 20 = **99 labels**.
+**Print run — rack-internal set only:** 11 designs / **22 labels**
+(`labels-rack-internal.csv`, derived by `build-rack-io-schedule.py`).
+
+The four class CSVs together describe 48 cables / 99 labels, but that is the full
+system inventory, not the print run. Only cables with both ends on rack equipment —
+plus those excluded solely by an unresolved fact — get printed. Nothing is printed for
+CQ-12T or DJM-V10 connections. See `07-tech-pack/rack-io-schedule.md` for the scope
+boundary and what falls outside it.
 
 ---
 

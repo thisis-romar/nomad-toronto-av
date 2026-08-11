@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
-"""Generate the rack I/O schedule from the label CSVs.
+"""Generate the rack-internal connection schedule from the label CSVs.
 
-Every connection in the rack is already described once, in the label data --
-endpoints, ports, connector types, location of each end. This script derives
-the schedule from that same data rather than restating it, so the labels on
-the cables and the schedule on the wall cannot drift apart.
+Scope is strict: a cable is listed only if BOTH ends land on equipment inside
+the rack. Booth gear (CQ-12T, DJM-V10, CDJs), the venue panel, the network
+switch and the loudspeakers are all outside it, so cables to them are out of
+scope even though one end sits on a rack device.
 
-Scope is strictly the rack: a cable appears only if at least one end sits in
-the rack. Booth-to-booth runs (DJM->CQ, Pro DJ Link) and room runs that never
-touch it (CQ->Athens) are counted and listed as excluded, not silently
-dropped -- "not in this document" should be a visible decision.
+The one nuance: a handful of cables are excluded *only* because a fact is
+unresolved, not because they are known to leave the rack. The network links
+look external solely because nobody has located the switch, and A19's source
+is unknown. Those are carried in a separate UNRESOLVED section rather than
+dropped -- if the switch turns out to be rack-mounted they were internal all
+along, and a document that had silently omitted them would have been wrong.
+
+Also writes labels-rack-internal.csv, the derived print set, so the labels
+that get printed are exactly the cables in this schedule.
 
 Usage:
     python3 scripts/build-rack-io-schedule.py 07-tech-pack/rack-io-schedule.md
@@ -17,14 +22,12 @@ Usage:
 
 import csv
 import sys
-from collections import OrderedDict
 from pathlib import Path
 
 CSV_DIR = Path("07-tech-pack/labeling")
 SETS = ["power", "audio", "speaker", "network"]
+DERIVED_CSV = CSV_DIR / "labels-rack-internal.csv"
 
-# Rack devices in rack order. U5 is deliberately listed: an empty bay with a
-# live 32 A circuit behind it is a fact a reader needs, not an absence.
 RACK_ORDER = [
     ("Drawmer SP2120", "U2"),
     ("Bias V3 #1", "U3"),
@@ -36,6 +39,7 @@ RACK_ORDER = [
     ("Tripp Lite PDU", "U9–U10"),
 ]
 CLASS_ICON = {"POWER": "⚡", "AUDIO": "🔊", "DATA": "🔗", "SPEAKER": "🔊"}
+CLASS_ORDER = {"POWER": 0, "DATA": 1, "AUDIO": 2, "SPEAKER": 3}
 
 
 def load():
@@ -44,21 +48,20 @@ def load():
         with (CSV_DIR / f"labels-{s}.csv").open(newline="", encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
                 if not r.get("end_a_device") or r["end_a_device"] == "—":
-                    continue  # blank spare-label rows describe no connection
+                    continue
+                r["_set"] = s
                 rows.append(r)
     return rows
 
 
-def direction(row):
-    """From the rack's point of view."""
+def scope(row):
+    """INTERNAL, UNRESOLVED, or OUT-OF-SCOPE, from the rack's point of view."""
     a, b = row["end_a_loc"], row["end_b_loc"]
     if a == "RACK" and b == "RACK":
         return "INTERNAL"
-    if b == "RACK":
-        return "IN"
-    if a == "RACK":
-        return "OUT"
-    return "EXTERNAL"
+    if {a, b} == {"RACK", "UNKNOWN"}:
+        return "UNRESOLVED"
+    return "OUT-OF-SCOPE"
 
 
 def esc(s):
@@ -66,7 +69,6 @@ def esc(s):
 
 
 def ref_key(ref):
-    """Sort cable refs naturally: 9 before 10, and P-numbers before plain ones."""
     ref = (ref or "").strip()
     if ref.upper().startswith("P") and ref[1:].isdigit():
         return (0, int(ref[1:]))
@@ -75,167 +77,187 @@ def ref_key(ref):
     return (2, 0)
 
 
-def device_rows(rows, device):
-    """Every connection touching one rack device, from its own point of view."""
-    out = []
-    for r in rows:
-        if r["end_a_device"] == device:
-            out.append((r, "out", r["end_a_port"], r["conn_a"],
-                        r["end_b_device"], r["end_b_port"], r["conn_b"]))
-        if r["end_b_device"] == device:
-            out.append((r, "in", r["end_b_port"], r["conn_b"],
-                        r["end_a_device"], r["end_a_port"], r["conn_a"]))
-    order = {"POWER": 0, "DATA": 1, "AUDIO": 2, "SPEAKER": 3}
-    return sorted(out, key=lambda t: (order.get(t[0]["class"], 9), ref_key(t[0]["cable_ref"])))
+def sort_rows(rs):
+    return sorted(rs, key=lambda r: (CLASS_ORDER.get(r["class"], 9), ref_key(r["cable_ref"])))
+
+
+EXCLUSION_REASON = {
+    "PANEL": "Venue electrical panel — mains feeds to rack devices",
+    "BOOTH": "DJ booth equipment — CQ-12T, DJM-V10, CDJs",
+    "ROOM": "Loudspeakers on the floor",
+    "ENTRANCE": "Entrance fill speakers",
+    "UNKNOWN": "Location unresolved",
+}
+
+
+def why_excluded(row):
+    """Group cables by *where* they leave the rack, not by which device.
+
+    Grouping on the device name fragments this into one row per loudspeaker,
+    which buries the point: the reader wants to know what categories of cable
+    were set aside, not to re-read the speaker inventory.
+    """
+    outside = {loc for loc in (row["end_a_loc"], row["end_b_loc"]) if loc != "RACK"}
+    return " + ".join(EXCLUSION_REASON.get(loc, loc.title()) for loc in sorted(outside))
 
 
 def main():
     dst = Path(sys.argv[1] if len(sys.argv) > 1 else "07-tech-pack/rack-io-schedule.md")
     rows = load()
-    rack = [r for r in rows if direction(r) != "EXTERNAL"]
-    external = [r for r in rows if direction(r) == "EXTERNAL"]
+    internal = sort_rows([r for r in rows if scope(r) == "INTERNAL"])
+    unresolved = sort_rows([r for r in rows if scope(r) == "UNRESOLVED"])
+    out_of_scope = [r for r in rows if scope(r) == "OUT-OF-SCOPE"]
+    in_set = internal + unresolved
 
-    counts = OrderedDict()
-    for d in ("IN", "OUT", "INTERNAL"):
-        counts[d] = OrderedDict()
-        for c in ("POWER", "DATA", "AUDIO", "SPEAKER"):
-            n = len([r for r in rack if direction(r) == d and r["class"] == c])
-            if n:
-                counts[d][c] = n
+    def counts(rs):
+        d = {}
+        for r in rs:
+            d[r["class"]] = d.get(r["class"], 0) + 1
+        return d
+
+    ci, cu = counts(internal), counts(unresolved)
 
     L = []
-    L.append("---")
-    L.append("title: Nomad Toronto — Rack I/O Schedule (Power · Data · Audio)")
-    L.append("description: Every connection into, out of, and within the amplifier rack. "
-             "One row per cable end, with connector type and the device at the far end. "
-             "Generated from the label data so the cables and this schedule cannot disagree.")
-    L.append("version: 1.0.0")
-    L.append("created: 2026-08-11T00:00:00Z")
-    L.append("last_updated: 2026-08-11T00:00:00Z")
-    L.append("generated_by: scripts/build-rack-io-schedule.py")
-    L.append("---")
-    L.append("")
-    L.append("# Nomad Toronto — Rack I/O Schedule")
-    L.append("")
-    L.append("> **Generated file — do not hand-edit.** Source data lives in "
-             "`07-tech-pack/labeling/labels-{power,audio,speaker,network}.csv`, the same rows "
-             "that print the cable labels. Edit those and re-run "
-             "`python3 scripts/build-rack-io-schedule.py`.")
-    L.append("")
-    L.append("**Scope:** strictly the amplifier rack. A cable is listed only if at least one end "
-             "terminates in the rack. Bias V9 has been removed from the rack and does not appear.")
-    L.append("")
-    L.append("| Direction | Meaning |")
-    L.append("|-----------|---------|")
-    L.append("| **IN** | Enters the rack from outside (booth, venue panel, network) |")
-    L.append("| **OUT** | Leaves the rack (loudspeakers, booth PSU) |")
-    L.append("| **INTERNAL** | Both ends inside the rack |")
-    L.append("")
-    L.append("---")
-    L.append("")
-    L.append("## §1 Rack boundary — totals")
-    L.append("")
-    L.append("| Direction | Power | Data | Audio | Speaker | Total |")
-    L.append("|-----------|------:|-----:|------:|--------:|------:|")
-    for d in ("IN", "OUT", "INTERNAL"):
-        c = counts[d]
-        tot = sum(c.values())
-        L.append(f"| **{d}** | {c.get('POWER','—')} | {c.get('DATA','—')} | "
-                 f"{c.get('AUDIO','—')} | {c.get('SPEAKER','—')} | **{tot}** |")
-    L.append(f"| | | | | | **{len(rack)} cables** |")
-    L.append("")
-    L.append("---")
-    L.append("")
-    L.append("## §2 Connections by device")
-    L.append("")
-    L.append("Each table is written from that device's point of view: **Dir** is in/out at "
-             "*this* device's panel, **Port** is its own connector, **Far end** is what sits "
-             "on the other end of the cable.")
-    L.append("")
+    L += ["---",
+          "title: Nomad Toronto — Rack Internal Connections (Power · Data · Audio)",
+          "description: Cables with both ends on equipment inside the amplifier rack. "
+          "Connector type at each end and both devices identified. Generated from the "
+          "cable-label data.",
+          "version: 2.0.0",
+          "created: 2026-08-11T00:00:00Z",
+          "last_updated: 2026-08-11T00:00:00Z",
+          "generated_by: scripts/build-rack-io-schedule.py",
+          "---", "",
+          "# Nomad Toronto — Rack Internal Connections", ""]
 
+    L += ["> **Generated file — do not hand-edit.** Source data is "
+          "`07-tech-pack/labeling/labels-{power,audio,speaker,network}.csv`, the same rows that "
+          "print the cable labels. Edit those and re-run "
+          "`python3 scripts/build-rack-io-schedule.py`.", ""]
+
+    L += ["## Scope", "",
+          "**Strictly cables with both ends on rack equipment.** A cable is out of scope if "
+          "either end lands on booth gear (CQ-12T, DJM-V10, CDJs), the venue electrical panel, "
+          "the loudspeakers, or anything else outside the rack — even when its other end is on a "
+          "rack device.", "",
+          f"| | Cables | Power | Data | Audio |",
+          f"|---|------:|------:|-----:|------:|",
+          f"| **Confirmed internal** | **{len(internal)}** | {ci.get('POWER','—')} | "
+          f"{ci.get('DATA','—')} | {ci.get('AUDIO','—')} |",
+          f"| **Unresolved** (see §2) | **{len(unresolved)}** | {cu.get('POWER','—')} | "
+          f"{cu.get('DATA','—')} | {cu.get('AUDIO','—')} |",
+          f"| **Total in this document** | **{len(in_set)}** | | | |", "",
+          "Bias V9 has been removed from the rack and does not appear.", "",
+          "---", ""]
+
+    # ---- §1 confirmed ------------------------------------------------------
+    L += ["## §1 Confirmed internal connections", "",
+          "Both ends verified as rack equipment. These are the cables you re-make if the rack is "
+          "stripped and rebuilt.", "",
+          "| Cable | Class | From device | From port | Connector | To device | To port | Connector |",
+          "|-------|-------|-------------|-----------|-----------|-----------|---------|-----------|"]
+    for r in internal:
+        L.append(f"| `{r['cable_ref']}` | {CLASS_ICON.get(r['class'],'')} {r['class'].title()} | "
+                 f"{esc(r['end_a_device'])} | {esc(r['end_a_port'])} | {esc(r['conn_a'])} | "
+                 f"{esc(r['end_b_device'])} | {esc(r['end_b_port'])} | {esc(r['conn_b'])} |")
+    L += ["", "---", ""]
+
+    # ---- §2 unresolved -----------------------------------------------------
+    L += ["## §2 Unresolved — may be internal", "",
+          "These are excluded from §1 **only because a fact is unknown**, not because they are "
+          "known to leave the rack. They are carried here rather than dropped: if the switch is "
+          "rack-mounted, the five control links were internal all along.", "",
+          "| Cable | Class | Rack device | Rack port | Connector | Unknown end | What is unresolved |",
+          "|-------|-------|-------------|-----------|-----------|-------------|--------------------|"]
+    for r in unresolved:
+        if r["end_a_loc"] == "RACK":
+            rd, rp, rc, ud = r["end_a_device"], r["end_a_port"], r["conn_a"], r["end_b_device"]
+        else:
+            rd, rp, rc, ud = r["end_b_device"], r["end_b_port"], r["conn_b"], r["end_a_device"]
+        L.append(f"| `{r['cable_ref']}` | {CLASS_ICON.get(r['class'],'')} {r['class'].title()} | "
+                 f"{esc(rd)} | {esc(rp)} | {esc(rc)} | {esc(ud)} | {esc(r['note'])} |")
+    L += ["", "Resolve these and re-run the build — they move into §1 automatically if both ends "
+          "turn out to be in the rack.", "", "---", ""]
+
+    # ---- §3 by device ------------------------------------------------------
+    L += ["## §3 By device", "",
+          "Same connections, grouped by rack unit. **Dir** is in/out at *this* device's panel.", ""]
     for device, u in RACK_ORDER:
-        drows = device_rows(rack, device)
-        L.append(f"### {u} · {device}")
-        L.append("")
+        drows = []
+        for r in in_set:
+            if r["end_a_device"] == device:
+                drows.append((r, "OUT ▶", r["end_a_port"], r["conn_a"],
+                              r["end_b_device"], r["end_b_port"]))
+            if r["end_b_device"] == device:
+                drows.append((r, "◀ IN", r["end_b_port"], r["conn_b"],
+                              r["end_a_device"], r["end_a_port"]))
+        drows.sort(key=lambda t: (CLASS_ORDER.get(t[0]["class"], 9), ref_key(t[0]["cable_ref"])))
+        L += [f"### {u} · {device}", ""]
         if not drows:
             if device == "— empty —":
-                spare = [r for r in rows if r["end_b_port"].startswith("U5")]
-                note = spare[0]["note"] if spare else ""
-                L.append(f"Bay empty — Bias V9 removed. A **32 A CPC 45A circuit remains live to "
-                         f"this bay**. {note}")
+                L += ["Bay empty — Bias V9 removed. The **32 A CPC 45A circuit is still live to "
+                      "this bay**; it runs from the venue panel, so it is out of scope here, but "
+                      "it needs capping or decommissioning. See `rack-io-inventory.md` §5.", ""]
             else:
-                L.append("*No connections recorded.*")
-            L.append("")
+                L += ["*No internal connections — this device's cables all leave the rack.*", ""]
             continue
-        L.append("| Dir | Class | Port / channel | Connector | Far end | Far-end port | Cable |")
-        L.append("|-----|-------|----------------|-----------|---------|--------------|-------|")
-        for r, dirn, port, conn, far_dev, far_port, far_conn in drows:
-            icon = CLASS_ICON.get(r["class"], "")
-            arrow = "◀ IN" if dirn == "in" else "OUT ▶"
-            L.append(f"| {arrow} | {icon} {r['class'].title()} | {esc(port)} | {esc(conn)} | "
-                     f"{esc(far_dev)} | {esc(far_port)} | `{r['cable_ref']}` |")
+        L += ["| Dir | Class | Port | Connector | Far end | Far-end port | Cable |",
+              "|-----|-------|------|-----------|---------|--------------|-------|"]
+        for r, dirn, port, conn, far_dev, far_port in drows:
+            L.append(f"| {dirn} | {CLASS_ICON.get(r['class'],'')} {r['class'].title()} | "
+                     f"{esc(port)} | {esc(conn)} | {esc(far_dev)} | {esc(far_port)} | "
+                     f"`{r['cable_ref']}` |")
         L.append("")
+    L += ["---", ""]
 
-    L.append("---")
-    L.append("")
-    L.append("## §3 Crossing the rack boundary")
-    L.append("")
-    L.append("Everything that physically enters or leaves the rack — the list to check when the "
-             "rack is moved, re-terminated, or handed to a visiting engineer.")
-    L.append("")
-    L.append("| Cable | Class | Dir | Outside the rack | Connector | Rack device | Rack port |")
-    L.append("|-------|-------|-----|------------------|-----------|-------------|-----------|")
-    for r in sorted([x for x in rack if direction(x) in ("IN", "OUT")],
-                    key=lambda x: ({"POWER": 0, "DATA": 1, "AUDIO": 2, "SPEAKER": 3}
-                                   .get(x["class"], 9), ref_key(x["cable_ref"]))):
-        d = direction(r)
-        if d == "IN":
-            outside, out_conn = r["end_a_device"], r["conn_a"]
-            rack_dev, rack_port = r["end_b_device"], r["end_b_port"]
-        else:
-            outside, out_conn = r["end_b_device"], r["conn_b"]
-            rack_dev, rack_port = r["end_a_device"], r["end_a_port"]
-        icon = CLASS_ICON.get(r["class"], "")
-        L.append(f"| `{r['cable_ref']}` | {icon} {r['class'].title()} | {d} | {esc(outside)} | "
-                 f"{esc(out_conn)} | {esc(rack_dev)} | {esc(rack_port)} |")
-    L.append("")
-    L.append("---")
-    L.append("")
-    L.append("## §4 Deliberately excluded — never touches the rack")
-    L.append("")
-    L.append(f"{len(external)} cables in the label sets run entirely outside the rack. They are "
-             "listed here so their absence above reads as a decision rather than an oversight.")
-    L.append("")
-    L.append("| Cable | Class | From | To | Why excluded |")
-    L.append("|-------|-------|------|----|--------------|")
-    for r in sorted(external, key=lambda x: (x["class"], ref_key(x["cable_ref"]))):
-        icon = CLASS_ICON.get(r["class"], "")
-        L.append(f"| `{r['cable_ref']}` | {icon} {r['class'].title()} | {esc(r['end_a_device'])} | "
-                 f"{esc(r['end_b_device'])} | {esc(r['end_a_loc'])} → {esc(r['end_b_loc'])} |")
-    L.append("")
-    L.append("---")
-    L.append("")
-    L.append("## §5 Rows carrying an unverified fact")
-    L.append("")
-    prov = [r for r in rack if "UNKNOWN" in (r["end_a_loc"], r["end_b_loc"])
-            or "(D" in r.get("note", "")]
-    L.append("| Cable | What is unverified |")
-    L.append("|-------|--------------------|")
-    for r in sorted(prov, key=lambda x: ref_key(x["cable_ref"])):
-        L.append(f"| `{r['cable_ref']}` | {esc(r['note'])} |")
-    L.append("")
-    L.append("Cross-referenced to the discrepancy IDs in "
-             "`07-tech-pack/rack-io-inventory.md` §12.")
-    L.append("")
-    L.append("---")
-    L.append("")
-    L.append("*EMBLEM PROJECTS INC. · generated from label data · "
-             "re-run the build script after editing any labels-*.csv*")
+    # ---- §4 excluded -------------------------------------------------------
+    by_reason = {}
+    for r in out_of_scope:
+        key = why_excluded(r)
+        by_reason.setdefault(key, []).append(r["cable_ref"])
+    L += ["## §4 Out of scope", "",
+          f"{len(out_of_scope)} cables in the label data have at least one end outside the rack. "
+          "Summarised so their absence reads as a decision, not an oversight. Full detail for "
+          "these lives in `07-tech-pack/cable-schedule.md` and the label CSVs.", "",
+          "| Outside-the-rack end | Cables | Count |",
+          "|----------------------|--------|------:|"]
+    for reason in sorted(by_reason, key=lambda k: -len(by_reason[k])):
+        refs = ", ".join(f"`{x}`" for x in sorted(by_reason[reason], key=ref_key))
+        L.append(f"| {esc(reason)} | {refs} | {len(by_reason[reason])} |")
+    L += ["", "---", ""]
+
+    # ---- §5 print set ------------------------------------------------------
+    total_labels = sum(int(r["qty"]) for r in in_set)
+    L += ["## §5 Label print set", "",
+          f"The {len(in_set)} cables above need **{total_labels} labels** (two per cable, one per "
+          "end). The derived print set is written to "
+          "`07-tech-pack/labeling/labels-rack-internal.csv` by this same script — build its proof "
+          "and template with:", "",
+          "```bash",
+          "python3 scripts/build-cable-labels.py \\",
+          "    07-tech-pack/labeling/labels-rack-internal.csv \\",
+          "    07-tech-pack/labeling/dk1221-rack-internal-proof.svg",
+          "python3 scripts/build-lbx.py \\",
+          "    07-tech-pack/labeling/labels-rack-internal.csv \\",
+          "    07-tech-pack/labeling/dk1221-rack-internal.lbx",
+          "```", "",
+          "No labels are produced for CQ-12T or DJM-V10 connections.", "",
+          "---", "",
+          "*EMBLEM PROJECTS INC. · generated from label data*"]
 
     dst.write_text("\n".join(L) + "\n", encoding="utf-8")
-    print(f"{dst}: {len(rack)} rack cables "
-          f"({sum(counts['IN'].values())} in, {sum(counts['OUT'].values())} out, "
-          f"{sum(counts['INTERNAL'].values())} internal), {len(external)} excluded")
+
+    # ---- derived print-set CSV --------------------------------------------
+    fields = [f for f in in_set[0].keys() if f != "_set"]
+    with DERIVED_CSV.open("w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        for r in in_set:
+            w.writerow({k: v for k, v in r.items() if k != "_set"})
+
+    print(f"{dst}: {len(internal)} confirmed internal + {len(unresolved)} unresolved "
+          f"= {len(in_set)} cables, {len(out_of_scope)} out of scope")
+    print(f"{DERIVED_CSV}: {len(in_set)} designs, {total_labels} labels")
 
 
 if __name__ == "__main__":
