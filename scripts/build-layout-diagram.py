@@ -25,8 +25,14 @@ FOLD = 3.0
 S = 9.0                       # drawing scale, px per mm
 FONT = "Helvetica, Arial, sans-serif"
 
-FIELD_OF = ["line1", "line2", "conn_a", "conn_b"]
-FACE_OF = ["A", "A", "B", "B"]
+def bindings(n):
+    """(field, face) per object, for the 6-object triple print or the 4-object
+    two-face tag."""
+    if n == 6:   # triple: copy 3 upright, copies 2 and 1 rotated
+        return [("line1", "copy 3 - front"), ("line2", "copy 3 - front"),
+                ("line1", "copy 2 - fold"), ("line2", "copy 2 - fold"),
+                ("line1", "copy 1 - back"), ("line2", "copy 1 - back")]
+    return [("line1", "A"), ("line2", "A"), ("conn_a", "B"), ("conn_b", "B")]
 
 
 def read_objects(lbx):
@@ -57,25 +63,33 @@ def main():
                else "07-tech-pack/labeling/dk1221-tag-layout.svg")
     objs = read_objects(src)
 
-    OX, OY = 70, 96                      # origin of the flat label drawing
-    W, H = 980, 560
+    bind = bindings(len(objs))
+    triple = len(objs) == 6
+    OX, OY = 70, 132                     # origin of the flat label drawing
+    W, H = 1020, 660
     p = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" '
          f'viewBox="0 0 {W} {H}">',
          f'<rect width="{W}" height="{H}" fill="#fff"/>',
          t(28, 34, "DK-1221 fold tag — P-touch object layout", 19, "bold"),
-         t(28, 54, f"4 text objects · 23 × 23 mm · sample data from {src.stem}",
+         t(28, 54, f"{len(objs)} text objects · 23 × 23 mm · sample data from {src.stem}",
            11.5, "normal", "#666"),
-         t(28, 72, "line1 + line2 on the upright face · conn_a + conn_b on the rotated face",
-           11.5, "normal", "#666")]
+         t(28, 72,
+           "TRIPLE PRINT — the same two lines three times. The fold eats one copy; "
+           "the other two survive, one per face."
+           if triple else
+           "line1 + line2 on the upright face · conn_a + conn_b on the rotated face",
+           11.5, "normal", "#666"),
+         t(28, 90,
+           "Fold on either band boundary — accuracy no longer matters."
+           if triple else "", 11.5, "normal", "#666")]
 
     def px(mm_x, mm_y):
         return OX + mm_x * S, OY + mm_y * S
 
-    # fold zone
-    fz0, fz1 = (L - FOLD) / 2, (L + FOLD) / 2
-    x0, y0 = px(0, fz0)
-    p.append(f'<rect x="{x0}" y="{y0}" width="{L*S}" height="{FOLD*S}" '
-             f'fill="#eef4ff"/>')
+    if not triple:
+        fz0 = (L - FOLD) / 2
+        x0, y0 = px(0, fz0)
+        p.append(f'<rect x="{x0}" y="{y0}" width="{L*S}" height="{FOLD*S}" fill="#eef4ff"/>')
     # printable area
     x0, y0 = px(SAFE_X, SAFE_Y)
     p.append(f'<rect x="{x0}" y="{y0}" width="{LIVE_W*S:.1f}" '
@@ -85,15 +99,22 @@ def main():
     x0, y0 = px(0, 0)
     p.append(f'<rect x="{x0}" y="{y0}" width="{L*S}" height="{L*S}" fill="none" '
              f'stroke="#c8102e" stroke-width="1.6" rx="6"/>')
-    # fold line
-    fx, fy = px(0, L / 2)
-    p.append(f'<line x1="{fx}" y1="{fy}" x2="{fx + L*S}" y2="{fy}" stroke="#0a84ff" '
-             f'stroke-width="1.4" stroke-dasharray="7 4"/>')
-    p.append(t(fx + L * S + 10, fy + 4, "FOLD  y = 11.5 mm", 11, "bold", "#0a84ff"))
-    p.append(t(fx + L * S + 10, fy + 20, "3 mm blank zone wraps the tie", 10, "normal", "#5a86b8"))
+    if triple:
+        bh = (L - 2 * SAFE_Y) / 3
+        for i in (1, 2):
+            fx, fy = px(0, SAFE_Y + i * bh)
+            p.append(f'<line x1="{fx}" y1="{fy}" x2="{fx + L*S}" y2="{fy}" '
+                     f'stroke="#0a84ff" stroke-width="1.4" stroke-dasharray="7 4"/>')
+            p.append(t(fx - 8, fy + 4, f"fold {SAFE_Y + i*bh:.1f}", 9.5,
+                       "bold", "#0a84ff", "end"))
+    else:
+        fx, fy = px(0, L / 2)
+        p.append(f'<line x1="{fx}" y1="{fy}" x2="{fx + L*S}" y2="{fy}" stroke="#0a84ff" '
+                 f'stroke-width="1.4" stroke-dasharray="7 4"/>')
+        p.append(t(fx + L * S + 10, fy + 4, "FOLD  y = 11.5 mm", 11, "bold", "#0a84ff"))
 
     # object boxes
-    for i, o in enumerate(objs[:4]):
+    for i, o in enumerate(objs):
         bx, by = px(o["x"], o["y"])
         bw, bh = o["w"] * S, o["h"] * S
         rot = o["angle"] == 180
@@ -109,8 +130,9 @@ def main():
         ly = by + bh / 2
         p.append(f'<line x1="{bx+bw:.1f}" y1="{ly:.1f}" x2="{OX + L*S + 120}" '
                  f'y2="{ly:.1f}" stroke="{col}" stroke-width="0.8" stroke-dasharray="2 2"/>')
+        fld, face_lbl = bind[i]
         p.append(t(OX + L * S + 126, ly + 4,
-                   f'{o["name"]}  ←  {FIELD_OF[i]}   (face {FACE_OF[i]}'
+                   f'{o["name"]}  ←  {fld}   ({face_lbl}'
                    + (", 180°)" if rot else ")"), 11.5, "bold", col))
 
     # dimensions
@@ -123,12 +145,14 @@ def main():
                "normal", "#777", "middle"))
 
     # folded result
-    FX, FY, FW, FH = 640, 150, 150, 105
+    FX, FY, FW, FH = 700, 160, 152, 100
     p.append(t(FX, FY - 26, "Folded over the tie — what each side reads", 13, "bold"))
-    for k, (title, lines, col) in enumerate([
-        ("SIDE 1", [objs[0]["text"], objs[1]["text"]], "#0072B2"),
-        ("SIDE 2", [objs[2]["text"], objs[3]["text"]], "#D55E00"),
-    ]):
+    sides = ([("SIDE 1  (copy 3)", [objs[0]["text"], objs[1]["text"]], "#0072B2"),
+              ("SIDE 2  (copy 1)", [objs[4]["text"], objs[5]["text"]], "#D55E00")]
+             if triple else
+             [("SIDE 1", [objs[0]["text"], objs[1]["text"]], "#0072B2"),
+              ("SIDE 2", [objs[2]["text"], objs[3]["text"]], "#D55E00")])
+    for k, (title, lines, col) in enumerate(sides):
         oy = FY + k * (FH + 26)
         p.append(f'<rect x="{FX}" y="{oy}" width="{FW}" height="{FH}" fill="#fff" '
                  f'stroke="{col}" stroke-width="1.6" rx="7"/>')
@@ -136,8 +160,14 @@ def main():
         p.append(t(FX + FW / 2, oy + 52, lines[0], 21, "bold", "#111", "middle"))
         p.append(t(FX + FW / 2, oy + 78, lines[1], 14, "normal", "#111", "middle"))
     p.append(t(FX, FY + 2 * (FH + 26) + 6,
+               "Both read upright — the rotated copies right themselves in the fold."
+               if triple else
                "Both read upright: face B is printed 180° so the fold rights it.",
                10.5, "normal", "#666"))
+    if triple:
+        p.append(t(FX, FY + 2 * (FH + 26) + 24,
+                   "Copy 2 is the sacrificial one, consumed by the wrap.",
+                   10.5, "normal", "#666"))
 
     # legend
     ly = OY + L * S + 60
@@ -145,9 +175,9 @@ def main():
     for i, (c, s_) in enumerate([
         ("#c8102e", "die-cut edge, 23 mm"),
         ("#bbb", "printable area — 17.08 × 20.00 mm, the printer's own margins"),
-        ("#0a84ff", "fold line + 3 mm blank zone"),
-        ("#0072B2", "face A objects (upright)"),
-        ("#D55E00", "face B objects (rotated 180°)"),
+        ("#0a84ff", "band boundaries — fold on either"),
+        ("#0072B2", "upright copy"),
+        ("#D55E00", "rotated copies (180°)"),
     ]):
         yy = ly + i * 17
         p.append(f'<rect x="30" y="{yy-8}" width="11" height="11" fill="{c}" rx="2"/>')
@@ -156,8 +186,8 @@ def main():
     p.append('</svg>')
     dst.write_text("\n".join(p), encoding="utf-8")
     print(f"{dst}: {len(objs)} objects drawn")
-    for i, o in enumerate(objs[:4]):
-        print(f"  {o['name']:<6} <- {FIELD_OF[i]:<7} face {FACE_OF[i]} "
+    for i, o in enumerate(objs):
+        print(f"  {o['name']:<6} <- {bind[i][0]:<7} {bind[i][1]:<14} "
               f"angle {o['angle']:>3}  x={o['x']:.2f} y={o['y']:.2f} "
               f"w={o['w']:.2f} h={o['h']:.2f} mm   \"{o['text']}\"")
 

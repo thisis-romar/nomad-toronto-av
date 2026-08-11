@@ -104,6 +104,16 @@ ROT_180 = 180
 FACE_A_FIELDS = ("line1", "line2")
 FACE_B_FIELDS = ("conn_a", "conn_b")
 
+# TRIPLE PRINT -- three identical copies over the full printable height rather
+# than two faces around a reserved fold zone. Whichever band the fold crosses is
+# sacrificed; the other two survive whole, one per face, so the fold no longer
+# has to be accurate. Bottom band upright, upper two at 180 deg so whichever
+# surfaces on the back face reads the right way up.
+TRIPLE = True
+BAND_H_PT = PRINT_H / 3
+BAND_LAYOUT = ((3.2, True), (2.3, False))   # font mm, bold
+
+
 
 def fmt(v):
     return f"{round(v, 1)}pt"
@@ -154,6 +164,43 @@ def text_object(name, x, y, w, h, size_pt, bold, content, angle=0):
         # charLen must equal len(data) or the file is rejected.
         f'<text:stringItem charLen="{len(content)}">{fi}</text:stringItem>'
         f'</text:text>'
+    )
+
+
+def triple_xml(lines):
+    """Six objects: the same two lines printed three times.
+
+    Boxes are placed at their final position with the angle set on the object,
+    so this does not depend on whether Editor rotates about the object centre
+    or the label centre.
+    """
+    heights = [sz * 1.05 * PT for (sz, _bold) in BAND_LAYOUT]
+    lead = (BAND_H_PT - sum(heights)) / (len(heights) + 1)
+    if lead < 0:
+        raise SystemExit("band layout too tall for a third of the printable height")
+
+    objs = []
+    # band 2 = bottom (upright); 1 = middle and 0 = top (both rotated)
+    for band, angle in ((2, 0), (1, ROT_180), (0, ROT_180)):
+        y = PRINT_Y + band * BAND_H_PT + lead
+        for (size_mm, bold), h, txt in zip(BAND_LAYOUT, heights, lines):
+            objs.append(text_object(f"Text{len(objs) + 1}", PRINT_X, y,
+                                    PRINT_W, h, size_mm * PT, bold, txt, angle))
+            y += h + lead
+    return document(objs)
+
+
+def document(objs):
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        f'<pt:document {NS} version="1.7" generator="{GENERATOR}">'
+        '<pt:body currentSheet="Sheet 1" direction="LTR">'
+        '<style:sheet name="Sheet 1">'
+        f'{PAPER}{CUTLINE}{BACKGROUND}'
+        f'<pt:objects>{"".join(objs)}</pt:objects>'
+        '</style:sheet>'
+        '</pt:body>'
+        '</pt:document>'
     )
 
 
@@ -232,9 +279,10 @@ def prop_xml(title, note):
 
 
 def write_lbx(path, lines_a, lines_b, title, note):
+    xml = triple_xml(lines_a) if TRIPLE else label_xml(lines_a, lines_b)
     with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
         # lowercase label.xml, and first in the archive, as Editor writes it
-        z.writestr("label.xml", label_xml(lines_a, lines_b))
+        z.writestr("label.xml", xml)
         z.writestr("prop.xml", prop_xml(title, note))
 
 
@@ -262,7 +310,9 @@ def main():
           f"face A [{' / '.join(lines_a)}]  face B [{' / '.join(lines_b)}]")
     print(f"  printable area {PRINT_W / PT:.2f} x {PRINT_H / PT:.2f} mm "
           f"(NOT 20x20 — Editor's own margins)")
-    print(f"  {len(lines_a) + len(lines_b)} text objects; Face B at angle={ROT_180} "
+    n = 6 if TRIPLE else len(lines_a) + len(lines_b)
+    mode = " (triple print: 3 copies x 2 lines)" if TRIPLE else ""
+    print(f"  {n} text objects{mode}; rotated bands at angle={ROT_180} "
           f"(degrees assumed — see docstring)")
 
 

@@ -70,6 +70,18 @@ LAYOUT_3 = ((3.4, True, 2.7), (2.4, False, 5.4), (2.2, False, 7.9))
 # cable" on one side and "what plugs into it" on the other.
 FACE_A_FIELDS = ("line1", "line2")
 FACE_B_FIELDS = ("conn_a", "conn_b")
+
+# TRIPLE PRINT
+# Three identical copies stacked over the full printable height instead of two
+# faces either side of a reserved fold zone. The fold consumes whichever band it
+# crosses and the other two survive intact -- one per face. That is the point:
+# the fold no longer has to be accurate to a millimetre.
+#
+# Orientation: the bottom band prints upright, the upper two print 180 deg, so
+# whichever of them ends up on the back face reads the right way up once folded.
+TRIPLE = True
+BAND_H = (L - 2 * SAFE_Y) / 3            # 6.67 mm per copy
+BAND_LAYOUT = ((3.2, True, 2.7), (2.3, False, 5.5))   # size mm, bold, baseline
 _fit_warnings = []
 
 # --- Sheet layout (mm, A4 portrait) ------------------------------------------
@@ -168,6 +180,46 @@ def face(lines, invert, label_id=""):
     return "".join(out)
 
 
+def band(lines, top, invert, label_id=""):
+    """One copy of the content, drawn inside a band starting at `top` mm."""
+    ink = "#fff" if invert else "#000"
+    max_w = LIVE_W - (2.5 if invert else 0.0)
+    out = []
+    if invert:
+        out.append(f'<rect x="{SAFE_X:.2f}" y="{top:.2f}" width="{LIVE_W:.2f}" '
+                   f'height="{BAND_H - 0.3:.2f}" fill="#000" rx="0.5"/>')
+    for i, (s, (nominal, bold, dy)) in enumerate(zip(lines, BAND_LAYOUT)):
+        key = f"line{i + 1}"
+        size, tl, clamped = fit(s, nominal, "bold" if bold else "normal",
+                                max_w, MIN_SIZE[key])
+        if clamped:
+            _fit_warnings.append(f"{label_id} {key}: hit the floor — shorten the copy")
+        out.append(text(L / 2, top + dy, s, size, "bold" if bold else "normal",
+                        ink, length=tl))
+    return "".join(out)
+
+
+def label_triple(lines, invert=False, label_id=""):
+    """Three stacked copies; bottom upright, upper two rotated 180 deg.
+
+    A rotated band is drawn at its mirror position and then rotated about the
+    label centre, which lands it where it belongs: the bottom band maps to the
+    top, and the middle band maps to itself.
+    """
+    tops = [SAFE_Y + i * BAND_H for i in range(3)]
+    rot = f'rotate(180 {L / 2:.2f} {L / 2:.2f})'
+    return (
+        f'<g>{band(lines, tops[2], invert, label_id)}</g>'
+        f'<g transform="{rot}">{band(lines, tops[1], invert)}</g>'
+        f'<g transform="{rot}">{band(lines, tops[2], invert)}</g>'
+        # band boundaries: fold on either one
+        f'<line x1="0" y1="{tops[1]:.2f}" x2="{TICK:.2f}" y2="{tops[1]:.2f}" stroke="#000" stroke-width="0.2"/>'
+        f'<line x1="{L - TICK:.2f}" y1="{tops[1]:.2f}" x2="{L:.2f}" y2="{tops[1]:.2f}" stroke="#000" stroke-width="0.2"/>'
+        f'<line x1="0" y1="{tops[2]:.2f}" x2="{TICK:.2f}" y2="{tops[2]:.2f}" stroke="#000" stroke-width="0.2"/>'
+        f'<line x1="{L - TICK:.2f}" y1="{tops[2]:.2f}" x2="{L:.2f}" y2="{tops[2]:.2f}" stroke="#000" stroke-width="0.2"/>'
+    )
+
+
 def label_tag(lines_a, lines_b=None, invert=False, label_id=""):
     """A fold-over tag: lower half upright, upper half rotated 180 deg.
 
@@ -238,16 +290,20 @@ def render(rows, out_path, set_name="POWER"):
             f'<rect x="{SAFE_X}" y="{SAFE_Y}" width="{LIVE_W:.2f}" height="{L - 2 * SAFE_Y:.2f}" '
             f'fill="none" stroke="#bbb" stroke-width="0.15" stroke-dasharray="0.8 0.8"/>'
         )
-        parts.append(
-            f'<line x1="0" y1="{L / 2}" x2="{L}" y2="{L / 2}" stroke="#0a84ff" '
-            f'stroke-width="0.15" stroke-dasharray="1.5 1"/>'
-        )
+        for gy in ([SAFE_Y + BAND_H, SAFE_Y + 2 * BAND_H] if TRIPLE else [L / 2]):
+            parts.append(
+                f'<line x1="0" y1="{gy:.2f}" x2="{L}" y2="{gy:.2f}" stroke="#0a84ff" '
+                f'stroke-width="0.15" stroke-dasharray="1.5 1"/>'
+            )
         a = [ascii_label(row.get(f, "")) for f in FACE_A_FIELDS
              if (row.get(f) or "").strip()]
         b = [ascii_label(short_conn(row.get(f, ""))) for f in FACE_B_FIELDS
              if (row.get(f) or "").strip()]
-        parts.append(label_tag(a, b or None,
-                               row["invert"].strip().lower() == "yes", row["id"]))
+        inv = row["invert"].strip().lower() == "yes"
+        if TRIPLE:
+            parts.append(label_triple(a, inv, row["id"]))
+        else:
+            parts.append(label_tag(a, b or None, inv, row["id"]))
         parts.append("</g>")
         # Device swatch, proof only: end A | end B, each carrying the device's
         # short name printed on its own colour. Naming it here is what stops the
@@ -274,12 +330,12 @@ def render(rows, out_path, set_name="POWER"):
     parts += [
         f'<line x1="{MARGIN_X}" y1="{y_legend:.2f}" x2="{PAGE_W - MARGIN_X}" y2="{y_legend:.2f}" stroke="#ddd" stroke-width="0.3"/>',
         text(MARGIN_X, y_legend + 6, "PROOF GUIDES (not printed on the roll)", 3.0, "bold", "#000", "start"),
-        text(MARGIN_X, y_legend + 10.5, "red = 23 mm die-cut edge   ·   grey dash = printable area 17.1 × 20.0 mm (Editor's own margins)   ·   blue dash = fold line", 2.5, "normal", "#444", "start"),
-        text(MARGIN_X, y_legend + 15.5, "PRINTED ON THE ROLL: the two text faces and the two 1.2 mm fold ticks at the label edges.", 2.5, "normal", "#444", "start"),
-        text(MARGIN_X, y_legend + 21.5, "FOLD: adhesive-to-adhesive over a cable-tie tail on the fold line. Both faces then read upright.", 2.5, "normal", "#444", "start"),
+        text(MARGIN_X, y_legend + 10.5, "red = 23 mm die-cut edge   ·   grey dash = printable area 17.1 × 20.0 mm   ·   blue dash = band boundaries (fold on either)", 2.5, "normal", "#444", "start"),
+        text(MARGIN_X, y_legend + 15.5, "PRINTED ON THE ROLL: three identical copies of the text, plus band ticks at the label edges.", 2.5, "normal", "#444", "start"),
+        text(MARGIN_X, y_legend + 21.5, "TRIPLE PRINT: fold on either band tick. The fold eats one copy; the other two stay whole, one per face.", 2.5, "normal", "#444", "start"),
         text(MARGIN_X, y_legend + 26.5,
-             f"Every set uses the tie tag for consistency. Folding straight onto the cable is only viable to "
-             f"~8 mm OD (face {flag_face_height(FOLD_FLAG_OD):.1f} mm) and is single-line at that size.",
+             "Bottom copy prints upright; the upper two print 180 deg, so whichever surfaces on the "
+             "back face reads the right way up. The fold no longer has to be accurate.",
              2.5, "normal", "#444", "start"),
         # No colour key: each swatch carries its own device name, so there is
         # nothing to look up. The only fact colour alone still encodes is which

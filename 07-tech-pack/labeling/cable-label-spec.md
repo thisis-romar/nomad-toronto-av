@@ -1,7 +1,7 @@
 ---
 title: Nomad Toronto — Cable & Device Label Spec (Brother DK-1221)
 description: Print layout system for 23 mm square DK-1221 labels — fold geometry, safe areas, typography, naming convention, and P-touch Editor setup. Covers all four cable classes; CSV rows double as the source for the rack I/O schedule.
-version: 0.8.0
+version: 0.9.0
 created: 2026-08-11T00:00:00Z
 last_updated: 2026-08-11T00:00:00Z
 status: draft — six print sheets (power/audio/data × end A/B), 22 tags; .lbx opens in Editor, pending a test print and site verification of the unresolved rows
@@ -10,6 +10,14 @@ status: draft — six print sheets (power/audio/data × end A/B), 22 tags; .lbx 
 # Cable & Device Label Spec — DK-1221 (23 mm square)
 
 ## Changelog
+
+- **0.9.0** — **Triple print replaces the two-face fold.** The same two lines are printed three
+  times over the full 20 mm printable height instead of twice either side of a reserved 3 mm fold
+  zone. Whichever band the fold crosses is sacrificed and the other two survive whole, one per
+  face — so the fold no longer has to be accurate to a millimetre, which is the whole point.
+  Bottom copy prints upright, the upper two at 180° so whichever surfaces on the back reads the
+  right way up. 6 objects per tag, 6.67 mm per copy. `dk1221-tag-layout.svg` draws it, generated
+  from box geometry read back out of a produced `.lbx`.
 
 - **0.8.0** — **Six sheets: power / audio / data × end A / end B.** Each class is fitted in its
   own pass at the rack, so each pass gets its own print run. `split-label-ends.py` now emits one
