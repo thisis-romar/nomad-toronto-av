@@ -20,7 +20,14 @@ left-hand colour chip is always the end you are holding.
 
 Usage:
     python3 scripts/split-label-ends.py 07-tech-pack/labeling/labels-rack-internal.csv
-writes labels-rack-internal-end-a.csv and -end-b.csv alongside it.
+writes one file per (class, end) alongside it:
+
+    labels-rack-power-end-a.csv    labels-rack-power-end-b.csv
+    labels-rack-audio-end-a.csv    labels-rack-audio-end-b.csv
+    labels-rack-data-end-a.csv     labels-rack-data-end-b.csv
+
+Six sheets, because power, audio and data get fitted in separate passes and a
+print run should match the pass. Only classes actually present are emitted.
 """
 
 import csv
@@ -93,15 +100,25 @@ def main():
     src = Path(sys.argv[1] if len(sys.argv) > 1
                else "07-tech-pack/labeling/labels-rack-internal.csv")
     rows = list(csv.DictReader(src.open(newline="", encoding="utf-8-sig")))
+
+    # "rack-internal" -> "rack"; the class name carries the rest of the meaning
+    stem = src.stem.replace("labels-", "").replace("-internal", "")
+
+    total = 0
     for side in ("a", "b"):
         built = build(rows, side)
-        dst = src.with_name(f"{src.stem}-end-{side}.csv")
-        write(dst, built)
-        print(f"{dst.name}: {len(built)} tags")
-        for r in built[:4]:
-            print(f"    {r['line1']:<10} {r['line2']:<14} {r['line3']}")
-        if len(built) > 4:
-            print(f"    … {len(built) - 4} more")
+        by_class = {}
+        for r in built:
+            by_class.setdefault((r.get("class") or "MISC").lower(), []).append(r)
+        for cls in sorted(by_class):
+            group = by_class[cls]
+            dst = src.with_name(f"labels-{stem}-{cls}-end-{side}.csv")
+            write(dst, group)
+            total += len(group)
+            print(f"{dst.name}: {len(group)} tags")
+            for r in group:
+                print(f"    {r['line1']:<10} {r['line2']:<14} {r['line3']}")
+    print(f"\n{total} tags across the sheets")
 
 
 if __name__ == "__main__":

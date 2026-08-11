@@ -1,12 +1,6 @@
 ﻿line1,line2,line3,id,cable_ref,variant,invert,qty,group,class,end_a_device,end_a_port,end_a_loc,conn_a,end_b_device,end_b_port,end_b_loc,conn_b,note,side
-SP2120,MAINS,P1 -> PDU,PWR-P1-B,P1,TAG,no,1,,POWER,Drawmer SP2120,MAINS inlet,RACK,IEC C14,Tripp Lite PDU,Outlet,RACK,NEMA 5-15R,Control power · 9 VA,B
 V3 #2,CH1 IN,A15 -> SP2120,AUD-A15-B,15,TAG,no,1,SP2120-OUT,AUDIO,Bias V3 #2,ANALOG CH1 IN,RACK,XLR-F,Drawmer SP2120,Output L,RACK,XLR-M,Limiter out to signal hub,B
 V3 #2,CH2 IN,A16 -> SP2120,AUD-A16-B,16,TAG,no,1,SP2120-OUT,AUDIO,Bias V3 #2,ANALOG CH2 IN,RACK,XLR-F,Drawmer SP2120,Output R,RACK,XLR-M,Limiter out to signal hub,B
 Q5,IN 1,A17 -> V3 #2,AUD-A17-B,17,TAG,no,1,V3#2-LINEOUT,AUDIO,Bias Q5,ANALOG IN 1,RACK,XLR-F,Bias V3 #2,ANALOG CH1 OUT (pre-DSP),RACK,XLR-M,Q5 input is XLR — the documented Phoenix adapter may be unnecessary (D2),B
 Q2 #2,LINE CH1,A18 -> V3 #2,AUD-A18-B,18,TAG,no,1,V3#2-LINEOUT,AUDIO,Bias Q2 #2,LINE input CH1,RACK,Phoenix 12-pin,Bias V3 #2,ANALOG CH2 OUT (pre-DSP),RACK,XLR-M,Pre-DSP · XLR-M to Phoenix adapter,B
-V3 #2,AESOP 1,N36 -> SWITCH,NET-N36-B,36,TAG,no,1,ARMONIA,DATA,Bias V3 #2,AESOP primary (rear),RACK,RJ45,Network switch,Port TBC,UNKNOWN,RJ45,Armonía control · switch unlocated (D8),B
-Q5,ETH1,N37 -> SWITCH,NET-N37-B,37,TAG,no,1,ARMONIA,DATA,Bias Q5,etherCON ETH1 primary,RACK,etherCON RJ45,Network switch,Port TBC,UNKNOWN,RJ45,Armonía control · switch unlocated (D8),B
-Q2 #2,ETH,N38 -> SWITCH,NET-N38-B,38,TAG,no,1,ARMONIA,DATA,Bias Q2 #2,ETHERNET,RACK,RJ45,Network switch,Port TBC,UNKNOWN,RJ45,Armonía control · switch unlocated (D8),B
-V3 #1,AESOP 1,N39 -> SWITCH,NET-N39-B,39,TAG,no,1,ARMONIA,DATA,Bias V3 #1,AESOP primary (rear),RACK,RJ45,Network switch,Port TBC,UNKNOWN,RJ45,Armonía control · switch unlocated (D8),B
-Q2 #1,ETH,N40 -> SWITCH,NET-N40-B,40,TAG,no,1,ARMONIA,DATA,Bias Q2 #1,ETHERNET,RACK,RJ45,Network switch,Port TBC,UNKNOWN,RJ45,Armonía control · switch unlocated (D8),B
 V3 #1,CH1 IN,A19 -> ?,AUD-A19-B,19,TAG,yes,1,,AUDIO,Bias V3 #1,ANALOG CH1 IN,RACK,XLR-F,UNVERIFIED,UNVERIFIED,UNKNOWN,XLR-M,V3 has only 2 line outs — documented Line Out 3 does not exist (D1). Trace before relabelling,B

@@ -1,15 +1,22 @@
 ---
 title: Nomad Toronto — Cable & Device Label Spec (Brother DK-1221)
 description: Print layout system for 23 mm square DK-1221 labels — fold geometry, safe areas, typography, naming convention, and P-touch Editor setup. Covers all four cable classes; CSV rows double as the source for the rack I/O schedule.
-version: 0.7.0
+version: 0.8.0
 created: 2026-08-11T00:00:00Z
 last_updated: 2026-08-11T00:00:00Z
-status: draft — rack-internal print set is 11 designs / 22 labels; pending a test print and site verification of the unresolved rows
+status: draft — six print sheets (power/audio/data × end A/B), 22 tags; .lbx opens in Editor, pending a test print and site verification of the unresolved rows
 ---
 
 # Cable & Device Label Spec — DK-1221 (23 mm square)
 
 ## Changelog
+
+- **0.8.0** — **Six sheets: power / audio / data × end A / end B.** Each class is fitted in its
+  own pass at the rack, so each pass gets its own print run. `split-label-ends.py` now emits one
+  CSV per (class, end) and the combined per-end pair is retired — two overlapping sets is an
+  invitation to print the wrong one. Also fixes the CP1252 mojibake Editor showed in the merge
+  preview: printed fields are now ASCII (`·`→`-`, `→`→`->`, `Ω`→`OHM`) and every CSV carries a
+  UTF-8 BOM, with `line1`–`line3` moved to the leading columns so Editor's auto-map lands on them.
 
 - **0.7.0** — **Separate CSV per cable end.** `split-label-ends.py` derives
   `…-end-a.csv` and `…-end-b.csv` from any label set, one tag per end (qty 1 each) instead of two
@@ -281,21 +288,29 @@ for s in power audio speaker network; do
 done
 ```
 
-**Print run — rack-internal set, split by cable end:**
+**Print run — six sheets, one per class per cable end:**
 
-| File | Tags | What it is |
-|------|-----:|-----------|
-| `labels-rack-internal-end-a.csv` | 11 | one tag per cable, written for the **A** end |
-| `labels-rack-internal-end-b.csv` | 11 | one tag per cable, written for the **B** end |
-| **total** | **22** | unchanged — two tags per cable, one per end |
+| Sheet | Tags | Fitted at |
+|-------|-----:|-----------|
+| `labels-rack-power-end-a.csv` | 1 | PDU outlet |
+| `labels-rack-power-end-b.csv` | 1 | SP2120 mains inlet |
+| `labels-rack-audio-end-a.csv` | 5 | source ends — SP2120 outputs, V3 #2 line outs |
+| `labels-rack-audio-end-b.csv` | 5 | destination ends — V3 #2 / Q5 / Q2 #2 / V3 #1 inputs |
+| `labels-rack-data-end-a.csv` | 5 | switch ports |
+| `labels-rack-data-end-b.csv` | 5 | amplifier Ethernet / etherCON ports |
+| **total** | **22** | 11 cables × 2 ends |
 
-Print and fit one side at a time: run end A, walk the rack tagging A ends, then run end B. Both
-files carry `qty 1` per row, because the two ends now carry different text and are no longer
-interchangeable.
+Print and fit one sheet at a time: the sheet matches the pass. Every row is `qty 1` — the two ends
+carry different text and are not interchangeable.
 
-The four class CSVs together describe 48 cables, but that is the full system inventory, not the
-print run. Nothing is printed for CQ-12T or DJM-V10 connections. See
-`07-tech-pack/rack-io-schedule.md` for the scope boundary.
+**Why the power sheets hold one tag each:** under the strict rack-internal scope only `P1`
+(PDU → SP2120) has both ends on rack equipment. The five amplifier mains cords run from the venue
+panel, which is outside the rack, so they are out of scope — see `rack-io-schedule.md` §4. They
+are real cables in the rack with no ID on them; adding them back is a scope decision, not a
+labelling one.
+
+The four class CSVs describe 48 cables in total, but that is the system inventory, not the print
+run. Nothing is printed for CQ-12T or DJM-V10 connections.
 
 ---
 

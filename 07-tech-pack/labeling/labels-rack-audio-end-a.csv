@@ -1,12 +1,6 @@
 ﻿line1,line2,line3,id,cable_ref,variant,invert,qty,group,class,end_a_device,end_a_port,end_a_loc,conn_a,end_b_device,end_b_port,end_b_loc,conn_b,note,side
-PDU,OUT,P1 -> SP2120,PWR-P1-A,P1,TAG,no,1,,POWER,Tripp Lite PDU,Outlet,RACK,NEMA 5-15R,Drawmer SP2120,MAINS inlet,RACK,IEC C14,Control power · 9 VA,A
 SP2120,OUT L,A15 -> V3 #2,AUD-A15-A,15,TAG,no,1,SP2120-OUT,AUDIO,Drawmer SP2120,Output L,RACK,XLR-M,Bias V3 #2,ANALOG CH1 IN,RACK,XLR-F,Limiter out to signal hub,A
 SP2120,OUT R,A16 -> V3 #2,AUD-A16-A,16,TAG,no,1,SP2120-OUT,AUDIO,Drawmer SP2120,Output R,RACK,XLR-M,Bias V3 #2,ANALOG CH2 IN,RACK,XLR-F,Limiter out to signal hub,A
 V3 #2,CH1 LINE OUT,A17 -> Q5,AUD-A17-A,17,TAG,no,1,V3#2-LINEOUT,AUDIO,Bias V3 #2,ANALOG CH1 OUT (pre-DSP),RACK,XLR-M,Bias Q5,ANALOG IN 1,RACK,XLR-F,Q5 input is XLR — the documented Phoenix adapter may be unnecessary (D2),A
 V3 #2,CH2 LINE OUT,A18 -> Q2 #2,AUD-A18-A,18,TAG,no,1,V3#2-LINEOUT,AUDIO,Bias V3 #2,ANALOG CH2 OUT (pre-DSP),RACK,XLR-M,Bias Q2 #2,LINE input CH1,RACK,Phoenix 12-pin,Pre-DSP · XLR-M to Phoenix adapter,A
-SWITCH,PORT ?,N36 -> V3 #2,NET-N36-A,36,TAG,no,1,ARMONIA,DATA,Network switch,Port TBC,UNKNOWN,RJ45,Bias V3 #2,AESOP primary (rear),RACK,RJ45,Armonía control · switch unlocated (D8),A
-SWITCH,PORT ?,N37 -> Q5,NET-N37-A,37,TAG,no,1,ARMONIA,DATA,Network switch,Port TBC,UNKNOWN,RJ45,Bias Q5,etherCON ETH1 primary,RACK,etherCON RJ45,Armonía control · switch unlocated (D8),A
-SWITCH,PORT ?,N38 -> Q2 #2,NET-N38-A,38,TAG,no,1,ARMONIA,DATA,Network switch,Port TBC,UNKNOWN,RJ45,Bias Q2 #2,ETHERNET,RACK,RJ45,Armonía control · switch unlocated (D8),A
-SWITCH,PORT ?,N39 -> V3 #1,NET-N39-A,39,TAG,no,1,ARMONIA,DATA,Network switch,Port TBC,UNKNOWN,RJ45,Bias V3 #1,AESOP primary (rear),RACK,RJ45,Armonía control · switch unlocated (D8),A
-SWITCH,PORT ?,N40 -> Q2 #1,NET-N40-A,40,TAG,no,1,ARMONIA,DATA,Network switch,Port TBC,UNKNOWN,RJ45,Bias Q2 #1,ETHERNET,RACK,RJ45,Armonía control · switch unlocated (D8),A
 ?,?,A19 -> V3 #1,AUD-A19-A,19,TAG,yes,1,,AUDIO,UNVERIFIED,UNVERIFIED,UNKNOWN,XLR-M,Bias V3 #1,ANALOG CH1 IN,RACK,XLR-F,V3 has only 2 line outs — documented Line Out 3 does not exist (D1). Trace before relabelling,A
