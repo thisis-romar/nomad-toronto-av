@@ -1,14 +1,21 @@
 ---
 title: Nomad Toronto — Cable & Device Label Spec (Brother DK-1221)
-description: Print layout system for 23 mm square DK-1221 labels — fold geometry, safe areas, typography, naming convention, and P-touch Editor setup. Power/IEC set drafted first.
-version: 0.2.0
+description: Print layout system for 23 mm square DK-1221 labels — fold geometry, safe areas, typography, naming convention, and P-touch Editor setup. Covers all four cable classes; CSV rows double as the source for the rack I/O schedule.
+version: 0.4.0
 created: 2026-08-11T00:00:00Z
 last_updated: 2026-08-11T00:00:00Z
-status: draft — power/IEC set ready for a test print; data and audio sets to follow
+status: draft — all four classes drafted (99 labels); pending a test print and site verification of the rows in §10
 ---
+
+# Cable & Device Label Spec — DK-1221 (23 mm square)
 
 ## Changelog
 
+- **0.4.0** — CSV schema extended with structured endpoint columns (`end_a/b_device`, `_port`,
+  `_loc`, `conn_a/b`), so `07-tech-pack/rack-io-schedule.md` can be generated from the same rows
+  that print the labels instead of being a third hand-maintained document. Added `PWR-P0` for the
+  PDU's own mains feed, which every earlier draft missed — the PDU powers two devices but nothing
+  documented what powered the PDU. Power set is now 10 designs / 21 labels.
 - **0.3.0** — Audio, speaker and network sets drafted (39 designs, 78 labels), completing all
   four cable classes. Line structure inverted for the new sets: the **identity** takes line 1 at
   full size and the **cable ID + route** moves to line 2, because leading with `A11 · ` collapsed
@@ -21,8 +28,6 @@ status: draft — power/IEC set ready for a test print; data and audio sets to f
   manual rebuild path). **This set now disagrees with `cable-schedule.md` §8**, which still lists
   P4 = V9 and the old P5–P8 order — that document has not been updated in this pass.
 - **0.1.0** — Initial power/IEC set, 8 circuits (P1–P8 incl. V9 offline).
-
-# Cable & Device Label Spec — DK-1221 (23 mm square)
 
 **Media:** Brother DK-1221 · 23 mm × 23 mm die-cut · white paper, black thermal
 **Printer:** Brother **QL series** (DK rolls are QL media — a PT-series handheld takes TZe
@@ -123,7 +128,7 @@ prefixed by class:
 
 | Prefix | Class | Source of IDs | Designs |
 |--------|-------|---------------|--------:|
-| `PWR-` | Mains / IEC | cable-schedule §8, renumbered P1–P7 after V9 removal | 9 |
+| `PWR-` | Mains / IEC | cable-schedule §8, renumbered P1–P7 after V9 removal, plus P0 (PDU feed) | 10 |
 | `AUD-` | Line-level audio | cable-schedule §1–4 (A01–A19) | 15 |
 | `SPK-` | Speaker-level | cable-schedule §5–6 (S20–S35) | 14 |
 | `NET-` | Control network / Pro DJ Link | cable-schedule §7 + §1 (N05–N41) | 10 |
@@ -214,6 +219,20 @@ does not substitute for a proper LOTO tag on the V9 breaker.
 | `07-tech-pack/labeling/ptouch-field-mapping.md` | Reliable fallback — exact mm/degree/field-binding values to rebuild the same layout natively in Editor's UI if the `.lbx` doesn't open |
 | `scripts/build-cable-labels.py` | Regenerates the SVG proof from the CSV |
 | `scripts/build-lbx.py` | Regenerates the `.lbx` from the CSV (first TAG, non-inverse row as sample content) |
+| `scripts/build-rack-io-schedule.py` | Regenerates `07-tech-pack/rack-io-schedule.md` from all four CSVs |
+
+**CSV schema.** Each row carries both the printed content and the structured endpoint data:
+
+| Columns | Used by |
+|---------|---------|
+| `id`, `cable_ref`, `variant`, `invert`, `line1`, `line2`, `qty` | Label artwork — proof, `.lbx`, and the P-touch merge |
+| `class`, `end_a_device`, `end_a_port`, `end_a_loc`, `conn_a`, `end_b_device`, `end_b_port`, `end_b_loc`, `conn_b` | Rack I/O schedule — grouping, direction, connector types |
+| `note` | Both, plus the provisional-row tables |
+
+`end_*_loc` is one of `RACK`, `BOOTH`, `ROOM`, `ENTRANCE`, `PANEL`, `UNKNOWN`. The schedule derives
+direction from it: both ends `RACK` → internal, one end `RACK` → in/out, neither → excluded from
+the rack schedule. This is why the endpoint columns live here rather than in a separate file — the
+label on the cable and the schedule row describing it are the same record.
 
 ```bash
 # regenerate every proof sheet and template
@@ -227,7 +246,7 @@ for s in power audio speaker network; do
 done
 ```
 
-**Print run totals:** power 19 · audio 30 · speaker 28 · network 20 = **97 labels**.
+**Print run totals:** power 21 · audio 30 · speaker 28 · network 20 = **99 labels**.
 
 ---
 

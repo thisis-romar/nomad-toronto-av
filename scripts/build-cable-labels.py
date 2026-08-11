@@ -52,6 +52,19 @@ GUTTER_X, GUTTER_Y = 8.0, 13.0   # gutter_y leaves room for the caption
 COLS = 5
 
 
+def connector_pair(row):
+    """Caption text for the connector at each end: 'XLR-M→XLR-F', or just the
+    one type when both ends match. Collapses to '—' for spare/blank rows."""
+    a, b = row.get("conn_a", "").strip(), row.get("conn_b", "").strip()
+    if not a and not b:
+        return "—"
+    if a == b or not b:
+        return a or "—"
+    if not a:
+        return b
+    return f"{a}→{b}"
+
+
 def flag_face_height(od_mm):
     """Face height each side when the label is folded directly around a cable."""
     return (L - math.pi * od_mm / 2) / 2
@@ -175,7 +188,8 @@ def render(rows, out_path, set_name="POWER"):
         parts.append("</g>")
         # caption below the label (proof only)
         parts.append(text(x + L / 2, y + L + 3.6, row["id"], 2.4, "bold", "#000"))
-        parts.append(text(x + L / 2, y + L + 6.8, f'x{row["qty"]}  {row["connector"]}', 2.2, "normal", "#666"))
+        parts.append(text(x + L / 2, y + L + 6.8,
+                          f'x{row["qty"]}  {connector_pair(row)}', 2.2, "normal", "#666"))
         x += L + GUTTER_X
         col += 1
 

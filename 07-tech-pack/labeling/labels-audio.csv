@@ -1,16 +1,16 @@
-id,cable_ref,variant,invert,line1,line2,qty,from,to,connector,note
-AUD-A01,1,TAG,no,MASTER L,A01 · DJM→CQ CH1,2,DJM-V10 MASTER1 L,CQ-12T Ch1,XLR→XLR,Music L · +15 dB AG Auto ON
-AUD-A02,2,TAG,no,MASTER R,A02 · DJM→CQ CH2,2,DJM-V10 MASTER1 R,CQ-12T Ch2,XLR→XLR,Music R · stereo-linked
-AUD-A03,3,TAG,no,BOOTH L,A03 · DJM→CQ CH3,2,DJM-V10 BOOTH L,CQ-12T Ch3,TRS→XLR,MonIn L — DJM booth out is TRS not XLR (D3)
-AUD-A04,4,TAG,no,BOOTH R,A04 · DJM→CQ CH4,2,DJM-V10 BOOTH R,CQ-12T Ch4,TRS→XLR,MonIn R — TRS source end (D3)
-AUD-A09,9,TAG,no,MAIN L,A09 · CQ→SP2120 L,2,CQ-12T Main L,SP2120 Input L,XLR→XLR,FOH main path · 0 dB
-AUD-A10,10,TAG,no,MAIN R,A10 · CQ→SP2120 R,2,CQ-12T Main R,SP2120 Input R,XLR→XLR,FOH main path · 0 dB
-AUD-A11,11,TAG,no,MONOUT L,A11 · CQ→Q2#1 CH1,2,CQ-12T MonOut L,Bias Q2 #1 CH1,TRS→Phoenix,−32 dB · CQ Out 1-6 are TRS (D3)
-AUD-A12,12,TAG,no,MONOUT R,A12 · CQ→Q2#1 CH2,2,CQ-12T MonOut R,Bias Q2 #1 CH2,TRS→Phoenix,−32 dB · TRS source end (D3)
-AUD-A13,13,TAG,no,BAKFIL L,A13 · CQ→ATHENS L,2,CQ-12T BakFil L,Athens L (entrance),TRS→XLR,−34 dB · ~20 m run (D3)
-AUD-A14,14,TAG,no,BAKFIL R,A14 · CQ→ATHENS R,2,CQ-12T BakFil R,Athens R (entrance),TRS→XLR,−34 dB · ~20 m run (D3)
-AUD-A15,15,TAG,no,SP2120 L,A15 · →V3#2 CH1 IN,2,SP2120 Output L,Bias V3 #2 ANALOG CH1 IN,XLR→XLR,Limiter out to signal hub
-AUD-A16,16,TAG,no,SP2120 R,A16 · →V3#2 CH2 IN,2,SP2120 Output R,Bias V3 #2 ANALOG CH2 IN,XLR→XLR,Limiter out to signal hub
-AUD-A17,17,TAG,no,LINE OUT 1,A17 · V3#2→Q5 IN,2,Bias V3 #2 ANALOG CH1 OUT,Bias Q5 analog input,XLR→Phoenix,Pre-DSP · adapter spec unconfirmed (D2)
-AUD-A18,18,TAG,no,LINE OUT 2,A18 · V3#2→Q2#2 IN,2,Bias V3 #2 ANALOG CH2 OUT,Bias Q2 #2 line input,XLR→Phoenix,Pre-DSP · adapter spec unconfirmed
-AUD-A19,19,TAG,yes,V3#1 INPUT,A19 · SOURCE ?,2,UNVERIFIED,Bias V3 #1 ANALOG CH1 IN,XLR→XLR,V3 has only 2 line outs — documented Line Out 3 does not exist (D1). Trace before relabelling
+id,cable_ref,variant,invert,line1,line2,qty,class,end_a_device,end_a_port,end_a_loc,conn_a,end_b_device,end_b_port,end_b_loc,conn_b,note
+AUD-A01,1,TAG,no,MASTER L,A01 · DJM→CQ CH1,2,AUDIO,Pioneer DJM-V10,MASTER1 L,BOOTH,XLR-M,Allen & Heath CQ-12T,Input 1,BOOTH,XLR-F,Music L · +15 dB AG Auto ON · booth-only run
+AUD-A02,2,TAG,no,MASTER R,A02 · DJM→CQ CH2,2,AUDIO,Pioneer DJM-V10,MASTER1 R,BOOTH,XLR-M,Allen & Heath CQ-12T,Input 2,BOOTH,XLR-F,Music R · stereo-linked · booth-only run
+AUD-A03,3,TAG,no,BOOTH L,A03 · DJM→CQ CH3,2,AUDIO,Pioneer DJM-V10,BOOTH L,BOOTH,TRS,Allen & Heath CQ-12T,Input 3,BOOTH,XLR-F,MonIn L · DJM booth out is TRS not XLR (D3)
+AUD-A04,4,TAG,no,BOOTH R,A04 · DJM→CQ CH4,2,AUDIO,Pioneer DJM-V10,BOOTH R,BOOTH,TRS,Allen & Heath CQ-12T,Input 4,BOOTH,XLR-F,MonIn R · TRS source end (D3)
+AUD-A09,9,TAG,no,MAIN L,A09 · CQ→SP2120 L,2,AUDIO,Allen & Heath CQ-12T,Main L,BOOTH,XLR-M,Drawmer SP2120,Input L,RACK,XLR-F,FOH main path · 0 dB
+AUD-A10,10,TAG,no,MAIN R,A10 · CQ→SP2120 R,2,AUDIO,Allen & Heath CQ-12T,Main R,BOOTH,XLR-M,Drawmer SP2120,Input R,RACK,XLR-F,FOH main path · 0 dB
+AUD-A11,11,TAG,no,MONOUT L,A11 · CQ→Q2#1 CH1,2,AUDIO,Allen & Heath CQ-12T,MonOut L (Out 1-6),BOOTH,TRS,Bias Q2 #1,LINE input CH1,RACK,Phoenix 12-pin,−32 dB · CQ Out 1-6 are TRS (D3)
+AUD-A12,12,TAG,no,MONOUT R,A12 · CQ→Q2#1 CH2,2,AUDIO,Allen & Heath CQ-12T,MonOut R (Out 1-6),BOOTH,TRS,Bias Q2 #1,LINE input CH2,RACK,Phoenix 12-pin,−32 dB · TRS source end (D3)
+AUD-A13,13,TAG,no,BAKFIL L,A13 · CQ→ATHENS L,2,AUDIO,Allen & Heath CQ-12T,BakFil L (Out 1-6),BOOTH,TRS,Turbosound Athens L,Input,ENTRANCE,XLR-F,−34 dB · ~20 m run · does not enter the rack
+AUD-A14,14,TAG,no,BAKFIL R,A14 · CQ→ATHENS R,2,AUDIO,Allen & Heath CQ-12T,BakFil R (Out 1-6),BOOTH,TRS,Turbosound Athens R,Input,ENTRANCE,XLR-F,−34 dB · ~20 m run · does not enter the rack
+AUD-A15,15,TAG,no,SP2120 L,A15 · →V3#2 CH1 IN,2,AUDIO,Drawmer SP2120,Output L,RACK,XLR-M,Bias V3 #2,ANALOG CH1 IN,RACK,XLR-F,Limiter out to signal hub
+AUD-A16,16,TAG,no,SP2120 R,A16 · →V3#2 CH2 IN,2,AUDIO,Drawmer SP2120,Output R,RACK,XLR-M,Bias V3 #2,ANALOG CH2 IN,RACK,XLR-F,Limiter out to signal hub
+AUD-A17,17,TAG,no,LINE OUT 1,A17 · V3#2→Q5 IN,2,AUDIO,Bias V3 #2,ANALOG CH1 OUT (pre-DSP),RACK,XLR-M,Bias Q5,ANALOG IN 1,RACK,XLR-F,Q5 input is XLR — the documented Phoenix adapter may be unnecessary (D2)
+AUD-A18,18,TAG,no,LINE OUT 2,A18 · V3#2→Q2#2 IN,2,AUDIO,Bias V3 #2,ANALOG CH2 OUT (pre-DSP),RACK,XLR-M,Bias Q2 #2,LINE input CH1,RACK,Phoenix 12-pin,Pre-DSP · XLR-M to Phoenix adapter
+AUD-A19,19,TAG,yes,V3#1 INPUT,A19 · SOURCE ?,2,AUDIO,UNVERIFIED,UNVERIFIED,UNKNOWN,XLR-M,Bias V3 #1,ANALOG CH1 IN,RACK,XLR-F,V3 has only 2 line outs — documented Line Out 3 does not exist (D1). Trace before relabelling

@@ -17,6 +17,11 @@ Allen & Heath CQ-12T and the DJ booth sources whose cables terminate in the rack
 **Status:** Desk-verified against manuals — **not** re-verified at the rack. Items where the manual
 and the as-built documents disagree are listed in §12 and must be confirmed on-site.
 
+> **Companion document:** this file is the *port inventory* — every connector on every device,
+> used or spare. For the *connection schedule* — what is actually plugged into what, in and out of
+> the rack, with the device at each far end — see **`07-tech-pack/rack-io-schedule.md`**, which is
+> generated from the cable-label data and stays in step with the labels on the cables.
+
 ---
 
 ## §0 How to read this document
@@ -52,7 +57,7 @@ otherwise the Armonía / CQ-12T scene name in use at the venue.
 | U2 | Drawmer SP2120 | Stereo limiter / speaker protector | [§2](#2-drawmer-sp2120--u2) |
 | U3 | Bias V3 #1 "air ten v3" | FOH fill amp | [§3](#3-bias-v3-1--air-ten-v3--u3) |
 | U4 | Bias Q2 #1 "DJ Monitors" | Booth monitor + booth sub amp | [§4](#4-bias-q2-1--dj-monitors--u4) |
-| U5 | Bias V9 "DELAY SUBS" | **OFFLINE** | [§5](#5-bias-v9--delay-subs--u5--offline) |
+| U5 | *(empty)* | **Bias V9 REMOVED** — 32 A circuit still live | [§5](#5-bias-v9--delay-subs--u5--removed) |
 | U6 | Bias Q2 #2 "Air Motion" | FOH mains bi-amp | [§6](#6-bias-q2-2--air-motion--u6) |
 | U7 | Bias V3 #2 "Outside Subs" | Outside sub amp + signal hub | [§7](#7-bias-v3-2--outside-subs--u7) |
 | U8 | Bias Q5 "Subs Middle" | Middle sub amp (4 ch) | [§8](#8-bias-q5--subs-middle--u8) |
@@ -193,10 +198,18 @@ Single 8-pin block carries all four channels (`+`/`−` per channel).
 
 ---
 
-## §5 Bias V9 — "DELAY SUBS" — U5 — ❌ OFFLINE
+## §5 Bias V9 — "DELAY SUBS" — U5 — ❌ REMOVED
 
-Physically present, breaker off, all inputs and outputs disconnected. Listed here so the panel is
-documented if it is ever recommissioned or removed.
+**The V9 has been pulled from the rack.** U5 is an empty bay.
+
+> ⚠️ **The 32 A CPC 45A circuit that fed it is still live to the bay.** It is not a cable to
+> anywhere any more — it terminates in an empty rack space. Either decommission it at the panel
+> or label and cap it; an unexplained live 32 A feed behind a blank U is the kind of thing that
+> gets reconnected by someone who assumes it was left for a reason. Label `PWR-U5` in the power
+> set marks it as spare, but a label is not a substitute for a decision.
+
+The panel inventory below is retained as reference only — for reinstalling the unit elsewhere,
+for resale, or for reading the old Armonía preset. **None of it is connected.**
 *Source: `02-equipment-manuals/amplifiers/Bias_V3_V9_user_manual.pdf` — rear panel (p. 5), §6.3 (p. 7).*
 
 ### ⚡ Power
@@ -504,7 +517,7 @@ The manual wins on *what connectors exist*; only a site visit settles *what is a
 | Drawmer SP2120 | 1 (IEC C14) | 0 | 2 (XLR-F) | 2 (XLR-M) | — |
 | Bias V3 #1 | 2 (IEC C20 + Vext) | 4 RJ45 + card slot | 2 (XLR-F) | 2 line (XLR-M) + 2 speakON | 2 / 2 |
 | Bias Q2 #1 | 2 (IEC C20 + GPI 4-pin) | 2 RJ45 + level/alarm blocks + serial | 1 block (4 ch) | 1 block (4 ch) | 4 / 4 |
-| Bias V9 ❌ | 2 (CPC 45A + Vext) | 4 RJ45 + card slot | 2 (combo) | 2 speakON, no line out | 0 / 2 |
+| ~~Bias V9~~ ❌ removed | — (32 A circuit left live to the empty bay) | — | — | — | — |
 | Bias Q2 #2 | 2 (IEC C20 + GPI 4-pin) | 2 RJ45 + level/alarm blocks + serial | 1 block (4 ch) | 1 block (4 ch) | 4 / 4 |
 | Bias V3 #2 | 2 (IEC C20 + Vext) | 4 RJ45 + card slot | 2 (XLR-F) | 2 line (XLR-M) + 2 speakON | 2 / 2 |
 | Bias Q5 | 2 (Phoenix 5-pin + rem 2-pin) | 2 etherCON + USB | 4 analog XLR + 2 AES3 XLR | 2 speakON (4 ch) | 4 / 4 |
