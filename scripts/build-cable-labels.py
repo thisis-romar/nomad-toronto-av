@@ -82,6 +82,26 @@ FACE_B_FIELDS = ("conn_a", "conn_b")
 TRIPLE = True
 BAND_H = (L - 2 * SAFE_Y) / 3            # 6.67 mm per copy
 BAND_LAYOUT = ((3.2, True, 2.7), (2.3, False, 5.5))   # size mm, bold, baseline
+
+# What each band carries. Printing the identity three times spent a whole band
+# on a copy the wrap destroys, so the middle band now carries the connector at
+# each end instead. That costs nothing: whatever the fold leaves of the middle
+# band is more than the nothing a third duplicate was worth, and the identity
+# is still on the two outer bands, one per face, whichever way the fold lands.
+#
+#   band 0  top     rotated 180   line1 / line2   identity
+#   band 1  middle  rotated 180   conn_a / conn_b connectors  (the wrap eats most of this)
+#   band 2  bottom  upright       line1 / line2   identity
+#
+# conn_a is "this end" on every sheet (split-label-ends.py swaps the columns on
+# the end-B sheets), so it takes the bold slot. After the 180 deg rotation that
+# slot sits low in the band, next to the upright identity — the half of the
+# middle band that survives a fold biased towards the front face.
+BAND_FIELDS = (
+    ("line1", "line2"),
+    ("conn_a", "conn_b"),
+    ("line1", "line2"),
+)
 _fit_warnings = []
 
 # --- Sheet layout (mm, A4 portrait) ------------------------------------------
@@ -180,6 +200,15 @@ def face(lines, invert, label_id=""):
     return "".join(out)
 
 
+def resolve(row, field):
+    """The printed value for one band slot. Empty reads as an em-less dash so a
+    missing connector still occupies its slot rather than shifting the band."""
+    v = (row.get(field) or "").strip()
+    if field.startswith("conn"):
+        v = short_conn(v)
+    return ascii_label(v) if v else "-"
+
+
 def band(lines, top, invert, label_id=""):
     """One copy of the content, drawn inside a band starting at `top` mm."""
     ink = "#fff" if invert else "#000"
@@ -199,19 +228,23 @@ def band(lines, top, invert, label_id=""):
     return "".join(out)
 
 
-def label_triple(lines, invert=False, label_id=""):
-    """Three stacked copies; bottom upright, upper two rotated 180 deg.
+def label_triple(row, invert=False, label_id=""):
+    """Three stacked bands; bottom upright, upper two rotated 180 deg.
 
     A rotated band is drawn at its mirror position and then rotated about the
     label centre, which lands it where it belongs: the bottom band maps to the
     top, and the middle band maps to itself.
+
+    Content per band comes from BAND_FIELDS, so the middle band can differ from
+    the two identity copies without disturbing the geometry.
     """
     tops = [SAFE_Y + i * BAND_H for i in range(3)]
     rot = f'rotate(180 {L / 2:.2f} {L / 2:.2f})'
+    content = [[resolve(row, f) for f in slots] for slots in BAND_FIELDS]
     return (
-        f'<g>{band(lines, tops[2], invert, label_id)}</g>'
-        f'<g transform="{rot}">{band(lines, tops[1], invert)}</g>'
-        f'<g transform="{rot}">{band(lines, tops[2], invert)}</g>'
+        f'<g>{band(content[2], tops[2], invert, label_id)}</g>'
+        f'<g transform="{rot}">{band(content[1], tops[1], invert)}</g>'
+        f'<g transform="{rot}">{band(content[0], tops[2], invert)}</g>'
         # band boundaries: fold on either one
         f'<line x1="0" y1="{tops[1]:.2f}" x2="{TICK:.2f}" y2="{tops[1]:.2f}" stroke="#000" stroke-width="0.2"/>'
         f'<line x1="{L - TICK:.2f}" y1="{tops[1]:.2f}" x2="{L:.2f}" y2="{tops[1]:.2f}" stroke="#000" stroke-width="0.2"/>'
@@ -301,7 +334,7 @@ def render(rows, out_path, set_name="POWER"):
              if (row.get(f) or "").strip()]
         inv = row["invert"].strip().lower() == "yes"
         if TRIPLE:
-            parts.append(label_triple(a, inv, row["id"]))
+            parts.append(label_triple(row, inv, row["id"]))
         else:
             parts.append(label_tag(a, b or None, inv, row["id"]))
         parts.append("</g>")
@@ -331,11 +364,12 @@ def render(rows, out_path, set_name="POWER"):
         f'<line x1="{MARGIN_X}" y1="{y_legend:.2f}" x2="{PAGE_W - MARGIN_X}" y2="{y_legend:.2f}" stroke="#ddd" stroke-width="0.3"/>',
         text(MARGIN_X, y_legend + 6, "PROOF GUIDES (not printed on the roll)", 3.0, "bold", "#000", "start"),
         text(MARGIN_X, y_legend + 10.5, "red = 23 mm die-cut edge   ·   grey dash = printable area 17.1 × 20.0 mm   ·   blue dash = band boundaries (fold on either)", 2.5, "normal", "#444", "start"),
-        text(MARGIN_X, y_legend + 15.5, "PRINTED ON THE ROLL: three identical copies of the text, plus band ticks at the label edges.", 2.5, "normal", "#444", "start"),
-        text(MARGIN_X, y_legend + 21.5, "TRIPLE PRINT: fold on either band tick. The fold eats one copy; the other two stay whole, one per face.", 2.5, "normal", "#444", "start"),
+        text(MARGIN_X, y_legend + 15.5, "PRINTED ON THE ROLL: three bands — identity, connectors, identity — plus band ticks at the label edges.", 2.5, "normal", "#444", "start"),
+        text(MARGIN_X, y_legend + 21.5, "TRIPLE PRINT: fold on either band tick. The wrap eats the middle band; the two identity bands stay whole, one per face.", 2.5, "normal", "#444", "start"),
         text(MARGIN_X, y_legend + 26.5,
-             "Bottom copy prints upright; the upper two print 180 deg, so whichever surfaces on the "
-             "back face reads the right way up. The fold no longer has to be accurate.",
+             "Bottom band prints upright; the upper two print 180 deg, so whichever surfaces on the "
+             "back face reads the right way up. The middle band (bold = this end's connector, small = the "
+             "far end's) is whatever the wrap leaves — a bonus, never the only copy of anything.",
              2.5, "normal", "#444", "start"),
         # No colour key: each swatch carries its own device name, so there is
         # nothing to look up. The only fact colour alone still encodes is which

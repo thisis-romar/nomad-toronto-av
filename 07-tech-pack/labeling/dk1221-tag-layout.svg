@@ -2,7 +2,7 @@
 <rect width="1020" height="660" fill="#fff"/>
 <text x="28.0" y="34.0" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#111" text-anchor="start" >DK-1221 fold tag — P-touch object layout</text>
 <text x="28.0" y="54.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" fill="#666" text-anchor="start" >6 text objects · 23 × 23 mm · sample data from dk1221-rack-audio-end-a</text>
-<text x="28.0" y="72.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" fill="#666" text-anchor="start" >TRIPLE PRINT — the same two lines three times. The fold eats one copy; the other two survive, one per face.</text>
+<text x="28.0" y="72.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" fill="#666" text-anchor="start" >TRIPLE PRINT — identity / connectors / identity. The wrap eats the middle band; an identity band survives on each face.</text>
 <text x="28.0" y="90.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" fill="#666" text-anchor="start" >Fold on either band boundary — accuracy no longer matters.</text>
 <rect x="96.64" y="145.68" width="153.7" height="179.6" fill="none" stroke="#bbb" stroke-width="1" stroke-dasharray="4 3"/>
 <rect x="70.0" y="132.0" width="207.0" height="207.0" fill="none" stroke="#c8102e" stroke-width="1.6" rx="6"/>
@@ -13,41 +13,43 @@
 <rect x="96.7" y="268.2" width="154.0" height="30.2" fill="#0072B214" stroke="#0072B2" stroke-width="1.2"/>
 <g transform="rotate(0 173.7 283.3)"><text x="173.7" y="287.3" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#111" text-anchor="middle" >SP2120</text></g>
 <line x1="250.7" y1="283.3" x2="397.0" y2="283.3" stroke="#0072B2" stroke-width="0.8" stroke-dasharray="2 2"/>
-<text x="403.0" y="287.3" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#0072B2" text-anchor="start" >Text1  ←  line1   (copy 3 - front)</text>
+<text x="403.0" y="287.3" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#0072B2" text-anchor="start" >Text1  ←  line1   (band 3 - front)</text>
 <rect x="96.7" y="301.2" width="154.0" height="21.6" fill="#0072B214" stroke="#0072B2" stroke-width="1.2"/>
 <g transform="rotate(0 173.7 312.0)"><text x="173.7" y="316.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" fill="#111" text-anchor="middle" >OUT L</text></g>
 <line x1="250.7" y1="312.0" x2="397.0" y2="312.0" stroke="#0072B2" stroke-width="0.8" stroke-dasharray="2 2"/>
-<text x="403.0" y="316.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#0072B2" text-anchor="start" >Text2  ←  line2   (copy 3 - front)</text>
-<rect x="96.7" y="208.2" width="154.0" height="30.2" fill="#D55E0014" stroke="#D55E00" stroke-width="1.2"/>
-<g transform="rotate(180 173.7 223.3)"><text x="173.7" y="227.3" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#111" text-anchor="middle" >SP2120</text></g>
-<line x1="250.7" y1="223.3" x2="397.0" y2="223.3" stroke="#D55E00" stroke-width="0.8" stroke-dasharray="2 2"/>
-<text x="403.0" y="227.3" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#D55E00" text-anchor="start" >Text3  ←  line1   (copy 2 - fold, 180°)</text>
-<rect x="96.7" y="241.2" width="154.0" height="21.6" fill="#D55E0014" stroke="#D55E00" stroke-width="1.2"/>
-<g transform="rotate(180 173.7 252.0)"><text x="173.7" y="256.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" fill="#111" text-anchor="middle" >OUT L</text></g>
-<line x1="250.7" y1="252.0" x2="397.0" y2="252.0" stroke="#D55E00" stroke-width="0.8" stroke-dasharray="2 2"/>
-<text x="403.0" y="256.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#D55E00" text-anchor="start" >Text4  ←  line2   (copy 2 - fold, 180°)</text>
-<rect x="96.7" y="148.2" width="154.0" height="30.2" fill="#D55E0014" stroke="#D55E00" stroke-width="1.2"/>
-<g transform="rotate(180 173.7 163.3)"><text x="173.7" y="167.3" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#111" text-anchor="middle" >SP2120</text></g>
-<line x1="250.7" y1="163.3" x2="397.0" y2="163.3" stroke="#D55E00" stroke-width="0.8" stroke-dasharray="2 2"/>
-<text x="403.0" y="167.3" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#D55E00" text-anchor="start" >Text5  ←  line1   (copy 1 - back, 180°)</text>
-<rect x="96.7" y="181.2" width="154.0" height="21.6" fill="#D55E0014" stroke="#D55E00" stroke-width="1.2"/>
-<g transform="rotate(180 173.7 192.0)"><text x="173.7" y="196.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" fill="#111" text-anchor="middle" >OUT L</text></g>
-<line x1="250.7" y1="192.0" x2="397.0" y2="192.0" stroke="#D55E00" stroke-width="0.8" stroke-dasharray="2 2"/>
-<text x="403.0" y="196.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#D55E00" text-anchor="start" >Text6  ←  line2   (copy 1 - back, 180°)</text>
+<text x="403.0" y="316.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#0072B2" text-anchor="start" >Text2  ←  line2   (band 3 - front)</text>
+<rect x="96.7" y="232.6" width="154.0" height="30.2" fill="#D55E0014" stroke="#D55E00" stroke-width="1.2"/>
+<g transform="rotate(180 173.7 247.7)"><text x="173.7" y="251.7" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#111" text-anchor="middle" >XLR-M</text></g>
+<line x1="250.7" y1="247.7" x2="397.0" y2="247.7" stroke="#D55E00" stroke-width="0.8" stroke-dasharray="2 2"/>
+<text x="403.0" y="251.7" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#D55E00" text-anchor="start" >Text3  ←  conn_a   (band 2 - wrap, 180°)</text>
+<rect x="96.7" y="208.2" width="154.0" height="21.6" fill="#D55E0014" stroke="#D55E00" stroke-width="1.2"/>
+<g transform="rotate(180 173.7 219.0)"><text x="173.7" y="223.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" fill="#111" text-anchor="middle" >XLR-F</text></g>
+<line x1="250.7" y1="219.0" x2="397.0" y2="219.0" stroke="#D55E00" stroke-width="0.8" stroke-dasharray="2 2"/>
+<text x="403.0" y="223.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#D55E00" text-anchor="start" >Text4  ←  conn_b   (band 2 - wrap, 180°)</text>
+<rect x="96.7" y="172.6" width="154.0" height="30.2" fill="#D55E0014" stroke="#D55E00" stroke-width="1.2"/>
+<g transform="rotate(180 173.7 187.7)"><text x="173.7" y="191.7" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#111" text-anchor="middle" >SP2120</text></g>
+<line x1="250.7" y1="187.7" x2="397.0" y2="187.7" stroke="#D55E00" stroke-width="0.8" stroke-dasharray="2 2"/>
+<text x="403.0" y="191.7" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#D55E00" text-anchor="start" >Text5  ←  line1   (band 1 - back, 180°)</text>
+<rect x="96.7" y="148.2" width="154.0" height="21.6" fill="#D55E0014" stroke="#D55E00" stroke-width="1.2"/>
+<g transform="rotate(180 173.7 159.0)"><text x="173.7" y="163.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" fill="#111" text-anchor="middle" >OUT L</text></g>
+<line x1="250.7" y1="159.0" x2="397.0" y2="159.0" stroke="#D55E00" stroke-width="0.8" stroke-dasharray="2 2"/>
+<text x="403.0" y="163.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#D55E00" text-anchor="start" >Text6  ←  line2   (band 1 - back, 180°)</text>
 <text x="173.5" y="361.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" fill="#c8102e" text-anchor="middle" >23.0 mm die-cut</text>
 <text x="60.0" y="235.5" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" fill="#c8102e" text-anchor="end" >23.0</text>
 <text x="173.5" y="120.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" fill="#777" text-anchor="middle" >printable 17.08 mm  (2.96 mm inset each side)</text>
 <text x="700.0" y="134.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#111" text-anchor="start" >Folded over the tie — what each side reads</text>
 <rect x="700" y="160" width="152" height="100" fill="#fff" stroke="#0072B2" stroke-width="1.6" rx="7"/>
-<text x="708.0" y="177.0" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#0072B2" text-anchor="start" >SIDE 1  (copy 3)</text>
+<text x="708.0" y="177.0" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#0072B2" text-anchor="start" >SIDE 1  (band 3)</text>
 <text x="776.0" y="212.0" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="bold" fill="#111" text-anchor="middle" >SP2120</text>
 <text x="776.0" y="238.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="middle" >OUT L</text>
 <rect x="700" y="286" width="152" height="100" fill="#fff" stroke="#D55E00" stroke-width="1.6" rx="7"/>
-<text x="708.0" y="303.0" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#D55E00" text-anchor="start" >SIDE 2  (copy 1)</text>
+<text x="708.0" y="303.0" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#D55E00" text-anchor="start" >SIDE 2  (band 1)</text>
 <text x="776.0" y="338.0" font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="bold" fill="#111" text-anchor="middle" >SP2120</text>
 <text x="776.0" y="364.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="middle" >OUT L</text>
 <text x="700.0" y="418.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" fill="#666" text-anchor="start" >Both read upright — the rotated copies right themselves in the fold.</text>
-<text x="700.0" y="436.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" fill="#666" text-anchor="start" >Copy 2 is the sacrificial one, consumed by the wrap.</text>
+<text x="700.0" y="436.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" fill="#666" text-anchor="start" >Band 2 is the sacrificial one — the wrap eats it.</text>
+<text x="700.0" y="452.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" fill="#666" text-anchor="start" >It carries the connectors (bold = this end), so</text>
+<text x="700.0" y="468.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" fill="#666" text-anchor="start" >whatever survives is a bonus, never the only copy.</text>
 <line x1="28" y1="381.0" x2="992" y2="381.0" stroke="#ddd"/>
 <rect x="30" y="391.0" width="11" height="11" fill="#c8102e" rx="2"/>
 <text x="48.0" y="400.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" fill="#444" text-anchor="start" >die-cut edge, 23 mm</text>
@@ -56,7 +58,7 @@
 <rect x="30" y="425.0" width="11" height="11" fill="#0a84ff" rx="2"/>
 <text x="48.0" y="434.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" fill="#444" text-anchor="start" >band boundaries — fold on either</text>
 <rect x="30" y="442.0" width="11" height="11" fill="#0072B2" rx="2"/>
-<text x="48.0" y="451.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" fill="#444" text-anchor="start" >upright copy</text>
+<text x="48.0" y="451.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" fill="#444" text-anchor="start" >upright band</text>
 <rect x="30" y="459.0" width="11" height="11" fill="#D55E00" rx="2"/>
-<text x="48.0" y="468.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" fill="#444" text-anchor="start" >rotated copies (180°)</text>
+<text x="48.0" y="468.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" fill="#444" text-anchor="start" >rotated bands (180°)</text>
 </svg>

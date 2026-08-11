@@ -1,7 +1,7 @@
 ---
 title: Nomad Toronto — Cable & Device Label Spec (Brother DK-1221)
 description: Print layout system for 23 mm square DK-1221 labels — fold geometry, safe areas, typography, naming convention, and P-touch Editor setup. Covers all four cable classes; CSV rows double as the source for the rack I/O schedule.
-version: 0.9.0
+version: 0.10.0
 created: 2026-08-11T00:00:00Z
 last_updated: 2026-08-11T00:00:00Z
 status: draft — six print sheets (power/audio/data × end A/B), 22 tags; .lbx opens in Editor, pending a test print and site verification of the unresolved rows
@@ -10,6 +10,21 @@ status: draft — six print sheets (power/audio/data × end A/B), 22 tags; .lbx 
 # Cable & Device Label Spec — DK-1221 (23 mm square)
 
 ## Changelog
+
+- **0.10.0** — **The middle band carries the connectors.** Triple print spent a whole band on an
+  identity copy the wrap always destroys; that band now prints `conn_a` (bold, this end) over
+  `conn_b` (the far end) instead. Fold tolerance is unchanged — the two identity bands are still
+  one per face — and whatever the wrap leaves of the middle band is information the outer bands
+  do not carry. Object order is now `line1, line2, conn_a, conn_b, line1, line2`, so the sheet
+  CSVs lead with those four columns and `split-label-ends.py` writes the abbreviated ASCII
+  connector form (`etherCON RJ45` → `etherCON`) into `conn_a`/`conn_b` — the merged print and the
+  proof now show the same string, which they did not before.
+
+  Two things 0.9.0 got wrong come out with it. **The `.lbx`'s rotated bands were stacked in page
+  order**, so both would have folded out reading line 2 above line 1 — the 180° angle flips the
+  glyphs but not the boxes. Rotated bands are now stacked bottom-to-top, matching what the proof
+  SVG always drew; the two were silently disagreeing. And it **records what triple print dropped**:
+  the cable reference is printed nowhere at all — see §9.
 
 - **0.9.0** — **Triple print replaces the two-face fold.** The same two lines are printed three
   times over the full 20 mm printable height instead of twice either side of a reserved 3 mm fold
@@ -108,33 +123,52 @@ read out of a P-touch Editor file for DK-1221 on a QL-800; they are not a margin
 they are not symmetric. An earlier draft assumed a uniform 1.5 mm inset and so laid every line
 out 2.89 mm too wide.
 
-### A · TAG — fold over a cable-tie tail *(default for all rack power)*
+### A · TAG — fold over a cable-tie tail *(default for every rack cable)*
 
-Fold line across the centre at **y = 11.5 mm**, with a **3 mm blank fold zone** (y 10.0–13.0)
-that wraps the tie tail. Each face is then **17.11 mm wide × 8.5 mm tall**.
+**Triple print.** The 20.00 mm printable height is divided into **three 6.67 mm bands**, each
+holding two lines. There is no reserved fold zone and no single correct fold line: the wrap
+destroys whichever band it crosses and the bands either side of it survive whole, one per face.
+That is the point — the fold no longer has to be accurate to a millimetre.
 
 ```
 ┌───────────────────────┐  y 0
-│  ▏ face B (rot 180°)  │  y 1.5 – 10.0   text
-│ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │  y 11.5         FOLD  (ticks printed at both edges)
-│  ▏ face A (upright)   │  y 13.0 – 21.5  text
+│  ▏ band 1  (rot 180°) │  y  1.52 –  8.19   line1 / line2   identity
+│ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │  y  8.19           band tick
+│  ▏ band 2  (rot 180°) │  y  8.19 – 14.85   conn_a / conn_b connectors
+│ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │  y 14.85           band tick
+│  ▏ band 3  (upright)  │  y 14.85 – 21.52   line1 / line2   identity
 └───────────────────────┘  y 23
 ```
 
-Face B is printed rotated 180° so that, once folded adhesive-to-adhesive, **both faces read
-upright**. Two 1.2 mm registration ticks are printed at the left and right edges on the fold
-line so the installer folds square without measuring.
+The bottom band prints upright and the upper two print **rotated 180°**, so whichever of them
+surfaces on the back face reads the right way up once the tag is folded adhesive-to-adhesive.
+1.2 mm registration ticks are printed at both edges on each band boundary.
 
-Line structure per face — **two or three lines**, chosen per set:
+**Why the middle band is not a third copy.** Printing the identity three times spent a whole band
+on a copy the wrap always destroys. The middle band now carries the **connector at each end**
+instead — `conn_a` in the bold slot, `conn_b` below it. Nothing is lost that was not already lost,
+and whatever the wrap leaves is information the outer bands do not have. On a 6 mm OD cable the
+wrap consumes `π × d / 2` ≈ 9.4 mm and takes the whole middle band; on a thin tie tail a usable
+strip of it survives. **Treat it as a bonus, never as the only copy of anything** — the identity
+is on both outer bands regardless.
 
-| Layout | Line 1 | Line 2 | Line 3 |
-|--------|--------|--------|--------|
-| **2-line** (whole-cable sets) | 4.0 mm bold, floor 2.6 | 2.8 mm, floor 1.9 | — |
-| **3-line** (per-end sets) | 3.4 mm bold, floor 2.6 | 2.4 mm, floor 1.9 | 2.2 mm, floor 1.8 |
+`conn_a` is always *this end's* connector: `split-label-ends.py` swaps the end column groups on
+the end-B sheets so the tag is written from where it is fitted. After the 180° rotation the bold
+`conn_a` slot lands low in the band, next to the upright identity — the half of the middle band
+that survives a fold biased towards the front face.
 
-The face is 8.5 mm tall and a two-line setting leaves ~1.5 mm of it unused. That slack is exactly
-what a third line needs, and the per-end labels need it: a headline carrying both a device and a
-port (`V3 #2 CH1 LINE OUT`) does not fit 17.11 mm at any readable size.
+Line structure per band:
+
+| Slot | Size | Floor | Content |
+|------|------|-------|---------|
+| upper | 3.2 mm bold | 2.6 mm | `line1` (device) · `conn_a` on the middle band |
+| lower | 2.3 mm | 1.9 mm | `line2` (port) · `conn_b` on the middle band |
+
+**`line3` is not printed.** The `A15 -> V3 #2` cross-reference is still generated into the CSV,
+but a 6.67 mm band takes two lines at a readable size, not three, so nothing on the tag carries
+the cable ID. The two-face layout it came from had 8.5 mm faces and room for it; that layout is
+retained in the build scripts behind `TRIPLE = False`. This is an open trade, not a settled one —
+see §9.
 
 ### B · FLAG — fold directly around the cable *(≤8 mm OD only)*
 
@@ -245,15 +279,20 @@ does not substitute for a proper LOTO tag on the V9 breaker.
 
 1. Load the DK-1221 roll and select the media in the **Paper / Media** selector — the
    `23mm x 23mm` DK-1221 entry sets the die-cut size and Brother's own print margins.
-2. Set the layout to the two-face structure in §2: fold line at 11.5 mm, face B rotated 180°.
-   `dk1221-power-proof.svg` is the dimensional reference; build the Editor template to match.
-3. Connect the data: **Database / merge** → `labels-power.csv` → map `line1` and `line2` to the
-   two text objects. Set both objects to shrink-to-fit as a backstop.
+2. Open the matching `dk1221-rack-{class}-end-{a,b}.lbx`, or build the three-band structure from
+   §2 by hand — `ptouch-field-mapping.md` has the exact mm values. The `-proof.svg` for the same
+   sheet is the dimensional reference.
+3. Connect the data: **Database / merge** → the matching `labels-rack-{class}-end-{a,b}.csv`.
+   The six text objects run in order **Text1…Text6 = `line1`, `line2`, `conn_a`, `conn_b`,
+   `line1`, `line2`**, and the sheet CSVs lead with those four columns so Editor's auto-map gets
+   the first four right. **Text5 and Text6 must be pointed at `line1` and `line2` by hand** —
+   Editor will not auto-map a column twice, and these are the duplicate identity band. Set every
+   object to shrink-to-fit as a backstop.
 4. Print options: **quality over speed**, halftone off (text only), **scaling 100% / no
    scale-to-fit**, auto-cut per label.
 5. **Test print first** — run one label, measure the printed square with calipers, and confirm
    the text clears the die-cut edge by ~1.5 mm on all sides before committing the run.
-6. Quantities are in the CSV `qty` column: 20 labels total (8 cables × 2 ends + 4 spares).
+6. Quantities are in the CSV `qty` column — every row is `qty 1`, 22 tags across the six sheets.
 
 ---
 
@@ -263,19 +302,22 @@ does not substitute for a proper LOTO tag on the V9 breaker.
 |------|-----------|
 | `07-tech-pack/labeling/labels-{power,audio,speaker,network}.csv` | Merge data — one row per label design, with the schedule cross-reference |
 | `07-tech-pack/labeling/dk1221-{power,audio,speaker,network}-proof.svg` | 1:1 print proofs, A4. Print at 100% to verify before running the roll |
-| `07-tech-pack/labeling/dk1221-{power,audio,speaker,network}.lbx` | Best-effort P-touch Editor templates. **Unverified** — Brother's `.lbx` schema is unpublished; these were reconstructed from memory and have not been opened in real Editor. Test before trusting. All four share the identical 4-object layout, so if one opens correctly they all will |
+| `07-tech-pack/labeling/dk1221-rack-{power,audio,data}-end-{a,b}.lbx` | The six P-touch Editor templates, one per print sheet. Generated against a real Editor-authored reference file. All six share the identical 6-object triple-print layout — only the sample text differs — so if one opens correctly they all will |
+| `07-tech-pack/labeling/dk1221-tag-layout.svg` | Object map: box positions, field bindings, and what each folded face reads. Generated by reading geometry back out of a produced `.lbx`, so it cannot drift |
 | `07-tech-pack/labeling/ptouch-field-mapping.md` | Reliable fallback — exact mm/degree/field-binding values to rebuild the same layout natively in Editor's UI if the `.lbx` doesn't open |
 | `scripts/build-cable-labels.py` | Regenerates the SVG proof from the CSV |
 | `scripts/build-lbx.py` | Regenerates the `.lbx` from the CSV (first TAG, non-inverse row as sample content) |
 | `scripts/build-rack-io-schedule.py` | Regenerates `07-tech-pack/rack-io-schedule.md` and the derived rack-internal CSV |
-| `scripts/split-label-ends.py` | Splits a label CSV into per-end `-end-a` / `-end-b` sets |
+| `scripts/split-label-ends.py` | Splits a label CSV into per-end `-end-a` / `-end-b` sets, one file per class |
+| `scripts/build-layout-diagram.py` | Redraws `dk1221-tag-layout.svg` from a produced `.lbx` |
 | `scripts/rack_palette.py` | Device colours, short names and port abbreviations, shared by every build |
 
 **CSV schema.** Each row carries both the printed content and the structured endpoint data:
 
 | Columns | Used by |
 |---------|---------|
-| `id`, `cable_ref`, `variant`, `invert`, `line1`, `line2`, `qty` | Label artwork — proof, `.lbx`, and the P-touch merge |
+| `line1`, `line2`, `conn_a`, `conn_b` | The four printed fields, in layout-object order — this is why they lead the sheet CSVs |
+| `id`, `cable_ref`, `variant`, `invert`, `line3`, `qty` | Label artwork bookkeeping; `line3` is generated but not printed (see §9) |
 | `class`, `end_a_device`, `end_a_port`, `end_a_loc`, `conn_a`, `end_b_device`, `end_b_port`, `end_b_loc`, `conn_b` | Rack I/O schedule — grouping, direction, connector types |
 | `note` | Both, plus the provisional-row tables |
 
@@ -285,15 +327,20 @@ the rack schedule. This is why the endpoint columns live here rather than in a s
 label on the cable and the schedule row describing it are the same record.
 
 ```bash
-# regenerate every proof sheet and template
-for s in power audio speaker network; do
+# regenerate the schedule, the six sheets, and the layout diagram
+python3 scripts/build-rack-io-schedule.py
+python3 scripts/split-label-ends.py 07-tech-pack/labeling/labels-rack-internal.csv
+for c in power audio data; do for e in a b; do
   python3 scripts/build-cable-labels.py \
-      07-tech-pack/labeling/labels-$s.csv \
-      07-tech-pack/labeling/dk1221-$s-proof.svg
+      07-tech-pack/labeling/labels-rack-$c-end-$e.csv \
+      07-tech-pack/labeling/dk1221-rack-$c-end-$e-proof.svg
   python3 scripts/build-lbx.py \
-      07-tech-pack/labeling/labels-$s.csv \
-      07-tech-pack/labeling/dk1221-$s.lbx
-done
+      07-tech-pack/labeling/labels-rack-$c-end-$e.csv \
+      07-tech-pack/labeling/dk1221-rack-$c-end-$e.lbx
+done; done
+python3 scripts/build-layout-diagram.py \
+    07-tech-pack/labeling/dk1221-rack-audio-end-a.lbx \
+    07-tech-pack/labeling/dk1221-tag-layout.svg
 ```
 
 **Print run — six sheets, one per class per cable end:**
@@ -324,6 +371,15 @@ run. Nothing is printed for CQ-12T or DJM-V10 connections.
 
 ## §9 Still to draft
 
+- [ ] **Decide what the tag loses: the cable ID or a connector.** Triple print gives two printed
+      slots per band and the outer bands spend them on device + port. The cable reference
+      (`A15`, `N36`, `P1`) — the field the schedule is indexed by — is therefore printed nowhere.
+      Three ways out, none free:
+      **(a)** fold `line3` into `line2` as `OUT L · A15`, which costs ~4 characters of port name;
+      **(b)** give the middle band `line3` + `conn_a` and drop the far-end connector;
+      **(c)** accept it — the device + port pair is unique per cable in an 11-cable rack, so the
+      ID is recoverable from the schedule. Currently on (c) by default, which is the weakest
+      reason to be anywhere.
 - [ ] **Device ID plates (variant C)** — the original goal. 4-line layout is defined in §2 but
       no artwork is drafted. Content per device: name, Armonía label, rack U + S/N, IP.
 - [ ] **Q5 → middle-sub cabinet links** — see §10.

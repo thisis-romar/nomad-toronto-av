@@ -1,2 +1,2 @@
-﻿line1,line2,line3,id,cable_ref,variant,invert,qty,group,class,end_a_device,end_a_port,end_a_loc,conn_a,end_b_device,end_b_port,end_b_loc,conn_b,note,side
-SP2120,MAINS,P1 -> PDU,PWR-P1-B,P1,TAG,no,1,,POWER,Drawmer SP2120,MAINS inlet,RACK,IEC C14,Tripp Lite PDU,Outlet,RACK,NEMA 5-15R,Control power · 9 VA,B
+﻿line1,line2,conn_a,conn_b,line3,id,cable_ref,variant,invert,qty,group,class,end_a_device,end_a_port,end_a_loc,end_b_device,end_b_port,end_b_loc,note,side
+SP2120,MAINS,IEC C14,NEMA 5-15,P1 -> PDU,PWR-P1-B,P1,TAG,no,1,,POWER,Drawmer SP2120,MAINS inlet,RACK,Tripp Lite PDU,Outlet,RACK,Control power · 9 VA,B

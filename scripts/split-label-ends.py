@@ -35,7 +35,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from rack_palette import short, short_port, ascii_label  # noqa: E402
+from rack_palette import short, short_port, short_conn, ascii_label  # noqa: E402
 
 A_FIELDS = ("end_a_device", "end_a_port", "end_a_loc", "conn_a")
 B_FIELDS = ("end_b_device", "end_b_port", "end_b_loc", "conn_b")
@@ -77,6 +77,11 @@ def build(rows, side):
         rr["line1"] = ascii_label(short(rr["end_a_device"]))
         rr["line2"] = ascii_label(short_port(rr["end_a_port"]) or "-")
         rr["line3"] = ascii_label(detail(r, rr["end_b_device"]))
+        # conn_a/conn_b are printed columns now (the middle band carries them),
+        # so the sheet stores the abbreviated ASCII form the tag actually shows.
+        # The full connector name stays in the master CSV and the schedule.
+        for k in ("conn_a", "conn_b"):
+            rr[k] = ascii_label(short_conn(rr.get(k, "")))
         rr["qty"] = "1"          # one tag per end
         rr["side"] = side.upper()
         out.append(rr)
@@ -87,7 +92,12 @@ def write(path, rows):
     fields = [f for f in rows[0].keys()]
     # Printed fields lead: P-touch Editor auto-maps layout objects to database
     # columns in order, so line1..line3 first means its first guesses are right.
-    lead = [k for k in ("line1", "line2", "line3") if k in fields]
+    # Order matches the four distinct fields the tag prints, in object order:
+    # band 2 (line1, line2), band 1 (conn_a, conn_b). The two duplicate identity
+    # objects that follow have to be pointed at line1/line2 by hand — no column
+    # can be auto-mapped twice.
+    lead = [k for k in ("line1", "line2", "conn_a", "conn_b", "line3")
+            if k in fields]
     fields = lead + [k for k in fields if k not in lead]
     # BOM: Editor otherwise reads the file as CP1252 and mangles any non-ASCII.
     with path.open("w", newline="", encoding="utf-8-sig") as fh:

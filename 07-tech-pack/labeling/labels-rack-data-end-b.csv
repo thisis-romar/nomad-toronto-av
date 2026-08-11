@@ -1,6 +1,6 @@
-﻿line1,line2,line3,id,cable_ref,variant,invert,qty,group,class,end_a_device,end_a_port,end_a_loc,conn_a,end_b_device,end_b_port,end_b_loc,conn_b,note,side
-V3 #2,AESOP 1,N36 -> SWITCH,NET-N36-B,36,TAG,no,1,ARMONIA,DATA,Bias V3 #2,AESOP primary (rear),RACK,RJ45,Network switch,Port TBC,UNKNOWN,RJ45,Armonía control · switch unlocated (D8),B
-Q5,ETH1,N37 -> SWITCH,NET-N37-B,37,TAG,no,1,ARMONIA,DATA,Bias Q5,etherCON ETH1 primary,RACK,etherCON RJ45,Network switch,Port TBC,UNKNOWN,RJ45,Armonía control · switch unlocated (D8),B
-Q2 #2,ETH,N38 -> SWITCH,NET-N38-B,38,TAG,no,1,ARMONIA,DATA,Bias Q2 #2,ETHERNET,RACK,RJ45,Network switch,Port TBC,UNKNOWN,RJ45,Armonía control · switch unlocated (D8),B
-V3 #1,AESOP 1,N39 -> SWITCH,NET-N39-B,39,TAG,no,1,ARMONIA,DATA,Bias V3 #1,AESOP primary (rear),RACK,RJ45,Network switch,Port TBC,UNKNOWN,RJ45,Armonía control · switch unlocated (D8),B
-Q2 #1,ETH,N40 -> SWITCH,NET-N40-B,40,TAG,no,1,ARMONIA,DATA,Bias Q2 #1,ETHERNET,RACK,RJ45,Network switch,Port TBC,UNKNOWN,RJ45,Armonía control · switch unlocated (D8),B
+﻿line1,line2,conn_a,conn_b,line3,id,cable_ref,variant,invert,qty,group,class,end_a_device,end_a_port,end_a_loc,end_b_device,end_b_port,end_b_loc,note,side
+V3 #2,AESOP 1,RJ45,RJ45,N36 -> SWITCH,NET-N36-B,36,TAG,no,1,ARMONIA,DATA,Bias V3 #2,AESOP primary (rear),RACK,Network switch,Port TBC,UNKNOWN,Armonía control · switch unlocated (D8),B
+Q5,ETH1,etherCON,RJ45,N37 -> SWITCH,NET-N37-B,37,TAG,no,1,ARMONIA,DATA,Bias Q5,etherCON ETH1 primary,RACK,Network switch,Port TBC,UNKNOWN,Armonía control · switch unlocated (D8),B
+Q2 #2,ETH,RJ45,RJ45,N38 -> SWITCH,NET-N38-B,38,TAG,no,1,ARMONIA,DATA,Bias Q2 #2,ETHERNET,RACK,Network switch,Port TBC,UNKNOWN,Armonía control · switch unlocated (D8),B
+V3 #1,AESOP 1,RJ45,RJ45,N39 -> SWITCH,NET-N39-B,39,TAG,no,1,ARMONIA,DATA,Bias V3 #1,AESOP primary (rear),RACK,Network switch,Port TBC,UNKNOWN,Armonía control · switch unlocated (D8),B
+Q2 #1,ETH,RJ45,RJ45,N40 -> SWITCH,NET-N40-B,40,TAG,no,1,ARMONIA,DATA,Bias Q2 #1,ETHERNET,RACK,Network switch,Port TBC,UNKNOWN,Armonía control · switch unlocated (D8),B

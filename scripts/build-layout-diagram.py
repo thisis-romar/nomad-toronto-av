@@ -28,10 +28,10 @@ FONT = "Helvetica, Arial, sans-serif"
 def bindings(n):
     """(field, face) per object, for the 6-object triple print or the 4-object
     two-face tag."""
-    if n == 6:   # triple: copy 3 upright, copies 2 and 1 rotated
-        return [("line1", "copy 3 - front"), ("line2", "copy 3 - front"),
-                ("line1", "copy 2 - fold"), ("line2", "copy 2 - fold"),
-                ("line1", "copy 1 - back"), ("line2", "copy 1 - back")]
+    if n == 6:   # triple: band 2 upright, bands 1 and 0 rotated
+        return [("line1", "band 3 - front"), ("line2", "band 3 - front"),
+                ("conn_a", "band 2 - wrap"), ("conn_b", "band 2 - wrap"),
+                ("line1", "band 1 - back"), ("line2", "band 1 - back")]
     return [("line1", "A"), ("line2", "A"), ("conn_a", "B"), ("conn_b", "B")]
 
 
@@ -74,8 +74,8 @@ def main():
          t(28, 54, f"{len(objs)} text objects · 23 × 23 mm · sample data from {src.stem}",
            11.5, "normal", "#666"),
          t(28, 72,
-           "TRIPLE PRINT — the same two lines three times. The fold eats one copy; "
-           "the other two survive, one per face."
+           "TRIPLE PRINT — identity / connectors / identity. The wrap eats the middle band; "
+           "an identity band survives on each face."
            if triple else
            "line1 + line2 on the upright face · conn_a + conn_b on the rotated face",
            11.5, "normal", "#666"),
@@ -147,8 +147,8 @@ def main():
     # folded result
     FX, FY, FW, FH = 700, 160, 152, 100
     p.append(t(FX, FY - 26, "Folded over the tie — what each side reads", 13, "bold"))
-    sides = ([("SIDE 1  (copy 3)", [objs[0]["text"], objs[1]["text"]], "#0072B2"),
-              ("SIDE 2  (copy 1)", [objs[4]["text"], objs[5]["text"]], "#D55E00")]
+    sides = ([("SIDE 1  (band 3)", [objs[0]["text"], objs[1]["text"]], "#0072B2"),
+              ("SIDE 2  (band 1)", [objs[4]["text"], objs[5]["text"]], "#D55E00")]
              if triple else
              [("SIDE 1", [objs[0]["text"], objs[1]["text"]], "#0072B2"),
               ("SIDE 2", [objs[2]["text"], objs[3]["text"]], "#D55E00")])
@@ -166,7 +166,13 @@ def main():
                10.5, "normal", "#666"))
     if triple:
         p.append(t(FX, FY + 2 * (FH + 26) + 24,
-                   "Copy 2 is the sacrificial one, consumed by the wrap.",
+                   "Band 2 is the sacrificial one — the wrap eats it.",
+                   10.5, "normal", "#666"))
+        p.append(t(FX, FY + 2 * (FH + 26) + 40,
+                   "It carries the connectors (bold = this end), so",
+                   10.5, "normal", "#666"))
+        p.append(t(FX, FY + 2 * (FH + 26) + 56,
+                   "whatever survives is a bonus, never the only copy.",
                    10.5, "normal", "#666"))
 
     # legend
@@ -176,8 +182,8 @@ def main():
         ("#c8102e", "die-cut edge, 23 mm"),
         ("#bbb", "printable area — 17.08 × 20.00 mm, the printer's own margins"),
         ("#0a84ff", "band boundaries — fold on either"),
-        ("#0072B2", "upright copy"),
-        ("#D55E00", "rotated copies (180°)"),
+        ("#0072B2", "upright band"),
+        ("#D55E00", "rotated bands (180°)"),
     ]):
         yy = ly + i * 17
         p.append(f'<rect x="30" y="{yy-8}" width="11" height="11" fill="{c}" rx="2"/>')
