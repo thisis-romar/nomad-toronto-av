@@ -24,6 +24,9 @@ import csv
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent))
+from rack_palette import swatch, key_rows  # noqa: E402
+
 CSV_DIR = Path("07-tech-pack/labeling")
 SETS = ["power", "audio", "speaker", "network"]
 DERIVED_CSV = CSV_DIR / "labels-rack-internal.csv"
@@ -40,6 +43,7 @@ RACK_ORDER = [
 ]
 CLASS_ICON = {"POWER": "⚡", "AUDIO": "🔊", "DATA": "🔗", "SPEAKER": "🔊"}
 CLASS_ORDER = {"POWER": 0, "DATA": 1, "AUDIO": 2, "SPEAKER": 3}
+OUTSIDE_SWATCH = "⬜"
 
 
 def load():
@@ -150,6 +154,22 @@ def main():
           "Bias V9 has been removed from the rack and does not appear.", "",
           "---", ""]
 
+    # ---- colour key --------------------------------------------------------
+    L += ["## Device colour key", "",
+          "The DK-1221 roll is **black thermal on white paper — the printed labels carry no "
+          "colour.** Colour here is a scanning aid for this document and the proof sheet. On the "
+          "rack it is carried physically by **the colour of the cable tie the tag folds over**, "
+          "which costs nothing since every tag needs a tie anyway.", "",
+          "| | Device | Rack U | Hex | Cable tie |",
+          "|---|--------|--------|-----|-----------|"]
+    _u = {d: u for d, u in RACK_ORDER}
+    for dev, hexv, emoji, tie in key_rows():
+        L.append(f"| {emoji} | {dev} | {_u.get(dev,'—')} | `{hexv}` | {tie} |")
+    L += [f"| {OUTSIDE_SWATCH} | *anything outside the rack* | — | `#BBBBBB` | — |", "",
+          "Hexes are the Okabe-Ito palette, which stays distinguishable under all common forms "
+          "of colour blindness — worth caring about in a dark rack room where colour "
+          "discrimination is already degraded.", "", "---", ""]
+
     # ---- §1 confirmed ------------------------------------------------------
     L += ["## §1 Confirmed internal connections", "",
           "Both ends verified as rack equipment. These are the cables you re-make if the rack is "
@@ -158,8 +178,10 @@ def main():
           "|-------|-------|-------------|-----------|-----------|-----------|---------|-----------|"]
     for r in internal:
         L.append(f"| `{r['cable_ref']}` | {CLASS_ICON.get(r['class'],'')} {r['class'].title()} | "
-                 f"{esc(r['end_a_device'])} | {esc(r['end_a_port'])} | {esc(r['conn_a'])} | "
-                 f"{esc(r['end_b_device'])} | {esc(r['end_b_port'])} | {esc(r['conn_b'])} |")
+                 f"{swatch(r['end_a_device'])} {esc(r['end_a_device'])} | {esc(r['end_a_port'])} | "
+                 f"{esc(r['conn_a'])} | "
+                 f"{swatch(r['end_b_device'])} {esc(r['end_b_device'])} | {esc(r['end_b_port'])} | "
+                 f"{esc(r['conn_b'])} |")
     L += ["", "---", ""]
 
     # ---- §2 unresolved -----------------------------------------------------
@@ -175,7 +197,8 @@ def main():
         else:
             rd, rp, rc, ud = r["end_b_device"], r["end_b_port"], r["conn_b"], r["end_a_device"]
         L.append(f"| `{r['cable_ref']}` | {CLASS_ICON.get(r['class'],'')} {r['class'].title()} | "
-                 f"{esc(rd)} | {esc(rp)} | {esc(rc)} | {esc(ud)} | {esc(r['note'])} |")
+                 f"{swatch(rd)} {esc(rd)} | {esc(rp)} | {esc(rc)} | {swatch(ud)} {esc(ud)} | "
+                 f"{esc(r['note'])} |")
     L += ["", "Resolve these and re-run the build — they move into §1 automatically if both ends "
           "turn out to be in the rack.", "", "---", ""]
 
@@ -192,7 +215,7 @@ def main():
                 drows.append((r, "◀ IN", r["end_b_port"], r["conn_b"],
                               r["end_a_device"], r["end_a_port"]))
         drows.sort(key=lambda t: (CLASS_ORDER.get(t[0]["class"], 9), ref_key(t[0]["cable_ref"])))
-        L += [f"### {u} · {device}", ""]
+        L += [f"### {u} · {swatch(device)} {device}", ""]
         if not drows:
             if device == "— empty —":
                 L += ["Bay empty — Bias V9 removed. The **32 A CPC 45A circuit is still live to "
@@ -205,8 +228,8 @@ def main():
               "|-----|-------|------|-----------|---------|--------------|-------|"]
         for r, dirn, port, conn, far_dev, far_port in drows:
             L.append(f"| {dirn} | {CLASS_ICON.get(r['class'],'')} {r['class'].title()} | "
-                     f"{esc(port)} | {esc(conn)} | {esc(far_dev)} | {esc(far_port)} | "
-                     f"`{r['cable_ref']}` |")
+                     f"{esc(port)} | {esc(conn)} | {swatch(far_dev)} {esc(far_dev)} | "
+                     f"{esc(far_port)} | `{r['cable_ref']}` |")
         L.append("")
     L += ["---", ""]
 

@@ -25,17 +25,36 @@ Bias V9 has been removed from the rack and does not appear.
 
 ---
 
+## Device colour key
+
+The DK-1221 roll is **black thermal on white paper — the printed labels carry no colour.** Colour here is a scanning aid for this document and the proof sheet. On the rack it is carried physically by **the colour of the cable tie the tag folds over**, which costs nothing since every tag needs a tie anyway.
+
+| | Device | Rack U | Hex | Cable tie |
+|---|--------|--------|-----|-----------|
+| 🟦 | Drawmer SP2120 | U2 | `#0072B2` | blue |
+| 🟩 | Bias V3 #1 | U3 | `#009E73` | green |
+| 🟨 | Bias Q2 #1 | U4 | `#F0E442` | yellow |
+| 🟧 | Bias Q2 #2 | U6 | `#E69F00` | orange |
+| 🟥 | Bias V3 #2 | U7 | `#D55E00` | red |
+| 🟪 | Bias Q5 | U8 | `#CC79A7` | purple |
+| ⬛ | Tripp Lite PDU | U9–U10 | `#444444` | black |
+| ⬜ | *anything outside the rack* | — | `#BBBBBB` | — |
+
+Hexes are the Okabe-Ito palette, which stays distinguishable under all common forms of colour blindness — worth caring about in a dark rack room where colour discrimination is already degraded.
+
+---
+
 ## §1 Confirmed internal connections
 
 Both ends verified as rack equipment. These are the cables you re-make if the rack is stripped and rebuilt.
 
 | Cable | Class | From device | From port | Connector | To device | To port | Connector |
 |-------|-------|-------------|-----------|-----------|-----------|---------|-----------|
-| `P1` | ⚡ Power | Tripp Lite PDU | Outlet | NEMA 5-15R | Drawmer SP2120 | MAINS inlet | IEC C14 |
-| `15` | 🔊 Audio | Drawmer SP2120 | Output L | XLR-M | Bias V3 #2 | ANALOG CH1 IN | XLR-F |
-| `16` | 🔊 Audio | Drawmer SP2120 | Output R | XLR-M | Bias V3 #2 | ANALOG CH2 IN | XLR-F |
-| `17` | 🔊 Audio | Bias V3 #2 | ANALOG CH1 OUT (pre-DSP) | XLR-M | Bias Q5 | ANALOG IN 1 | XLR-F |
-| `18` | 🔊 Audio | Bias V3 #2 | ANALOG CH2 OUT (pre-DSP) | XLR-M | Bias Q2 #2 | LINE input CH1 | Phoenix 12-pin |
+| `P1` | ⚡ Power | ⬛ Tripp Lite PDU | Outlet | NEMA 5-15R | 🟦 Drawmer SP2120 | MAINS inlet | IEC C14 |
+| `15` | 🔊 Audio | 🟦 Drawmer SP2120 | Output L | XLR-M | 🟥 Bias V3 #2 | ANALOG CH1 IN | XLR-F |
+| `16` | 🔊 Audio | 🟦 Drawmer SP2120 | Output R | XLR-M | 🟥 Bias V3 #2 | ANALOG CH2 IN | XLR-F |
+| `17` | 🔊 Audio | 🟥 Bias V3 #2 | ANALOG CH1 OUT (pre-DSP) | XLR-M | 🟪 Bias Q5 | ANALOG IN 1 | XLR-F |
+| `18` | 🔊 Audio | 🟥 Bias V3 #2 | ANALOG CH2 OUT (pre-DSP) | XLR-M | 🟧 Bias Q2 #2 | LINE input CH1 | Phoenix 12-pin |
 
 ---
 
@@ -45,12 +64,12 @@ These are excluded from §1 **only because a fact is unknown**, not because they
 
 | Cable | Class | Rack device | Rack port | Connector | Unknown end | What is unresolved |
 |-------|-------|-------------|-----------|-----------|-------------|--------------------|
-| `36` | 🔗 Data | Bias V3 #2 | AESOP primary (rear) | RJ45 | Network switch | Armonía control · switch unlocated (D8) |
-| `37` | 🔗 Data | Bias Q5 | etherCON ETH1 primary | etherCON RJ45 | Network switch | Armonía control · switch unlocated (D8) |
-| `38` | 🔗 Data | Bias Q2 #2 | ETHERNET | RJ45 | Network switch | Armonía control · switch unlocated (D8) |
-| `39` | 🔗 Data | Bias V3 #1 | AESOP primary (rear) | RJ45 | Network switch | Armonía control · switch unlocated (D8) |
-| `40` | 🔗 Data | Bias Q2 #1 | ETHERNET | RJ45 | Network switch | Armonía control · switch unlocated (D8) |
-| `19` | 🔊 Audio | Bias V3 #1 | ANALOG CH1 IN | XLR-F | UNVERIFIED | V3 has only 2 line outs — documented Line Out 3 does not exist (D1). Trace before relabelling |
+| `36` | 🔗 Data | 🟥 Bias V3 #2 | AESOP primary (rear) | RJ45 | ⬜ Network switch | Armonía control · switch unlocated (D8) |
+| `37` | 🔗 Data | 🟪 Bias Q5 | etherCON ETH1 primary | etherCON RJ45 | ⬜ Network switch | Armonía control · switch unlocated (D8) |
+| `38` | 🔗 Data | 🟧 Bias Q2 #2 | ETHERNET | RJ45 | ⬜ Network switch | Armonía control · switch unlocated (D8) |
+| `39` | 🔗 Data | 🟩 Bias V3 #1 | AESOP primary (rear) | RJ45 | ⬜ Network switch | Armonía control · switch unlocated (D8) |
+| `40` | 🔗 Data | 🟨 Bias Q2 #1 | ETHERNET | RJ45 | ⬜ Network switch | Armonía control · switch unlocated (D8) |
+| `19` | 🔊 Audio | 🟩 Bias V3 #1 | ANALOG CH1 IN | XLR-F | ⬜ UNVERIFIED | V3 has only 2 line outs — documented Line Out 3 does not exist (D1). Trace before relabelling |
 
 Resolve these and re-run the build — they move into §1 automatically if both ends turn out to be in the rack.
 
@@ -60,60 +79,60 @@ Resolve these and re-run the build — they move into §1 automatically if both 
 
 Same connections, grouped by rack unit. **Dir** is in/out at *this* device's panel.
 
-### U2 · Drawmer SP2120
+### U2 · 🟦 Drawmer SP2120
 
 | Dir | Class | Port | Connector | Far end | Far-end port | Cable |
 |-----|-------|------|-----------|---------|--------------|-------|
-| ◀ IN | ⚡ Power | MAINS inlet | IEC C14 | Tripp Lite PDU | Outlet | `P1` |
-| OUT ▶ | 🔊 Audio | Output L | XLR-M | Bias V3 #2 | ANALOG CH1 IN | `15` |
-| OUT ▶ | 🔊 Audio | Output R | XLR-M | Bias V3 #2 | ANALOG CH2 IN | `16` |
+| ◀ IN | ⚡ Power | MAINS inlet | IEC C14 | ⬛ Tripp Lite PDU | Outlet | `P1` |
+| OUT ▶ | 🔊 Audio | Output L | XLR-M | 🟥 Bias V3 #2 | ANALOG CH1 IN | `15` |
+| OUT ▶ | 🔊 Audio | Output R | XLR-M | 🟥 Bias V3 #2 | ANALOG CH2 IN | `16` |
 
-### U3 · Bias V3 #1
-
-| Dir | Class | Port | Connector | Far end | Far-end port | Cable |
-|-----|-------|------|-----------|---------|--------------|-------|
-| ◀ IN | 🔗 Data | AESOP primary (rear) | RJ45 | Network switch | Port TBC | `39` |
-| ◀ IN | 🔊 Audio | ANALOG CH1 IN | XLR-F | UNVERIFIED | UNVERIFIED | `19` |
-
-### U4 · Bias Q2 #1
+### U3 · 🟩 Bias V3 #1
 
 | Dir | Class | Port | Connector | Far end | Far-end port | Cable |
 |-----|-------|------|-----------|---------|--------------|-------|
-| ◀ IN | 🔗 Data | ETHERNET | RJ45 | Network switch | Port TBC | `40` |
+| ◀ IN | 🔗 Data | AESOP primary (rear) | RJ45 | ⬜ Network switch | Port TBC | `39` |
+| ◀ IN | 🔊 Audio | ANALOG CH1 IN | XLR-F | ⬜ UNVERIFIED | UNVERIFIED | `19` |
 
-### U5 · — empty —
+### U4 · 🟨 Bias Q2 #1
+
+| Dir | Class | Port | Connector | Far end | Far-end port | Cable |
+|-----|-------|------|-----------|---------|--------------|-------|
+| ◀ IN | 🔗 Data | ETHERNET | RJ45 | ⬜ Network switch | Port TBC | `40` |
+
+### U5 · ⬜ — empty —
 
 Bay empty — Bias V9 removed. The **32 A CPC 45A circuit is still live to this bay**; it runs from the venue panel, so it is out of scope here, but it needs capping or decommissioning. See `rack-io-inventory.md` §5.
 
-### U6 · Bias Q2 #2
+### U6 · 🟧 Bias Q2 #2
 
 | Dir | Class | Port | Connector | Far end | Far-end port | Cable |
 |-----|-------|------|-----------|---------|--------------|-------|
-| ◀ IN | 🔗 Data | ETHERNET | RJ45 | Network switch | Port TBC | `38` |
-| ◀ IN | 🔊 Audio | LINE input CH1 | Phoenix 12-pin | Bias V3 #2 | ANALOG CH2 OUT (pre-DSP) | `18` |
+| ◀ IN | 🔗 Data | ETHERNET | RJ45 | ⬜ Network switch | Port TBC | `38` |
+| ◀ IN | 🔊 Audio | LINE input CH1 | Phoenix 12-pin | 🟥 Bias V3 #2 | ANALOG CH2 OUT (pre-DSP) | `18` |
 
-### U7 · Bias V3 #2
-
-| Dir | Class | Port | Connector | Far end | Far-end port | Cable |
-|-----|-------|------|-----------|---------|--------------|-------|
-| ◀ IN | 🔗 Data | AESOP primary (rear) | RJ45 | Network switch | Port TBC | `36` |
-| ◀ IN | 🔊 Audio | ANALOG CH1 IN | XLR-F | Drawmer SP2120 | Output L | `15` |
-| ◀ IN | 🔊 Audio | ANALOG CH2 IN | XLR-F | Drawmer SP2120 | Output R | `16` |
-| OUT ▶ | 🔊 Audio | ANALOG CH1 OUT (pre-DSP) | XLR-M | Bias Q5 | ANALOG IN 1 | `17` |
-| OUT ▶ | 🔊 Audio | ANALOG CH2 OUT (pre-DSP) | XLR-M | Bias Q2 #2 | LINE input CH1 | `18` |
-
-### U8 · Bias Q5
+### U7 · 🟥 Bias V3 #2
 
 | Dir | Class | Port | Connector | Far end | Far-end port | Cable |
 |-----|-------|------|-----------|---------|--------------|-------|
-| ◀ IN | 🔗 Data | etherCON ETH1 primary | etherCON RJ45 | Network switch | Port TBC | `37` |
-| ◀ IN | 🔊 Audio | ANALOG IN 1 | XLR-F | Bias V3 #2 | ANALOG CH1 OUT (pre-DSP) | `17` |
+| ◀ IN | 🔗 Data | AESOP primary (rear) | RJ45 | ⬜ Network switch | Port TBC | `36` |
+| ◀ IN | 🔊 Audio | ANALOG CH1 IN | XLR-F | 🟦 Drawmer SP2120 | Output L | `15` |
+| ◀ IN | 🔊 Audio | ANALOG CH2 IN | XLR-F | 🟦 Drawmer SP2120 | Output R | `16` |
+| OUT ▶ | 🔊 Audio | ANALOG CH1 OUT (pre-DSP) | XLR-M | 🟪 Bias Q5 | ANALOG IN 1 | `17` |
+| OUT ▶ | 🔊 Audio | ANALOG CH2 OUT (pre-DSP) | XLR-M | 🟧 Bias Q2 #2 | LINE input CH1 | `18` |
 
-### U9–U10 · Tripp Lite PDU
+### U8 · 🟪 Bias Q5
 
 | Dir | Class | Port | Connector | Far end | Far-end port | Cable |
 |-----|-------|------|-----------|---------|--------------|-------|
-| OUT ▶ | ⚡ Power | Outlet | NEMA 5-15R | Drawmer SP2120 | MAINS inlet | `P1` |
+| ◀ IN | 🔗 Data | etherCON ETH1 primary | etherCON RJ45 | ⬜ Network switch | Port TBC | `37` |
+| ◀ IN | 🔊 Audio | ANALOG IN 1 | XLR-F | 🟥 Bias V3 #2 | ANALOG CH1 OUT (pre-DSP) | `17` |
+
+### U9–U10 · ⬛ Tripp Lite PDU
+
+| Dir | Class | Port | Connector | Far end | Far-end port | Cable |
+|-----|-------|------|-----------|---------|--------------|-------|
+| OUT ▶ | ⚡ Power | Outlet | NEMA 5-15R | 🟦 Drawmer SP2120 | MAINS inlet | `P1` |
 
 ---
 
