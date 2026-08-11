@@ -1,22 +1,32 @@
 ---
 title: Nomad Toronto — P-touch Editor Field Mapping (Power Label Set)
-description: Exact object positions, rotation, and merge-field bindings to rebuild the DK-1221 power label template natively in P-touch Editor — the reliable path if the bundled dk1221-power.lbx doesn't open cleanly.
-version: 1.0.0
+description: Exact object positions, rotation, and merge-field bindings to rebuild the DK-1221 fold-over tag natively in P-touch Editor — the zero-risk path if the generated .lbx will not open. Geometry derived from a real Editor-authored reference file.
+version: 2.0.0
 created: 2026-08-11T00:00:00Z
 last_updated: 2026-08-11T00:00:00Z
 ---
 
-# P-touch Editor Field Mapping — Power Label Set
+# P-touch Editor Field Mapping — DK-1221 Fold Tag
 
-**Why this document exists:** Brother's `.lbx` file is a semi-proprietary zip+XML format with no
-published schema. `dk1221-power.lbx` in this folder is a **best-effort reconstruction** — it may
-not open, and if it does, positions may need a nudge. This document is the reliable fallback: every
-number below comes straight out of `scripts/build-cable-labels.py`, the same source that generates
-`dk1221-power-proof.svg`, so it can't drift out of sync with the proof. Rebuilding from this table
-takes about 5 minutes and carries zero format risk.
+**Why this document exists:** Brother's `.lbx` is a zip+XML format with no published schema. The
+first attempt at generating one was reconstructed from memory and **failed to open** ("Failed to
+open document"). The generator has since been rewritten against a real Editor-authored file, so
+the `.lbx` should now open — but this document remains the zero-risk path: rebuilding the layout
+by hand in Editor's own UI takes about five minutes and depends on no format guessing.
 
-**Ground truth for visual checking:** `dk1221-power-proof.svg`, printed at 100%. If a number here
-and the proof ever disagree, the proof wins — re-derive from the script.
+**Two corrections came out of that reference file, and they change the numbers below:**
+
+| | Assumed before | Actual |
+|---|---|---|
+| Printable area | 20.0 × 20.0 mm (uniform 1.5 mm margin) | **17.11 × 20.00 mm** — inset 2.96 mm left/right, 1.52 mm top/bottom |
+| Units | centi-millimetres | **PostScript points**, 72/inch (23 mm = 65.3 pt) |
+
+Text laid out 20 mm wide ran 2.89 mm into the unprintable margin on every label. The proof sheets
+and the `.lbx` are both corrected; if you have an earlier printout, discard it.
+
+**Ground truth for visual checking:** `dk1221-rack-internal-proof.svg`, printed at 100%. If a
+number here and the proof ever disagree, the proof wins — both are generated from the same
+constants.
 
 ---
 
@@ -33,15 +43,20 @@ and the proof ever disagree, the proof wins — re-derive from the script.
 ## §2 Text objects (4 total — 2 per face)
 
 All four are **Text** objects, centre-aligned horizontally and vertically within their box,
-20 mm wide, positioned 1.5 mm in from the left edge (the safe margin). Rotation is applied to the
-whole object, not the text-only.
+**17.11 mm wide, positioned 2.96 mm in from the left edge** — that is the printer's printable
+width, not a margin we chose. Rotation is applied to the whole object, not the text-only.
+
+These are the exact values the generator emits, read back out of the produced `.lbx`:
 
 | # | Face | Content | X | Y (box top) | W | H | Rotation |
 |---|------|---------|--:|-------------:|--:|--:|---------:|
-| 1 | A (upright) | Line 1 — headline | 1.5 mm | 13.3 mm | 20.0 mm | 4.6 mm | 0° |
-| 2 | A (upright) | Line 2 — detail | 1.5 mm | 17.7 mm | 20.0 mm | 3.5 mm | 0° |
-| 3 | B (folded side) | Line 1 — headline | 1.5 mm | 5.1 mm | 20.0 mm | 4.6 mm | **180°** |
-| 4 | B (folded side) | Line 2 — detail | 1.5 mm | 1.8 mm | 20.0 mm | 3.5 mm | **180°** |
+| 1 | A (upright) | Line 1 — headline | 2.96 mm | 13.37 mm | 17.11 mm | 4.59 mm | 0° |
+| 2 | A (upright) | Line 2 — detail | 2.96 mm | 18.13 mm | 17.11 mm | 3.21 mm | 0° |
+| 3 | B (folded side) | Line 1 — headline | 2.96 mm | 5.08 mm | 17.11 mm | 4.59 mm | **180°** |
+| 4 | B (folded side) | Line 2 — detail | 2.96 mm | 1.69 mm | 17.11 mm | 3.21 mm | **180°** |
+
+`X = 2.96 mm` and `W = 17.11 mm` are not a design choice — they are the printer's printable
+width for this media. Do not widen them.
 
 Face B's box is Face A's box rotated 180° about the label's own centre (11.5, 11.5) — **not**
 rotated in place. If your Editor rotates an object around its own centre rather than the whole
@@ -57,8 +72,10 @@ proof rather than typing coordinates):
 
 | | Face A | Face B |
 |--|--------|--------|
-| Line 1 baseline | y = 16.6 mm | y = 6.4 mm |
-| Line 2 baseline | y = 20.0 mm | y = 3.0 mm |
+| Line 1 box centre | y ≈ 15.7 mm | y ≈ 7.4 mm |
+| Line 2 box centre | y ≈ 19.7 mm | y ≈ 3.3 mm |
+
+(Text is vertically centred in its box, so the box centres above are what to match by eye.)
 
 ---
 
@@ -77,7 +94,7 @@ script; text smaller than that is not reliably legible off a thermal 300 dpi hea
 ## §4 Merge field binding (Database Connect)
 
 1. **File → Database → Connect** (or **Insert → Merge Field**, depending on your Editor version).
-2. Browse to `07-tech-pack/labeling/labels-power.csv`. First row is the header — confirm
+2. Browse to `07-tech-pack/labeling/labels-rack-internal.csv`. First row is the header — confirm
    "First row is field names" is checked.
 3. Bind fields:
 
@@ -103,8 +120,9 @@ Editor does not do this through the database merge (merge only fills text, not o
 this one as a **separate, non-merged label**:
 
 1. Duplicate the 4-object template.
-2. Add a black rectangle behind each face's text (bounds: x=1.5, y=13.0, w=20, h=8.5 for Face A;
-   x=1.5, y=1.5, w=20, h=8.5 for Face B — i.e. the full fold-half, safe-margin to safe-margin).
+2. Add a black rectangle behind each face's text (bounds: x=2.96, y=13.0, w=17.11, h=8.5 for
+   Face A; x=2.96, y=1.52, w=17.11, h=8.5 for Face B — the full fold-half, printable edge to
+   printable edge).
 3. Set both text objects' font colour to white.
 4. Type the content directly (2 labels needed) — no merge required for a single fixed design:
    - Line 1: `U5 · SPARE`
@@ -117,22 +135,40 @@ this one as a **separate, non-merged label**:
 1. Print **one** label of each design.
 2. Measure the printed square with calipers: **23.0 mm × 23.0 mm** (±0.3 mm is normal roll
    tolerance; anything more means the media size in Editor doesn't match the loaded roll).
-3. Confirm text clears the die-cut edge by roughly 1.5 mm on all sides.
+3. Confirm text sits inside the printable area — roughly 3 mm clear of the left and right
+   die-cut edges, 1.5 mm clear of top and bottom. Text touching an edge means the media profile
+   in Editor is wrong.
 4. Fold one TAG label over a scrap of cable-tie and check both faces read upright and square —
    the two fold-registration marks (printed as small ticks at the label edges on the fold line in
    the SVG proof) are a visual aid only; Editor's own template does not need to reproduce them.
-5. Only then run the full batch (19 labels for the current power set — see
-   `labels-power.csv`).
+5. Only then run the full batch — **22 labels** for the current rack-internal set, see
+   `labels-rack-internal.csv`.
 
 ---
 
 ## §7 If you'd rather not rebuild by hand
 
-Try `dk1221-power.lbx` first — open it in P-touch Editor before doing anything in this document.
-If it opens and the objects are roughly where §2 says they should be, you're done: just re-run
-Database Connect (§4) against the current `labels-power.csv` and print. If it doesn't open, or
-opens with garbled/missing objects, discard it — this document rebuilds the identical layout with
-zero guesswork.
+Try `dk1221-rack-internal.lbx` first. It is now generated against a real Editor file rather than
+from memory, so the container and schema are no longer guesses:
+
+| | First attempt (failed) | Now |
+|---|---|---|
+| zip member | `Label.xml` | `label.xml` (lowercase — this alone was fatal) |
+| namespaces | `.../ptouchclipp/2001/...` | `.../ptouch/2007/lbx/...` |
+| version | 1.9 | 1.7 |
+| sheet / paper | `pt:sheet` / `pt:paperInfo` | `style:sheet` / `style:paper` |
+| units | centi-mm | points (72/inch) |
+| rotation | `<pt:rotate>` child | `angle` attribute |
+| text body | `<text:data>` | `<pt:data>` |
+| missing entirely | — | `style:cutLine`, `style:backGround`, `text:textStyle`, `text:stringItem`, `pt:pen`, `pt:brush`, `pt:expanded` |
+
+**One value is still unverified:** the reference file only ever contains `angle="0"`, so whether
+`angle` is degrees or tenths of a degree could not be confirmed. It is written as `180`. If the
+upper face renders unrotated, the unit is tenths — change `ROT_180` in `scripts/build-lbx.py` to
+`1800` and rebuild. A wrong angle value renders visibly wrong but does not stop the file opening,
+which was the failure that actually mattered.
+
+If it still won't open, discard it and rebuild from §2 — that path has no format risk at all.
 
 ---
 

@@ -30,16 +30,30 @@ from rack_palette import hex_of, short, ink_on  # noqa: E402
 # --- Label geometry (mm) -----------------------------------------------------
 
 L = 23.0          # DK-1221 die-cut size
-SAFE = 1.5        # unprintable / trim safe margin on all four edges
+
+# Printable area, taken from a real P-touch Editor file for DK-1221 on a QL-800:
+# backGround x=8.4pt y=4.3pt w=48.5pt h=56.7pt  ->  17.11 x 20.00 mm, inset
+# 2.96 mm left/right and 1.52 mm top/bottom. This is NOT the uniform 1.5 mm
+# margin an earlier draft assumed -- that put every line of text 2.89 mm wider
+# than the head can mark, so the ends would have been clipped on the roll.
+SAFE_X = 2.96     # unprintable margin, left/right
+SAFE_Y = 1.52     # unprintable margin, top/bottom
+SAFE = SAFE_Y     # vertical margin is what the face geometry keys off
+LIVE_W = L - 2 * SAFE_X   # 17.08 mm of usable text width
 FOLD_TAG = 3.0    # blank fold zone when folding over a cable-tie tail
 FOLD_FLAG_OD = 8.0  # default cable OD (mm) for the direct-to-cable flag fold
 TICK = 1.2        # length of the fold-registration ticks at the label edges
 
 FONT = "Arial Narrow, Liberation Sans Narrow, Helvetica Neue, Helvetica, sans-serif"
 
-# Text is sized against full-width Arial metrics (Liberation Sans is metric-
-# compatible). Arial Narrow is ~82% of that width, so anything that fits here
-# also fits on the printer with margin to spare.
+# Liberation Sans is metric-compatible with Arial, but the label prints in
+# Arial NARROW, which is ~82% of Arial's advance width. Measuring in Arial and
+# pretending that is the render font was a free safety margin while the live
+# width was assumed to be 20 mm; against the real 17.08 mm it manufactures
+# false "too wide" verdicts and shrinks text that would have fitted. Measure in
+# Arial, then scale by the narrow ratio -- 0.85 rather than 0.82, keeping a
+# little headroom for whatever condensed face is actually installed.
+NARROW_RATIO = 0.85
 METRIC_FONTS = {
     "bold": "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
     "normal": "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
@@ -76,13 +90,13 @@ def flag_face_height(od_mm):
 def measure(s, size_mm, weight):
     """Width of s in mm when set in Arial at size_mm."""
     if ImageFont is None:
-        return len(s) * size_mm * 0.52
+        return len(s) * size_mm * 0.52 * NARROW_RATIO
     px = 200  # measure at a large size, then scale — avoids hinting error
     try:
         f = ImageFont.truetype(METRIC_FONTS[weight], px)
     except OSError:
-        return len(s) * size_mm * 0.52
-    return f.getlength(s) / px * size_mm
+        return len(s) * size_mm * 0.52 * NARROW_RATIO
+    return f.getlength(s) / px * size_mm * NARROW_RATIO
 
 
 def fit(s, size_mm, weight, max_w, floor):
@@ -121,12 +135,12 @@ def face(line1, line2, invert, label_id=""):
     top = (L + FOLD_TAG) / 2          # 13.0
     # Inverse panels need real padding: white text butted against the edge of a
     # black field reads as clipped, and thermal ink bleed eats the gap further.
-    max_w = L - 2 * SAFE - (3.0 if invert else 0.0)
+    max_w = LIVE_W - (2.5 if invert else 0.0)
     out = []
     if invert:
         out.append(
-            f'<rect x="{SAFE:.2f}" y="{top:.2f}" width="{L - 2 * SAFE:.2f}" '
-            f'height="{L - SAFE - top:.2f}" fill="#000" rx="0.6"/>'
+            f'<rect x="{SAFE_X:.2f}" y="{top:.2f}" width="{LIVE_W:.2f}" '
+            f'height="{L - SAFE_Y - top:.2f}" fill="#000" rx="0.6"/>'
         )
     s1, t1, clamp1 = fit(line1, 4.0, "bold", max_w, MIN_SIZE["line1"])
     s2, t2, clamp2 = fit(line2, 2.8, "normal", max_w, MIN_SIZE["line2"])
@@ -203,7 +217,7 @@ def render(rows, out_path, set_name="POWER"):
         # die-cut outline + safe area, proof only (not printed on the roll)
         parts.append(f'<rect width="{L}" height="{L}" fill="none" stroke="#c8102e" stroke-width="0.2"/>')
         parts.append(
-            f'<rect x="{SAFE}" y="{SAFE}" width="{L - 2 * SAFE}" height="{L - 2 * SAFE}" '
+            f'<rect x="{SAFE_X}" y="{SAFE_Y}" width="{LIVE_W:.2f}" height="{L - 2 * SAFE_Y:.2f}" '
             f'fill="none" stroke="#bbb" stroke-width="0.15" stroke-dasharray="0.8 0.8"/>'
         )
         parts.append(
@@ -238,7 +252,7 @@ def render(rows, out_path, set_name="POWER"):
     parts += [
         f'<line x1="{MARGIN_X}" y1="{y_legend:.2f}" x2="{PAGE_W - MARGIN_X}" y2="{y_legend:.2f}" stroke="#ddd" stroke-width="0.3"/>',
         text(MARGIN_X, y_legend + 6, "PROOF GUIDES (not printed on the roll)", 3.0, "bold", "#000", "start"),
-        text(MARGIN_X, y_legend + 10.5, "red = 23 mm die-cut edge   ·   grey dash = 1.5 mm safe margin   ·   blue dash = fold line", 2.5, "normal", "#444", "start"),
+        text(MARGIN_X, y_legend + 10.5, "red = 23 mm die-cut edge   ·   grey dash = printable area 17.1 × 20.0 mm (Editor's own margins)   ·   blue dash = fold line", 2.5, "normal", "#444", "start"),
         text(MARGIN_X, y_legend + 15.5, "PRINTED ON THE ROLL: the two text faces and the two 1.2 mm fold ticks at the label edges.", 2.5, "normal", "#444", "start"),
         text(MARGIN_X, y_legend + 21.5, "FOLD: adhesive-to-adhesive over a cable-tie tail on the fold line. Both faces then read upright.", 2.5, "normal", "#444", "start"),
         text(MARGIN_X, y_legend + 26.5,
