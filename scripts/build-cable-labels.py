@@ -58,7 +58,12 @@ METRIC_FONTS = {
     "bold": "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
     "normal": "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
 }
-MIN_SIZE = {"line1": 2.6, "line2": 1.9}   # mm — floor before we give up shrinking
+MIN_SIZE = {"line1": 2.6, "line2": 1.9, "line3": 1.8}  # mm — floor before we give up shrinking
+# Nominal sizes per layout. The face is 8.5 mm tall; two lines leave ~1.5 mm of it
+# unused, which is exactly the room a third line needs once the headline has to
+# carry a device AND a port.
+LAYOUT_2 = ((4.0, True, 3.6), (2.8, False, 7.0))
+LAYOUT_3 = ((3.4, True, 2.7), (2.4, False, 5.4), (2.2, False, 7.9))
 _fit_warnings = []
 
 # --- Sheet layout (mm, A4 portrait) ------------------------------------------
@@ -126,10 +131,10 @@ def text(x, y, s, size, weight="normal", fill="#000", anchor="middle", length=No
     )
 
 
-def face(line1, line2, invert, label_id=""):
+def face(lines, invert, label_id=""):
     """One printed face of a TAG label, drawn in the lower half of the square.
 
-    Returns SVG positioned in label-local coordinates (origin at label corner).
+    `lines` is 2 or 3 strings. Returns SVG in label-local coordinates.
     """
     ink = "#fff" if invert else "#000"
     top = (L + FOLD_TAG) / 2          # 13.0
@@ -142,22 +147,24 @@ def face(line1, line2, invert, label_id=""):
             f'<rect x="{SAFE_X:.2f}" y="{top:.2f}" width="{LIVE_W:.2f}" '
             f'height="{L - SAFE_Y - top:.2f}" fill="#000" rx="0.6"/>'
         )
-    s1, t1, clamp1 = fit(line1, 4.0, "bold", max_w, MIN_SIZE["line1"])
-    s2, t2, clamp2 = fit(line2, 2.8, "normal", max_w, MIN_SIZE["line2"])
-    for name, size, clamped in (("line1", s1, clamp1), ("line2", s2, clamp2)):
+    layout = LAYOUT_3 if len(lines) >= 3 else LAYOUT_2
+    for i, (s, (nominal, bold, dy)) in enumerate(zip(lines, layout)):
+        key = f"line{i + 1}"
+        size, tl, clamped = fit(s, nominal, "bold" if bold else "normal",
+                                max_w, MIN_SIZE[key])
         if clamped:
             _fit_warnings.append(
-                f"{label_id} {name}: hit the {MIN_SIZE[name]} mm floor — glyphs squeezed, shorten the copy")
-        elif size < 3.0 and name == "line1":
-            _fit_warnings.append(f"{label_id} {name}: dropped to {size:.1f} mm to fit")
-    out.append(text(L / 2, top + 3.6, line1, s1, "bold", ink, length=t1))
-    out.append(text(L / 2, top + 7.0, line2, s2, "normal", ink, length=t2))
+                f"{label_id} {key}: hit the {MIN_SIZE[key]} mm floor — glyphs squeezed, shorten the copy")
+        elif i == 0 and size < nominal * 0.75:
+            _fit_warnings.append(f"{label_id} {key}: dropped to {size:.1f} mm to fit")
+        out.append(text(L / 2, top + dy, s, size, "bold" if bold else "normal",
+                        ink, length=tl))
     return "".join(out)
 
 
-def label_tag(line1, line2, invert=False, label_id=""):
+def label_tag(lines, invert=False, label_id=""):
     """A fold-over tag: lower half upright, upper half rotated 180 deg."""
-    body = face(line1, line2, invert, label_id)
+    body = face(lines, invert, label_id)
     return (
         f'<g>{body}</g>'
         f'<g transform="rotate(180 {L / 2:.2f} {L / 2:.2f})">{body}</g>'
@@ -224,8 +231,10 @@ def render(rows, out_path, set_name="POWER"):
             f'<line x1="0" y1="{L / 2}" x2="{L}" y2="{L / 2}" stroke="#0a84ff" '
             f'stroke-width="0.15" stroke-dasharray="1.5 1"/>'
         )
-        parts.append(label_tag(row["line1"], row["line2"],
-                               row["invert"].strip().lower() == "yes", row["id"]))
+        lines = [row["line1"], row["line2"]]
+        if (row.get("line3") or "").strip():
+            lines.append(row["line3"])
+        parts.append(label_tag(lines, row["invert"].strip().lower() == "yes", row["id"]))
         parts.append("</g>")
         # Device swatch, proof only: end A | end B, each carrying the device's
         # short name printed on its own colour. Naming it here is what stops the

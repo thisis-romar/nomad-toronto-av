@@ -82,6 +82,59 @@ def short(device):
     return device[:10]
 
 
+# Port names shortened for a label headline. The full text lives in the
+# schedule; on a 17 mm line the useful part is which socket, not its prose.
+PORT = {
+    "Outlet": "OUT",
+    "Mains inlet": "MAINS",
+    "MAINS inlet": "MAINS",
+    "Dedicated breaker": "BREAKER",
+    "U5 bay empty": "EMPTY",
+    "Output L": "OUT L",
+    "Output R": "OUT R",
+    "Input L": "IN L",
+    "Input R": "IN R",
+    "ANALOG CH1 IN": "CH1 IN",
+    "ANALOG CH2 IN": "CH2 IN",
+    "ANALOG CH1 OUT (pre-DSP)": "CH1 LINE OUT",
+    "ANALOG CH2 OUT (pre-DSP)": "CH2 LINE OUT",
+    "ANALOG IN 1": "IN 1",
+    "LINE input CH1": "LINE CH1",
+    "LINE input CH2": "LINE CH2",
+    "OUT1 (CH1)": "OUT1",
+    "OUT2 (CH2)": "OUT2",
+    "OUT1 (CH1+CH2)": "OUT1 CH1-2",
+    "OUT2 (CH3+CH4)": "OUT2 CH3-4",
+    "OUTPUTS CH1": "CH1",
+    "OUTPUTS CH2": "CH2",
+    "OUTPUTS CH3": "CH3",
+    "OUTPUTS CH4": "CH4",
+    "AESOP primary (rear)": "AESOP 1",
+    "etherCON ETH1 primary": "ETH1",
+    "ETHERNET": "ETH",
+    "NETWORK": "NET",
+    "Port TBC": "PORT ?",
+    "NL4 In": "NL4",
+    "NL4 #1 pins 1+/1-": "NL4#1 LF",
+    "NL4 #2 pins 2+/2-": "NL4#2 HMF",
+    "Phoenix recessed": "PHOENIX",
+    "MonOut L (Out 1-6)": "MONOUT L",
+    "MonOut R (Out 1-6)": "MONOUT R",
+    "BakFil L (Out 1-6)": "BAKFIL L",
+    "BakFil R (Out 1-6)": "BAKFIL R",
+    "MASTER1 L": "MASTER L",
+    "MASTER1 R": "MASTER R",
+    "UNVERIFIED": "?",
+}
+
+
+def short_port(port):
+    port = (port or "").strip()
+    if not port or port == "—":
+        return ""
+    return PORT.get(port, port)
+
+
 def ink_on(hex_colour):
     """Black or white, whichever stays legible on the given swatch."""
     h = hex_colour.lstrip("#")

@@ -1,7 +1,7 @@
 ---
 title: Nomad Toronto — Cable & Device Label Spec (Brother DK-1221)
 description: Print layout system for 23 mm square DK-1221 labels — fold geometry, safe areas, typography, naming convention, and P-touch Editor setup. Covers all four cable classes; CSV rows double as the source for the rack I/O schedule.
-version: 0.6.0
+version: 0.7.0
 created: 2026-08-11T00:00:00Z
 last_updated: 2026-08-11T00:00:00Z
 status: draft — rack-internal print set is 11 designs / 22 labels; pending a test print and site verification of the unresolved rows
@@ -10,6 +10,20 @@ status: draft — rack-internal print set is 11 designs / 22 labels; pending a t
 # Cable & Device Label Spec — DK-1221 (23 mm square)
 
 ## Changelog
+
+- **0.7.0** — **Separate CSV per cable end.** `split-label-ends.py` derives
+  `…-end-a.csv` and `…-end-b.csv` from any label set, one tag per end (qty 1 each) instead of two
+  identical tags per cable. Each tag is now written from where it is fitted — line 1 the device,
+  line 2 the socket, line 3 the cable ID and the far end — so a tag at the V3 #2 panel says
+  `V3 #2 / CH1 IN / A15 → SP2120` instead of describing the other end of the cable. In the end-B
+  file the end_a/end_b columns are swapped so `end_a` always means "this end", which keeps the
+  proof's left-hand colour chip the end you are holding. Needed a third text line: a headline
+  carrying device *and* port does not fit 17.11 mm.
+- **0.6.9** — **Print area corrected.** A real Editor-authored `.lbx` showed the DK-1221 live
+  area is **17.11 × 20.00 mm** (inset 2.96 mm left/right, 1.52 mm top/bottom), not the uniform
+  1.5 mm margin assumed. Every line had been laid out 2.89 mm too wide. Also fixed the text
+  measurement to apply Arial Narrow's 0.85 width ratio rather than treating Arial as the render
+  font. `.lbx` generation rebuilt against the reference schema — see `ptouch-field-mapping.md` §7.
 
 - **0.6.0** — Device colour key (`scripts/rack_palette.py`, shared by both builds) and
   pair-aware sheet layout. A `group` column keeps L/R partners, LF+HMF of the same cabinet, the
@@ -73,13 +87,16 @@ could be folded directly — but we use one method throughout for consistency.
 
 ## §2 Variants
 
-All three share the same 23 × 23 mm die-cut and a **1.5 mm safe margin** on every edge,
-leaving a **20 × 20 mm live area**.
+All three share the same 23 × 23 mm die-cut. The **live area is 17.11 × 20.00 mm** — inset
+**2.96 mm left/right and 1.52 mm top/bottom**. These are the printer's own unprintable margins,
+read out of a P-touch Editor file for DK-1221 on a QL-800; they are not a margin we chose, and
+they are not symmetric. An earlier draft assumed a uniform 1.5 mm inset and so laid every line
+out 2.89 mm too wide.
 
 ### A · TAG — fold over a cable-tie tail *(default for all rack power)*
 
 Fold line across the centre at **y = 11.5 mm**, with a **3 mm blank fold zone** (y 10.0–13.0)
-that wraps the tie tail. Each face is then **20 mm wide × 8.5 mm tall**.
+that wraps the tie tail. Each face is then **17.11 mm wide × 8.5 mm tall**.
 
 ```
 ┌───────────────────────┐  y 0
@@ -93,12 +110,16 @@ Face B is printed rotated 180° so that, once folded adhesive-to-adhesive, **bot
 upright**. Two 1.2 mm registration ticks are printed at the left and right edges on the fold
 line so the installer folds square without measuring.
 
-Line structure per face:
+Line structure per face — **two or three lines**, chosen per set:
 
-| Line | Purpose | Nominal size | Floor |
-|------|---------|--------------|-------|
-| 1 | Cable ID + device short name — `P6 · V3 #2` | 4.0 mm (~11.3 pt) bold | 2.6 mm |
-| 2 | Location + connector + circuit — `U7 · C20 · 20A` | 2.8 mm (~7.9 pt) | 1.9 mm |
+| Layout | Line 1 | Line 2 | Line 3 |
+|--------|--------|--------|--------|
+| **2-line** (whole-cable sets) | 4.0 mm bold, floor 2.6 | 2.8 mm, floor 1.9 | — |
+| **3-line** (per-end sets) | 3.4 mm bold, floor 2.6 | 2.4 mm, floor 1.9 | 2.2 mm, floor 1.8 |
+
+The face is 8.5 mm tall and a two-line setting leaves ~1.5 mm of it unused. That slack is exactly
+what a third line needs, and the per-end labels need it: a headline carrying both a device and a
+port (`V3 #2 CH1 LINE OUT`) does not fit 17.11 mm at any readable size.
 
 ### B · FLAG — fold directly around the cable *(≤8 mm OD only)*
 
@@ -108,7 +129,7 @@ signal cables; not used in the power set.
 
 ### C · PLATE — flat on a connector shell or rack panel
 
-No fold. Full **20 × 20 mm** live area, up to 4 lines. This is the device-ID plate variant
+No fold. Full **17.11 × 20.00 mm** live area, up to 4 lines. This is the device-ID plate variant
 (device name · Armonía label · rack U + S/N · IP). Layout is defined but no plate artwork is
 drafted yet — see §8.
 
@@ -119,10 +140,11 @@ drafted yet — see §8.
 - **Face:** Arial Narrow Bold for line 1, Arial Narrow for line 2. Any condensed grotesque
   works; avoid anything with fine hairlines — a 300 dpi thermal head drops strokes below
   ~0.1 mm.
-- **Auto-fit:** the build script sizes every string against **full-width Arial metrics**
-  (Liberation Sans is metric-compatible) and shrinks until it fits the 20 mm live width.
-  Arial Narrow is ~82% of that width, so anything that passes the check prints with margin
-  in hand. A string that only fits by squeezing glyphs at the floor size raises a build warning
+- **Auto-fit:** the build script measures in Arial (Liberation Sans is metric-compatible), then
+  scales by **0.85** for Arial Narrow's narrower advance width, and shrinks until it fits the
+  17.08 mm live width. Treating the Arial measurement as final was free headroom while the live
+  width was assumed to be 20 mm; against the real width it invented ~30 false "too wide" verdicts
+  and shrank text that fits. A string that only fits by squeezing glyphs at the floor size raises a build warning
   — that is a signal to shorten the copy, not to accept the squeeze.
 - **No hairline rules, no logos, no barcodes** at this size. Solid black inverse panels are
   fine and are used for the lockout label.
@@ -230,7 +252,9 @@ does not substitute for a proper LOTO tag on the V9 breaker.
 | `07-tech-pack/labeling/ptouch-field-mapping.md` | Reliable fallback — exact mm/degree/field-binding values to rebuild the same layout natively in Editor's UI if the `.lbx` doesn't open |
 | `scripts/build-cable-labels.py` | Regenerates the SVG proof from the CSV |
 | `scripts/build-lbx.py` | Regenerates the `.lbx` from the CSV (first TAG, non-inverse row as sample content) |
-| `scripts/build-rack-io-schedule.py` | Regenerates `07-tech-pack/rack-io-schedule.md` from all four CSVs |
+| `scripts/build-rack-io-schedule.py` | Regenerates `07-tech-pack/rack-io-schedule.md` and the derived rack-internal CSV |
+| `scripts/split-label-ends.py` | Splits a label CSV into per-end `-end-a` / `-end-b` sets |
+| `scripts/rack_palette.py` | Device colours, short names and port abbreviations, shared by every build |
 
 **CSV schema.** Each row carries both the printed content and the structured endpoint data:
 
@@ -257,14 +281,21 @@ for s in power audio speaker network; do
 done
 ```
 
-**Print run — rack-internal set only:** 11 designs / **22 labels**
-(`labels-rack-internal.csv`, derived by `build-rack-io-schedule.py`).
+**Print run — rack-internal set, split by cable end:**
 
-The four class CSVs together describe 48 cables / 99 labels, but that is the full
-system inventory, not the print run. Only cables with both ends on rack equipment —
-plus those excluded solely by an unresolved fact — get printed. Nothing is printed for
-CQ-12T or DJM-V10 connections. See `07-tech-pack/rack-io-schedule.md` for the scope
-boundary and what falls outside it.
+| File | Tags | What it is |
+|------|-----:|-----------|
+| `labels-rack-internal-end-a.csv` | 11 | one tag per cable, written for the **A** end |
+| `labels-rack-internal-end-b.csv` | 11 | one tag per cable, written for the **B** end |
+| **total** | **22** | unchanged — two tags per cable, one per end |
+
+Print and fit one side at a time: run end A, walk the rack tagging A ends, then run end B. Both
+files carry `qty 1` per row, because the two ends now carry different text and are no longer
+interchangeable.
+
+The four class CSVs together describe 48 cables, but that is the full system inventory, not the
+print run. Nothing is printed for CQ-12T or DJM-V10 connections. See
+`07-tech-pack/rack-io-schedule.md` for the scope boundary.
 
 ---
 
