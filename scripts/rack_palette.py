@@ -29,6 +29,70 @@ DEVICE_COLOUR = {
 # venue panel its own colour would imply it is part of the keyed scheme.
 OUTSIDE = ("#BBBBBB", "⬜", "—")
 
+# Short forms that fit inside an 11 mm swatch. Colour alone forces a legend
+# lookup every time; the name printed on the colour removes that, and leaves
+# the colour doing what it is good at -- grouping at a glance.
+SHORT = {
+    "Drawmer SP2120": "SP2120",
+    "Bias V3 #1": "V3 #1",
+    "Bias Q2 #1": "Q2 #1",
+    "Bias Q2 #2": "Q2 #2",
+    "Bias V3 #2": "V3 #2",
+    "Bias Q5": "Q5",
+    "Tripp Lite PDU": "PDU",
+    "Allen & Heath CQ-12T": "CQ-12T",
+    "CQ-12T external PSU": "CQ PSU",
+    "Pioneer DJM-V10": "DJM-V10",
+    "DJM-V10 / Pro DJ Link hub": "DJM/HUB",
+    "Pioneer CDJ-3000 #1": "CDJ 1",
+    "Pioneer CDJ-3000 #2": "CDJ 2",
+    "Pioneer CDJ-3000 #3": "CDJ 3",
+    "Pioneer CDJ-3000 #4": "CDJ 4",
+    "Network switch": "SWITCH",
+    "Separate network / link-local": "LINK-LOCAL",
+    "Stasys Xair L-3": "XAIR L-3",
+    "Stasys Xair R-3": "XAIR R-3",
+    "Stasys Xair L-1 / L-2": "XAIR L-1/2",
+    "Stasys Xair R-1 / R-2": "XAIR R-1/2",
+    "Air Motion V2 L": "A.MOT L",
+    "Air Motion V2 R": "A.MOT R",
+    "Airten V3 L": "AIRTEN L",
+    "Airten V3 R": "AIRTEN R",
+    "Air Vantage L": "VANTAGE L",
+    "Air Vantage R": "VANTAGE R",
+    "Venu 215 V2 L": "VENU L",
+    "Venu 215 V2 R": "VENU R",
+    "Turbosound Athens L": "ATHENS L",
+    "Turbosound Athens R": "ATHENS R",
+    "UNVERIFIED": "?",
+    "— none —": "—",
+}
+
+
+def short(device):
+    """Short form for a swatch. Venue-panel circuits all collapse to PANEL —
+    the breaker rating is on the label text, so repeating it here wastes width."""
+    device = (device or "").strip()
+    if not device or device == "—":
+        return "—"
+    if device in SHORT:
+        return SHORT[device]
+    if device.lower().startswith("venue panel"):
+        return "PANEL"
+    return device[:10]
+
+
+def ink_on(hex_colour):
+    """Black or white, whichever stays legible on the given swatch."""
+    h = hex_colour.lstrip("#")
+    r, g, b = (int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
+
+    def lin(c):
+        return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+
+    luminance = 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b)
+    return "#000000" if luminance > 0.4 else "#FFFFFF"
+
 
 def colour(device):
     """(hex, emoji, tie_colour) for a device; the neutral swatch if off-rack."""

@@ -155,11 +155,14 @@ def main():
           "---", ""]
 
     # ---- colour key --------------------------------------------------------
-    L += ["## Device colour key", "",
-          "The DK-1221 roll is **black thermal on white paper — the printed labels carry no "
-          "colour.** Colour here is a scanning aid for this document and the proof sheet. On the "
-          "rack it is carried physically by **the colour of the cable tie the tag folds over**, "
-          "which costs nothing since every tag needs a tie anyway.", "",
+    L += ["## Cable tie colours", "",
+          "**You do not need this table to read the schedule** — every swatch below sits directly "
+          "beside the device it belongs to, and on the proof sheets each chip is printed with its "
+          "device name on it. This is here for one job only: knowing which tie to reach for at "
+          "the rack.", "",
+          "The DK-1221 roll is black thermal on white paper, so the printed labels carry no "
+          "colour. On the rack the colour is carried by **the cable tie the tag folds over** — "
+          "free, since the fold-over design already needs a tie.", "",
           "| | Device | Rack U | Hex | Cable tie |",
           "|---|--------|--------|-----|-----------|"]
     _u = {d: u for d, u in RACK_ORDER}

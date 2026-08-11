@@ -25,7 +25,7 @@ except ImportError:  # width estimation falls back to a per-character average
     ImageFont = None
 
 sys.path.insert(0, str(Path(__file__).parent))
-from rack_palette import hex_of, key_rows  # noqa: E402
+from rack_palette import hex_of, short, ink_on  # noqa: E402
 
 # --- Label geometry (mm) -----------------------------------------------------
 
@@ -51,7 +51,7 @@ _fit_warnings = []
 
 PAGE_W, PAGE_H = 210.0, 297.0
 MARGIN_X, MARGIN_TOP = 14.0, 20.0
-GUTTER_X, GUTTER_Y = 8.0, 15.0   # gutter_y leaves room for the colour bar + caption
+GUTTER_X, GUTTER_Y = 8.0, 17.0   # gutter_y leaves room for the device swatch + caption
 COLS = 5
 
 
@@ -213,16 +213,23 @@ def render(rows, out_path, set_name="POWER"):
         parts.append(label_tag(row["line1"], row["line2"],
                                row["invert"].strip().lower() == "yes", row["id"]))
         parts.append("</g>")
-        # Device colour bar, proof only. Left half = end A, right half = end B,
-        # so the pair of colours reads as "this device -> that device".
-        bar_y, bar_h, half = y + L + 1.2, 1.6, (L - 0.6) / 2
-        parts.append(f'<rect x="{x:.2f}" y="{bar_y:.2f}" width="{half:.2f}" height="{bar_h}" '
-                     f'fill="{hex_of(row.get("end_a_device", ""))}"/>')
-        parts.append(f'<rect x="{x + half + 0.6:.2f}" y="{bar_y:.2f}" width="{half:.2f}" '
-                     f'height="{bar_h}" fill="{hex_of(row.get("end_b_device", ""))}"/>')
+        # Device swatch, proof only: end A | end B, each carrying the device's
+        # short name printed on its own colour. Naming it here is what stops the
+        # colour needing a legend lookup every time.
+        bar_y, bar_h, half = y + L + 1.2, 3.4, (L - 0.6) / 2
+        for idx, end in enumerate(("end_a_device", "end_b_device")):
+            dev = row.get(end, "")
+            hexv = hex_of(dev)
+            bx = x + idx * (half + 0.6)
+            parts.append(f'<rect x="{bx:.2f}" y="{bar_y:.2f}" width="{half:.2f}" '
+                         f'height="{bar_h}" fill="{hexv}" rx="0.4"/>')
+            name = short(dev)
+            fs, tl, _ = fit(name, 2.1, "bold", half - 1.0, 1.5)
+            parts.append(text(bx + half / 2, bar_y + 2.45, name, fs, "bold",
+                              ink_on(hexv), length=tl))
         # caption below the label (proof only)
-        parts.append(text(x + L / 2, y + L + 6.4, row["id"], 2.4, "bold", "#000"))
-        parts.append(text(x + L / 2, y + L + 9.4,
+        parts.append(text(x + L / 2, y + L + 8.4, row["id"], 2.4, "bold", "#000"))
+        parts.append(text(x + L / 2, y + L + 11.4,
                           f'x{row["qty"]}  {connector_pair(row)}', 2.2, "normal", "#666"))
         x += L + GUTTER_X
         col += 1
@@ -232,25 +239,18 @@ def render(rows, out_path, set_name="POWER"):
         f'<line x1="{MARGIN_X}" y1="{y_legend:.2f}" x2="{PAGE_W - MARGIN_X}" y2="{y_legend:.2f}" stroke="#ddd" stroke-width="0.3"/>',
         text(MARGIN_X, y_legend + 6, "PROOF GUIDES (not printed on the roll)", 3.0, "bold", "#000", "start"),
         text(MARGIN_X, y_legend + 10.5, "red = 23 mm die-cut edge   ·   grey dash = 1.5 mm safe margin   ·   blue dash = fold line", 2.5, "normal", "#444", "start"),
-        text(MARGIN_X, y_legend + 31.0, "DEVICE COLOUR — the bar under each label shows end A | end B.", 2.5, "bold", "#000", "start"),
-        text(MARGIN_X, y_legend + 34.6, "DK-1221 prints BLACK ONLY. Colour is a proof and schedule aid; on the rack it is carried by the cable tie the tag folds over.", 2.5, "normal", "#444", "start"),
         text(MARGIN_X, y_legend + 15.5, "PRINTED ON THE ROLL: the two text faces and the two 1.2 mm fold ticks at the label edges.", 2.5, "normal", "#444", "start"),
         text(MARGIN_X, y_legend + 21.5, "FOLD: adhesive-to-adhesive over a cable-tie tail on the fold line. Both faces then read upright.", 2.5, "normal", "#444", "start"),
         text(MARGIN_X, y_legend + 26.5,
              f"Every set uses the tie tag for consistency. Folding straight onto the cable is only viable to "
              f"~8 mm OD (face {flag_face_height(FOLD_FLAG_OD):.1f} mm) and is single-line at that size.",
              2.5, "normal", "#444", "start"),
+        # No colour key: each swatch carries its own device name, so there is
+        # nothing to look up. The only fact colour alone still encodes is which
+        # tie to reach for, and the swatch names that device too.
+        text(MARGIN_X, y_legend + 33.0, "DEVICE SWATCH — the two chips under each label are end A | end B, each named on its own colour.", 2.5, "bold", "#000", "start"),
+        text(MARGIN_X, y_legend + 36.6, "DK-1221 prints BLACK ONLY: the labels themselves carry no colour. On the rack, match the cable tie to the chip colour.", 2.5, "normal", "#444", "start"),
     ]
-
-    # device colour key
-    kx, ky = MARGIN_X, y_legend + 40.0
-    for dev, hexv, _emoji, tie in key_rows():
-        parts.append(f'<rect x="{kx:.2f}" y="{ky - 2.4:.2f}" width="3.2" height="3.2" '
-                     f'fill="{hexv}" stroke="#999" stroke-width="0.1"/>')
-        parts.append(text(kx + 4.2, ky, f"{dev}  ({tie} tie)", 2.3, "normal", "#333", "start"))
-        ky += 4.6
-        if ky > y_legend + 40.0 + 4.6 * 3:      # two columns of four
-            kx, ky = MARGIN_X + 62, y_legend + 40.0
 
     parts.append("</svg>")
 
