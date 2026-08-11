@@ -1,11 +1,21 @@
 ---
 title: Nomad Toronto — Cable & Device Label Spec (Brother DK-1221)
 description: Print layout system for 23 mm square DK-1221 labels — fold geometry, safe areas, typography, naming convention, and P-touch Editor setup. Power/IEC set drafted first.
-version: 0.1.0
+version: 0.2.0
 created: 2026-08-11T00:00:00Z
 last_updated: 2026-08-11T00:00:00Z
 status: draft — power/IEC set ready for a test print; data and audio sets to follow
 ---
+
+## Changelog
+
+- **0.2.0** — Bias V9 fully removed from the power set (no longer just offline). Circuit IDs
+  P5–P8 renumbered to P4–P7 to close the gap; U5's freed CPC 45A / 32A breaker gets its own
+  spare-identification label (`PWR-U5`) rather than disappearing silently. Added
+  `dk1221-power.lbx` (best-effort, unverified — see §7) and `ptouch-field-mapping.md` (reliable
+  manual rebuild path). **This set now disagrees with `cable-schedule.md` §8**, which still lists
+  P4 = V9 and the old P5–P8 order — that document has not been updated in this pass.
+- **0.1.0** — Initial power/IEC set, 8 circuits (P1–P8 incl. V9 offline).
 
 # Cable & Device Label Spec — DK-1221 (23 mm square)
 
@@ -174,7 +184,10 @@ does not substitute for a proper LOTO tag on the V9 breaker.
 |------|-----------|
 | `07-tech-pack/labeling/labels-power.csv` | Merge data — one row per label design, with the schedule cross-reference |
 | `07-tech-pack/labeling/dk1221-power-proof.svg` | 1:1 print proof, A4. Print at 100% to verify before running the roll |
-| `scripts/build-cable-labels.py` | Regenerates the proof from the CSV |
+| `07-tech-pack/labeling/dk1221-power.lbx` | Best-effort P-touch Editor template. **Unverified** — Brother's `.lbx` schema is unpublished; this was reconstructed from memory and has not been opened in real Editor. Test it before trusting it |
+| `07-tech-pack/labeling/ptouch-field-mapping.md` | Reliable fallback — exact mm/degree/field-binding values to rebuild the same layout natively in Editor's UI if the `.lbx` doesn't open |
+| `scripts/build-cable-labels.py` | Regenerates the SVG proof from the CSV |
+| `scripts/build-lbx.py` | Regenerates the `.lbx` from the CSV (first TAG, non-inverse row as sample content) |
 
 ```bash
 python3 scripts/build-cable-labels.py \

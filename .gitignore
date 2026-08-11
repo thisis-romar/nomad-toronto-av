@@ -6,3 +6,7 @@
 # graphify pipeline temp files
 .graphify_*.json
 .graphify_*.txt
+
+# Python bytecode cache (build scripts under scripts/)
+__pycache__/
+*.pyc

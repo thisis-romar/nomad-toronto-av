@@ -2,9 +2,9 @@ id,cable_ref,variant,invert,line1,line2,qty,device,rack_u,connector,circuit,note
 PWR-P1,P1,TAG,no,P1 · SP2120,U2 · C14 · PDU,2,Drawmer SP2120,U2,IEC C14,Tripp Lite PDU,Control power — 9 VA
 PWR-P2,P2,TAG,no,P2 · V3 #1,U3 · C20 · 20A,2,Bias V3 #1,U3,IEC C20,20 A C/D-curve,air ten v3
 PWR-P3,P3,TAG,no,P3 · Q2 #1,U4 · C20 · 20A,2,Bias Q2 #1,U4,IEC C20,20 A C/D-curve,DJ Monitors
-PWR-P4,P4,TAG,yes,P4 · V9,U5 · BREAKER OFF,2,Bias V9,U5,CPC 45A,BREAKER OFF,Locked out — see spec §5.6
-PWR-P5,P5,TAG,no,P5 · Q2 #2,U6 · C20 · 20A,2,Bias Q2 #2,U6,IEC C20,20 A C/D-curve,Air Motion
-PWR-P6,P6,TAG,no,P6 · V3 #2,U7 · C20 · 20A,2,Bias V3 #2,U7,IEC C20,20 A C/D-curve,Outside Subs + hub
-PWR-P7,P7,TAG,no,P7 · Q5,U8 · PHNX · BRK TBC,2,Bias Q5,U8,Phoenix PC 5/5,TBC — 16 A C/D rec.,Breaker unverified — GH #5
-PWR-P8,P8,TAG,no,P8 · CQ-12T,PSU · C14 · PDU,2,Allen & Heath CQ-12T,BOOTH,IEC C14 (on PSU),Tripp Lite PDU,12 VDC brick — label the mains lead
-PWR-SP1,—,TAG,no,SPARE,—,4,—,—,—,—,Blank spares for on-site additions
+PWR-P4,P4,TAG,no,P4 · Q2 #2,U6 · C20 · 20A,2,Bias Q2 #2,U6,IEC C20,20 A C/D-curve,Air Motion — was P5 pre-V9-removal
+PWR-P5,P5,TAG,no,P5 · V3 #2,U7 · C20 · 20A,2,Bias V3 #2,U7,IEC C20,20 A C/D-curve,Outside Subs + hub — was P6
+PWR-P6,P6,TAG,no,P6 · Q5,U8 · PHNX · BRK TBC,2,Bias Q5,U8,Phoenix PC 5/5,TBC — 16 A C/D rec.,Breaker unverified GH#5 — was P7
+PWR-P7,P7,TAG,no,P7 · CQ-12T,PSU · C14 · PDU,2,Allen & Heath CQ-12T,BOOTH,IEC C14 (on PSU),Tripp Lite PDU,12 VDC brick — was P8
+PWR-U5,—,TAG,yes,U5 · SPARE,CPC 45A · 32A,2,—,U5,CPC 45A,Freed by V9 removal,V9 amp + breaker retired — do not reconnect without a load review
+PWR-SP1,—,TAG,no,SPARE,—,3,—,—,—,—,Blank spares for on-site additions
