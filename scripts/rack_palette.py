@@ -163,3 +163,28 @@ def swatch(device):
 def key_rows():
     """Ordered (device, hex, emoji, tie) for rendering a legend."""
     return [(d, *v) for d, v in DEVICE_COLOUR.items()]
+
+
+# --- Label text must survive a Windows ANSI reader ---------------------------
+# P-touch Editor reads a merge CSV as CP1252, not UTF-8: a middle dot arrives as
+# "Â·" and an arrow as "â†'". A BOM usually fixes that, but "usually" is not good
+# enough for text that gets stuck on a cable, so anything printed is reduced to
+# ASCII as well. The typographic loss at 2.2 mm on a thermal head is nil.
+ASCII_MAP = {
+    "·": "-",      # middle dot separator
+    "→": "->",     # route arrow
+    "←": "<-",
+    "Ω": "OHM",
+    "−": "-",      # U+2212 minus
+    "—": "-",      # em dash
+    "–": "-",      # en dash
+    "’": "'",
+    "×": "x",
+}
+
+
+def ascii_label(s):
+    """Reduce a printed label string to ASCII. Non-label columns keep Unicode."""
+    for a, b in ASCII_MAP.items():
+        s = s.replace(a, b)
+    return s.encode("ascii", "replace").decode("ascii")

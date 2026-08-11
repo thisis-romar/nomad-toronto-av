@@ -40,74 +40,114 @@ constants.
 
 ---
 
-## §2 Text objects (4 total — 2 per face)
+## §2 Text objects
 
-All four are **Text** objects, centre-aligned horizontally and vertically within their box,
-**17.11 mm wide, positioned 2.96 mm in from the left edge** — that is the printer's printable
-width, not a margin we chose. Rotation is applied to the whole object, not the text-only.
+Every object is a **Text** object, centre-aligned horizontally and vertically in its box,
+**17.11 mm wide at x = 2.96 mm**. That width is the printer's printable area for this media, not
+a margin we chose — do not widen it. Rotation is applied to the whole object.
 
-These are the exact values the generator emits, read back out of the produced `.lbx`:
+Two tag layouts exist. The per-end sets use three lines; the whole-cable sets use two.
 
-| # | Face | Content | X | Y (box top) | W | H | Rotation |
-|---|------|---------|--:|-------------:|--:|--:|---------:|
-| 1 | A (upright) | Line 1 — headline | 2.96 mm | 13.37 mm | 17.11 mm | 4.59 mm | 0° |
-| 2 | A (upright) | Line 2 — detail | 2.96 mm | 18.13 mm | 17.11 mm | 3.21 mm | 0° |
-| 3 | B (folded side) | Line 1 — headline | 2.96 mm | 5.08 mm | 17.11 mm | 4.59 mm | **180°** |
-| 4 | B (folded side) | Line 2 — detail | 2.96 mm | 1.69 mm | 17.11 mm | 3.21 mm | **180°** |
+### Three-line tag — per-end sets (`-end-a`, `-end-b`), 6 objects
 
-`X = 2.96 mm` and `W = 17.11 mm` are not a design choice — they are the printer's printable
-width for this media. Do not widen them.
+Line 1 the device, line 2 the socket, line 3 the cable ID and far end. Values read back out of
+the generated `.lbx`:
 
-Face B's box is Face A's box rotated 180° about the label's own centre (11.5, 11.5) — **not**
-rotated in place. If your Editor rotates an object around its own centre rather than the whole
-label, rotating objects 3 and 4 where they currently sit will spin them without moving them into
-the upper half; drag them to the Y positions above first, *then* apply the 180° rotation.
+| # | Face | Line | X | Y (box top) | W | H | Size | Rotation |
+|---|------|------|--:|-------------:|--:|--:|-----:|---------:|
+| Text1 | A | 1 device | 2.96 mm | 13.05 mm | 17.11 mm | 3.56 mm | 9.6 pt **bold** | 0° |
+| Text2 | A | 2 socket | 2.96 mm | 16.65 mm | 17.11 mm | 2.50 mm | 6.8 pt | 0° |
+| Text3 | A | 3 route | 2.96 mm | 19.19 mm | 17.11 mm | 2.29 mm | 6.2 pt | 0° |
+| Text4 | B | 1 device | 2.96 mm | 6.42 mm | 17.11 mm | 3.56 mm | 9.6 pt **bold** | **180°** |
+| Text5 | B | 2 socket | 2.96 mm | 3.88 mm | 17.11 mm | 2.50 mm | 6.8 pt | **180°** |
+| Text6 | B | 3 route | 2.96 mm | 1.55 mm | 17.11 mm | 2.29 mm | 6.2 pt | **180°** |
 
-**Why Face B is rotated:** the label folds along the y = 11.5 mm line, adhesive-to-adhesive, over
-a cable-tie tail. Face B ends up on the back of that fold — printing it upside-down relative to
-Face A means it reads right-side-up once folded, without re-orienting the cable to check it.
+### Two-line tag — whole-cable sets, 4 objects
 
-**Baselines these boxes are built around** (for reference if you're nudging by eye against the SVG
-proof rather than typing coordinates):
+| # | Face | Line | X | Y (box top) | W | H | Rotation |
+|---|------|------|--:|-------------:|--:|--:|---------:|
+| Text1 | A | 1 | 2.96 mm | 13.37 mm | 17.11 mm | 4.59 mm | 0° |
+| Text2 | A | 2 | 2.96 mm | 18.13 mm | 17.11 mm | 3.21 mm | 0° |
+| Text3 | B | 1 | 2.96 mm | 5.08 mm | 17.11 mm | 4.59 mm | **180°** |
+| Text4 | B | 2 | 2.96 mm | 1.69 mm | 17.11 mm | 3.21 mm | **180°** |
 
-| | Face A | Face B |
-|--|--------|--------|
-| Line 1 box centre | y ≈ 15.7 mm | y ≈ 7.4 mm |
-| Line 2 box centre | y ≈ 19.7 mm | y ≈ 3.3 mm |
+### Two rules that are easy to get wrong
 
-(Text is vertically centred in its box, so the box centres above are what to match by eye.)
+**Boxes must not enter the fold zone (y 10.0–13.0 mm).** Editor centres text vertically inside its
+box, so a box that starts above y = 13.0 puts its text on the strip that wraps the cable tie. The
+generator originally derived these boxes from the SVG's text baselines and put the first box
+0.6 pt into the fold; they are now stacked to fill the face instead.
+
+**Face B is Face A rotated 180° about the label centre (11.5, 11.5) — not rotated in place.** If
+your Editor rotates about the object's own centre, move the object to the Y above *first*, then
+rotate. Face B is upside-down so that, once folded adhesive-to-adhesive over the tie, both faces
+read upright.
 
 ---
 
 ## §3 Font settings
 
-| Object | Font | Weight | Size (start) | Notes |
-|--------|------|--------|--------------:|-------|
-| Line 1 (objects 1 & 3) | Arial Narrow *(or Liberation Sans Narrow / any condensed grotesque)* | Bold | 11 pt | Turn on **Text → Auto Fit → Reduce to fit frame** so long IDs (e.g. `U8 · PHNX · BRK TBC`) shrink automatically rather than overflow |
-| Line 2 (objects 2 & 4) | Same family | Regular | 8 pt | Same auto-fit setting |
+Arial Narrow throughout (or any condensed grotesque — avoid hairline faces; a 300 dpi thermal
+head drops strokes below ~0.1 mm).
 
-Do not go below **~7.5 pt (≈2.6 mm)** even with auto-fit — that's the floor used in the proof
-script; text smaller than that is not reliably legible off a thermal 300 dpi head at this size.
+| Line | Weight | Three-line tag | Two-line tag |
+|------|--------|---------------:|-------------:|
+| 1 | **Bold** | 9.6 pt | 11.3 pt |
+| 2 | Regular | 6.8 pt | 7.9 pt |
+| 3 | Regular | 6.2 pt | — |
+
+Turn on **Text → Auto Fit → Reduce to fit frame** as a backstop. Do not let anything fall below
+**~6 pt (2.1 mm)** — below that it is not reliably legible off this head at arm's length.
 
 ---
 
 ## §4 Merge field binding (Database Connect)
 
-1. **File → Database → Connect** (or **Insert → Merge Field**, depending on your Editor version).
-2. Browse to `07-tech-pack/labeling/labels-rack-internal.csv`. First row is the header — confirm
-   "First row is field names" is checked.
-3. Bind fields:
+1. **File → Database → Connect**, browse to the CSV for the side you are printing
+   (`labels-rack-internal-end-a.csv`, then later `-end-b.csv`). First row is field names.
+2. Editor shows the **Mapping Merged Fields** dialog and pre-fills it. **Its guesses are wrong
+   past the first two rows** and must be corrected.
 
-| Text object | CSV column |
-|-------------|-----------|
-| Objects 1 & 3 (both Line 1 boxes) | `line1` |
-| Objects 2 & 4 (both Line 2 boxes) | `line2` |
+### Why it guesses wrong, and the rule that fixes it
 
-   Both Face A and Face B pull from the **same two columns** — they're the same content, just
-   printed twice (once upright, once rotated) so the fold produces two correctly-oriented faces.
-4. Set the merge to iterate all rows. Print quantity per label comes from the CSV `qty` column —
-   if your Editor version doesn't read `qty` directly, set the merge to repeat each record twice
-   (every row in this set needs qty 2 or 3 — check the CSV before printing).
+The dialog lists one row per layout object, identified by the text currently in it, and assigns
+database columns to them **in order**. The tag has each line twice — once upright for Face A,
+once rotated 180° for Face B — so the duplicates run past the end of the printed fields and get
+bound to whatever column comes next (`conn_a`, `conn_b`, …).
+
+**The rule: two rows showing the same text are the two faces of the same line. Map them to the
+same field.**
+
+For a three-line per-end tag, six objects map to three columns:
+
+| Layout object (by its text) | Database field |
+|-----------------------------|----------------|
+| `SP2120` *(1st occurrence — Face A)* | `line1` |
+| `OUT L` *(1st)* | `line2` |
+| `A15 -> V3 #2` *(1st)* | `line3` |
+| `SP2120` *(2nd — Face B, rotated)* | `line1` |
+| `OUT L` *(2nd)* | `line2` |
+| `A15 -> V3 #2` *(2nd)* | `line3` |
+
+A two-line whole-cable tag is the same idea with four objects → `line1, line2, line1, line2`.
+
+The CSVs put `line1`, `line2`, `line3` as the **first columns** so Editor's own first guesses land
+on the printed fields; only the duplicate half needs correcting.
+
+### Encoding — why the text looked like `P1 Â· SP212`
+
+Editor reads a merge CSV as Windows CP1252, not UTF-8, so `·` arrived as `Â·` and `→` as `â†'`.
+Two changes prevent it:
+
+- every CSV is written **UTF-8 with a BOM**, which Editor honours; and
+- every printed field is reduced to **plain ASCII** anyway — `·` → `-`, `→` → `->`, `Ω` → `OHM`.
+
+The ASCII reduction is the one that cannot fail, so it is not relied on the BOM alone. If you see
+`Â` or `â` anywhere in the database preview, stop — something is reading the file as ANSI and the
+labels will print mangled.
+
+3. Set the merge to iterate all records. Every row is `qty 1` — one tag per cable end — so one
+   pass per side prints the whole set.
 
 ---
 

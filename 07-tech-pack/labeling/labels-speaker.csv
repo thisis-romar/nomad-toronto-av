@@ -1,15 +1,15 @@
-id,cable_ref,variant,invert,line1,line2,qty,group,class,end_a_device,end_a_port,end_a_loc,conn_a,end_b_device,end_b_port,end_b_loc,conn_b,note
-SPK-S20,20,TAG,no,XAIR L-3,S20 · V3#2 CH1 · 4Ω,2,XAIR-OUTSIDE,SPEAKER,Bias V3 #2,OUT1 (CH1),RACK,speakON NL4,Stasys Xair L-3,NL4 In,ROOM,speakON NL4,Outside sub Left · 4 Ω
-SPK-S21,21,TAG,no,XAIR R-3,S21 · V3#2 CH2 · 4Ω,2,XAIR-OUTSIDE,SPEAKER,Bias V3 #2,OUT2 (CH2),RACK,speakON NL4,Stasys Xair R-3,NL4 In,ROOM,speakON NL4,Outside sub Right · 4 Ω
-SPK-S22,22,TAG,no,SUBS L 1+2,S22 · Q5 OUT1 · 4Ω,2,XAIR-MIDDLE,SPEAKER,Bias Q5,OUT1 (CH1+CH2),RACK,speakON NL4,Stasys Xair L-1 / L-2,NL4 In,ROOM,speakON NL4,One NL4 carries 2 ch — CH1 on 1+/1- CH2 on 2+/2- (D2)
-SPK-S23,23,TAG,no,SUBS R 1+2,S23 · Q5 OUT2 · 4Ω,2,XAIR-MIDDLE,SPEAKER,Bias Q5,OUT2 (CH3+CH4),RACK,speakON NL4,Stasys Xair R-1 / R-2,NL4 In,ROOM,speakON NL4,One NL4 carries 2 ch — CH3 on 1+/1- CH4 on 2+/2- (D2)
-SPK-S26,26,TAG,no,A.MOT L · LF,S26 · Q2#2 CH1 · 8Ω,2,AIRMOTION-L,SPEAKER,Bias Q2 #2,OUTPUTS CH1,RACK,Phoenix PC 5/8,Air Motion V2 L,NL4 #1 pins 1+/1-,ROOM,speakON NL4,LF band · 8 Ω
-SPK-S27,27,TAG,no,A.MOT L HMF,S27 · Q2#2 CH2 · 8Ω,2,AIRMOTION-L,SPEAKER,Bias Q2 #2,OUTPUTS CH2,RACK,Phoenix PC 5/8,Air Motion V2 L,NL4 #2 pins 2+/2-,ROOM,speakON NL4,HMF band · 8 Ω
-SPK-S28,28,TAG,no,A.MOT R · LF,S28 · Q2#2 CH3 · 8Ω,2,AIRMOTION-R,SPEAKER,Bias Q2 #2,OUTPUTS CH3,RACK,Phoenix PC 5/8,Air Motion V2 R,NL4 #1 pins 1+/1-,ROOM,speakON NL4,LF band · 8 Ω
-SPK-S29,29,TAG,no,A.MOT R HMF,S29 · Q2#2 CH4 · 8Ω,2,AIRMOTION-R,SPEAKER,Bias Q2 #2,OUTPUTS CH4,RACK,Phoenix PC 5/8,Air Motion V2 R,NL4 #2 pins 2+/2-,ROOM,speakON NL4,HMF band · 8 Ω
-SPK-S30,30,TAG,no,AIRTEN L,S30 · V3#1 CH1 · 8Ω,2,AIRTEN,SPEAKER,Bias V3 #1,OUT1 (CH1),RACK,speakON NL4,Airten V3 L,NL4 In,ROOM,speakON NL4,FOH fill Left · 8 Ω
-SPK-S31,31,TAG,no,AIRTEN R,S31 · V3#1 CH2 · 8Ω,2,AIRTEN,SPEAKER,Bias V3 #1,OUT2 (CH2),RACK,speakON NL4,Airten V3 R,NL4 In,ROOM,speakON NL4,FOH fill Right · 8 Ω
-SPK-S32,32,TAG,no,VANTAGE L,S32 · Q2#1 CH1 · 8Ω,2,VANTAGE,SPEAKER,Bias Q2 #1,OUTPUTS CH1,RACK,Phoenix PC 5/8,Air Vantage L,NL4 In,ROOM,speakON NL4,DJ booth monitor Left · 8 Ω
-SPK-S33,33,TAG,no,VANTAGE R,S33 · Q2#1 CH2 · 8Ω,2,VANTAGE,SPEAKER,Bias Q2 #1,OUTPUTS CH2,RACK,Phoenix PC 5/8,Air Vantage R,NL4 In,ROOM,speakON NL4,DJ booth monitor Right · 8 Ω
-SPK-S34,34,TAG,no,VENU 215 L,S34 · Q2#1 CH3 · 4Ω,2,VENU215,SPEAKER,Bias Q2 #1,OUTPUTS CH3,RACK,Phoenix PC 5/8,Venu 215 V2 L,Phoenix recessed,ROOM,Phoenix,Booth sub Left · 4 Ω · NL4 port also present
-SPK-S35,35,TAG,no,VENU 215 R,S35 · Q2#1 CH4 · 4Ω,2,VENU215,SPEAKER,Bias Q2 #1,OUTPUTS CH4,RACK,Phoenix PC 5/8,Venu 215 V2 R,Phoenix recessed,ROOM,Phoenix,Booth sub Right · 4 Ω · NL4 port also present
+﻿line1,line2,id,cable_ref,variant,invert,qty,group,class,end_a_device,end_a_port,end_a_loc,conn_a,end_b_device,end_b_port,end_b_loc,conn_b,note
+XAIR L-3,S20 - V3#2 CH1 - 4OHM,SPK-S20,20,TAG,no,2,XAIR-OUTSIDE,SPEAKER,Bias V3 #2,OUT1 (CH1),RACK,speakON NL4,Stasys Xair L-3,NL4 In,ROOM,speakON NL4,Outside sub Left · 4 Ω
+XAIR R-3,S21 - V3#2 CH2 - 4OHM,SPK-S21,21,TAG,no,2,XAIR-OUTSIDE,SPEAKER,Bias V3 #2,OUT2 (CH2),RACK,speakON NL4,Stasys Xair R-3,NL4 In,ROOM,speakON NL4,Outside sub Right · 4 Ω
+SUBS L 1+2,S22 - Q5 OUT1 - 4OHM,SPK-S22,22,TAG,no,2,XAIR-MIDDLE,SPEAKER,Bias Q5,OUT1 (CH1+CH2),RACK,speakON NL4,Stasys Xair L-1 / L-2,NL4 In,ROOM,speakON NL4,One NL4 carries 2 ch — CH1 on 1+/1- CH2 on 2+/2- (D2)
+SUBS R 1+2,S23 - Q5 OUT2 - 4OHM,SPK-S23,23,TAG,no,2,XAIR-MIDDLE,SPEAKER,Bias Q5,OUT2 (CH3+CH4),RACK,speakON NL4,Stasys Xair R-1 / R-2,NL4 In,ROOM,speakON NL4,One NL4 carries 2 ch — CH3 on 1+/1- CH4 on 2+/2- (D2)
+A.MOT L - LF,S26 - Q2#2 CH1 - 8OHM,SPK-S26,26,TAG,no,2,AIRMOTION-L,SPEAKER,Bias Q2 #2,OUTPUTS CH1,RACK,Phoenix PC 5/8,Air Motion V2 L,NL4 #1 pins 1+/1-,ROOM,speakON NL4,LF band · 8 Ω
+A.MOT L HMF,S27 - Q2#2 CH2 - 8OHM,SPK-S27,27,TAG,no,2,AIRMOTION-L,SPEAKER,Bias Q2 #2,OUTPUTS CH2,RACK,Phoenix PC 5/8,Air Motion V2 L,NL4 #2 pins 2+/2-,ROOM,speakON NL4,HMF band · 8 Ω
+A.MOT R - LF,S28 - Q2#2 CH3 - 8OHM,SPK-S28,28,TAG,no,2,AIRMOTION-R,SPEAKER,Bias Q2 #2,OUTPUTS CH3,RACK,Phoenix PC 5/8,Air Motion V2 R,NL4 #1 pins 1+/1-,ROOM,speakON NL4,LF band · 8 Ω
+A.MOT R HMF,S29 - Q2#2 CH4 - 8OHM,SPK-S29,29,TAG,no,2,AIRMOTION-R,SPEAKER,Bias Q2 #2,OUTPUTS CH4,RACK,Phoenix PC 5/8,Air Motion V2 R,NL4 #2 pins 2+/2-,ROOM,speakON NL4,HMF band · 8 Ω
+AIRTEN L,S30 - V3#1 CH1 - 8OHM,SPK-S30,30,TAG,no,2,AIRTEN,SPEAKER,Bias V3 #1,OUT1 (CH1),RACK,speakON NL4,Airten V3 L,NL4 In,ROOM,speakON NL4,FOH fill Left · 8 Ω
+AIRTEN R,S31 - V3#1 CH2 - 8OHM,SPK-S31,31,TAG,no,2,AIRTEN,SPEAKER,Bias V3 #1,OUT2 (CH2),RACK,speakON NL4,Airten V3 R,NL4 In,ROOM,speakON NL4,FOH fill Right · 8 Ω
+VANTAGE L,S32 - Q2#1 CH1 - 8OHM,SPK-S32,32,TAG,no,2,VANTAGE,SPEAKER,Bias Q2 #1,OUTPUTS CH1,RACK,Phoenix PC 5/8,Air Vantage L,NL4 In,ROOM,speakON NL4,DJ booth monitor Left · 8 Ω
+VANTAGE R,S33 - Q2#1 CH2 - 8OHM,SPK-S33,33,TAG,no,2,VANTAGE,SPEAKER,Bias Q2 #1,OUTPUTS CH2,RACK,Phoenix PC 5/8,Air Vantage R,NL4 In,ROOM,speakON NL4,DJ booth monitor Right · 8 Ω
+VENU 215 L,S34 - Q2#1 CH3 - 4OHM,SPK-S34,34,TAG,no,2,VENU215,SPEAKER,Bias Q2 #1,OUTPUTS CH3,RACK,Phoenix PC 5/8,Venu 215 V2 L,Phoenix recessed,ROOM,Phoenix,Booth sub Left · 4 Ω · NL4 port also present
+VENU 215 R,S35 - Q2#1 CH4 - 4OHM,SPK-S35,35,TAG,no,2,VENU215,SPEAKER,Bias Q2 #1,OUTPUTS CH4,RACK,Phoenix PC 5/8,Venu 215 V2 R,Phoenix recessed,ROOM,Phoenix,Booth sub Right · 4 Ω · NL4 port also present

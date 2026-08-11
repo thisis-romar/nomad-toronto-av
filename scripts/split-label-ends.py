@@ -28,7 +28,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from rack_palette import short, short_port  # noqa: E402
+from rack_palette import short, short_port, ascii_label  # noqa: E402
 
 A_FIELDS = ("end_a_device", "end_a_port", "end_a_loc", "conn_a")
 B_FIELDS = ("end_b_device", "end_b_port", "end_b_loc", "conn_b")
@@ -67,9 +67,9 @@ def build(rows, side):
         rr["id"] = f"{r['id']}-{side.upper()}"
         # Three lines: who I am / which socket / where the far end is. Packing
         # device+port onto one headline overran the 17.08 mm printable width.
-        rr["line1"] = short(rr["end_a_device"])
-        rr["line2"] = short_port(rr["end_a_port"]) or "—"
-        rr["line3"] = detail(r, rr["end_b_device"])
+        rr["line1"] = ascii_label(short(rr["end_a_device"]))
+        rr["line2"] = ascii_label(short_port(rr["end_a_port"]) or "-")
+        rr["line3"] = ascii_label(detail(r, rr["end_b_device"]))
         rr["qty"] = "1"          # one tag per end
         rr["side"] = side.upper()
         out.append(rr)
@@ -78,10 +78,12 @@ def build(rows, side):
 
 def write(path, rows):
     fields = [f for f in rows[0].keys()]
-    for f in ("line3", "side"):
-        if f in fields:
-            fields.insert(fields.index("qty"), fields.pop(fields.index(f)))
-    with path.open("w", newline="", encoding="utf-8") as fh:
+    # Printed fields lead: P-touch Editor auto-maps layout objects to database
+    # columns in order, so line1..line3 first means its first guesses are right.
+    lead = [k for k in ("line1", "line2", "line3") if k in fields]
+    fields = lead + [k for k in fields if k not in lead]
+    # BOM: Editor otherwise reads the file as CP1252 and mangles any non-ASCII.
+    with path.open("w", newline="", encoding="utf-8-sig") as fh:
         w = csv.DictWriter(fh, fieldnames=fields)
         w.writeheader()
         w.writerows(rows)
@@ -90,7 +92,7 @@ def write(path, rows):
 def main():
     src = Path(sys.argv[1] if len(sys.argv) > 1
                else "07-tech-pack/labeling/labels-rack-internal.csv")
-    rows = list(csv.DictReader(src.open(newline="", encoding="utf-8")))
+    rows = list(csv.DictReader(src.open(newline="", encoding="utf-8-sig")))
     for side in ("a", "b"):
         built = build(rows, side)
         dst = src.with_name(f"{src.stem}-end-{side}.csv")

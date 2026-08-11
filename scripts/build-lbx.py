@@ -232,7 +232,7 @@ def main():
                "07-tech-pack/labeling/labels-rack-internal.csv")
     dst = Path(sys.argv[2] if len(sys.argv) > 2 else
                "07-tech-pack/labeling/dk1221-rack-internal.lbx")
-    with src.open(newline="", encoding="utf-8") as fh:
+    with src.open(newline="", encoding="utf-8-sig") as fh:
         rows = list(csv.DictReader(fh))
     first = next(r for r in rows
                  if r["variant"] == "TAG" and r["invert"].strip().lower() != "yes")

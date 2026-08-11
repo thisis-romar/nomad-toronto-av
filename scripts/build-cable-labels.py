@@ -286,7 +286,7 @@ def main():
     dst = Path(sys.argv[2] if len(sys.argv) > 2 else "07-tech-pack/labeling/dk1221-power-proof.svg")
     # Set name for the sheet header: 3rd arg, else inferred from labels-<name>.csv
     set_name = sys.argv[3] if len(sys.argv) > 3 else src.stem.replace("labels-", "").upper()
-    with src.open(newline="", encoding="utf-8") as fh:
+    with src.open(newline="", encoding="utf-8-sig") as fh:
         rows = list(csv.DictReader(fh))
     n = render(rows, dst, set_name)
     total = sum(int(r["qty"]) for r in rows)

@@ -49,7 +49,7 @@ OUTSIDE_SWATCH = "⬜"
 def load():
     rows = []
     for s in SETS:
-        with (CSV_DIR / f"labels-{s}.csv").open(newline="", encoding="utf-8") as fh:
+        with (CSV_DIR / f"labels-{s}.csv").open(newline="", encoding="utf-8-sig") as fh:
             for r in csv.DictReader(fh):
                 if not r.get("end_a_device") or r["end_a_device"] == "—":
                     continue
@@ -275,7 +275,9 @@ def main():
 
     # ---- derived print-set CSV --------------------------------------------
     fields = [f for f in in_set[0].keys() if f != "_set"]
-    with DERIVED_CSV.open("w", newline="", encoding="utf-8") as fh:
+    lead = [k for k in ("line1", "line2", "line3") if k in fields]
+    fields = lead + [k for k in fields if k not in lead]
+    with DERIVED_CSV.open("w", newline="", encoding="utf-8-sig") as fh:
         w = csv.DictWriter(fh, fieldnames=fields)
         w.writeheader()
         for r in in_set:
