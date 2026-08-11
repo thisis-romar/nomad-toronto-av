@@ -1,12 +1,12 @@
-id,cable_ref,variant,invert,line1,line2,qty,class,end_a_device,end_a_port,end_a_loc,conn_a,end_b_device,end_b_port,end_b_loc,conn_b,note
-PWR-P1,P1,TAG,no,P1 · SP2120,U2 · C14 · PDU,2,POWER,Tripp Lite PDU,Outlet,RACK,NEMA 5-15R,Drawmer SP2120,MAINS inlet,RACK,IEC C14,Control power · 9 VA
-AUD-A15,15,TAG,no,SP2120 L,A15 · →V3#2 CH1 IN,2,AUDIO,Drawmer SP2120,Output L,RACK,XLR-M,Bias V3 #2,ANALOG CH1 IN,RACK,XLR-F,Limiter out to signal hub
-AUD-A16,16,TAG,no,SP2120 R,A16 · →V3#2 CH2 IN,2,AUDIO,Drawmer SP2120,Output R,RACK,XLR-M,Bias V3 #2,ANALOG CH2 IN,RACK,XLR-F,Limiter out to signal hub
-AUD-A17,17,TAG,no,LINE OUT 1,A17 · V3#2→Q5 IN,2,AUDIO,Bias V3 #2,ANALOG CH1 OUT (pre-DSP),RACK,XLR-M,Bias Q5,ANALOG IN 1,RACK,XLR-F,Q5 input is XLR — the documented Phoenix adapter may be unnecessary (D2)
-AUD-A18,18,TAG,no,LINE OUT 2,A18 · V3#2→Q2#2 IN,2,AUDIO,Bias V3 #2,ANALOG CH2 OUT (pre-DSP),RACK,XLR-M,Bias Q2 #2,LINE input CH1,RACK,Phoenix 12-pin,Pre-DSP · XLR-M to Phoenix adapter
-NET-N36,36,TAG,no,V3 #2,N36 · 192.168.10.14,2,DATA,Network switch,Port TBC,UNKNOWN,RJ45,Bias V3 #2,AESOP primary (rear),RACK,RJ45,Armonía control · switch unlocated (D8)
-NET-N37,37,TAG,no,Q5,N37 · 192.168.10.10,2,DATA,Network switch,Port TBC,UNKNOWN,RJ45,Bias Q5,etherCON ETH1 primary,RACK,etherCON RJ45,Armonía control · switch unlocated (D8)
-NET-N38,38,TAG,no,Q2 #2,N38 · 192.168.10.11,2,DATA,Network switch,Port TBC,UNKNOWN,RJ45,Bias Q2 #2,ETHERNET,RACK,RJ45,Armonía control · switch unlocated (D8)
-NET-N39,39,TAG,no,V3 #1,N39 · 192.168.10.13,2,DATA,Network switch,Port TBC,UNKNOWN,RJ45,Bias V3 #1,AESOP primary (rear),RACK,RJ45,Armonía control · switch unlocated (D8)
-NET-N40,40,TAG,no,Q2 #1,N40 · 192.168.10.12,2,DATA,Network switch,Port TBC,UNKNOWN,RJ45,Bias Q2 #1,ETHERNET,RACK,RJ45,Armonía control · switch unlocated (D8)
-AUD-A19,19,TAG,yes,V3#1 INPUT,A19 · SOURCE ?,2,AUDIO,UNVERIFIED,UNVERIFIED,UNKNOWN,XLR-M,Bias V3 #1,ANALOG CH1 IN,RACK,XLR-F,V3 has only 2 line outs — documented Line Out 3 does not exist (D1). Trace before relabelling
+id,cable_ref,variant,invert,line1,line2,qty,group,class,end_a_device,end_a_port,end_a_loc,conn_a,end_b_device,end_b_port,end_b_loc,conn_b,note
+PWR-P1,P1,TAG,no,P1 · SP2120,U2 · C14 · PDU,2,,POWER,Tripp Lite PDU,Outlet,RACK,NEMA 5-15R,Drawmer SP2120,MAINS inlet,RACK,IEC C14,Control power · 9 VA
+AUD-A15,15,TAG,no,SP2120 L,A15 · →V3#2 CH1 IN,2,SP2120-OUT,AUDIO,Drawmer SP2120,Output L,RACK,XLR-M,Bias V3 #2,ANALOG CH1 IN,RACK,XLR-F,Limiter out to signal hub
+AUD-A16,16,TAG,no,SP2120 R,A16 · →V3#2 CH2 IN,2,SP2120-OUT,AUDIO,Drawmer SP2120,Output R,RACK,XLR-M,Bias V3 #2,ANALOG CH2 IN,RACK,XLR-F,Limiter out to signal hub
+AUD-A17,17,TAG,no,LINE OUT 1,A17 · V3#2→Q5 IN,2,V3#2-LINEOUT,AUDIO,Bias V3 #2,ANALOG CH1 OUT (pre-DSP),RACK,XLR-M,Bias Q5,ANALOG IN 1,RACK,XLR-F,Q5 input is XLR — the documented Phoenix adapter may be unnecessary (D2)
+AUD-A18,18,TAG,no,LINE OUT 2,A18 · V3#2→Q2#2 IN,2,V3#2-LINEOUT,AUDIO,Bias V3 #2,ANALOG CH2 OUT (pre-DSP),RACK,XLR-M,Bias Q2 #2,LINE input CH1,RACK,Phoenix 12-pin,Pre-DSP · XLR-M to Phoenix adapter
+NET-N36,36,TAG,no,V3 #2,N36 · 192.168.10.14,2,ARMONIA,DATA,Network switch,Port TBC,UNKNOWN,RJ45,Bias V3 #2,AESOP primary (rear),RACK,RJ45,Armonía control · switch unlocated (D8)
+NET-N37,37,TAG,no,Q5,N37 · 192.168.10.10,2,ARMONIA,DATA,Network switch,Port TBC,UNKNOWN,RJ45,Bias Q5,etherCON ETH1 primary,RACK,etherCON RJ45,Armonía control · switch unlocated (D8)
+NET-N38,38,TAG,no,Q2 #2,N38 · 192.168.10.11,2,ARMONIA,DATA,Network switch,Port TBC,UNKNOWN,RJ45,Bias Q2 #2,ETHERNET,RACK,RJ45,Armonía control · switch unlocated (D8)
+NET-N39,39,TAG,no,V3 #1,N39 · 192.168.10.13,2,ARMONIA,DATA,Network switch,Port TBC,UNKNOWN,RJ45,Bias V3 #1,AESOP primary (rear),RACK,RJ45,Armonía control · switch unlocated (D8)
+NET-N40,40,TAG,no,Q2 #1,N40 · 192.168.10.12,2,ARMONIA,DATA,Network switch,Port TBC,UNKNOWN,RJ45,Bias Q2 #1,ETHERNET,RACK,RJ45,Armonía control · switch unlocated (D8)
+AUD-A19,19,TAG,yes,V3#1 INPUT,A19 · SOURCE ?,2,,AUDIO,UNVERIFIED,UNVERIFIED,UNKNOWN,XLR-M,Bias V3 #1,ANALOG CH1 IN,RACK,XLR-F,V3 has only 2 line outs — documented Line Out 3 does not exist (D1). Trace before relabelling

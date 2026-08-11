@@ -155,6 +155,27 @@ def label_tag(line1, line2, invert=False, label_id=""):
     )
 
 
+def walk(rows):
+    """Yield (row, starts_group, group_len) so the layout can avoid splitting.
+
+    A row with an empty `group` is a group of one. Rows sharing a group value
+    are assumed contiguous in the CSV, which is how the sets are authored.
+    """
+    i = 0
+    while i < len(rows):
+        g = (rows[i].get("group") or "").strip()
+        if not g:
+            yield rows[i], True, 1
+            i += 1
+            continue
+        j = i
+        while j < len(rows) and (rows[j].get("group") or "").strip() == g:
+            j += 1
+        for k in range(i, j):
+            yield rows[k], k == i, j - i
+        i = j
+
+
 def render(rows, out_path, set_name="POWER"):
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{PAGE_W}mm" height="{PAGE_H}mm" '
@@ -170,8 +191,11 @@ def render(rows, out_path, set_name="POWER"):
     x = MARGIN_X
     y = MARGIN_TOP + 6
     col = 0
-    for row in rows:
-        if col == COLS:
+    for row, starts_group, group_len in walk(rows):
+        # Never split a group across a row break. An L/R pair with the L at the
+        # end of one row and the R at the start of the next is the kind of thing
+        # that gets one of them stuck on the wrong cable.
+        if col == COLS or (starts_group and group_len <= COLS and col + group_len > COLS):
             col = 0
             x = MARGIN_X
             y += L + GUTTER_Y

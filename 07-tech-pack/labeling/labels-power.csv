@@ -1,11 +1,11 @@
-id,cable_ref,variant,invert,line1,line2,qty,class,end_a_device,end_a_port,end_a_loc,conn_a,end_b_device,end_b_port,end_b_loc,conn_b,note
-PWR-P0,P0,TAG,no,PDU FEED,P0 · CTRL CIRCUIT,2,POWER,Venue panel — control circuit,Dedicated breaker,PANEL,TBC,Tripp Lite PDU,Mains inlet,RACK,TBC,PDU feed · <5 A total · plug type unconfirmed
-PWR-P1,P1,TAG,no,P1 · SP2120,U2 · C14 · PDU,2,POWER,Tripp Lite PDU,Outlet,RACK,NEMA 5-15R,Drawmer SP2120,MAINS inlet,RACK,IEC C14,Control power · 9 VA
-PWR-P2,P2,TAG,no,P2 · V3 #1,U3 · C20 · 20A,2,POWER,Venue panel — 20 A C/D-curve,Dedicated breaker,PANEL,TBC,Bias V3 #1,MAINS inlet,RACK,IEC C20,air ten v3 · max 16 A
-PWR-P3,P3,TAG,no,P3 · Q2 #1,U4 · C20 · 20A,2,POWER,Venue panel — 20 A C/D-curve,Dedicated breaker,PANEL,TBC,Bias Q2 #1,MAINS inlet,RACK,IEC C20,DJ Monitors · max 16 A
-PWR-P4,P4,TAG,no,P4 · Q2 #2,U6 · C20 · 20A,2,POWER,Venue panel — 20 A C/D-curve,Dedicated breaker,PANEL,TBC,Bias Q2 #2,MAINS inlet,RACK,IEC C20,Air Motion · max 16 A · was P5
-PWR-P5,P5,TAG,no,P5 · V3 #2,U7 · C20 · 20A,2,POWER,Venue panel — 20 A C/D-curve,Dedicated breaker,PANEL,TBC,Bias V3 #2,MAINS inlet,RACK,IEC C20,Outside Subs + hub · was P6
-PWR-P6,P6,TAG,no,P6 · Q5,U8 · PHNX · BRK TBC,2,POWER,Venue panel — rating TBC,Dedicated breaker,PANEL,TBC,Bias Q5,MAINS inlet,RACK,Phoenix PC 5/5,Breaker unverified GH#5 · 16 A C/D recommended · was P7
-PWR-P7,P7,TAG,no,P7 · CQ-12T,PSU · C14 · PDU,2,POWER,Tripp Lite PDU,Outlet,RACK,NEMA 5-15R,CQ-12T external PSU,Mains inlet,BOOTH,IEC C14,12 VDC brick feeds the mixer · was P8
-PWR-U5,—,TAG,yes,U5 · SPARE,CPC 45A · 32A,2,POWER,Venue panel — 32 A,Dedicated breaker,PANEL,CPC 45A,— none —,U5 bay empty,RACK,—,Freed by V9 removal · do not reconnect without a load review
-PWR-SP1,—,TAG,no,SPARE,—,3,POWER,—,—,—,—,—,—,—,—,Blank spares for on-site additions
+id,cable_ref,variant,invert,line1,line2,qty,group,class,end_a_device,end_a_port,end_a_loc,conn_a,end_b_device,end_b_port,end_b_loc,conn_b,note
+PWR-P0,P0,TAG,no,PDU FEED,P0 · CTRL CIRCUIT,2,,POWER,Venue panel — control circuit,Dedicated breaker,PANEL,TBC,Tripp Lite PDU,Mains inlet,RACK,TBC,PDU feed · <5 A total · plug type unconfirmed
+PWR-P1,P1,TAG,no,P1 · SP2120,U2 · C14 · PDU,2,,POWER,Tripp Lite PDU,Outlet,RACK,NEMA 5-15R,Drawmer SP2120,MAINS inlet,RACK,IEC C14,Control power · 9 VA
+PWR-P2,P2,TAG,no,P2 · V3 #1,U3 · C20 · 20A,2,,POWER,Venue panel — 20 A C/D-curve,Dedicated breaker,PANEL,TBC,Bias V3 #1,MAINS inlet,RACK,IEC C20,air ten v3 · max 16 A
+PWR-P3,P3,TAG,no,P3 · Q2 #1,U4 · C20 · 20A,2,,POWER,Venue panel — 20 A C/D-curve,Dedicated breaker,PANEL,TBC,Bias Q2 #1,MAINS inlet,RACK,IEC C20,DJ Monitors · max 16 A
+PWR-P4,P4,TAG,no,P4 · Q2 #2,U6 · C20 · 20A,2,,POWER,Venue panel — 20 A C/D-curve,Dedicated breaker,PANEL,TBC,Bias Q2 #2,MAINS inlet,RACK,IEC C20,Air Motion · max 16 A · was P5
+PWR-P5,P5,TAG,no,P5 · V3 #2,U7 · C20 · 20A,2,,POWER,Venue panel — 20 A C/D-curve,Dedicated breaker,PANEL,TBC,Bias V3 #2,MAINS inlet,RACK,IEC C20,Outside Subs + hub · was P6
+PWR-P6,P6,TAG,no,P6 · Q5,U8 · PHNX · BRK TBC,2,,POWER,Venue panel — rating TBC,Dedicated breaker,PANEL,TBC,Bias Q5,MAINS inlet,RACK,Phoenix PC 5/5,Breaker unverified GH#5 · 16 A C/D recommended · was P7
+PWR-P7,P7,TAG,no,P7 · CQ-12T,PSU · C14 · PDU,2,,POWER,Tripp Lite PDU,Outlet,RACK,NEMA 5-15R,CQ-12T external PSU,Mains inlet,BOOTH,IEC C14,12 VDC brick feeds the mixer · was P8
+PWR-U5,—,TAG,yes,U5 · SPARE,CPC 45A · 32A,2,,POWER,Venue panel — 32 A,Dedicated breaker,PANEL,CPC 45A,— none —,U5 bay empty,RACK,—,Freed by V9 removal · do not reconnect without a load review
+PWR-SP1,—,TAG,no,SPARE,—,3,,POWER,—,—,—,—,—,—,—,—,Blank spares for on-site additions

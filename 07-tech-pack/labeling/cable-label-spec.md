@@ -1,7 +1,7 @@
 ---
 title: Nomad Toronto — Cable & Device Label Spec (Brother DK-1221)
 description: Print layout system for 23 mm square DK-1221 labels — fold geometry, safe areas, typography, naming convention, and P-touch Editor setup. Covers all four cable classes; CSV rows double as the source for the rack I/O schedule.
-version: 0.5.0
+version: 0.6.0
 created: 2026-08-11T00:00:00Z
 last_updated: 2026-08-11T00:00:00Z
 status: draft — rack-internal print set is 11 designs / 22 labels; pending a test print and site verification of the unresolved rows
@@ -10,6 +10,12 @@ status: draft — rack-internal print set is 11 designs / 22 labels; pending a t
 # Cable & Device Label Spec — DK-1221 (23 mm square)
 
 ## Changelog
+
+- **0.6.0** — Device colour key (`scripts/rack_palette.py`, shared by both builds) and
+  pair-aware sheet layout. A `group` column keeps L/R partners, LF+HMF of the same cabinet, the
+  four Pro DJ Link runs and the five Armonía links from being split across a row break — an L at
+  the end of one row and its R at the start of the next is how one of them ends up on the wrong
+  cable. Colour cannot go on the labels themselves: DK-1221 is black-only thermal.
 
 - **0.5.0** — Scope narrowed to **rack-internal cables only**. `labels-rack-internal.csv` is now
   the print set: 11 designs / 22 labels, being the 5 cables with both ends on rack equipment plus
