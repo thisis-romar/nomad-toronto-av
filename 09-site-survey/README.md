@@ -19,9 +19,11 @@ Photo evidence does not override Armonía, mixer, showfile, or measured wiring d
 
 ## Assets
 
-- `photos/2026-08-12-main-room-source.jpg` — normalized web copy of source photograph.
-- `photos/2026-08-12-main-room-equipment-id.jpg` — annotated evidence plate.
-- `data/main-room-equipment-audit-2026-08-12.json` — pixel + normalized bounding boxes, confidence, and evidence basis.
+- `overlays/main-room-equipment-id-2026-08-12.svg` — transparent source-aligned equipment-ID overlay for the 1536×1152 source frame.
+- `data/main-room-equipment-audit-2026-08-12.json` — pixel + normalized bounding boxes, confidence, evidence basis, and source-image fingerprint.
+- Source frame fingerprint: SHA-256 `0075236726c7d720c5c641211e6cc5580e15662227cebaf1cb9587ada11bfa31` · 1536×1152 JPEG.
+
+The binary photograph is not duplicated in this repository change; the SVG overlay is aligned to the original source frame and the hash preserves evidence identity.
 
 ## Intended downstream use
 
