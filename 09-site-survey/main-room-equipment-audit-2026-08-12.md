@@ -10,8 +10,8 @@ audit_id: main-room-2026-08-12-001
 # NØMAD Toronto — Main-Room Equipment Photo Audit
 
 **View:** dance-floor centre, facing the DJ booth / stage  
-**Source photo:** [`photos/2026-08-12-main-room-source.jpg`](photos/2026-08-12-main-room-source.jpg)  
-**Annotated photo:** [`photos/2026-08-12-main-room-equipment-id.jpg`](photos/2026-08-12-main-room-equipment-id.jpg)  
+**Source frame:** 1536 × 1152 JPEG · SHA-256 `0075236726c7d720c5c641211e6cc5580e15662227cebaf1cb9587ada11bfa31`  
+**Source-aligned overlay:** [`overlays/main-room-equipment-id-2026-08-12.svg`](overlays/main-room-equipment-id-2026-08-12.svg)  
 **Machine-readable detections:** [`data/main-room-equipment-audit-2026-08-12.json`](data/main-room-equipment-audit-2026-08-12.json)
 
 This audit cross-correlates visible cabinet morphology and placement with the installed-system inventory already documented in `01-source-documents/nomad-system-spec-v2.md`, `07-tech-pack/system-overview.md`, and the speaker reference assets in `05-speaker-assets/`.
