@@ -7,6 +7,14 @@ independent `version` in their YAML frontmatter.
 
 ## [Unreleased]
 
+### Added — Site-survey photo evidence (2026-08-12)
+
+- `09-site-survey/main-room-equipment-audit-2026-08-12.md` — photo-correlated physical equipment audit for the dance-floor view facing the DJ booth/stage.
+- `09-site-survey/data/main-room-equipment-audit-2026-08-12.json` — machine-readable bounding boxes, normalized coordinates, confidence and evidence basis.
+- `09-site-survey/overlays/main-room-equipment-id-2026-08-12.svg` — transparent 1536×1152 source-aligned identification overlay.
+- Photo correlation accounts for the complete visible audience-facing VOID inventory in this frame: 2× Air Motion V2 Red, 2× Airten V3 and 6× Stasys Xair.
+- Physical lighting presence is recorded conservatively at equipment-class / approximate-position level; exact fixture FIDs and real-world models remain TBC until isolated on site.
+
 ### Added — Lighting subsystem (2026-06-24)
 
 - **Lighting documentation subsystem**, decoded from the venue grandMA2 showfile
