@@ -1,19 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1152" width="1536" height="1152">
-<title>NØMAD Toronto main-room equipment ID overlay — 2026-08-12</title>
-<desc>Transparent coordinate overlay designed for the 1536x1152 source photograph identified by SHA-256 0075236726c7d720c5c641211e6cc5580e15662227cebaf1cb9587ada11bfa31.</desc>
-<style>.audio{fill:none;stroke:#ffd850;stroke-width:4}.lighting{fill:none;stroke:#50dcff;stroke-width:4}.tagA{fill:#ffd850}.tagL{fill:#50dcff}.t{font:700 20px sans-serif;fill:#111}.note{font:18px sans-serif;fill:#fff;paint-order:stroke;stroke:#111;stroke-width:4px;stroke-linejoin:round}</style>
-<g id="A1"><rect class="audio" x="456" y="349" width="114" height="103" rx="4"/><rect class="tagA" x="456" y="319" width="42" height="30" rx="3"/><text class="t" x="462" y="341">A1</text></g>
-<g id="A2"><rect class="audio" x="870" y="349" width="135" height="103" rx="4"/><rect class="tagA" x="870" y="319" width="42" height="30" rx="3"/><text class="t" x="876" y="341">A2</text></g>
-<g id="A3"><rect class="audio" x="572" y="368" width="118" height="86" rx="4"/><rect class="tagA" x="572" y="338" width="42" height="30" rx="3"/><text class="t" x="578" y="360">A3</text></g>
-<g id="A4"><rect class="audio" x="785" y="368" width="115" height="86" rx="4"/><rect class="tagA" x="785" y="338" width="42" height="30" rx="3"/><text class="t" x="791" y="360">A4</text></g>
-<g id="A5"><rect class="audio" x="367" y="465" width="85" height="156" rx="4"/><rect class="tagA" x="367" y="435" width="42" height="30" rx="3"/><text class="t" x="373" y="457">A5</text></g>
-<g id="A6"><rect class="audio" x="574" y="476" width="320" height="139" rx="4"/><rect class="tagA" x="574" y="446" width="42" height="30" rx="3"/><text class="t" x="580" y="468">A6</text></g>
-<g id="A7"><rect class="audio" x="987" y="465" width="81" height="156" rx="4"/><rect class="tagA" x="987" y="435" width="42" height="30" rx="3"/><text class="t" x="993" y="457">A7</text></g>
-<g id="A8"><rect class="audio" x="548" y="425" width="385" height="61" rx="4"/><rect class="tagA" x="548" y="395" width="42" height="30" rx="3"/><text class="t" x="554" y="417">A8</text></g>
-<g id="L1"><rect class="lighting" x="488" y="286" width="42" height="67" rx="4"/><rect class="tagL" x="488" y="256" width="42" height="30" rx="3"/><text class="t" x="494" y="278">L1</text></g>
-<g id="L2"><rect class="lighting" x="924" y="286" width="44" height="67" rx="4"/><rect class="tagL" x="924" y="256" width="42" height="30" rx="3"/><text class="t" x="930" y="278">L2</text></g>
-<g id="L3"><rect class="lighting" x="229" y="284" width="165" height="53" rx="4"/><rect class="tagL" x="229" y="254" width="42" height="30" rx="3"/><text class="t" x="235" y="276">L3</text></g>
-<g id="L4"><rect class="lighting" x="630" y="292" width="212" height="51" rx="4"/><rect class="tagL" x="630" y="262" width="42" height="30" rx="3"/><text class="t" x="636" y="284">L4</text></g>
-<g id="L5"><rect class="lighting" x="1064" y="284" width="180" height="53" rx="4"/><rect class="tagL" x="1064" y="254" width="42" height="30" rx="3"/><text class="t" x="1070" y="276">L5</text></g>
-<text class="note" x="24" y="1120">Overlay only · source 1536×1152 · audio IDs A1–A8 · lighting IDs L1–L5 · see JSON manifest for labels/confidence</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1152" viewBox="0 0 1536 1152">
+  <title>NØMAD Toronto main-room equipment audit v2 overlay</title>
+  <desc>Source-aligned overlay. Bounding boxes are native 1536x1152 pixel coordinates.</desc>
+  <style>
+    .box { fill:none; stroke-width:4; vector-effect:non-scaling-stroke; }
+    .tag { font: bold 22px sans-serif; }
+  </style>
+  <rect class="box" x="448" y="397" width="107" height="77" stroke="#FFCD46"/><rect x="449" y="368" width="44" height="28" fill="#FFCD46"/><text class="tag" x="454" y="391" fill="#000">A1</text>
+  <rect class="box" x="925" y="397" width="112" height="77" stroke="#FFCD46"/><rect x="926" y="368" width="44" height="28" fill="#FFCD46"/><text class="tag" x="931" y="391" fill="#000">A2</text>
+  <rect class="box" x="590" y="409" width="78" height="60" stroke="#FFCD46"/><rect x="591" y="380" width="44" height="28" fill="#FFCD46"/><text class="tag" x="596" y="403" fill="#000">A3</text>
+  <rect class="box" x="797" y="409" width="76" height="60" stroke="#FFCD46"/><rect x="798" y="380" width="44" height="28" fill="#FFCD46"/><text class="tag" x="803" y="403" fill="#000">A4</text>
+  <rect class="box" x="378" y="505" width="96" height="143" stroke="#FFCD46"/><rect x="379" y="476" width="44" height="28" fill="#FFCD46"/><text class="tag" x="384" y="499" fill="#000">A5</text>
+  <rect class="box" x="632" y="518" width="338" height="140" stroke="#FFCD46"/><rect x="633" y="489" width="44" height="28" fill="#FFCD46"/><text class="tag" x="638" y="512" fill="#000">A6</text>
+  <rect class="box" x="1017" y="505" width="98" height="143" stroke="#FFCD46"/><rect x="1018" y="476" width="44" height="28" fill="#FFCD46"/><text class="tag" x="1023" y="499" fill="#000">A7</text>
+  <rect class="box" x="606" y="474" width="356" height="54" stroke="#EB69DC"/><rect x="607" y="445" width="44" height="28" fill="#EB69DC"/><text class="tag" x="612" y="468" fill="#000">A8</text>
+  <rect class="box" x="504" y="308" width="42" height="54" stroke="#41D2EB"/><rect x="505" y="279" width="44" height="28" fill="#41D2EB"/><text class="tag" x="510" y="302" fill="#000">L1</text>
+  <rect class="box" x="936" y="308" width="44" height="54" stroke="#41D2EB"/><rect x="937" y="279" width="44" height="28" fill="#41D2EB"/><text class="tag" x="942" y="302" fill="#000">L2</text>
+  <rect class="box" x="236" y="304" width="161" height="35" stroke="#41D2EB"/><rect x="237" y="275" width="44" height="28" fill="#41D2EB"/><text class="tag" x="242" y="298" fill="#000">L3</text>
+  <rect class="box" x="632" y="310" width="214" height="37" stroke="#41D2EB"/><rect x="633" y="281" width="44" height="28" fill="#41D2EB"/><text class="tag" x="638" y="304" fill="#000">L4</text>
+  <rect class="box" x="1073" y="304" width="169" height="35" stroke="#41D2EB"/><rect x="1074" y="275" width="44" height="28" fill="#41D2EB"/><text class="tag" x="1079" y="298" fill="#000">L5</text>
 </svg>
