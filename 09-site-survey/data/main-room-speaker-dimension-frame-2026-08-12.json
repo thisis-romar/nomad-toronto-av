@@ -1,0 +1,57 @@
+{
+  "schema": "nomad.speaker-dimension-frame.v1",
+  "date": "2026-08-12",
+  "source_image": {
+    "path": "B497A489-181C-4A90-8666-98315408731D.jpeg",
+    "width_px": 1536,
+    "height_px": 1152
+  },
+  "dimension_order": "W x H x D",
+  "units": "mm",
+  "families": {
+    "air_motion_v2": {
+      "name": "VOID Air Motion V2",
+      "w_mm": 854,
+      "h_mm": 672,
+      "d_mm": 658,
+      "front_ratio": 1.2708333333333333,
+      "repo_source": "02-equipment-manuals/speakers/VOID-Air-Motion-V2-User-Guide.pdf",
+      "repo_location": "p.7-8"
+    },
+    "airten_v3": {
+      "name": "VOID Airten V3",
+      "w_mm": 681,
+      "h_mm": 303,
+      "d_mm": 366,
+      "front_ratio": 2.2475247524752477,
+      "repo_source": "02-equipment-manuals/speakers/VOID-Airten-V3-User-Manual-v2.1.pdf",
+      "repo_location": "p.8"
+    },
+    "stasys_xair": {
+      "name": "VOID Stasys Xair",
+      "w_mm": 1226,
+      "h_mm": 562,
+      "d_mm": 903,
+      "front_ratio": 2.1814946619217084,
+      "repo_source": "02-equipment-manuals/speakers/VOID-Stasys-Xair-User-Guide.pdf",
+      "repo_location": "p.7"
+    }
+  },
+  "frame_policy": {
+    "purpose": "Use documented front-envelope aspect ratios to constrain photo frames before full perspective calibration.",
+    "metric_warning": "bbox_px values are image-space reference envelopes only. Do not infer a global mm/px scale from them.",
+    "front_ratio_rule": "Unrotated frame aspect = W/H. Rotated Xair frame aspect = H/W."
+  },
+  "frames": [
+    {"id":"AM-L","family":"air_motion_v2","bbox":[465,372,562,448],"rotation_deg":0,"role":"FOH main left"},
+    {"id":"AM-R","family":"air_motion_v2","bbox":[909,372,1006,448],"rotation_deg":0,"role":"FOH main right"},
+    {"id":"AT-L","family":"airten_v3","bbox":[568,382,694,438],"rotation_deg":0,"role":"FOH fill left"},
+    {"id":"AT-R","family":"airten_v3","bbox":[784,382,910,438],"rotation_deg":0,"role":"FOH fill right"},
+    {"id":"XA-L","family":"stasys_xair","bbox":[392,480,452,611],"rotation_deg":90,"role":"outside sub left"},
+    {"id":"XA-1","family":"stasys_xair","bbox":[581,489,711,549],"rotation_deg":0,"role":"middle sub upper-left"},
+    {"id":"XA-2","family":"stasys_xair","bbox":[581,550,711,610],"rotation_deg":0,"role":"middle sub lower-left"},
+    {"id":"XA-3","family":"stasys_xair","bbox":[749,489,879,549],"rotation_deg":0,"role":"middle sub upper-right"},
+    {"id":"XA-4","family":"stasys_xair","bbox":[749,550,879,610],"rotation_deg":0,"role":"middle sub lower-right"},
+    {"id":"XA-R","family":"stasys_xair","bbox":[1016,480,1076,611],"rotation_deg":90,"role":"outside sub right"}
+  ]
+}
