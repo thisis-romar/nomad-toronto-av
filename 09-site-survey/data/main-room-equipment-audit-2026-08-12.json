@@ -7,8 +7,8 @@
   "image": {
     "width_px": 1536,
     "height_px": 1152,
-    "source_path": "09-site-survey/photos/2026-08-12-main-room-source.jpg",
-    "annotated_path": "09-site-survey/photos/2026-08-12-main-room-equipment-id.jpg"
+    "sha256": "0075236726c7d720c5c641211e6cc5580e15662227cebaf1cb9587ada11bfa31",
+    "overlay_path": "09-site-survey/overlays/main-room-equipment-id-2026-08-12.svg"
   },
   "repo_sources": [
     "01-source-documents/nomad-system-spec-v2.md",
