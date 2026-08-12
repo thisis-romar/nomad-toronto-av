@@ -1,0 +1,50 @@
+{
+  "schema": "nomad.photo-equipment-audit.v1",
+  "audit_id": "main-room-2026-08-12-001",
+  "venue": "NØMAD Toronto",
+  "view": "dance-floor centre facing DJ booth / stage",
+  "date": "2026-08-12",
+  "image": {
+    "width_px": 1536,
+    "height_px": 1152,
+    "source_path": "09-site-survey/photos/2026-08-12-main-room-source.jpg",
+    "annotated_path": "09-site-survey/photos/2026-08-12-main-room-equipment-id.jpg"
+  },
+  "repo_sources": [
+    "01-source-documents/nomad-system-spec-v2.md",
+    "05-speaker-assets/png/speakers/",
+    "07-tech-pack/system-overview.md",
+    "08-lighting/nomad-lighting-spec-v1.md",
+    "08-lighting/fixture-inventory.md"
+  ],
+  "confidence_policy": {
+    "high": "Distinctive visible morphology/placement agrees with the installed repo inventory.",
+    "medium": "Equipment class/effect is visible, but exact fixture model or FID is not resolved.",
+    "inventory-only": "Repo identifies the expected equipment, but this frame is insufficient for visual model confirmation."
+  },
+  "items": [
+    {"id":"A1","category":"audio","manufacturer":"Void Acoustics","model":"Air Motion V2","finish":"red","role":"FOH main left","visible_quantity":1,"bbox_px":[456,349,570,452],"bbox_norm":[0.296875,0.302951,0.371094,0.392361],"confidence":"high","status":"photo-correlated","basis":"Distinctive three-horn Air Motion morphology + repo inventory specifies 2× Air Motion V2 Red as FOH mains."},
+    {"id":"A2","category":"audio","manufacturer":"Void Acoustics","model":"Air Motion V2","finish":"red","role":"FOH main right","visible_quantity":1,"bbox_px":[870,349,1005,452],"bbox_norm":[0.566406,0.302951,0.654297,0.392361],"confidence":"high","status":"photo-correlated","basis":"Distinctive three-horn Air Motion morphology + repo inventory specifies 2× Air Motion V2 Red as FOH mains."},
+    {"id":"A3","category":"audio","manufacturer":"Void Acoustics","model":"Airten V3","finish":"white/red horn mouth","role":"FOH fill left","visible_quantity":1,"bbox_px":[572,368,690,454],"bbox_norm":[0.372396,0.319444,0.449219,0.394097],"confidence":"high","status":"photo-correlated","basis":"Jet-engine/pod morphology, mirrored toe-in, and repo inventory specifies 2× Airten V3 FOH fills."},
+    {"id":"A4","category":"audio","manufacturer":"Void Acoustics","model":"Airten V3","finish":"white/red horn mouth","role":"FOH fill right","visible_quantity":1,"bbox_px":[785,368,900,454],"bbox_norm":[0.511068,0.319444,0.585938,0.394097],"confidence":"high","status":"photo-correlated","basis":"Jet-engine/pod morphology, mirrored toe-in, and repo inventory specifies 2× Airten V3 FOH fills."},
+    {"id":"A5","category":"audio","manufacturer":"Void Acoustics","model":"Stasys Xair","role":"outside sub left","visible_quantity":1,"bbox_px":[367,465,452,621],"bbox_norm":[0.238932,0.403646,0.294271,0.539062],"confidence":"high","status":"photo-correlated","basis":"Xair front bracing/horn geometry visibly matches repo speaker asset; repo specifies outside Xair L-3."},
+    {"id":"A6","category":"audio","manufacturer":"Void Acoustics","model":"Stasys Xair","role":"middle sub cluster","visible_quantity":4,"bbox_px":[574,476,894,615],"bbox_norm":[0.373698,0.413194,0.582031,0.533854],"confidence":"high","status":"photo-correlated","basis":"Four cabinets are visibly arranged 2×2; repo specifies middle Xair L-1/L-2/R-1/R-2."},
+    {"id":"A7","category":"audio","manufacturer":"Void Acoustics","model":"Stasys Xair","role":"outside sub right","visible_quantity":1,"bbox_px":[987,465,1068,621],"bbox_norm":[0.642578,0.403646,0.695312,0.539062],"confidence":"high","status":"photo-correlated","basis":"Xair front bracing/horn geometry visibly matches repo speaker asset; repo specifies outside Xair R-3."},
+    {"id":"A8","category":"dj","manufacturer":"AlphaTheta/Pioneer DJ","model":"CDJ-3000 ×4 + DJM-V10","role":"house DJ surface","visible_quantity":null,"bbox_px":[548,425,933,486],"bbox_norm":[0.356771,0.368924,0.607422,0.421875],"confidence":"inventory-only","status":"not-photo-confirmed","basis":"Repo inventory identifies the house DJ package, but the image does not resolve screens, faceplates, or count well enough for model-level visual confirmation."},
+    {"id":"L1","category":"lighting","manufacturer":null,"model":"laser/beam source (exact fixture TBC)","role":"stage-left green multi-beam effect","visible_quantity":1,"bbox_px":[488,286,530,353],"bbox_norm":[0.317708,0.248264,0.345052,0.306424],"confidence":"medium","status":"class-observed","basis":"Parallel narrow green beams are visible. The showfile includes 9 laser-bar fixtures and 4 Sharpy-profile moving beams; this photo alone cannot map the source to an FID/model."},
+    {"id":"L2","category":"lighting","manufacturer":null,"model":"laser/beam source (exact fixture TBC)","role":"stage-right green multi-beam effect","visible_quantity":1,"bbox_px":[924,286,968,353],"bbox_norm":[0.601562,0.248264,0.630208,0.306424],"confidence":"medium","status":"class-observed","basis":"Parallel narrow green beams are visible. The showfile includes 9 laser-bar fixtures and 4 Sharpy-profile moving beams; this photo alone cannot map the source to an FID/model."},
+    {"id":"L3","category":"lighting","manufacturer":null,"model":"linear LED/strobe fixture (exact fixture TBC)","role":"ceiling left","visible_quantity":1,"bbox_px":[229,284,394,337],"bbox_norm":[0.149089,0.246528,0.25651,0.292535],"confidence":"medium","status":"class-observed","basis":"Linear emitter is physically visible; showfile includes 7 RGBW LED strobe bars and 1 DJ-deck LED bar, but no physical position mapping."},
+    {"id":"L4","category":"lighting","manufacturer":null,"model":"linear LED/strobe fixture (exact fixture TBC)","role":"ceiling centre","visible_quantity":1,"bbox_px":[630,292,842,343],"bbox_norm":[0.410156,0.253472,0.548177,0.297743],"confidence":"medium","status":"class-observed","basis":"Linear emitter is physically visible; showfile includes 7 RGBW LED strobe bars and 1 DJ-deck LED bar, but no physical position mapping."},
+    {"id":"L5","category":"lighting","manufacturer":null,"model":"linear LED/strobe fixture (exact fixture TBC)","role":"ceiling right","visible_quantity":1,"bbox_px":[1064,284,1244,337],"bbox_norm":[0.692708,0.246528,0.809896,0.292535],"confidence":"medium","status":"class-observed","basis":"Linear emitter is physically visible; showfile includes 7 RGBW LED strobe bars and 1 DJ-deck LED bar, but no physical position mapping."}
+  ],
+  "not_visible_or_not_resolved": [
+    "2× VOID Air Vantage DJ booth monitors",
+    "2× VOID Venu 215 V2 DJ booth subs",
+    "2× Turbosound Athens TCS-AN entrance speakers",
+    "Allen & Heath CQ-12T matrix mixer",
+    "Drawmer SP2120 limiter",
+    "Bias amplifier rack",
+    "exact lighting FID-to-physical-position mapping",
+    "lighting fixture manufacturer/model labels"
+  ]
+}
