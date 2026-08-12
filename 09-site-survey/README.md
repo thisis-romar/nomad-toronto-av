@@ -13,18 +13,23 @@ Photo evidence does not override Armonía, mixer, showfile, or measured wiring d
 
 ## Audits
 
-| Date | View | Deliverable | Data |
-|---|---|---|---|
-| 2026-08-12 | Dance-floor centre → DJ booth / stage | [Main-room equipment audit](main-room-equipment-audit-2026-08-12.md) | [JSON](data/main-room-equipment-audit-2026-08-12.json) |
+| Date | View | Deliverable | Data | QA loop |
+|---|---|---|---|---|
+| 2026-08-12 | Dance-floor centre → DJ booth / stage | [Main-room equipment audit](main-room-equipment-audit-2026-08-12.md) | [JSON](data/main-room-equipment-audit-2026-08-12.json) | [Visual audit & refactor loop](visual-audit-refactor-loop.md) |
 
 ## Assets
 
-- `overlays/main-room-equipment-id-2026-08-12.svg` — transparent source-aligned equipment-ID overlay for the 1536×1152 source frame.
-- `data/main-room-equipment-audit-2026-08-12.json` — pixel + normalized bounding boxes, confidence, evidence basis, and source-image fingerprint.
+- `overlays/main-room-equipment-id-2026-08-12.svg` — transparent source-aligned equipment-ID overlay for the canonical 1536×1152 frame.
+- `data/main-room-equipment-audit-2026-08-12.json` — v2 manifest with native-pixel bounding boxes, derived normalized coordinates, confidence, evidence basis, review-pass results, and source-image fingerprint.
+- `scripts/photo-audit-loop.py` — checksum/dimension validator and deterministic renderer.
 - Source frame fingerprint: SHA-256 `0075236726c7d720c5c641211e6cc5580e15662227cebaf1cb9587ada11bfa31` · 1536×1152 JPEG.
 
-The binary photograph is not duplicated in this repository change; the SVG overlay is aligned to the original source frame and the hash preserves evidence identity.
+The binary photograph is not duplicated in this repository change. The SVG/JSON are keyed to the canonical source by its dimensions and SHA-256. The renderer intentionally hard-fails if a different source image is supplied.
+
+## Coordinate policy
+
+`bbox_px` is authoritative and always refers to the **native source coordinate system**. Do not author geometry against a resized display derivative. `bbox_norm` is recalculated only after the pixel geometry passes visual review.
 
 ## Intended downstream use
 
-The JSON manifest is deliberately structured so future CV / floor-plan / lighting-plot work can ingest detections without scraping Markdown. Bounding boxes are supplied in both source-image pixels and normalized 0–1 coordinates.
+The manifest is deliberately structured so future CV / floor-plan / lighting-plot work can ingest detections without scraping Markdown. The visual audit loop is the acceptance gate before a physical position is promoted into downstream geometry.
