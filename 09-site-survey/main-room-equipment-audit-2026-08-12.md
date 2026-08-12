@@ -1,9 +1,9 @@
 ---
 title: NØMAD Toronto — Main-Room Equipment Photo Audit
 description: Photo-correlated equipment identification for the dance-floor view facing the DJ booth and stage.
-version: 1.0.0
+version: 1.1.0
 created: 2026-08-12T00:00:00-04:00
-last_updated: 2026-08-12T00:00:00-04:00
+last_updated: 2026-08-12T04:22:00-04:00
 audit_id: main-room-2026-08-12-001
 ---
 
@@ -12,7 +12,10 @@ audit_id: main-room-2026-08-12-001
 **View:** dance-floor centre, facing the DJ booth / stage  
 **Source frame:** 1536 × 1152 JPEG · SHA-256 `0075236726c7d720c5c641211e6cc5580e15662227cebaf1cb9587ada11bfa31`  
 **Source-aligned overlay:** [`overlays/main-room-equipment-id-2026-08-12.svg`](overlays/main-room-equipment-id-2026-08-12.svg)  
-**Machine-readable detections:** [`data/main-room-equipment-audit-2026-08-12.json`](data/main-room-equipment-audit-2026-08-12.json)
+**Machine-readable detections:** [`data/main-room-equipment-audit-2026-08-12.json`](data/main-room-equipment-audit-2026-08-12.json)  
+**Visual QA procedure:** [`visual-audit-refactor-loop.md`](visual-audit-refactor-loop.md)
+
+> **v1.1 geometry refactor:** the first annotation pass correctly identified the major equipment families but the visual overlay failed geometry QA. The current manifest and SVG were refit directly against the canonical 1536×1152 source coordinate system. `bbox_px` is now authoritative; normalized coordinates are derived only after visual acceptance.
 
 This audit cross-correlates visible cabinet morphology and placement with the installed-system inventory already documented in `01-source-documents/nomad-system-spec-v2.md`, `07-tech-pack/system-overview.md`, and the speaker reference assets in `05-speaker-assets/`.
 
@@ -27,10 +30,10 @@ This audit cross-correlates visible cabinet morphology and placement with the in
 | A3 | VOID Airten V3 | 1 | FOH fill L | **High** | White jet-engine/pod cabinet, mirrored toward room centre. |
 | A4 | VOID Airten V3 | 1 | FOH fill R | **High** | White jet-engine/pod cabinet, mirrored toward room centre. |
 | A5 | VOID Stasys Xair | 1 | Outside sub L-3 | **High** | Distinctive Xair horn/bracing geometry visible. |
-| A6 | VOID Stasys Xair | 4 | Middle subs L-1/L-2/R-1/R-2 | **High** | Four cabinets visibly form the centre 2×2 cluster. |
+| A6 | VOID Stasys Xair | 4 | Middle subs L-1/L-2/R-1/R-2 | **High** | Four cabinets visibly form the centre cluster. |
 | A7 | VOID Stasys Xair | 1 | Outside sub R-3 | **High** | Distinctive Xair horn/bracing geometry visible. |
 
-**Important:** this single frame therefore visually accounts for the repo's complete **6× Stasys Xair subwoofer inventory** and both pairs of audience-facing VOID tops/fills: **2× Air Motion V2 + 2× Airten V3**.
+**Important:** this single frame visually accounts for the repo's complete **6× Stasys Xair subwoofer inventory** and both pairs of audience-facing VOID tops/fills: **2× Air Motion V2 + 2× Airten V3**.
 
 ### DJ surface — inventory supported, not photo-confirmed
 
@@ -39,7 +42,7 @@ The booth surface is visible, but the image does not resolve faceplates, screens
 - 4× Pioneer / AlphaTheta CDJ-3000
 - 1× Pioneer DJM-V10
 
-Treat these as **inventory-confirmed, photo-unresolved** in this frame.
+Treat these as **inventory-confirmed, photo-unresolved** in this frame. In the v1.1 geometry refactor, A8 is deliberately constrained to the visible DJ work surface rather than a larger region overlapping the foreground speaker annotations.
 
 ### Lighting — physical presence observed, exact FID/model still open
 
