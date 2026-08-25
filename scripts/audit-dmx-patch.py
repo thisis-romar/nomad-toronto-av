@@ -38,41 +38,75 @@ FOOTPRINT = {
     "2 Dimmer 00":                 1,
 }
 
-# Selectable DMX modes of the fixtures the venue supplied manuals for, read out of those manuals.
-# `evidence` is why this fixture is believed to be the one behind the profile — the audit turns on
+# Selectable DMX modes and electrical data for the fixtures the venue has identified. Modes come
+# from the manuals in 08-lighting/manuals/; the electrical figures come from the manufacturer
+# product pages, relayed by the venue 2026-08-25 (see the audit doc for provenance and caveats).
+# `evidence` is why this fixture is believed to be the one behind the profile -- the audit turns on
 # it, so it is recorded rather than assumed.
 FIXTURES = {
-    "betopper-lm70s": dict(
-        model="BETOPPER LM70S (TLM70SK/TLM70SP) — 7x8W RGBW mini moving head",
-        modes=(9, 14),
-        watts=100,
-        manual="betopper-lm70s-mini-moving-head.pdf",
-        profiles=("5 NEW WASH", "6 movingwash zone", "9 Sharpy Standard Lamp on"),
+    "yf-beam-230": dict(
+        model="YF BEAM 230 moving head",
+        modes=(16, 20),
+        watts=(350, 400),
+        source="189 W (5R) / 230 W (7R) discharge lamp",
+        manual=None,
+        profiles=("9 Sharpy Standard Lamp on",),
         confidence="probable",
-        evidence="Its two modes, 9CH and 14CH, are exactly the two moving-head footprints in the "
-                 "patch; no other supplied fixture accounts for either.",
+        evidence="A 189/230 W discharge beam in the venue's own fixture list, and the four beams "
+                 "are patched on a 16-channel stride -- exactly this fixture's 16CH mode, and two "
+                 "wider than the 14CH profile loaded against them.",
+        alternative="BETOPPER LM70S in 14CH mode. Fits the profile footprint but not the 16-channel "
+                    "address spacing, and does not account for the YF BEAM 230 being in the rig.",
     ),
-    "ls650": dict(
-        model="LS650 six-eye swing laser (OEM, no brand on the manual)",
+    "betopper-lm70s": dict(
+        model="BETOPPER LM70S (TLM70SK/TLM70SP) -- 7x8W RGBW mini moving head",
+        modes=(9, 14),
+        watts=(100, 100),
+        source="7 x 8 W RGBW 4-in-1 LED",
+        manual="betopper-lm70s-mini-moving-head.pdf",
+        profiles=("5 NEW WASH", "6 movingwash zone"),
+        confidence="probable",
+        evidence="Its 9CH mode is exactly the moving-wash footprint, and the ten washes are patched "
+                 "on a 9-channel stride.",
+        alternative=None,
+    ),
+    "panda-ls650": dict(
+        model="Panda Lighting LS650/LS652 -- 6-head laser bar, XY movement",
         modes=(11, 19, 24),
-        watts=None,
-        manual="ls650-six-eye-swing-laser.pdf",
+        watts=(150, 150),
+        source="6 x 500 mW 638 nm red diodes (red variant) -- 3 W total optical, CLASS 4",
+        manual="panda-lighting-ls650-ls652-6-head-laser-bar.pdf",
         profiles=("8 LASER BARS 26CH", "7 LASER BARS - Invert 26CH"),
         confidence="near-certain",
         evidence="Six laser eyes matches the MA fixture name Laser.BAR(6) and its 6 sub-fixture "
-                 "cells; it is the only laser bar supplied.",
+                 "cells; identified by the venue from the manufacturer product page.",
+        alternative=None,
     ),
     "light4me-smb": dict(
         model="Light4Me STROBE MULTI BAR",
         modes=(4, 16, 168),
-        watts=None,
+        watts=(200, 200),
+        source="480 x 0.3 W RGB + 240 x 0.3 W CW LED",
         manual="light4me-strobe-multi-bar.pdf",
         profiles=("4 rgbw-13ch 13CH",),
         confidence="likely",
         evidence="An RGB-background + white-strobe bar, matching the MA layer --LED.STROBE-BAR "
                  "and the RGBW in the profile name. Not proven: no mode of this fixture is 13CH.",
+        alternative=None,
     ),
 }
+
+# Fixtures in the rig with no identification at all -- carried so the load schedule cannot quietly
+# imply the total is complete.
+UNIDENTIFIED = {
+    "3 LED Bar 2 11CH": "DJ-deck LED bar",
+    "2 Dimmer 00": "CO2 jets (x2, unpatched) + atmospheric hazer",
+}
+
+# Line voltages the load schedule is reported at. Currents are real power / voltage: they assume
+# unity power factor and so are a FLOOR, not a design figure -- see the audit doc.
+VOLTAGES = (120, 208, 240)
+
 
 
 def load():
@@ -111,6 +145,37 @@ def collisions(fixtures, profile, width):
             break                      # only the immediate next fixture can be reached
     return hits
 
+def spacing(fixtures, profile):
+    """(dominant address stride, n_at_that_stride, n_gaps) between consecutive fixtures.
+
+    The stride is independent evidence of the real footprint: whoever laid the patch out left
+    room for something, and that something is not always what the profile says. Gaps over 100
+    are dropped -- they are a fixture parked on another universe, not a stride.
+    """
+    a = sorted(f["base"] for f in fixtures if f["profile"] == profile and f["base"])
+    gaps = [b - a[i] for i, b in enumerate(a[1:]) if b - a[i] < 100]
+    if not gaps:
+        return None, 0, 0
+    best = max(set(gaps), key=gaps.count)
+    return best, gaps.count(best), len(gaps)
+
+
+def load_schedule(fixtures):
+    """(label, qty, watts_each, watts_total) rows, identified fixtures first."""
+    rows, unknown = [], []
+    for key, fx in FIXTURES.items():
+        qty = sum(1 for f in fixtures if f["profile"] in fx["profiles"])
+        if not qty:
+            continue
+        lo, hi = fx["watts"]
+        rows.append((fx["model"], qty, (lo, hi), (lo * qty, hi * qty), fx["confidence"]))
+    for prof, what in UNIDENTIFIED.items():
+        qty = sum(1 for f in fixtures if f["profile"] == prof)
+        if qty:
+            unknown.append((what, qty, prof))
+    return rows, unknown
+
+
 
 def main():
     fixtures = load()
@@ -144,8 +209,8 @@ def main():
             p("  no overlaps, no universe-boundary crossings")
 
     # --- 2. does the patched footprint exist as a mode? ----------------------------------
-    hdr = ("| MA profile | Patched | Fixture (per supplied manual) | Selectable modes | Verdict |\n"
-           "|------------|--------:|-------------------------------|------------------|---------|")
+    hdr = ("| MA profile | Patched | Address stride | Fixture | Selectable modes | Verdict |\n"
+           "|------------|--------:|---------------:|---------|------------------|---------|")
     p("\n## Patched footprint vs. selectable DMX modes\n" if md else "\n=== FOOTPRINT vs MODE ===")
     if md:
         p(hdr)
@@ -155,18 +220,23 @@ def main():
         foot = FOOTPRINT[prof]
         n = sum(1 for f in fixtures if f["profile"] == prof)
         owner = next((k for k, v in FIXTURES.items() if prof in v["profiles"]), None)
+        stride, nat, ngap = spacing(fixtures, prof)
+        st = "—" if not stride else (f"{stride}" if nat == ngap else f"{stride} ({nat}/{ngap})")
         if not owner:
-            row = ("—", "—", "❓ no manual supplied")
+            row = ("—", "—", "❓ not identified")
         else:
             fx = FIXTURES[owner]
             ok = foot in fx["modes"]
             verdicts[prof] = ok
+            note = ""
+            if stride and stride in fx["modes"] and stride != foot:
+                note = f" — but the {stride}-channel stride *is* its {stride}CH mode"
             row = (fx["model"], "/".join(f"{m}CH" for m in fx["modes"]),
-                   "✅ match" if ok else f"❌ **no {foot}CH mode on this fixture**")
+                   "✅ match" if ok else f"❌ **no {foot}CH mode**{note}")
         if md:
-            p(f"| `{prof}` (×{n}) | {foot}CH | {row[0]} | {row[1]} | {row[2]} |")
+            p(f"| `{prof}` (×{n}) | {foot}CH | {st} | {row[0]} | {row[1]} | {row[2]} |")
         else:
-            p(f"  {prof:<28} {foot:>3}CH  {row[2]:<40} {row[1]}")
+            p(f"  {prof:<28} {foot:>3}CH stride {st:>3}  {row[2]:<52} {row[1]}")
 
     # --- 3. consequence of the nearest larger mode ---------------------------------------
     p("\n## If a mismatched fixture is really running its nearest larger mode\n" if md
@@ -203,6 +273,45 @@ def main():
             p(f"  {prof} @ {bigger[0]}CH -> {len(hits)} collisions")
             for f, g, lo, hi in hits:
                 p(f"     {f['name']} runs into {g['name']} at {lo}-{hi}")
+
+    # --- 4. connected load ----------------------------------------------------------------
+    rows, unknown = load_schedule(fixtures)
+    p("\n## Connected load\n" if md else "\n=== CONNECTED LOAD ===")
+    if md:
+        p("| Fixture | Qty | W each | W total | " +
+          " | ".join(f"A @ {v} V" for v in VOLTAGES) + " | ID confidence |")
+        p("|---------|----:|-------:|--------:|" + "".join("-------:|" for _ in VOLTAGES) + "---|")
+    lo_tot = hi_tot = 0
+    for model, qty, (wlo, whi), (tlo, thi), conf in rows:
+        lo_tot += tlo
+        hi_tot += thi
+        w = f"{wlo}" if wlo == whi else f"{wlo}–{whi}"
+        tw = f"{tlo}" if tlo == thi else f"{tlo}–{thi}"
+        amps = [(f"{tlo / v:.2f}" if tlo == thi else f"{tlo / v:.2f}–{thi / v:.2f}")
+                for v in VOLTAGES]
+        if md:
+            p(f"| {model} | {qty} | {w} | **{tw}** | " + " | ".join(amps) + f" | {conf} |")
+        else:
+            p(f"  {qty:>2} x {model[:46]:<46} {tw:>9} W   " +
+              "  ".join(f"{a:>11} A" for a in amps))
+    tw = f"{lo_tot}" if lo_tot == hi_tot else f"{lo_tot}–{hi_tot}"
+    amps = [(f"{lo_tot / v:.2f}" if lo_tot == hi_tot else f"{lo_tot / v:.1f}–{hi_tot / v:.1f}")
+            for v in VOLTAGES]
+    if md:
+        p(f"| **Identified subtotal** | | | **{tw} W** | " +
+          " | ".join(f"**{a}**" for a in amps) + " | |")
+        for what, qty, prof in unknown:
+            p(f"| {what} | {qty} | ❓ | ❓ | " + " | ".join("❓" for _ in VOLTAGES) +
+              f" | not identified (`{prof}`) |")
+        p("\n> **This is a subtotal, not a total.** " +
+          "; ".join(f"{q}x {w}" for w, q, _ in unknown) + " carry no power figure. "
+          "Currents are real power ÷ voltage and assume unity power factor, so they are a floor: "
+          "add the fixtures' actual PF (and the discharge ballasts' inrush) before sizing anything.")
+    else:
+        p(f"  {'IDENTIFIED SUBTOTAL':<53} {tw:>9} W   " +
+          "  ".join(f"{a:>11} A" for a in amps))
+        for what, qty, prof in unknown:
+            p(f"  {qty:>2} x {what:<46} unknown")
 
     if not md:
         p("\n=== SUPPLIED MANUALS ===")

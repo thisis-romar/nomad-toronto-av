@@ -1,7 +1,7 @@
 ---
 title: NØMAD Toronto — Lighting Fixture Inventory
 description: Fixture counts and per-fixture ID list for the venue lighting rig, decoded from the grandMA2 showfile. Companion to the full spec and DMX patch schedule.
-version: 1.1.0
+version: 1.2.0
 created: 2026-06-24T00:00:00Z
 last_updated: 2026-08-25T00:00:00Z
 ---
@@ -12,9 +12,9 @@ Counts and fixture IDs decoded from `08-lighting/source-showfile/NOMADFIXPATCHJU
 Per-fixture DMX addresses are in `07-tech-pack/dmx-patch-schedule.md`; full detail and the
 profile→real-model status table are in `nomad-lighting-spec-v1.md`.
 
-> **Presumed models come from the three manuals supplied 2026-08-25.** Two of them contradict the
-> patch: the strobe bars are patched 13CH and the laser bars 26CH, and neither fixture offers that
-> mode. See `fixture-identification-audit.md` before acting on this table.
+> **Presumed models come from the manuals and manufacturer data supplied 2026-08-25.** Three of
+> them contradict the patch: strobes are patched 13CH, lasers 26CH and beams 14CH, and none of those
+> is a mode the fixture offers. See `fixture-identification-audit.md` before acting on this table.
 
 ## Counts by type
 
@@ -24,9 +24,9 @@ profile→real-model status table are in `nomad-lighting-spec-v1.md`.
 | `4 rgbw-13ch 13CH` | LED strobe bar (Light4Me STROBE MULTI BAR — likely; **no 13CH mode**) | 7 | 13 | U1 |
 | `5 NEW WASH` | Moving wash (BETOPPER LM70S, 9CH mode — probable) | 8 | 9 | U1 + U2 |
 | `6 movingwash zone` | Moving wash, zoned (BETOPPER LM70S — probable) | 2 | 9 | U1 + U2 |
-| `9 Sharpy Standard Lamp on` | Moving beam (BETOPPER LM70S, 14CH mode — probable) | 4 | 14 | U1 |
-| `8 LASER BARS 26CH` | Laser bar (LS650 six-eye swing laser; **no 26CH mode**) | 8 | 26 | U1 + U2 |
-| `7 LASER BARS - Invert 26CH` | Laser bar, inverted patch (LS650) | 1 | 26 | U1 |
+| `9 Sharpy Standard Lamp on` | Moving beam (YF BEAM 230, 189/230 W discharge — probable; **no 14CH mode**) | 4 | 14 | U1 |
+| `8 LASER BARS 26CH` | Laser bar (Panda LS650/LS652; **no 26CH mode**; ☢️ Class 4) | 8 | 26 | U1 + U2 |
+| `7 LASER BARS - Invert 26CH` | Laser bar, inverted patch (Panda LS650/LS652; ☢️ Class 4) | 1 | 26 | U1 |
 | `2 Dimmer 00` | CO₂ jet (×2 multipatch, **unpatched**) | 1 | 1 | — |
 | `2 Dimmer 00` | Atmospheric hazer | 1 | 1 | U2 |
 | **Total** | | **33** | | 2 universes |

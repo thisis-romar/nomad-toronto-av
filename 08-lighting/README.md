@@ -1,7 +1,7 @@
 ---
 title: NØMAD Toronto — Lighting Subsystem
 description: Index and status dashboard for the venue lighting subsystem (grandMA2 rig), decoded from the showfile export.
-version: 1.1.0
+version: 1.2.0
 created: 2026-06-24T00:00:00Z
 last_updated: 2026-08-25T00:00:00Z
 ---
@@ -46,12 +46,15 @@ Deliverables that mirror the audio tech pack live alongside the audio docs:
 | Rig documented from showfile | ⚠️ Desktop decode | Physical verification pending |
 | CO₂ jets DMX patch | ❓ Unpatched | Address 0 in showfile — patch & verify on-site |
 | Fixture positions | ❓ Unknown | All `0,0,0` in showfile — survey on next visit |
-| Real fixture makes/models | 🟡 Partly identified | 3 manuals on file — lasers LS650, moving heads BETOPPER LM70S, strobes Light4Me. DJ bar, CO₂ and haze still unknown |
+| Real fixture makes/models | 🟡 Partly identified | Lasers **Panda LS650/LS652**, beams **YF BEAM 230**, washes **BETOPPER LM70S**, strobes **Light4Me**. DJ bar, CO₂ and haze still unknown |
 | Strobe bars patched 13CH | ❌ **Mismatch** | Light4Me offers 4/16/168 — read the mode off a bar's LCD (audit §4) |
 | Laser bars patched 26CH | ⚠️ **Mismatch** | LS650 offers 11/19/24 — no collision, 2 dead channels per bar (audit §5) |
+| Beams patched 14CH, spaced 16 | ⚠️ **Mismatch** | YF BEAM 230 offers 16/20 — the stride is right, the profile is 2 channels short (audit §6) |
+| Lighting connected load | 🟡 Subtotal | **5.15–5.35 kW ≈ 43–45 A @ 120 V** identified; DJ bar, CO₂ and hazer missing (audit §9) |
+| Laser safety class | ☢️ **Class 4** | 9 bars × 6 × 500 mW @ 638 nm. Compliance items unrecorded (audit §9) |
 | Patch address integrity | ✅ Verified | No overlaps, no universe-boundary crossings (`scripts/audit-dmx-patch.py`) |
 | DMX node/output topology | ❓ TBC | Map U1/U2 to physical nodes/ports |
-| Lighting power/breakers | ❓ TBC | No data in showfile |
+| Lighting power/breakers | 🟡 Partly | Per-fixture W from manufacturers; feed, breakers and PF still TBC |
 | Console make/model/location | ❓ TBC | grandMA2 "Nomad" per export; confirm hardware on-site |
 | Lighting plot (SVG) | ❌ Blocked | Cannot draw without real positions |
 

@@ -37,8 +37,10 @@ NØMAD Toronto also operates a **grandMA2-controlled lighting rig** — 31 intel
 | Lighting rig | ⚠️ Documented from showfile | 2026-06-24 | grandMA2 patch decoded; physical verification pending. See [Lighting Subsystem](08-lighting/README.md). |
 | Lighting — CO₂ jets patch | ❓ Unpatched | — | Both CO₂ jets at DMX address 0 in showfile. Patch & verify on-site. |
 | Lighting — fixture positions | ❓ Unknown | — | All fixtures at 0,0,0 in showfile. Survey on next visit. |
-| Lighting — fixture makes/models | 🟡 Partly identified | — | 3 vendor manuals on file (LS650 lasers, BETOPPER LM70S heads, Light4Me strobes); DJ bar / CO₂ / haze still unknown. See [audit](08-lighting/fixture-identification-audit.md). |
-| Lighting — patch vs. fixture modes | ⚠️ 2 mismatches | — | Strobes patched 13CH and lasers 26CH; neither is a mode those fixtures offer. Panel check needed before re-patching. |
+| Lighting — fixture makes/models | 🟡 Partly identified | — | Panda LS650/LS652 lasers, YF BEAM 230 beams, BETOPPER LM70S washes, Light4Me strobes; DJ bar / CO₂ / haze still unknown. See [audit](08-lighting/fixture-identification-audit.md). |
+| Lighting — patch vs. fixture modes | ⚠️ 3 mismatches | — | Strobes patched 13CH, lasers 26CH, beams 14CH; none is a mode those fixtures offer. Panel check needed before re-patching. |
+| Lighting — connected load | 🟡 Subtotal | — | 5.15–5.35 kW ≈ 43–45 A @ 120 V identified; DJ bar, CO₂ and hazer have no figure. |
+| Lighting — laser safety | ☢️ Class 4 | — | 9 bars × 6 × 500 mW @ 638 nm. Compliance items not recorded — see [audit](08-lighting/fixture-identification-audit.md) §9. |
 | Open issues | 5 | 2026-04-27 | See [Open Issues](#open-issues) section |
 | Tech pack | ✅ Complete | 2026-06-24 | 7 audio documents + lighting subsystem. See [Tech Pack](#tech-pack) section. |
 
