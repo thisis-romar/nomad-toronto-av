@@ -1,7 +1,7 @@
 ---
 title: NØMAD Toronto — DMX Patch Schedule
 description: Complete DMX patch schedule for the NØMAD Toronto grandMA2 lighting rig, decoded from the venue showfile (2026-06-13, exported 2026-06-24). The lighting analog of the audio cable schedule.
-version: 1.2.0
+version: 1.3.0
 created: 2026-06-24T00:00:00Z
 last_updated: 2026-08-25T00:00:00Z
 ---
@@ -28,6 +28,12 @@ last_updated: 2026-08-25T00:00:00Z
 ## Section 1 — LED · DJ-Decks
 
 MA layer `--LED.DJ-Decks`.
+
+> ❌ **Mode mismatch.** This is a **Microh LEDBAR RGB**, a fixed **13-channel** fixture, patched as
+> 11. Its three RGB segments do match the profile's three cells on a 3-channel stride — but the
+> profile's master is 2 channels where the fixture has 4 (function + all-R/G/B), so the segment
+> block lands two channels early. Nothing collides: the bar would occupy 11–23 and the 22–26 gap
+> absorbs it. `08-lighting/fixture-identification-audit.md` §7.
 
 | # | Fixture | Group/Layer | MA Profile | Ch | Universe | Start | End | Cells | Notes |
 |---|---------|-------------|------------|---:|----------|-------|-----|------:|-------|
@@ -62,6 +68,10 @@ MA layer `--LED.STROBE-BAR`. All `4 rgbw-13ch 13CH`, 13 ch, Universe 1.
 
 MA layer `--M.WASH`. All 9 ch. Two profiles mixed: `5 NEW WASH` (×8) and `6 movingwash zone` (×2).
 
+> 🔁 **`6 movingwash zone` is not a zoned mode** — it is the **pan/tilt-inverted duplicate** of
+> `5 NEW WASH`, for the two washes hung upside down (M.Wash 7 and M.Wash 10). Both profiles have
+> identical sub-fixture structure in the export; a zoned mode would have cells. Audit §12.
+
 > ✅ Believed to be **BETOPPER LM70S** (100 W, 7×8 W RGBW) in its 9CH mode — footprint and address
 > stride both 9, no conflict.
 
@@ -91,6 +101,11 @@ MA layer `--M.Beam`. All `9 Sharpy Standard Lamp on`, 14 ch, Universe 1.
 > two channels of each beam are simply unreachable from the console. Load a 16-channel profile on
 > the same addresses. `08-lighting/fixture-identification-audit.md` §6.
 >
+> **Confirmed by the manual (rev 3).** The 16CH map runs …13 Tilt fine, 14 Pan/Tilt speed,
+> **15 Reset, 16 Lamp control** — so a 14-channel profile keeps every look-critical attribute and
+> loses exactly the lamp strike/douse and remote reset. On four discharge fixtures that is an
+> operational limitation, not a cosmetic one.
+>
 > The profile name is an MA label, not a model. Not a Clay Paky *Sharpy* — but a Sharpy-class
 > discharge beam, which is what the profile was presumably chosen for.
 
@@ -112,7 +127,10 @@ MA layer `--M.Laser-BAR`. All 26 ch, 7 sub-cells. Bars 2–9 use `8 LASER BARS 2
 > collides — each bar just leaves 2 dead channels — but the profile's internal channel order cannot
 > be verified from the showfile. `08-lighting/fixture-identification-audit.md` §5.
 >
-> ☢️ **Class 4.** 6 × 500 mW at 638 nm per bar, nine bars. See audit §9 before scheduling a show.
+> ☢️ **Class 4.** 6 × 500 mW at 638 nm per bar, nine bars. See audit §11 before scheduling a show.
+>
+> 🔁 `Laser.BAR(6) 1` runs the **inverted duplicate** profile because it is hung upside down —
+> its six cell addresses descend where every other bar ascends. Audit §12.
 
 | # | Fixture | Group/Layer | MA Profile | Ch | Universe | Start | End | Cells | Notes |
 |---|---------|-------------|------------|---:|----------|-------|-----|------:|-------|
@@ -132,12 +150,26 @@ MA layer `--M.Laser-BAR`. All 26 ch, 7 sub-cells. Bars 2–9 use `8 LASER BARS 2
 
 MA layers `--Co2(2x)` and `~Atmos~`. All `2 Dimmer 00`, 1 ch.
 
+> 🔌 **These are not DMX fixtures.** All three are mains loads on an **Elation DP-415** 4-channel
+> dimmer/switch pack — 120 V, **15 A total, 5 A per channel**, dual Edison sockets per channel,
+> 9-way dip-switch address. Each `2 Dimmer 00` entry is a pack *channel*.
+> `08-lighting/fixture-identification-audit.md` §8.
+
 | # | Fixture | Group/Layer | MA Profile | Ch | Universe | Start | End | Cells | Notes |
 |---|---------|-------------|------------|---:|----------|-------|-----|------:|-------|
-| 32 | Co2-HL.HR | Co2(2x) | `2 Dimmer 00` | 1 | — | **0** | **0** | — | FID 911; **UNPATCHED**, multipatched ×2 jets |
-| 33 | -Atmos- | ~Atmos~ | `2 Dimmer 00` | 1 | U2 | 356 (868) | 356 (868) | — | FID 420; atmospheric hazer |
+| 32 | Co2-HL.HR | Co2(2x) | `2 Dimmer 00` | 1 | — | **0** | **0** | — | FID 911; **UNPATCHED**, multipatched ×2 jets. Make/model/wattage unknown |
+| 33 | -Atmos- | ~Atmos~ | `2 Dimmer 00` | 1 | U2 | 356 (868) | 356 (868) | — | FID 420; **Chauvet Hurricane Haze 2D**, 533 W / 4.4 A |
 
-> ⚠️ **CO₂ jets are UNPATCHED (address 0).** Do not assume an address — patch and verify on-site.
+> ⚠️ **CO₂ jets are UNPATCHED (address 0)** — but they do not take a patch of their own. What they
+> need is the DP-415's dip-switch start address; the jets are then that address + whichever sockets
+> they occupy. Read the pack, do not assume an address.
+>
+> ⚠️ **The Haze 2D must not be run on a dimmer** (its manual says so outright), and the DP-415's
+> Dimmer/Switch selection is **pack-wide** — dip switch 10. Read it before the next show.
+>
+> ⚠️ **The hazer's own DMX personality is a fixed 2 channels** (blower speed, haze volume) and it is
+> patched as 1. If the patch is a pack channel this is correct; if it is the hazer's own DMX, haze
+> volume never responds to the console.
 
 ---
 

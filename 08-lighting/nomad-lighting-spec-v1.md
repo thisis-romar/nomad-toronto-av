@@ -1,14 +1,14 @@
 ---
 title: NØMAD Toronto — Lighting System Specification
 description: Lighting system specification for NØMAD Toronto, decoded from the grandMA2 "Nomad" showfile export (showfile 2026-06-13, exported 2026-06-24). Rev 1.0 — desktop decode; physical site verification pending.
-version: 1.2.0
+version: 1.3.0
 created: 2026-06-24T00:00:00Z
 last_updated: 2026-08-25T00:00:00Z
 ---
 
 # NØMAD Toronto — Lighting System Specification
 
-**Revision:** 1.2
+**Revision:** 1.3
 **Date:** June 2026
 **Prepared by:** Emblem Projects Inc.
 **Venue:** NØMAD Toronto
@@ -140,8 +140,9 @@ All 9 ch. Two MA profiles are mixed within this logical group.
 
 ### §4.4 Moving Beams (MA layer `--M.Beam`)
 
-All `9 Sharpy Standard Lamp on`, 14 ch, Universe 1. Profile name indicates a **Clay Paky Sharpy**
-beam (confirm physical model — Open Item §9.3).
+All `9 Sharpy Standard Lamp on`, 14 ch, Universe 1 — but patched on a **16-channel stride**, which
+is the **YF BEAM 230**'s 16CH mode. The profile is two channels short and loses ch15 Reset and
+ch16 Lamp control (§5, Open Item §9.2). The profile name is an MA label, not a Clay Paky Sharpy.
 
 | Fixture | FID | Start | End |
 |---------|----:|-------|-----|
@@ -176,14 +177,20 @@ All 26 ch, 7 sub-cells.
 | Co2-HL.HR | 911 | `2 Dimmer 00` | 1 | — | **0 (UNPATCHED)** |
 | Co2-HL.HR (multipatch) | 911 | `2 Dimmer 00` | 1 | — | **0 (UNPATCHED)** |
 
-> ⚠️ Both CO₂ jets are a single fixture multipatched ×2 and are **unpatched** (address 0). Patch
-> and verify on-site before use (Open Item §9.1).
+> ⚠️ Both CO₂ jets are a single MA fixture multipatched ×2 and are **unpatched** (address 0).
+> They are **channels on an Elation DP-415 switch pack**, not DMX fixtures — what they need is the
+> pack's dip-switch start address, not a patch of their own (§8, Open Item §9.11).
 
 ### §4.7 Effects — Atmospheric / Haze (MA layer `~Atmos~`)
 
 | Fixture | FID | MA profile | Ch | Universe | Start | Abs |
 |---------|----:|------------|---:|----------|-------|-----|
 | -Atmos- | 420 | `2 Dimmer 00` | 1 | U2 | 356 | 868 |
+
+> ⚠️ The hazer is a **Chauvet Hurricane Haze 2D** (533 W). Its own DMX personality is a fixed
+> **2 channels** (blower speed, haze volume) and it is patched as 1. If what is patched is a DP-415
+> pack channel this is correct; if it is the hazer's own DMX, haze volume never responds
+> (Open Item §9.6). The Haze 2D must **not** be run on a dimmer — see §8.
 
 ---
 
@@ -195,25 +202,42 @@ fixture families. Full working in `fixture-identification-audit.md`.
 
 | MA profile | Qty | Ch | Real-world fixture | Modes | Power ea. | Status |
 |------------|----:|---:|--------------------|-------|----------:|--------|
-| `9 Sharpy Standard Lamp on` | 4 | 14 | **YF BEAM 230** — 189/230 W discharge beam | 16 / 20 | 350–400 W | ❌ **No 14CH mode** — but patched on a 16-ch stride, audit §6 |
-| `5 NEW WASH` | 8 | 9 | **BETOPPER LM70S** — 7×8 W RGBW mini head | **9** / 14 | 100 W | ⚠️ Probable — footprint and stride both 9 |
-| `6 movingwash zone` | 2 | 9 | **BETOPPER LM70S** | **9** / 14 | 100 W | ⚠️ Probable |
-| `8 LASER BARS 26CH` | 8 | 26 | **Panda Lighting LS650/LS652** — 6-head laser bar | 11 / 19 / 24 | 150 W | ❌ **No 26CH mode** — audit §5 · ☢️ Class 4 |
-| `7 LASER BARS - Invert 26CH` | 1 | 26 | **Panda Lighting LS650/LS652** | 11 / 19 / 24 | 150 W | ❌ **No 26CH mode** · ☢️ Class 4 |
-| `4 rgbw-13ch 13CH` | 7 | 13 | **Light4Me STROBE MULTI BAR** | 4 / 16 / 168 | 200 W | ❌ **No 13CH mode** — audit §4 |
-| `3 LED Bar 2 11CH` | 1 | 11 | LED bar (unknown make) | — | ❓ | ❓ TBC — nothing supplied |
-| `2 Dimmer 00` | 3 | 1 | Relay/dimmer (CO₂ ×2, hazer ×1) | — | ❓ | ❓ TBC — nothing supplied |
+| `9 Sharpy Standard Lamp on` | 4 | 14 | **YF BEAM 230** — 189/230 W discharge beam | **16** / 20 | 350–400 W | ❌ **No 14CH mode**; stride is 16. Loses ch15 Reset + ch16 Lamp control — audit §6 |
+| `5 NEW WASH` | 8 | 9 | **BETOPPER LM70S** — 7×8 W RGBW mini head | **9** / 14 | 100 W | ✅ **Match** — the only profile that does |
+| `6 movingwash zone` | 2 | 9 | **BETOPPER LM70S**, hung inverted | **9** / 14 | 100 W | ✅ Match — pan/tilt-inverted duplicate, not a zoned mode (§5.1) |
+| `8 LASER BARS 26CH` | 8 | 26 | **Panda Lighting LS650/LS652** — 6-head laser bar | 11 / 19 / **24** | 150 W | ❌ **No 26CH mode** — audit §5 · ☢️ Class 4 |
+| `7 LASER BARS - Invert 26CH` | 1 | 26 | **Panda LS650/LS652**, hung inverted | 11 / 19 / **24** | 150 W | ❌ **No 26CH mode** · ☢️ Class 4 · inverted duplicate (§5.1) |
+| `4 rgbw-13ch 13CH` | 7 | 13 | **Light4Me STROBE MULTI BAR** | 4 / **16** / 168 | 200 W | ❌ **No 13CH mode** — audit §4 |
+| `3 LED Bar 2 11CH` | 1 | 11 | **Microh LEDBAR RGB** | **13** (fixed) | 50 W | ❌ **No 11CH mode**; segments offset by 2 — audit §7 |
+| `2 Dimmer 00` (`-Atmos-`) | 1 | 1 | **Chauvet Hurricane Haze 2D** on a DP-415 channel | **2** (fixed) | 533 W | ❌ **No 1CH mode** · ⚠️ must **not** be dimmed — audit §8 |
+| `2 Dimmer 00` (`Co2-HL.HR`) | 2 | 1 | CO₂ jets on DP-415 channels — make unknown | — | ❓ | ❓ Last unidentified device in the rig |
+
+**Distribution:** the three `2 Dimmer 00` entries are **channels on an Elation DP-415** 4-channel
+dimmer/switch pack (120 V, 15 A total, 5 A per channel), not DMX fixtures. See §8 and audit §8.
+
+### §5.1 Pan/tilt-inverted duplicate profiles
+
+Two of the eight profiles are duplicates of another, for fixtures hung upside down — reported by
+the venue and corroborated against the export (audit §12):
+
+| Inverted profile | Duplicate of | Fixtures | Corroboration |
+|------------------|--------------|----------|---------------|
+| `6 movingwash zone` | `5 NEW WASH` | M.Wash 7, M.Wash 10 | Identical sub-fixture structure (1 × 9 ch) — *not* a zoned mode, which would have cells |
+| `7 LASER BARS - Invert 26CH` | `8 LASER BARS 26CH` | Laser.BAR(6) 1 | Named "Invert"; its six cell addresses run **descending** (215→210) where every other bar ascends |
+
+**Three fixtures are therefore hung inverted:** M.Wash 7, M.Wash 10, Laser.BAR(6) 1. This is the
+only orientation information the repo holds — every `AbsolutePosition` is still `0,0,0`.
 
 > ⚠️ **"Clay Paky Sharpy" — the brand is retracted, the class is not.** `9 Sharpy Standard Lamp on`
-> is an MA profile *name*. The fixture is probably a **YF BEAM 230**, a 189/230 W discharge beam;
-> a Sharpy's own lamp is a 189 W MSD Platinum 5R, so the profile was a sensible pick for a
-> Sharpy-clone. An earlier revision of this document identified the beams as BETOPPER LM70S LED
-> mini heads — **that is withdrawn**: it fit the 14CH profile but not the 16-channel address stride,
-> and it understated the beams by ~1.2 kW.
+> is an MA profile *name*. The fixture is a **YF BEAM 230**, confirmed by its manual: a 189 W 5R
+> Philips / 230 W 7R Osram discharge beam. A Sharpy's own lamp is a 189 W MSD Platinum 5R, so the
+> profile was a sensible pick for a Sharpy-clone. An earlier revision identified the beams as
+> BETOPPER LM70S LED mini heads — **that is withdrawn** and now disproven by the manual.
 
-> ❌ **Three profiles are patched to footprints their fixture cannot be set to** — strobes 13CH,
-> lasers 26CH, beams 14CH. The patch is internally consistent (no address overlaps), so **do not
-> re-patch** until the on-site panel check in `fixture-identification-audit.md` §7 is done.
+> ❌ **Five of the eight profiles are patched to footprints their fixture cannot be set to** —
+> beams 14CH, strobes 13CH, lasers 26CH, DJ bar 11CH, hazer 1CH. Only the moving washes match.
+> The patch is internally consistent (no address overlaps), so **do not re-patch** until the
+> on-site panel check in `fixture-identification-audit.md` §9 is done.
 
 ---
 
@@ -236,11 +260,18 @@ The MA showfile organises the rig into named layers, grouped under three section
 
 ## §7 Effects Devices
 
-- **CO₂ jets** — `Co2-HL.HR`, single MA fixture multipatched to two physical jets, controlled as
-  a 1-channel dimmer/relay. **Currently unpatched** (address 0).
-- **Atmospheric haze** — `-Atmos-`, a 1-channel dimmer/relay on Universe 2 (abs 868).
+All three effects devices are **mains loads on an Elation DP-415 4-channel dimmer/switch pack**
+(120 V, 15 A total, **5 A per channel**, dual Edison sockets per channel, 9-way dip address). The
+`2 Dimmer 00` entries in the patch are pack *channels*, not fixtures with their own DMX.
 
-Real controller make/model and trigger wiring for both are **not** in the showfile (Open Item §9.3, §9.6).
+- **CO₂ jets** — `Co2-HL.HR`, one MA fixture multipatched to two physical jets. **Unpatched**
+  (address 0). Make, model and wattage unknown — the last gap in the load schedule.
+- **Atmospheric haze** — `-Atmos-`, **Chauvet Hurricane Haze 2D**, 533 W / 4.4 A at 120 V. That is
+  **88% of its 5 A pack channel**. Its own DMX personality is 2CH; it is patched as 1CH.
+
+> ⚠️ **The Haze 2D must not be run on a dimmer** — its manual states so outright, and the DP-415's
+> Dimmer/Switch selection is **pack-wide** (dip switch 10), not per channel. Read that dip switch
+> before the next show (Open Item §9.8).
 
 ---
 
@@ -251,11 +282,13 @@ Real controller make/model and trigger wiring for both are **not** in the showfi
 
 | Item | Status |
 |------|--------|
-| Per-fixture power draw | 🟡 **Manufacturer figures on file** for 4 of 6 fixture types |
-| Total connected load | 🟡 **5.15–5.35 kW identified ≈ 43–45 A @ 120 V** — a *subtotal*; DJ bar, CO₂ and hazer missing. Table in `fixture-identification-audit.md` §9 |
+| Per-fixture power draw | ✅ **Manufacturer figures on file** for every fixture except the CO₂ jets |
+| Total connected load | 🟡 **5.73–5.93 kW ≈ 48–49 A @ 120 V** — a *subtotal*; only the CO₂ jets are missing. Table in `fixture-identification-audit.md` §11 |
+| FX distribution | ✅ **Elation DP-415** 4-ch pack, 120 V, 15 A total / 5 A per channel, feeding the hazer (4.4 A — 88% of its channel) and both CO₂ jets |
+| DP-415 Dimmer vs Switch mode | ⚠️ **Unverified, and it matters** — the Haze 2D must not be dimmed and the pack's mode is pack-wide (dip 10) |
 | Lighting mains feed / breaker(s) | ❓ TBC |
 | Power factor / inrush allowance | ❓ TBC — the currents above assume unity PF and are a floor, not a design figure |
-| Laser safety class and controls | ☢️ **Class 4** (9 bars × 6 × 500 mW, 638 nm). Compliance items unrecorded — audit §9 |
+| Laser safety class and controls | ☢️ **Class 4** (9 bars × 6 × 500 mW, 638 nm). Compliance items unrecorded — audit §11 |
 | DMX node make/model (ArtNet/sACN/DMX) | ❓ TBC |
 | DMX node → universe/port mapping | ❓ TBC |
 | Data cabling (DMX runs, topology) | ❓ TBC |
@@ -266,39 +299,69 @@ Real controller make/model and trigger wiring for both are **not** in the showfi
 
 Everything not present in the showfile is listed here rather than invented. Consistent with the
 repo's treatment of unconfirmed audio items (`❓ Unconfirmed` / "TBC" / "do not patch until
-verified").
+verified"). Resolved items are kept, struck through, so the history of what was believed stays
+readable.
 
-1. **CO₂ jets unpatched** — `Co2-HL.HR` at DMX address 0. Patch + verify on-site.
-2. **Fixture positions unknown** — every `<AbsolutePosition>` in the showfile is `0,0,0`. No
-   to-scale **physical plot** can be drawn without a site survey. (A schematic **DMX patch map**
-   — address allocation, not geography — is provided at `assets/svg/dmx-patch-map.svg`.)
-3. **Real makes/models behind generic MA profiles** — *mostly resolved.* Manuals and manufacturer
-   data supplied 2026-08-25 identify the laser bars (**Panda Lighting LS650/LS652**, near-certain),
-   the moving beams (**YF BEAM 230**, probable), the moving washes (**BETOPPER LM70S**, probable)
-   and the strobe bars (**Light4Me STROBE MULTI BAR**, likely). Still unidentified:
-   `3 LED Bar 2 11CH` (DJ-deck bar) and `2 Dimmer 00` (CO₂ ×2 + hazer). The Clay Paky *brand* claim
-   is **retracted**, but the beams are a Sharpy-class discharge fixture after all — see §5 and
-   `fixture-identification-audit.md`.
-8. **Strobe bars patched 13CH — the Light4Me offers 4/16/168.** If the bars are really in 16CH mode
-   they overrun their slots and five of them collide with the next bar by 3 channels
-   (`fixture-identification-audit.md` §4). Read the mode off a bar's LCD before changing anything.
-9. **Laser bars patched 26CH — the LS650/LS652 offers 11/19/24.** No collision (24 < 26), but 2 channels
-   per bar are dead and the profile's internal channel order cannot be verified from the export
-   (audit §5).
-10. **Beams patched 14CH but spaced 16 — the YF BEAM 230 offers 16/20.** Nothing collides; the last
-   two channels of each beam are simply unreachable from the console. Load a 16-channel profile on
-   the same addresses (audit §6).
-11. **Laser class 4 — compliance items unrecorded.** Nine bars at 6 × 500 mW / 638 nm. Audience
-   reachability cannot be assessed while fixture positions are unknown (Open Item 2). Resolve with
-   the venue's safety advisor, not from the desk (audit §9).
-12. **YF BEAM 230 manual not on file** — its 16/20CH modes are from the published manual for that
-   model, not from a document the venue supplied. Source it, or confirm from the fixture panel.
-4. **DMX node/output topology** — map U1/U2 to physical nodes/ports.
-5. **Strobe-bar address gaps** — confirm intentional spares vs. stale patch (e.g. 370–382 free).
+### Resolved
+
+1. ~~**Real makes/models behind generic MA profiles**~~ — ✅ *resolved 2026-08-25.* Seven manuals
+   identify every fixture: **YF BEAM 230** beams (confirmed by manual), **Panda Lighting
+   LS650/LS652** laser bars, **BETOPPER LM70S** washes, **Light4Me STROBE MULTI BAR** strobes,
+   **Microh LEDBAR RGB** DJ bar, **Chauvet Hurricane Haze 2D** hazer, distributed via an **Elation
+   DP-415** pack. Only the CO₂ jets remain (item 11).
+
+### Patch vs. fixture — five mode mismatches
+
+2. **Beams patched 14CH; the YF BEAM 230 offers 16/20.** Stride is already 16, so nothing collides
+   — but ch15 Reset and ch16 **Lamp control** are unreachable: the discharge lamps cannot be
+   struck, doused or reset from the console. Load a 16-channel profile on the same addresses
+   (audit §6).
+3. **Strobe bars patched 13CH; the Light4Me offers 4/16/168.** If the bars are really in 16CH mode
+   they overrun their slots and five of them collide with the next bar by 3 channels (audit §4).
+   Read the mode off a bar's LCD before changing anything.
+4. **Laser bars patched 26CH; the LS650/LS652 offers 11/19/24.** No collision (24 < 26), but 2
+   channels per bar are dead and the profile's internal channel order cannot be verified from the
+   export (audit §5).
+5. **DJ bar patched 11CH; the Microh LEDBAR RGB is a fixed 13CH.** Its three RGB segments match the
+   profile's three cells exactly, but the master is 2 channels where the fixture has 4, so the
+   whole segment block is offset by two. Nothing collides (audit §7).
+6. **Hazer patched 1CH; the Haze 2D personality is a fixed 2CH.** Either the patch is a DP-415 pack
+   channel (fine) or it is the hazer's own DMX truncated, in which case haze volume never responds
+   (audit §8).
+
+### Safety and power
+
+7. **Laser class 4 — compliance items unrecorded.** Nine bars at 6 × 500 mW / 638 nm. Audience
+   reachability cannot be assessed while fixture positions are unknown (item 9). Resolve with the
+   venue's safety advisor, not from the desk (audit §11).
+8. **DP-415 Dimmer/Switch mode unverified.** The Haze 2D manual states it must not be run on a
+   dimmer, and the pack's mode is set pack-wide by dip switch 10. Read it before the next show.
+9. **Lighting power/breakers** — per-fixture draw is now known (§8) but the mains feed, breaker
+   sizing and power-factor allowance are not. Confirm with the venue electrician.
+
+### Still unknown
+
+10. **Fixture positions unknown** — every `<AbsolutePosition>` in the showfile is `0,0,0`. No
+   to-scale **physical plot** can be drawn without a site survey. (A schematic **DMX patch map** —
+   address allocation, not geography — is provided at `assets/svg/dmx-patch-map.svg`.) The only
+   orientation data the repo holds is the three inverted fixtures in §5.1.
+11. **CO₂ jets — make, model and wattage unknown.** They are DP-415 channels, not fixtures needing
+   a patch of their own; the long-standing "unpatched at address 0" item was asking the wrong
+   question. What they need is the pack's dip-switch address. Their draw is the last gap in the
+   load schedule.
+12. **DMX node/output topology** — map U1/U2 to physical nodes/ports.
+13. **Strobe-bar address gaps** — confirm intentional spares vs. stale patch (e.g. 370–382 free).
    *Note:* that 13-channel gap is exactly the extra room a 16CH Light4Me bar would need, which may
-   be the explanation — see Open Item 8.
-6. **Lighting power/breakers** — no PSU/load/breaker data; confirm with venue electrician.
-7. **Console make/model/location** — confirm grandMA2 hardware and booth position.
+   be the explanation — see item 3.
+14. **Console make/model/location** — confirm grandMA2 hardware and booth position.
+
+### Maintenance
+
+15. **Inverted fixtures carried as duplicate fixture types.** M.Wash 7, M.Wash 10 and
+   Laser.BAR(6) 1 are hung upside down and run on duplicate profiles (§5.1). grandMA2 patches pan
+   and tilt inversion *per fixture*; using a duplicate fixture *type* instead means those units
+   cannot be selected or edited as one type with the rest of their group, and the profile count
+   grows with every orientation. Works, but worth revisiting (audit §12).
 
 ---
 
@@ -307,7 +370,7 @@ verified").
 | Field | Value |
 |-------|-------|
 | Showfile | `08-lighting/source-showfile/NOMADFIXPATCHJUNE2026.xml` |
-| Fixture manuals | `08-lighting/manuals/` (3 supplied 2026-08-25) |
+| Fixture manuals | `08-lighting/manuals/` (7 supplied 2026-08-25) |
 | Manufacturer electrical data | Vendor product pages, relayed by the venue 2026-08-25 |
 | Identification audit | `08-lighting/fixture-identification-audit.md` |
 | Provenance | `08-lighting/source-showfile/README.md` |

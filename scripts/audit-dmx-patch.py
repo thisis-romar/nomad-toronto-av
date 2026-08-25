@@ -38,69 +38,112 @@ FOOTPRINT = {
     "2 Dimmer 00":                 1,
 }
 
-# Selectable DMX modes and electrical data for the fixtures the venue has identified. Modes come
-# from the manuals in 08-lighting/manuals/; the electrical figures come from the manufacturer
-# product pages, relayed by the venue 2026-08-25 (see the audit doc for provenance and caveats).
-# `evidence` is why this fixture is believed to be the one behind the profile -- the audit turns on
-# it, so it is recorded rather than assumed.
+# Selectable DMX modes and electrical data for the fixtures the venue has identified. Modes and
+# electrical figures come from the manuals in 08-lighting/manuals/ unless noted. `evidence` is why
+# this fixture is believed to be the one behind the profile -- the audit turns on it, so it is
+# recorded rather than assumed. `names` narrows a profile to specific MA fixture names, needed
+# because "2 Dimmer 00" covers three unrelated devices.
 FIXTURES = {
     "yf-beam-230": dict(
-        model="YF BEAM 230 moving head",
-        modes=(16, 20),
-        watts=(350, 400),
-        source="189 W (5R) / 230 W (7R) discharge lamp",
-        manual=None,
-        profiles=("9 Sharpy Standard Lamp on",),
-        confidence="probable",
-        evidence="A 189/230 W discharge beam in the venue's own fixture list, and the four beams "
-                 "are patched on a 16-channel stride -- exactly this fixture's 16CH mode, and two "
-                 "wider than the 14CH profile loaded against them.",
-        alternative="BETOPPER LM70S in 14CH mode. Fits the profile footprint but not the 16-channel "
-                    "address spacing, and does not account for the YF BEAM 230 being in the rig.",
+        model="YF BEAM 230 moving head (Guangzhou Yingfeng)",
+        modes=(16, 20), watts=(350, 400),
+        source="189 W 5R Philips / 230 W 7R Osram discharge lamp",
+        manual="yf-beam-230-moving-head.pdf",
+        profiles=("9 Sharpy Standard Lamp on",), names=None,
+        confidence="confirmed",
+        evidence="Manual supplied 2026-08-25 confirms 16CH/20CH and the 189/230 W lamp. The four "
+                 "beams are patched on a 16-channel stride -- this fixture's 16CH mode, two wider "
+                 "than the 14CH profile loaded against them.",
+        lost="At 14CH the profile stops at Pan/Tilt speed, so ch15 Reset and ch16 Lamp control are "
+             "unreachable: the discharge lamps cannot be struck, doused or reset from the console.",
     ),
     "betopper-lm70s": dict(
         model="BETOPPER LM70S (TLM70SK/TLM70SP) -- 7x8W RGBW mini moving head",
-        modes=(9, 14),
-        watts=(100, 100),
+        modes=(9, 14), watts=(100, 100),
         source="7 x 8 W RGBW 4-in-1 LED",
         manual="betopper-lm70s-mini-moving-head.pdf",
-        profiles=("5 NEW WASH", "6 movingwash zone"),
+        profiles=("5 NEW WASH", "6 movingwash zone"), names=None,
         confidence="probable",
         evidence="Its 9CH mode is exactly the moving-wash footprint, and the ten washes are patched "
                  "on a 9-channel stride.",
-        alternative=None,
+        lost=None,
     ),
     "panda-ls650": dict(
         model="Panda Lighting LS650/LS652 -- 6-head laser bar, XY movement",
-        modes=(11, 19, 24),
-        watts=(150, 150),
+        modes=(11, 19, 24), watts=(150, 150),
         source="6 x 500 mW 638 nm red diodes (red variant) -- 3 W total optical, CLASS 4",
         manual="panda-lighting-ls650-ls652-6-head-laser-bar.pdf",
-        profiles=("8 LASER BARS 26CH", "7 LASER BARS - Invert 26CH"),
+        profiles=("8 LASER BARS 26CH", "7 LASER BARS - Invert 26CH"), names=None,
         confidence="near-certain",
         evidence="Six laser eyes matches the MA fixture name Laser.BAR(6) and its 6 sub-fixture "
                  "cells; identified by the venue from the manufacturer product page.",
-        alternative=None,
+        lost="Two channels per bar are dead. The profile's internal channel order cannot be "
+             "verified -- the export carries fixture-type names only, not their definitions.",
     ),
     "light4me-smb": dict(
         model="Light4Me STROBE MULTI BAR",
-        modes=(4, 16, 168),
-        watts=(200, 200),
+        modes=(4, 16, 168), watts=(200, 200),
         source="480 x 0.3 W RGB + 240 x 0.3 W CW LED",
         manual="light4me-strobe-multi-bar.pdf",
-        profiles=("4 rgbw-13ch 13CH",),
+        profiles=("4 rgbw-13ch 13CH",), names=None,
         confidence="likely",
         evidence="An RGB-background + white-strobe bar, matching the MA layer --LED.STROBE-BAR "
                  "and the RGBW in the profile name. Not proven: no mode of this fixture is 13CH.",
-        alternative=None,
+        lost="At 16CH five of the seven bars overrun their slot; at 4CH nine of thirteen patched "
+             "channels are dead.",
+    ),
+    "microh-ledbar": dict(
+        model="Microh LEDBAR RGB",
+        modes=(13,), watts=(50, 50),
+        source="252 x 10 mm LED (108 R / 72 G / 72 B), 107 cm bar",
+        manual="microh-ledbar-rgb.pdf",
+        profiles=("3 LED Bar 2 11CH",), names=None,
+        confidence="likely",
+        evidence="Fixed 13CH: 1 function + 3 all-colour + 3 segments x RGB. The MA profile's four "
+                 "sub-fixtures are a 2-channel master plus 3 cells on a 3-channel stride, which "
+                 "matches those three RGB segments exactly -- but 2 + 9 = 11, not 13.",
+        lost="The MA master is 2 channels where the fixture has 4 (function + all R/G/B), so every "
+             "segment channel is offset by two. Nothing collides -- the 22-26 gap absorbs it.",
+    ),
+    "chauvet-haze-2d": dict(
+        model="Chauvet Hurricane Haze 2D",
+        modes=(2,), watts=(533, 533),
+        source="533 W / 4.4 A at 120 V, 60 Hz",
+        manual="chauvet-hurricane-haze-2d.pdf",
+        profiles=("2 Dimmer 00",), names=("-Atmos-",),
+        confidence="likely",
+        evidence="The only hazer in the rig and the only manual supplied for one.",
+        lost="Its own DMX personality is 2CH (blower speed, haze volume) and it is patched 1CH. If "
+             "the hazer's DMX is what is patched, haze volume never responds. If it is instead "
+             "plugged into the DP-415 pack, the pack must be in SWITCH mode -- the manual states "
+             "the Haze 2D must not be run on a dimmer.",
+    ),
+}
+
+# Devices that carry no load figure of their own but change how the load is distributed.
+DISTRIBUTION = {
+    "elation-dp-415": dict(
+        model="Elation DP-415 4-channel dimmer/switch pack",
+        manual="elation-dp-415-dimmer-switch-pack.pdf",
+        spec="AC 120 V 60 Hz, 15 A total, 5 A per channel, dual Edison per channel, "
+             "9-way dip address, dip 10 selects Dimmer or Switch mode pack-wide",
+        drives="The three `2 Dimmer 00` fixtures -- CO2 jets x2 and the hazer -- are pack channels, "
+               "not fixtures with their own DMX.",
     ),
 }
 
 # Fixtures in the rig with no identification at all -- carried so the load schedule cannot quietly
 # imply the total is complete.
 UNIDENTIFIED = {
-    "3 LED Bar 2 11CH": "DJ-deck LED bar",
-    "2 Dimmer 00": "CO2 jets (x2, unpatched) + atmospheric hazer",
+    ("2 Dimmer 00", "Co2-HL.HR"): "CO2 jets (x2, unpatched)",
+}
+
+# MA profiles that appear to be pan/tilt-inverted duplicates of another profile, for fixtures hung
+# upside down. Reported by the venue 2026-08-25. The export carries no channel definitions, so this
+# cannot be read out of the showfile -- but it can be corroborated (see invert_report).
+INVERT_PAIRS = {
+    "7 LASER BARS - Invert 26CH": "8 LASER BARS 26CH",
+    "6 movingwash zone": "5 NEW WASH",
 }
 
 # Line voltages the load schedule is reported at. Currents are real power / voltage: they assume
@@ -160,20 +203,63 @@ def spacing(fixtures, profile):
     return best, gaps.count(best), len(gaps)
 
 
+def owns(fx, f):
+    """Does fixture-spec `fx` cover patched fixture `f`?"""
+    if f["profile"] not in fx["profiles"]:
+        return False
+    return fx["names"] is None or f["name"].strip() in fx["names"]
+
+
+def owner_of(fixtures_spec, f):
+    for key, fx in fixtures_spec.items():
+        if owns(fx, f):
+            return key, fx
+    return None, None
+
+
 def load_schedule(fixtures):
-    """(label, qty, watts_each, watts_total) rows, identified fixtures first."""
+    """(model, qty, (w_lo, w_hi), (t_lo, t_hi), confidence) rows plus unidentified stragglers."""
     rows, unknown = [], []
-    for key, fx in FIXTURES.items():
-        qty = sum(1 for f in fixtures if f["profile"] in fx["profiles"])
+    for fx in FIXTURES.values():
+        qty = sum(1 for f in fixtures if owns(fx, f))
         if not qty:
             continue
         lo, hi = fx["watts"]
         rows.append((fx["model"], qty, (lo, hi), (lo * qty, hi * qty), fx["confidence"]))
-    for prof, what in UNIDENTIFIED.items():
-        qty = sum(1 for f in fixtures if f["profile"] == prof)
+    for (prof, name), what in UNIDENTIFIED.items():
+        qty = sum(1 for f in fixtures if f["profile"] == prof and f["name"].strip() == name)
         if qty:
             unknown.append((what, qty, prof))
     return rows, unknown
+
+
+def invert_report(fixtures):
+    """Which fixtures sit on an inverted-duplicate profile, and what corroborates it.
+
+    The showfile has no channel definitions, so pan/tilt inversion is invisible to it. What IS
+    visible is whether the duplicate profile has the same sub-fixture structure as its base -- if
+    it does, the two profiles differ only in something the export cannot show, which is what an
+    invert-only duplicate looks like.
+    """
+    root = ET.parse(SHOWFILE).getroot()
+    shape = {}
+    for layer in root.findall("m:Layer", NS):
+        for fx in layer.findall("m:Fixture", NS):
+            prof = fx.find("m:FixtureType", NS).get("name")
+            subs = fx.findall("m:SubFixture", NS)
+            cells = tuple(len(s.findall("m:Channel", NS)) for s in subs)
+            addrs = [int(a.text) for a in fx.findall("m:SubFixture/m:Patch/m:Address", NS)]
+            descending = len(addrs) > 2 and addrs[1:] == sorted(addrs[1:], reverse=True)
+            shape.setdefault(prof, []).append((fx.get("name"), cells, descending))
+    out = []
+    for inv, base in INVERT_PAIRS.items():
+        if inv not in shape:
+            continue
+        names = [n for n, _, _ in shape[inv]]
+        same = shape.get(base) and shape[inv][0][1] == shape[base][0][1]
+        desc = any(d for _, _, d in shape[inv])
+        out.append((inv, base, names, bool(same), desc))
+    return out
 
 
 
@@ -215,28 +301,41 @@ def main():
     if md:
         p(hdr)
     verdicts = {}
-    for prof in sorted(FOOTPRINT, key=lambda k: (k not in
-                       {p for f in FIXTURES.values() for p in f["profiles"]}, k)):
+    # One row per (profile, owner): "2 Dimmer 00" covers three unrelated devices, so a row per
+    # profile would report the hazer as unidentified just because a CO2 jet sorts first.
+    groups = []
+    for prof in FOOTPRINT:
+        by_owner = {}
+        for f in fixtures:
+            if f["profile"] != prof:
+                continue
+            by_owner.setdefault(owner_of(FIXTURES, f)[0], []).append(f)
+        for owner, members in by_owner.items():
+            groups.append((prof, owner, members))
+    groups.sort(key=lambda g: (g[1] is None, g[0]))
+
+    for prof, owner, members in groups:
         foot = FOOTPRINT[prof]
-        n = sum(1 for f in fixtures if f["profile"] == prof)
-        owner = next((k for k, v in FIXTURES.items() if prof in v["profiles"]), None)
+        n = len(members)
         stride, nat, ngap = spacing(fixtures, prof)
         st = "—" if not stride else (f"{stride}" if nat == ngap else f"{stride} ({nat}/{ngap})")
+        shared = sum(1 for g in groups if g[0] == prof) > 1
+        label = f"`{prof}`" + (f" — {members[0]['name'].strip()}" if shared else "")
         if not owner:
             row = ("—", "—", "❓ not identified")
         else:
             fx = FIXTURES[owner]
             ok = foot in fx["modes"]
-            verdicts[prof] = ok
+            verdicts.setdefault(prof, ok)
             note = ""
             if stride and stride in fx["modes"] and stride != foot:
                 note = f" — but the {stride}-channel stride *is* its {stride}CH mode"
             row = (fx["model"], "/".join(f"{m}CH" for m in fx["modes"]),
                    "✅ match" if ok else f"❌ **no {foot}CH mode**{note}")
         if md:
-            p(f"| `{prof}` (×{n}) | {foot}CH | {st} | {row[0]} | {row[1]} | {row[2]} |")
+            p(f"| {label} (×{n}) | {foot}CH | {st} | {row[0]} | {row[1]} | {row[2]} |")
         else:
-            p(f"  {prof:<28} {foot:>3}CH stride {st:>3}  {row[2]:<52} {row[1]}")
+            p(f"  {prof[:26]:<26} {foot:>3}CH stride {st:>8}  {row[2][:50]:<50} {row[1]}")
 
     # --- 3. consequence of the nearest larger mode ---------------------------------------
     p("\n## If a mismatched fixture is really running its nearest larger mode\n" if md
@@ -312,6 +411,28 @@ def main():
           "  ".join(f"{a:>11} A" for a in amps))
         for what, qty, prof in unknown:
             p(f"  {qty:>2} x {what:<46} unknown")
+
+    # --- 5. inverted-duplicate profiles -----------------------------------------------------
+    inv = invert_report(fixtures)
+    p("\n## Pan/tilt-inverted duplicate profiles\n" if md else "\n=== INVERTED DUPLICATES ===")
+    if md:
+        p("| Inverted profile | Duplicate of | Fixtures on it | Same sub-fixture shape? | Cell order reversed? |")
+        p("|------------------|--------------|----------------|----------|----------|")
+    for prof, base, names, same, desc in inv:
+        if md:
+            p(f"| `{prof}` | `{base}` | {', '.join(names)} | "
+              f"{'✅ yes' if same else '❌ no'} | {'✅ yes' if desc else '— no'} |")
+        else:
+            p(f"  {prof}")
+            p(f"     duplicate of {base}; fixtures: {', '.join(names)}")
+            p(f"     same sub-fixture shape: {same}; cell order reversed: {desc}")
+
+    if md:
+        p("\n> Pan/tilt inversion is **invisible to this export** — it lives in the fixture-type "
+          "definition, which grandMA2 does not write into an XML fixture list. What the export can "
+          "show is that the duplicate has the *same sub-fixture shape* as its base, i.e. the two "
+          "profiles differ only in something the file cannot represent. That is what an "
+          "invert-only duplicate looks like from here; it is corroboration, not proof.")
 
     if not md:
         p("\n=== SUPPLIED MANUALS ===")
