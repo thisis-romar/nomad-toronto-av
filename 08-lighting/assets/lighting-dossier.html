@@ -1,0 +1,659 @@
+<title>NØMAD Lighting Dossier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#f2f5f5; --card:#ffffff; --ink:#12181b; --ink-2:#46585d; --ink-3:#76898e;
+  --line:#d8e0e1; --line-2:#e8eeee;
+  --accent:#0d6e86; --accent-soft:#e2eff3;
+  --warn:#8a5a00; --warn-soft:#f8eed6;
+  --fault:#a82c27; --fault-soft:#f9e3e1;
+  --unknown-soft:#eceff0;
+  --shadow:0 1px 2px rgba(18,24,27,.05), 0 8px 24px -16px rgba(18,24,27,.28);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0d1215; --card:#141c20; --ink:#e6eded; --ink-2:#a3b5b9; --ink-3:#71868b;
+    --line:#253338; --line-2:#1c272b;
+    --accent:#4bb8d4; --accent-soft:#10333e;
+    --warn:#e0a33a; --warn-soft:#33280f;
+    --fault:#f08078; --fault-soft:#3a1a18;
+    --unknown-soft:#1b2427;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0d1215; --card:#141c20; --ink:#e6eded; --ink-2:#a3b5b9; --ink-3:#71868b;
+  --line:#253338; --line-2:#1c272b;
+  --accent:#4bb8d4; --accent-soft:#10333e;
+  --warn:#e0a33a; --warn-soft:#33280f;
+  --fault:#f08078; --fault-soft:#3a1a18;
+  --unknown-soft:#1b2427;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.9);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:400 16px/1.62 "IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+code,.n,.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums}
+h1,h2,h3,h4{font-family:"IBM Plex Sans Condensed","IBM Plex Sans",Arial,sans-serif; text-wrap:balance; margin:0}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:2px}
+
+.shell{max-width:1280px; margin:0 auto; padding:0 24px 110px; display:grid;
+  grid-template-columns:210px minmax(0,1fr); gap:52px; align-items:start}
+/* Grid items default to min-width:auto, so a wide table inside main would push the whole
+   column past the viewport and drag the nav out with it. */
+.shell>*{min-width:0}
+nav{position:sticky; top:26px; padding-top:26px}
+nav p{
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 12px
+}
+nav ol{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1px}
+nav a{
+  display:flex; gap:9px; padding:5px 8px; border-radius:2px; text-decoration:none;
+  color:var(--ink-2); font-size:13px; border-left:2px solid transparent
+}
+nav a:hover{background:var(--line-2); color:var(--ink)}
+nav a b{font-family:"IBM Plex Mono",monospace; color:var(--ink-3); font-weight:400; font-size:11.5px}
+
+.mast{padding:64px 0 34px; border-bottom:2px solid var(--ink)}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 16px
+}
+h1{font-size:clamp(32px,4.6vw,50px); font-weight:700; letter-spacing:-.02em; line-height:1.06}
+.dek{max-width:66ch; color:var(--ink-2); font-size:17px; margin:18px 0 0}
+.meta-strip{
+  display:flex; flex-wrap:wrap; gap:6px 26px; margin:26px 0 0;
+  font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-3)
+}
+.meta-strip b{color:var(--ink-2); font-weight:500}
+
+section{padding:54px 0 0; scroll-margin-top:24px}
+.shead{display:flex; align-items:baseline; gap:13px; flex-wrap:wrap; margin:0 0 8px}
+.shead .s{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--accent); font-weight:500}
+.shead h2{font-size:25px; font-weight:600; letter-spacing:-.01em}
+.lede{color:var(--ink-2); max-width:70ch; margin:0 0 24px; font-size:15.5px}
+h3{font-size:17.5px; font-weight:600}
+h4{font-size:14px; font-weight:600; letter-spacing:.02em; margin:26px 0 10px; color:var(--ink-2)}
+
+.tw{overflow-x:auto; border:1px solid var(--line); border-radius:3px; background:var(--card)}
+table{border-collapse:collapse; width:100%; font-size:14px}
+thead th{
+  font-family:"IBM Plex Sans Condensed",sans-serif; font-weight:600; font-size:11.5px;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); text-align:left;
+  padding:11px 13px; border-bottom:1px solid var(--line); white-space:nowrap; position:sticky; top:0;
+  background:var(--card)
+}
+thead th.n{text-align:right}
+tbody td{padding:9px 13px; border-bottom:1px solid var(--line-2); vertical-align:middle}
+tbody tr:last-child td{border-bottom:0}
+td.n{text-align:right; font-family:"IBM Plex Mono",monospace; white-space:nowrap; color:var(--ink-2)}
+td.n.strong{color:var(--ink); font-weight:600}
+td.n.dim{color:var(--ink-3); font-size:12.5px}
+td.fx{font-weight:500; white-space:nowrap}
+td code{font-size:12.5px}
+tr.grp td{background:var(--line-2); padding:9px 13px; border-bottom:1px solid var(--line)}
+tr.grp code{font-size:12.5px; font-weight:600; color:var(--ink)}
+tr.grp .sect{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-3); margin-left:12px
+}
+.swatch{display:inline-block; width:9px; height:9px; border-radius:1px; background:var(--c); margin-right:9px}
+.tag{
+  display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.05em;
+  padding:2px 6px; border:1px solid var(--line); border-radius:2px; color:var(--ink-3); margin-right:4px
+}
+.tag.warn{color:var(--warn); border-color:var(--warn); background:var(--warn-soft)}
+.tnote{font-size:13.5px; color:var(--ink-3); margin:13px 0 0; max-width:74ch}
+
+/* universes */
+.legend{display:flex; flex-wrap:wrap; gap:8px 20px; margin:0 0 20px}
+.lg{display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--ink-2)}
+.lg i{width:16px; height:8px; border-radius:1px; background:var(--c); display:block}
+.umap{display:flex; flex-direction:column; gap:24px}
+.ulab{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;
+  font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-3); margin:0 0 7px}
+.ulab b{color:var(--ink); font-weight:600; letter-spacing:.1em; text-transform:uppercase}
+.unibar{position:relative; height:32px; background:var(--line-2); border:1px solid var(--line);
+  border-radius:2px; overflow:hidden}
+.seg{position:absolute; top:0; bottom:0; background:var(--c)}
+.seg[data-inv]{background:repeating-linear-gradient(135deg,var(--c) 0 4px,
+  color-mix(in srgb,var(--c) 55%,#000) 4px 8px)}
+.ruler{position:relative; height:16px; margin-top:5px}
+.tick{position:absolute; top:0; width:1px; height:5px; background:var(--line)}
+.tick b{position:absolute; left:0; top:7px; font-family:"IBM Plex Mono",monospace; font-size:10px;
+  font-weight:400; color:var(--ink-3)}
+
+/* fixture blocks */
+.fxblock{
+  background:var(--card); border:1px solid var(--line); border-top:2px solid var(--c);
+  border-radius:3px; padding:22px 24px 18px; box-shadow:var(--shadow); margin:0 0 18px;
+  display:flex; flex-direction:column; gap:14px
+}
+.fxblock header{display:flex; justify-content:space-between; align-items:start; gap:14px; flex-wrap:wrap}
+.fxblock .meta{margin:5px 0 0; font-size:12.5px; color:var(--ink-3)}
+.grade{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.05em;
+  padding:3px 8px; border-radius:2px; background:var(--accent-soft); color:var(--accent); white-space:nowrap}
+.specs{display:flex; flex-wrap:wrap; gap:0; margin:0; border:1px solid var(--line); border-radius:2px; overflow:hidden}
+.specs div{flex:1 1 130px; padding:9px 12px; border-right:1px solid var(--line)}
+.specs div:last-child{border-right:0; flex:2 1 220px}
+.specs dt{font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3); margin:0 0 3px}
+.specs dd{margin:0; font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--ink)}
+.specs dd.bad{color:var(--fault); font-weight:600}
+.specs dd.good{color:var(--accent); font-weight:600}
+.why{margin:0; font-size:14.5px; color:var(--ink-2); max-width:80ch}
+.why b{color:var(--ink)}
+.cmwrap{border:1px solid var(--line); border-radius:2px; overflow:hidden}
+.cmhead{
+  display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; margin:0;
+  padding:9px 13px; background:var(--line-2); font-family:"IBM Plex Sans Condensed",sans-serif;
+  font-size:12px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-2)
+}
+.cmhead span{font-family:"IBM Plex Mono",monospace; font-weight:400; text-transform:none;
+  letter-spacing:0; color:var(--ink-3); font-size:11px}
+table.cm{font-size:13.5px}
+table.cm td{padding:6px 13px}
+table.cm td:first-child{width:44px}
+table.cm tr.lost td{background:var(--fault-soft)}
+table.cm tr.lost td:nth-child(2){color:var(--fault)}
+.note{margin:0; font-size:13.5px; color:var(--ink-3); max-width:82ch}
+.src{display:flex; gap:8px; align-items:center; font-size:11px; color:var(--ink-3); margin:0}
+.src span{letter-spacing:.09em; text-transform:uppercase}
+.src code{font-size:11px; color:var(--ink-2)}
+
+/* mismatches */
+.mmlist{display:flex; flex-direction:column; gap:14px}
+.mm{background:var(--card); border:1px solid var(--line); border-left:3px solid var(--ink-3);
+  border-radius:3px; padding:19px 22px}
+.mm.fault{border-left-color:var(--fault)}
+.mm.warn{border-left-color:var(--warn)}
+.rank{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--ink-3)}
+.mm.fault .rank{color:var(--fault)}
+.mm.warn .rank{color:var(--warn)}
+.mm h3{margin:6px 0 10px}
+.mm p{margin:0; font-size:14.5px; color:var(--ink-2); max-width:82ch}
+.mm .tell{margin-top:11px; padding-top:11px; border-top:1px solid var(--line-2);
+  font-size:13.5px; color:var(--ink-3)}
+.mm .fix{margin-top:11px; display:flex; gap:9px; align-items:baseline; font-size:14px; color:var(--ink)}
+.mm .fix span{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--ink-3); flex:0 0 auto}
+.mm strong,.why strong{color:var(--ink); font-weight:600}
+.mm em{font-style:italic}
+
+/* open items */
+.open{background:var(--card); border:1px solid var(--line); border-radius:3px; overflow:hidden}
+.open ul{list-style:none; margin:0; padding:0}
+.open li{display:grid; grid-template-columns:220px minmax(0,1fr); gap:18px; padding:14px 20px;
+  border-bottom:1px solid var(--line-2); font-size:14px; color:var(--ink-2)}
+.open li:last-child{border-bottom:0}
+.open li b{color:var(--ink); font-weight:600; font-size:14px}
+.open li.must{background:var(--fault-soft)}
+.open li.must b{color:var(--fault)}
+@media (max-width:760px){.open li{grid-template-columns:1fr; gap:5px}}
+
+.callout{
+  border:1px solid var(--line); border-left:3px solid var(--fault); background:var(--card);
+  border-radius:3px; padding:18px 22px; margin:20px 0 0
+}
+.callout h4{margin:0 0 8px; color:var(--fault); font-size:14px; letter-spacing:.03em}
+.callout p{margin:0 0 9px; font-size:14.5px; color:var(--ink-2); max-width:80ch}
+.callout p:last-child{margin-bottom:0}
+
+.pack{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin-top:18px}
+tr.tot td{border-top:1px solid var(--line); font-weight:600; color:var(--ink)}
+tr.unk td{color:var(--ink-3)}
+tr.sp td{color:var(--ink-3)}
+
+footer{margin-top:66px; padding-top:22px; border-top:1px solid var(--line); font-size:13px;
+  color:var(--ink-3); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
+footer code{font-size:12px}
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr; gap:0}
+  nav{position:static; padding:22px 0 0; border-bottom:1px solid var(--line)}
+  nav ol{flex-direction:row; flex-wrap:wrap; gap:4px; padding-bottom:18px}
+  nav a{border:1px solid var(--line); border-radius:2px; padding:4px 9px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+
+<div class="shell">
+
+<nav aria-label="Contents">
+  <p>Contents</p>
+  <ol>
+    <li><a href="#s1"><b>1</b>Status</a></li>
+    <li><a href="#s2"><b>2</b>System</a></li>
+    <li><a href="#s3"><b>3</b>Fixture schedule</a></li>
+    <li><a href="#s4"><b>4</b>Universes</a></li>
+    <li><a href="#s5"><b>5</b>Fixtures &amp; channel maps</a></li>
+    <li><a href="#s6"><b>6</b>Mismatches</a></li>
+    <li><a href="#s7"><b>7</b>Inverted fixtures</a></li>
+    <li><a href="#s8"><b>8</b>Power</a></li>
+    <li><a href="#s9"><b>9</b>Laser safety</a></li>
+    <li><a href="#s10"><b>10</b>Open items</a></li>
+    <li><a href="#s11"><b>11</b>Provenance</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<header class="mast">
+  <p class="eyebrow">Lighting dossier · rev 3.1</p>
+  <h1>NØMAD Toronto<br>lighting rig</h1>
+  <p class="dek">The complete record of the grandMA2 rig: every fixture, every address, and the DMX
+  channel map of every fixture as its own manual states it. Assembled from a showfile that names
+  none of its fixtures and seven vendor manuals that name no addresses.</p>
+  <div class="meta-strip">
+    <span><b>Console</b> grandMA2 “Nomad” v3.9.60</span>
+    <span><b>Showfile</b> nomad_2026-06-13_kayo-toronto-ft-pools</span>
+    <span><b>Exported</b> 2026-06-24</span>
+    <span><b>Compiled</b> 2026-08-25</span>
+  </div>
+</header>
+
+<section id="s1">
+  <div class="shead"><span class="s">§1</span><h2>Status</h2></div>
+  <p class="lede">Desktop work only. Nothing in this document has been verified at the rig, and
+  nothing here should be re-patched from a desk — the patch is internally consistent as it stands,
+  and a change made on inference would leave it worse.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Item</th><th>State</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>Fixtures identified</td><td><b>All but the CO₂ jets</b></td><td>Seven manuals against eight MA profiles</td></tr>
+      <tr><td>Patch address integrity</td><td><b>Clean</b></td><td>32 patched, no overlaps, no universe-boundary crossings</td></tr>
+      <tr><td>Patch vs. fixture modes</td><td><b>5 mismatches</b></td><td>Only the moving washes agree — §6</td></tr>
+      <tr><td>Connected load</td><td><b>Subtotal</b></td><td>CO₂ jets carry no figure — §8</td></tr>
+      <tr><td>Laser class</td><td><b>Class 4</b></td><td>Compliance items unrecorded — §9</td></tr>
+      <tr><td>Fixture positions</td><td><b>Unknown</b></td><td>Every position in the showfile is <code>0,0,0</code></td></tr>
+      <tr><td>DMX node topology</td><td><b>Unknown</b></td><td>The export patches addresses, not ports</td></tr>
+      <tr><td>Lighting mains feed</td><td><b>Unknown</b></td><td>Per-fixture draw known; the feed is not</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s2">
+  <div class="shead"><span class="s">§2</span><h2>System</h2></div>
+  <p class="lede">Two DMX universes off a grandMA2 “Nomad”. The console is the software platform —
+  what physical surface sits in the booth is not described by the export.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Universe</th><th class="n">Absolute</th><th class="n">Fixtures</th><th class="n">Channels used</th><th>Contents</th></tr></thead>
+    <tbody>
+      <tr><td><b>Universe 1</b></td><td class="n">1–512</td><td class="n">28</td><td class="n">438</td>
+        <td>DJ-deck bar · 7 strobe bars · M.Wash 1–8 · all 4 beams · Laser.BAR 1–8</td></tr>
+      <tr><td><b>Universe 2</b></td><td class="n">513–1024</td><td class="n">4</td><td class="n">45</td>
+        <td>Laser.BAR 9 · M.Wash 9 &amp; 10 · hazer</td></tr>
+      <tr><td><b>Unpatched</b></td><td class="n">—</td><td class="n">2</td><td class="n">—</td>
+        <td>CO₂ jets ×2, at address 0 — they are DP-415 pack channels, not DMX fixtures (§8)</td></tr>
+    </tbody>
+  </table></div>
+  <p class="tnote">Addresses in the showfile are absolute across the whole patch. Universe-relative
+  is <code>absolute − (universe − 1) × 512</code>.</p>
+</section>
+
+<section id="s3">
+  <div class="shead"><span class="s">§3</span><h2>Fixture schedule</h2></div>
+  <p class="lede">All 34 fixtures in MA layer order, 32 patched and 2
+  not. <b>Ch</b> is the footprint the patch occupies — the <code>…CH</code> in the profile name,
+  which is not always a mode the fixture has. Start and end are universe-relative; the absolute
+  address follows.</p>
+  <div class="tw"><table>
+    <thead><tr>
+      <th>Fixture</th><th class="n">FID</th><th>MA profile</th><th class="n">Ch</th>
+      <th class="n">Uni</th><th class="n">Start</th><th class="n">End</th><th class="n">Abs</th><th>Notes</th>
+    </tr></thead>
+    <tbody>
+<tr class="grp"><td colspan="9"><span class="swatch" style="--c:#E69F00"></span><code>--LED.DJ-Decks</code><span class="sect">//LED</span></td></tr>
+<tr><td class="fx">DJ-LED</td><td class="n">1</td><td><code>3 LED Bar 2 11CH</code></td><td class="n">11</td><td class="n">U1</td><td class="n strong">11</td><td class="n">21</td><td class="n dim">11</td><td>&nbsp;</td></tr>
+<tr class="grp"><td colspan="9"><span class="swatch" style="--c:#CC79A7"></span><code>--LED.STROBE-BAR</code><span class="sect">//LED</span></td></tr>
+<tr><td class="fx">LED.Strobe-BAR 7</td><td class="n">807</td><td><code>4 rgbw-13ch 13CH</code></td><td class="n">13</td><td class="n">U1</td><td class="n strong">357</td><td class="n">369</td><td class="n dim">357</td><td>&nbsp;</td></tr>
+<tr><td class="fx">LED.Strobe-BAR 6</td><td class="n">806</td><td><code>4 rgbw-13ch 13CH</code></td><td class="n">13</td><td class="n">U1</td><td class="n strong">383</td><td class="n">395</td><td class="n dim">383</td><td>&nbsp;</td></tr>
+<tr><td class="fx">LED.Strobe-BAR 5</td><td class="n">805</td><td><code>4 rgbw-13ch 13CH</code></td><td class="n">13</td><td class="n">U1</td><td class="n strong">396</td><td class="n">408</td><td class="n dim">396</td><td>&nbsp;</td></tr>
+<tr><td class="fx">LED.Strobe-BAR 4</td><td class="n">804</td><td><code>4 rgbw-13ch 13CH</code></td><td class="n">13</td><td class="n">U1</td><td class="n strong">409</td><td class="n">421</td><td class="n dim">409</td><td>&nbsp;</td></tr>
+<tr><td class="fx">LED.Strobe-BAR 3</td><td class="n">803</td><td><code>4 rgbw-13ch 13CH</code></td><td class="n">13</td><td class="n">U1</td><td class="n strong">422</td><td class="n">434</td><td class="n dim">422</td><td>&nbsp;</td></tr>
+<tr><td class="fx">LED.Strobe-BAR 2</td><td class="n">802</td><td><code>4 rgbw-13ch 13CH</code></td><td class="n">13</td><td class="n">U1</td><td class="n strong">435</td><td class="n">447</td><td class="n dim">435</td><td>&nbsp;</td></tr>
+<tr><td class="fx">LED.Strobe-BAR 1</td><td class="n">801</td><td><code>4 rgbw-13ch 13CH</code></td><td class="n">13</td><td class="n">U1</td><td class="n strong">448</td><td class="n">460</td><td class="n dim">448</td><td>&nbsp;</td></tr>
+<tr class="grp"><td colspan="9"><span class="swatch" style="--c:#009E73"></span><code>--M.WASH</code><span class="sect">//LED</span></td></tr>
+<tr><td class="fx">M.Wash 4</td><td class="n">104</td><td><code>5 NEW WASH</code></td><td class="n">9</td><td class="n">U1</td><td class="n strong">235</td><td class="n">243</td><td class="n dim">235</td><td>&nbsp;</td></tr>
+<tr><td class="fx">M.Wash 3</td><td class="n">103</td><td><code>5 NEW WASH</code></td><td class="n">9</td><td class="n">U1</td><td class="n strong">244</td><td class="n">252</td><td class="n dim">244</td><td>&nbsp;</td></tr>
+<tr><td class="fx">M.Wash 8</td><td class="n">108</td><td><code>5 NEW WASH</code></td><td class="n">9</td><td class="n">U1</td><td class="n strong">253</td><td class="n">261</td><td class="n dim">253</td><td>&nbsp;</td></tr>
+<tr><td class="fx">M.Wash 7</td><td class="n">107</td><td><code>6 movingwash zone</code></td><td class="n">9</td><td class="n">U1</td><td class="n strong">262</td><td class="n">270</td><td class="n dim">262</td><td><span class="tag">inverted</span></td></tr>
+<tr><td class="fx">M.Wash 5</td><td class="n">105</td><td><code>5 NEW WASH</code></td><td class="n">9</td><td class="n">U1</td><td class="n strong">271</td><td class="n">279</td><td class="n dim">271</td><td>&nbsp;</td></tr>
+<tr><td class="fx">M.Wash 2</td><td class="n">102</td><td><code>5 NEW WASH</code></td><td class="n">9</td><td class="n">U1</td><td class="n strong">469</td><td class="n">477</td><td class="n dim">469</td><td>&nbsp;</td></tr>
+<tr><td class="fx">M.Wash 6</td><td class="n">106</td><td><code>5 NEW WASH</code></td><td class="n">9</td><td class="n">U1</td><td class="n strong">489</td><td class="n">497</td><td class="n dim">489</td><td>&nbsp;</td></tr>
+<tr><td class="fx">M.Wash 1</td><td class="n">101</td><td><code>5 NEW WASH</code></td><td class="n">9</td><td class="n">U1</td><td class="n strong">498</td><td class="n">506</td><td class="n dim">498</td><td>&nbsp;</td></tr>
+<tr><td class="fx">M.Wash 10</td><td class="n">110</td><td><code>6 movingwash zone</code></td><td class="n">9</td><td class="n">U2</td><td class="n strong">200</td><td class="n">208</td><td class="n dim">712</td><td><span class="tag">inverted</span></td></tr>
+<tr><td class="fx">M.Wash 9</td><td class="n">109</td><td><code>5 NEW WASH</code></td><td class="n">9</td><td class="n">U2</td><td class="n strong">210</td><td class="n">218</td><td class="n dim">722</td><td>&nbsp;</td></tr>
+<tr class="grp"><td colspan="9"><span class="swatch" style="--c:#0072B2"></span><code>--M.Beam</code><span class="sect">//BEAMS</span></td></tr>
+<tr><td class="fx">M.BEAM 2</td><td class="n">402</td><td><code>9 Sharpy Standard Lamp on</code></td><td class="n">14</td><td class="n">U1</td><td class="n strong">280</td><td class="n">293</td><td class="n dim">280</td><td>&nbsp;</td></tr>
+<tr><td class="fx">M.BEAM 3</td><td class="n">403</td><td><code>9 Sharpy Standard Lamp on</code></td><td class="n">14</td><td class="n">U1</td><td class="n strong">296</td><td class="n">309</td><td class="n dim">296</td><td>&nbsp;</td></tr>
+<tr><td class="fx">M.BEAM 1</td><td class="n">401</td><td><code>9 Sharpy Standard Lamp on</code></td><td class="n">14</td><td class="n">U1</td><td class="n strong">312</td><td class="n">325</td><td class="n dim">312</td><td>&nbsp;</td></tr>
+<tr><td class="fx">M.BEAM 4</td><td class="n">404</td><td><code>9 Sharpy Standard Lamp on</code></td><td class="n">14</td><td class="n">U1</td><td class="n strong">328</td><td class="n">341</td><td class="n dim">328</td><td>&nbsp;</td></tr>
+<tr class="grp"><td colspan="9"><span class="swatch" style="--c:#D55E00"></span><code>--M.Laser-BAR</code><span class="sect">//SFX</span></td></tr>
+<tr><td class="fx">Laser.BAR(6) 8</td><td class="n">1008</td><td><code>8 LASER BARS 26CH</code></td><td class="n">26</td><td class="n">U1</td><td class="n strong">27</td><td class="n">52</td><td class="n dim">27</td><td>&nbsp;</td></tr>
+<tr><td class="fx">Laser.BAR(6) 7</td><td class="n">1007</td><td><code>8 LASER BARS 26CH</code></td><td class="n">26</td><td class="n">U1</td><td class="n strong">53</td><td class="n">78</td><td class="n dim">53</td><td>&nbsp;</td></tr>
+<tr><td class="fx">Laser.BAR(6) 6</td><td class="n">1006</td><td><code>8 LASER BARS 26CH</code></td><td class="n">26</td><td class="n">U1</td><td class="n strong">79</td><td class="n">104</td><td class="n dim">79</td><td>&nbsp;</td></tr>
+<tr><td class="fx">Laser.BAR(6) 5</td><td class="n">1005</td><td><code>8 LASER BARS 26CH</code></td><td class="n">26</td><td class="n">U1</td><td class="n strong">105</td><td class="n">130</td><td class="n dim">105</td><td>&nbsp;</td></tr>
+<tr><td class="fx">Laser.BAR(6) 4</td><td class="n">1004</td><td><code>8 LASER BARS 26CH</code></td><td class="n">26</td><td class="n">U1</td><td class="n strong">131</td><td class="n">156</td><td class="n dim">131</td><td>&nbsp;</td></tr>
+<tr><td class="fx">Laser.BAR(6) 3</td><td class="n">1003</td><td><code>8 LASER BARS 26CH</code></td><td class="n">26</td><td class="n">U1</td><td class="n strong">157</td><td class="n">182</td><td class="n dim">157</td><td>&nbsp;</td></tr>
+<tr><td class="fx">Laser.BAR(6) 2</td><td class="n">1002</td><td><code>8 LASER BARS 26CH</code></td><td class="n">26</td><td class="n">U1</td><td class="n strong">183</td><td class="n">208</td><td class="n dim">183</td><td>&nbsp;</td></tr>
+<tr><td class="fx">Laser.BAR(6) 1</td><td class="n">1001</td><td><code>7 LASER BARS - Invert 26CH</code></td><td class="n">26</td><td class="n">U1</td><td class="n strong">209</td><td class="n">234</td><td class="n dim">209</td><td><span class="tag">inverted</span><span class="tag">cells descend</span></td></tr>
+<tr><td class="fx">Laser.BAR(6) 9</td><td class="n">1009</td><td><code>8 LASER BARS 26CH</code></td><td class="n">26</td><td class="n">U2</td><td class="n strong">1</td><td class="n">26</td><td class="n dim">513</td><td>&nbsp;</td></tr>
+<tr class="grp"><td colspan="9"><span class="swatch" style="--c:#56B4E9"></span><code>--Co2(2x)</code><span class="sect">//SFX</span></td></tr>
+<tr><td class="fx">Co2-HL.HR</td><td class="n">911</td><td><code>2 Dimmer 00</code></td><td class="n">1</td><td class="n">—</td><td class="n strong">—</td><td class="n">—</td><td class="n dim">0</td><td><span class="tag warn">unpatched</span></td></tr>
+<tr><td class="fx">Co2-HL.HR</td><td class="n">911</td><td><code>2 Dimmer 00</code></td><td class="n">1</td><td class="n">—</td><td class="n strong">—</td><td class="n">—</td><td class="n dim">0</td><td><span class="tag warn">unpatched</span></td></tr>
+<tr class="grp"><td colspan="9"><span class="swatch" style="--c:#56B4E9"></span><code>~Atmos~</code><span class="sect">//SFX</span></td></tr>
+<tr><td class="fx">-Atmos-</td><td class="n">420</td><td><code>2 Dimmer 00</code></td><td class="n">1</td><td class="n">U2</td><td class="n strong">356</td><td class="n">356</td><td class="n dim">868</td><td>&nbsp;</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s4">
+  <div class="shead"><span class="s">§4</span><h2>Universes</h2></div>
+  <p class="lede">Both universes to scale, 512 addresses each. Hatched blocks are the three
+  fixtures hung inverted (§7). The empty stretches are real.</p>
+  <div class="legend"><span class="lg"><i style="--c:#0072B2"></i>Moving beams</span><span class="lg"><i style="--c:#D55E00"></i>Laser bars</span><span class="lg"><i style="--c:#009E73"></i>Moving washes</span><span class="lg"><i style="--c:#CC79A7"></i>Strobe bars</span><span class="lg"><i style="--c:#E69F00"></i>DJ-deck bar</span><span class="lg"><i style="--c:#56B4E9"></i>Effects</span></div>
+  <div class="umap">
+    <div>
+      <p class="ulab"><b>Universe 1</b><span>abs 1–512 · 28 fixtures · 438 ch used</span></p>
+      <div class="uni"><div class="unibar"><i class="seg" style="left:1.9531%;width:2.1484%;--c:#E69F00" title="DJ-LED — abs 11–21"></i><i class="seg" style="left:69.5312%;width:2.5391%;--c:#CC79A7" title="LED.Strobe-BAR 7 — abs 357–369"></i><i class="seg" style="left:74.6094%;width:2.5391%;--c:#CC79A7" title="LED.Strobe-BAR 6 — abs 383–395"></i><i class="seg" style="left:77.1484%;width:2.5391%;--c:#CC79A7" title="LED.Strobe-BAR 5 — abs 396–408"></i><i class="seg" style="left:79.6875%;width:2.5391%;--c:#CC79A7" title="LED.Strobe-BAR 4 — abs 409–421"></i><i class="seg" style="left:82.2266%;width:2.5391%;--c:#CC79A7" title="LED.Strobe-BAR 3 — abs 422–434"></i><i class="seg" style="left:84.7656%;width:2.5391%;--c:#CC79A7" title="LED.Strobe-BAR 2 — abs 435–447"></i><i class="seg" style="left:87.3047%;width:2.5391%;--c:#CC79A7" title="LED.Strobe-BAR 1 — abs 448–460"></i><i class="seg" style="left:49.2188%;width:1.7578%;--c:#009E73" title="M.Wash 8 — abs 253–261"></i><i class="seg" style="left:50.9766%;width:1.7578%;--c:#009E73" data-inv="1" title="M.Wash 7 — abs 262–270"></i><i class="seg" style="left:95.3125%;width:1.7578%;--c:#009E73" title="M.Wash 6 — abs 489–497"></i><i class="seg" style="left:52.7344%;width:1.7578%;--c:#009E73" title="M.Wash 5 — abs 271–279"></i><i class="seg" style="left:91.4062%;width:1.7578%;--c:#009E73" title="M.Wash 2 — abs 469–477"></i><i class="seg" style="left:97.0703%;width:1.7578%;--c:#009E73" title="M.Wash 1 — abs 498–506"></i><i class="seg" style="left:45.7031%;width:1.7578%;--c:#009E73" title="M.Wash 4 — abs 235–243"></i><i class="seg" style="left:47.4609%;width:1.7578%;--c:#009E73" title="M.Wash 3 — abs 244–252"></i><i class="seg" style="left:54.4922%;width:2.7344%;--c:#0072B2" title="M.BEAM 2 — abs 280–293"></i><i class="seg" style="left:57.6172%;width:2.7344%;--c:#0072B2" title="M.BEAM 3 — abs 296–309"></i><i class="seg" style="left:60.7422%;width:2.7344%;--c:#0072B2" title="M.BEAM 1 — abs 312–325"></i><i class="seg" style="left:63.8672%;width:2.7344%;--c:#0072B2" title="M.BEAM 4 — abs 328–341"></i><i class="seg" style="left:5.0781%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 8 — abs 27–52"></i><i class="seg" style="left:10.1562%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 7 — abs 53–78"></i><i class="seg" style="left:15.2344%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 6 — abs 79–104"></i><i class="seg" style="left:20.3125%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 5 — abs 105–130"></i><i class="seg" style="left:25.3906%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 4 — abs 131–156"></i><i class="seg" style="left:30.4688%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 3 — abs 157–182"></i><i class="seg" style="left:35.5469%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 2 — abs 183–208"></i><i class="seg" style="left:40.6250%;width:5.0781%;--c:#D55E00" data-inv="1" title="Laser.BAR(6) 1 — abs 209–234"></i></div><div class="ruler"><i class="tick" style="left:0.0000%"><b>1</b></i><i class="tick" style="left:25.0000%"><b>128</b></i><i class="tick" style="left:50.0000%"><b>256</b></i><i class="tick" style="left:75.0000%"><b>384</b></i></div></div>
+    </div>
+    <div>
+      <p class="ulab"><b>Universe 2</b><span>abs 513–1024 · 4 fixtures · 45 ch used</span></p>
+      <div class="uni"><div class="unibar"><i class="seg" style="left:38.8672%;width:1.7578%;--c:#009E73" data-inv="1" title="M.Wash 10 — abs 712–720"></i><i class="seg" style="left:40.8203%;width:1.7578%;--c:#009E73" title="M.Wash 9 — abs 722–730"></i><i class="seg" style="left:0.0000%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 9 — abs 513–538"></i><i class="seg" style="left:69.3359%;width:0.1953%;--c:#56B4E9" title="-Atmos- — abs 868–868"></i></div><div class="ruler"><i class="tick" style="left:0.0000%"><b>513</b></i><i class="tick" style="left:25.0000%"><b>640</b></i><i class="tick" style="left:50.0000%"><b>768</b></i><i class="tick" style="left:75.0000%"><b>896</b></i></div></div>
+    </div>
+  </div>
+  <p class="tnote">Notable gaps: <b>22–26</b> after the DJ bar (which a 13-channel Microh would
+  partly fill), <b>342–356</b> before the strobes, <b>370–382</b> after BAR 7 — exactly the room a
+  16-channel bar needs — and <b>539–711</b>, 173 clear addresses on U2.</p>
+</section>
+
+<section id="s5">
+  <div class="shead"><span class="s">§5</span><h2>Fixtures &amp; channel maps</h2></div>
+  <p class="lede">One block per fixture: what identified it, and its DMX channel map as the manual
+  states it. Rows shaded red are channels the patched footprint cannot reach. These maps are the
+  part of this document transcribed by hand — each cites its manual page.</p>
+<article class="fxblock" style="--c:#0072B2">
+  <header>
+    <div>
+      <h3>YF BEAM 230 moving head (Guangzhou Yingfeng)</h3>
+      <p class="meta"><code>9 Sharpy Standard Lamp on</code> · ×4</p>
+    </div>
+    <span class="grade">Confirmed by manual</span>
+  </header>
+  <dl class="specs">
+    <div><dt>Modes</dt><dd>16CH / 20CH</dd></div>
+    <div><dt>Patched</dt><dd class="bad">14CH</dd></div>
+    <div><dt>Power</dt><dd>350–400 W</dd></div>
+    <div><dt>Source</dt><dd>189 W 5R Philips / 230 W 7R Osram discharge lamp</dd></div>
+  </dl>
+  <p class="why"><b>What identified it.</b> The four beams are patched on a uniform 16-channel stride — exactly this fixture's 16CH mode, and two wider than the 14CH profile loaded against them. The manual confirms the 16/20CH modes and the 189 W 5R Philips / 230 W 7R Osram lamp. “Standard Lamp on” is a Clay Paky Sharpy mode name and a Sharpy's own lamp is a 189 W MSD Platinum 5R, so the profile was a reasonable pick for a Sharpy-clone — the brand was never supported, the class was.</p>
+  <div class="cmwrap">
+    <p class="cmhead">16-channel map <span>manual p.10, “10、Channels”</span></p>
+    <table class="cm"><tbody><tr><td class="n strong">1</td><td>Colour wheel</td><td></td></tr><tr><td class="n strong">2</td><td>Blackout / strobe</td><td></td></tr><tr><td class="n strong">3</td><td>Dimmer</td><td></td></tr><tr><td class="n strong">4</td><td>Gobo wheel</td><td></td></tr><tr><td class="n strong">5</td><td>Prism</td><td></td></tr><tr><td class="n strong">6</td><td>Prism rotation</td><td></td></tr><tr><td class="n strong">7</td><td>Macro</td><td></td></tr><tr><td class="n strong">8</td><td>Frost</td><td></td></tr><tr><td class="n strong">9</td><td>Focus</td><td></td></tr><tr><td class="n strong">10</td><td>Pan</td><td></td></tr><tr><td class="n strong">11</td><td>Pan fine</td><td></td></tr><tr><td class="n strong">12</td><td>Tilt</td><td></td></tr><tr><td class="n strong">13</td><td>Tilt fine</td><td></td></tr><tr><td class="n strong">14</td><td>Pan and tilt speed</td><td></td></tr><tr class="lost"><td class="n strong">15</td><td>Reset</td><td><span class="tag warn">unreachable</span></td></tr><tr class="lost"><td class="n strong">16</td><td>Lamp control</td><td><span class="tag warn">unreachable</span></td></tr></tbody></table>
+  </div>
+  
+  <p class="note">A 20CH mode adds 17 Blank · 18 Colour-wheel speed · 19 Dimming/prism/atomisation speed · 20 Gobo-wheel speed.</p>
+  <p class="src"><span>Manual</span><code>yf-beam-230-moving-head.pdf</code></p>
+</article>
+<article class="fxblock" style="--c:#D55E00">
+  <header>
+    <div>
+      <h3>Panda Lighting LS650/LS652</h3>
+      <p class="meta"><code>8 LASER BARS 26CH · 7 LASER BARS - Invert 26CH</code> · ×9</p>
+    </div>
+    <span class="grade">Near-certain</span>
+  </header>
+  <dl class="specs">
+    <div><dt>Modes</dt><dd>11CH / 19CH / 24CH</dd></div>
+    <div><dt>Patched</dt><dd class="bad">26CH</dd></div>
+    <div><dt>Power</dt><dd>150 W</dd></div>
+    <div><dt>Source</dt><dd>6 × 500 mW 638 nm red diodes (red variant) — 3 W total optical, Class 4</dd></div>
+  </dl>
+  <p class="why"><b>What identified it.</b> Six laser eyes against the MA fixture name <code>Laser.BAR(6)</code> and its six sub-fixture cells. The structure matches attribute for attribute: MA records one master of 7 attributes plus 6 cells of 2, and the LS650's 24CH mode gives each eye exactly two — a tilt position (ch4–9) and a laser on/off (ch14–19) — with seven whole-fixture attributes (ch1–3, 10–13). 7 + 6×2 = 19, which is the attribute count the export holds.</p>
+  <div class="cmwrap">
+    <p class="cmhead">24-channel map <span>manual p.5, “24CH”</span></p>
+    <table class="cm"><tbody><tr><td class="n strong">1</td><td>X-axis stroke — 0–360°</td><td></td></tr><tr><td class="n strong">2</td><td>X-axis fine</td><td></td></tr><tr><td class="n strong">3</td><td>X-axis speed</td><td></td></tr><tr><td class="n strong">4</td><td>Y1 tilt — 0–106.8°</td><td></td></tr><tr><td class="n strong">5</td><td>Y2 tilt</td><td></td></tr><tr><td class="n strong">6</td><td>Y3 tilt</td><td></td></tr><tr><td class="n strong">7</td><td>Y4 tilt</td><td></td></tr><tr><td class="n strong">8</td><td>Y5 tilt</td><td></td></tr><tr><td class="n strong">9</td><td>Y6 tilt</td><td></td></tr><tr><td class="n strong">10</td><td>Y1–Y6 all tilt</td><td></td></tr><tr><td class="n strong">11</td><td>Y-axis speed</td><td></td></tr><tr><td class="n strong">12</td><td>Main switch — 0–127 off / 128–255 on</td><td></td></tr><tr><td class="n strong">13</td><td>Strobe</td><td></td></tr><tr><td class="n strong">14</td><td>Laser 1 on/off</td><td></td></tr><tr><td class="n strong">15</td><td>Laser 2</td><td></td></tr><tr><td class="n strong">16</td><td>Laser 3</td><td></td></tr><tr><td class="n strong">17</td><td>Laser 4</td><td></td></tr><tr><td class="n strong">18</td><td>Laser 5</td><td></td></tr><tr><td class="n strong">19</td><td>Laser 6</td><td></td></tr><tr><td class="n strong">20</td><td>Laser auto — 20 effects</td><td></td></tr><tr><td class="n strong">21</td><td>Laser auto speed</td><td></td></tr><tr><td class="n strong">22</td><td>Motor auto-run / sound</td><td></td></tr><tr><td class="n strong">23</td><td>Auto-run speed</td><td></td></tr><tr><td class="n strong">24</td><td>Reset — 128–255</td><td></td></tr></tbody></table>
+  </div>
+  <p class="note">The patch reserves 26 channels against a 24-channel mode — channels 25–26 do not exist on the fixture.</p>
+  <p class="note">Also offers 19CH (drops the effect and auto-run block) and 11CH (Y1–Y6 collapse to a single all-tilt channel). The patch reserves 26, two more than the fixture's widest mode, so channels 25–26 do not exist on the fixture.</p>
+  <p class="src"><span>Manual</span><code>panda-lighting-ls650-ls652-6-head-laser-bar.pdf</code></p>
+</article>
+<article class="fxblock" style="--c:#CC79A7">
+  <header>
+    <div>
+      <h3>Light4Me STROBE MULTI BAR</h3>
+      <p class="meta"><code>4 rgbw-13ch 13CH</code> · ×7</p>
+    </div>
+    <span class="grade">Likely — weakest link</span>
+  </header>
+  <dl class="specs">
+    <div><dt>Modes</dt><dd>4CH / 16CH / 168CH</dd></div>
+    <div><dt>Patched</dt><dd class="bad">13CH</dd></div>
+    <div><dt>Power</dt><dd>200 W</dd></div>
+    <div><dt>Source</dt><dd>480 × 0.3 W RGB + 240 × 0.3 W CW LED</dd></div>
+  </dl>
+  <p class="why"><b>What identified it.</b> An RGB-background + white-strobe bar against the MA layer <code>--LED.STROBE-BAR</code> and the RGBW in the profile name. Circumstantial rather than structural: no mode of this fixture is 13CH, so unlike the beams and lasers the patch cannot corroborate it.</p>
+  <div class="cmwrap">
+    <p class="cmhead">16-channel map <span>manual p.11, “DMX structure — 16CH”</span></p>
+    <table class="cm"><tbody><tr><td class="n strong">1</td><td>Master dimmer</td><td></td></tr><tr><td class="n strong">2</td><td>Strobe — RGB</td><td></td></tr><tr><td class="n strong">3</td><td>Red dimmer</td><td></td></tr><tr><td class="n strong">4</td><td>Green dimmer</td><td></td></tr><tr><td class="n strong">5</td><td>Blue dimmer</td><td></td></tr><tr><td class="n strong">6</td><td>Background RGB effects</td><td></td></tr><tr><td class="n strong">7</td><td>Ch6 speed</td><td></td></tr><tr><td class="n strong">8</td><td>Strobe — white</td><td></td></tr><tr><td class="n strong">9</td><td>White dimmer</td><td></td></tr><tr><td class="n strong">10</td><td>Main white effects</td><td></td></tr><tr><td class="n strong">11</td><td>Ch10 speed</td><td></td></tr><tr><td class="n strong">12</td><td>Strobe — RGBW</td><td></td></tr><tr><td class="n strong">13</td><td>Main RGBW effects</td><td></td></tr><tr class="lost"><td class="n strong">14</td><td>Ch13 speed</td><td><span class="tag warn">unreachable</span></td></tr><tr class="lost"><td class="n strong">15</td><td>Background colour</td><td><span class="tag warn">unreachable</span></td></tr><tr class="lost"><td class="n strong">16</td><td>Background dimmer</td><td><span class="tag warn">unreachable</span></td></tr></tbody></table>
+  </div>
+  
+  <p class="note">Also offers 4CH (R/G/B/W dimmers only) and a 168CH pixel mode — 48 RGB sections on ch1–144, then 24 white sections on ch145–168.</p>
+  <p class="src"><span>Manual</span><code>light4me-strobe-multi-bar.pdf</code></p>
+</article>
+<article class="fxblock" style="--c:#009E73">
+  <header>
+    <div>
+      <h3>BETOPPER LM70S (TLM70SK/TLM70SP)</h3>
+      <p class="meta"><code>5 NEW WASH · 6 movingwash zone</code> · ×10</p>
+    </div>
+    <span class="grade">Probable</span>
+  </header>
+  <dl class="specs">
+    <div><dt>Modes</dt><dd>9CH / 14CH</dd></div>
+    <div><dt>Patched</dt><dd class="good">9CH</dd></div>
+    <div><dt>Power</dt><dd>100 W</dd></div>
+    <div><dt>Source</dt><dd>7 × 8 W RGBW 4-in-1 LED</dd></div>
+  </dl>
+  <p class="why"><b>What identified it.</b> Its 9CH mode is the wash footprint and the address stride, both. No other fixture supplied accounts for either, and this is the only profile in the rig whose patch is correct as it stands.</p>
+  <div class="cmwrap">
+    <p class="cmhead">9-channel map <span>manual p.4–5, “9 Channels Mode”</span></p>
+    <table class="cm"><tbody><tr><td class="n strong">1</td><td>X axis (pan)</td><td></td></tr><tr><td class="n strong">2</td><td>Y axis (tilt)</td><td></td></tr><tr><td class="n strong">3</td><td>Master — 0–8 off · 8–135 dim · 136–240 strobe · 241–255 power</td><td></td></tr><tr><td class="n strong">4</td><td>Red</td><td></td></tr><tr><td class="n strong">5</td><td>Green</td><td></td></tr><tr><td class="n strong">6</td><td>Blue</td><td></td></tr><tr><td class="n strong">7</td><td>White</td><td></td></tr><tr><td class="n strong">8</td><td>XY motor speed</td><td></td></tr><tr><td class="n strong">9</td><td>Reset — 150–200</td><td></td></tr></tbody></table>
+  </div>
+  
+  <p class="note">Also offers 14CH: pan / pan fine / tilt / tilt fine / speed / dimmer-strobe / R / G / B / W / colour macros / colour speed / auto-programs / reset. Not in use here.</p>
+  <p class="src"><span>Manual</span><code>betopper-lm70s-mini-moving-head.pdf</code></p>
+</article>
+<article class="fxblock" style="--c:#E69F00">
+  <header>
+    <div>
+      <h3>Microh LEDBAR RGB</h3>
+      <p class="meta"><code>3 LED Bar 2 11CH</code> · ×1</p>
+    </div>
+    <span class="grade">Likely</span>
+  </header>
+  <dl class="specs">
+    <div><dt>Modes</dt><dd>13CH</dd></div>
+    <div><dt>Patched</dt><dd class="bad">11CH</dd></div>
+    <div><dt>Power</dt><dd>50 W</dd></div>
+    <div><dt>Source</dt><dd>252 × 10 mm LED (108 R / 72 G / 72 B), 107 cm bar</dd></div>
+  </dl>
+  <p class="why"><b>What identified it.</b> Its three RGB segments match the profile's three cells on a 3-channel stride, exactly — which is also how the mismatch shows, since the profile's 2-channel master stands where the fixture has four.</p>
+  <div class="cmwrap">
+    <p class="cmhead">13-channel map <span>manual p.3, “Channel Assignment”</span></p>
+    <table class="cm"><tbody><tr><td class="n strong">1</td><td>Function select — 0–10 dimmer · 11–51 strobe · 52–91 fade · 92–131 auto colour · 132–255 chases 1–6</td><td></td></tr><tr><td class="n strong">2</td><td>All red</td><td></td></tr><tr><td class="n strong">3</td><td>All green</td><td></td></tr><tr><td class="n strong">4</td><td>All blue</td><td></td></tr><tr><td class="n strong">5</td><td>Segment 1 red</td><td></td></tr><tr><td class="n strong">6</td><td>Segment 1 green</td><td></td></tr><tr><td class="n strong">7</td><td>Segment 1 blue</td><td></td></tr><tr><td class="n strong">8</td><td>Segment 2 red</td><td></td></tr><tr><td class="n strong">9</td><td>Segment 2 green</td><td></td></tr><tr><td class="n strong">10</td><td>Segment 2 blue</td><td></td></tr><tr><td class="n strong">11</td><td>Segment 3 red</td><td></td></tr><tr class="lost"><td class="n strong">12</td><td>Segment 3 green</td><td><span class="tag warn">unreachable</span></td></tr><tr class="lost"><td class="n strong">13</td><td>Segment 3 blue</td><td><span class="tag warn">unreachable</span></td></tr></tbody></table>
+  </div>
+  
+  <p class="note">Fixed 13 channels — no other mode. The MA profile allots a 2-channel master where the fixture has four, so the segment block lands two channels early.</p>
+  <p class="src"><span>Manual</span><code>microh-ledbar-rgb.pdf</code></p>
+</article>
+<article class="fxblock" style="--c:#56B4E9">
+  <header>
+    <div>
+      <h3>Chauvet Hurricane Haze 2D</h3>
+      <p class="meta"><code>2 Dimmer 00 (-Atmos-)</code> · ×1</p>
+    </div>
+    <span class="grade">Likely</span>
+  </header>
+  <dl class="specs">
+    <div><dt>Modes</dt><dd>2CH</dd></div>
+    <div><dt>Patched</dt><dd class="bad">1CH</dd></div>
+    <div><dt>Power</dt><dd>533 W</dd></div>
+    <div><dt>Source</dt><dd>533 W / 4.4 A at 120 V, 60 Hz</dd></div>
+  </dl>
+  <p class="why"><b>What identified it.</b> The only hazer in the rig and the only hazer manual supplied. Weak as identification goes, but its 533 W draw and its “use on dimmer: no” are what make the DP-415's mode setting matter.</p>
+  <div class="cmwrap">
+    <p class="cmhead">2-channel map <span>manual p.13, “DMX Channel Assignments”</span></p>
+    <table class="cm"><tbody><tr><td class="n strong">1</td><td>Blower speed — low→high</td><td></td></tr><tr class="lost"><td class="n strong">2</td><td>Haze volume — low→high</td><td><span class="tag warn">unreachable</span></td></tr></tbody></table>
+  </div>
+  
+  <p class="note">Fixed 2 channels — no other personality. Whether this matters depends on whether the patched channel is the hazer's own DMX or a DP-415 pack channel.</p>
+  <p class="src"><span>Manual</span><code>chauvet-hurricane-haze-2d.pdf</code></p>
+</article>
+</section>
+
+<section id="s6">
+  <div class="shead"><span class="s">§6</span><h2>Mismatches</h2></div>
+  <p class="lede">Five of the eight profiles are patched to a footprint their fixture has no mode
+  for. Ordered by what each actually does to the rig, not by profile number: only the first can
+  corrupt another fixture's channels, and the last is merely untidy.</p>
+  <div class="mmlist">
+<article class="mm fault"><span class="rank">Can collide</span><h3>Strobe bars — patched 13CH against a 4 / 16 / 168 fixture</h3><p>If the bars are in 16CH they are three channels wider than their slot and five of the seven run into the bar addressed next — 396–398, 409–411, 422–424, 435–437, 448–450. Those are ch14–16 of the overrun bar (RGBW-effect speed, background colour, background dimmer) driven by ch1–3 of its neighbour (master dimmer, RGB strobe, red). If instead they are in 4CH, nothing collides but nine of every thirteen patched channels are dead and the console's dimmer, strobe and effects do nothing.</p><p class="tell">BAR 7 is absent from that list: it sits at 357 with the 370–382 gap after it, exactly the room a 16-channel bar needs. That gap was filed as an unexplained spare in June.</p><p class="fix"><span>Fix</span>Set every bar to 16CH, re-patch on a 16-channel stride, load a matching profile.</p></article><article class="mm fault"><span class="rank">Costs a function</span><h3>Moving beams — patched 14CH against a 16 / 20 fixture</h3><p>Nothing collides — the stride is already 16, so each beam occupies 280–295, 296–311, 312–327, 328–343 with no overlap and the next fixture at 357. But the 14-channel profile stops at <em>pan and tilt speed</em>, leaving <strong>ch15 Reset and ch16 Lamp control</strong> unreachable. On four discharge fixtures that means the lamps cannot be struck, doused or reset from the console.</p><p class="tell">Everything look-critical — colour, gobo, prism, frost, focus, pan, tilt and both fine channels — sits inside ch1–14 and works. The loss is confined to lamp handling.</p><p class="fix"><span>Fix</span>Load a 16-channel profile against the same start addresses. No re-addressing needed.</p></article><article class="mm warn"><span class="rank">Lands on the wrong channel</span><h3>DJ-deck bar — patched 11CH against a fixed 13</h3><p>The MA profile allots a 2-channel master where the Microh has four (function select, then all-red / all-green / all-blue), so the nine segment channels are <strong>offset by two</strong>: the console's cell-1 red drives the fixture's all-blue, and so on down the bar.</p><p class="tell">Nothing collides. The bar would occupy 11–23 and the next fixture is a laser bar at 27, so the 22–26 gap absorbs the two extra channels.</p><p class="fix"><span>Fix</span>Load a 13-channel profile at the same start address.</p></article><article class="mm warn"><span class="rank">Half a fixture</span><h3>Hazer — patched 1CH against a fixed 2CH personality</h3><p>The Hurricane Haze 2D's own DMX is two channels: blower speed, then haze volume. If what is patched is the hazer's DMX, <strong>haze volume never responds to the console</strong>. If it is a DP-415 pack channel instead, the patch is correct as written and the hazer runs on its own front-panel settings.</p><p class="tell">Which of the two it is decides whether this is a fault or a non-issue, and it is one look at the back of the hazer.</p><p class="fix"><span>Fix</span>Establish first whether the hazer's DMX is connected at all. Only then decide.</p></article><article class="mm benign"><span class="rank">Wastes addresses</span><h3>Laser bars — patched 26CH against an 11 / 19 / 24 fixture</h3><p>Because 24 &lt; 26 nothing collides; each bar simply leaves two dead channels, eighteen across the nine bars.</p><p class="tell">What cannot be checked from the export is the profile's internal channel order — grandMA2 writes fixture-type names into an XML fixture list, not their definitions. If the profile replicates the LS650's 24CH map with two pad channels everything works; if it is a different 26-channel bar, every attribute lands wrong, which would be obvious on sight.</p><p class="fix"><span>Fix</span>Confirm the mode reads 24CH, then load a 24-channel profile and reclaim the two channels.</p></article>
+  </div>
+</section>
+
+<section id="s7">
+  <div class="shead"><span class="s">§7</span><h2>Inverted fixtures</h2></div>
+  <p class="lede">Two of the eight profiles are pan/tilt-inverted duplicates of another profile,
+  for fixtures hung upside down. Reported by the venue and corroborated against the export.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Inverted profile</th><th>Duplicate of</th><th>Fixtures</th><th>Corroboration</th></tr></thead>
+    <tbody>
+      <tr><td><code>6 movingwash zone</code></td><td><code>5 NEW WASH</code></td>
+        <td>M.Wash 7, M.Wash 10</td>
+        <td>Identical sub-fixture structure — one cell of 9 channels. A zoned mode would have cells.</td></tr>
+      <tr><td><code>7 LASER BARS - Invert 26CH</code></td><td><code>8 LASER BARS 26CH</code></td>
+        <td>Laser.BAR(6) 1</td>
+        <td>Named “Invert”, and its six cell addresses run descending (215→210) where every other bar ascends.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="tnote">Pan/tilt inversion lives in the fixture-type definition, which grandMA2 does not
+  write into an XML fixture list — so it cannot be read out of the export directly. What the export
+  <em>can</em> show is that each duplicate has the same sub-fixture shape as its base, meaning the
+  two differ only in something the file cannot represent. That is corroboration, not proof.</p>
+  <p class="tnote"><b>Three fixtures are therefore hung inverted</b> — M.Wash 7, M.Wash 10 and
+  Laser.BAR(6) 1. This is the only fixture-orientation information the repo holds. Worth raising
+  with whoever maintains the showfile: grandMA2 inverts pan and tilt <em>per fixture</em> in the
+  patch, so carrying a duplicate fixture <em>type</em> works but splits each group across two types
+  and grows the profile count with every orientation.</p>
+</section>
+
+<section id="s8">
+  <div class="shead"><span class="s">§8</span><h2>Power</h2></div>
+  <p class="lede">Manufacturer figures, none measured. Currents are real power ÷ voltage at unity
+  power factor — a <em>floor</em>, not a design figure. Add the fixtures' actual power factor and
+  the discharge ballasts' inrush before sizing anything.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Fixture</th><th class="n">Qty</th><th class="n">W each</th><th class="n">W total</th><th class="n">A @ 120 V</th></tr></thead>
+    <tbody>
+<tr><td>YF BEAM 230 moving head (Guangzhou Yingfeng)</td><td class="n">4</td><td class="n">350–400</td><td class="n strong">1400–1600</td><td class="n">11.67–13.33</td></tr><tr><td>BETOPPER LM70S (TLM70SK/TLM70SP)</td><td class="n">10</td><td class="n">100</td><td class="n strong">1000</td><td class="n">8.33</td></tr><tr><td>Panda Lighting LS650/LS652</td><td class="n">9</td><td class="n">150</td><td class="n strong">1350</td><td class="n">11.25</td></tr><tr><td>Light4Me STROBE MULTI BAR</td><td class="n">7</td><td class="n">200</td><td class="n strong">1400</td><td class="n">11.67</td></tr><tr><td>Microh LEDBAR RGB</td><td class="n">1</td><td class="n">50</td><td class="n strong">50</td><td class="n">0.42</td></tr><tr><td>Chauvet Hurricane Haze 2D</td><td class="n">1</td><td class="n">533</td><td class="n strong">533</td><td class="n">4.44</td></tr><tr class="tot"><td>Identified subtotal</td><td class="n">—</td><td class="n">—</td><td class="n strong">5733–5933 W</td><td class="n">47.8–49.4 A</td></tr><tr class="unk"><td>CO₂ jets — make unknown</td><td class="n">2</td><td class="n">❓</td><td class="n">❓</td><td class="n">❓</td></tr>
+    </tbody>
+  </table></div>
+  <p class="tnote">A subtotal, not a total — the two CO₂ jets are the only loads in the rig with no
+  figure.</p>
+
+  <h4>Effects distribution — Elation DP-415</h4>
+  <p class="lede">One 4-channel dimmer/switch pack carries all three effects devices: 120 V 60 Hz,
+  15 A total, 5 A per channel, dual Edison sockets per channel, 9-way dip-switch address.
+  Confirmed by the venue. Three channels used, one spare.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Load</th><th class="n">A @ 120 V</th><th class="n">Of channel</th></tr></thead>
+    <tbody><tr><td>Hazer</td><td class="n">4.44 A</td><td class="n">89%</td></tr><tr><td>CO₂ jet 1</td><td class="n">❓ unread</td><td class="n">—</td></tr><tr><td>CO₂ jet 2</td><td class="n">❓ unread</td><td class="n">—</td></tr><tr class="sp"><td>Spare channel</td><td class="n">—</td><td class="n">—</td></tr></tbody>
+  </table></div>
+  <p class="tnote">4.44 A known. Whatever the CO₂ jets draw is bounded by the pack whether
+  or not anyone measures it: at most 5 A each by channel rating, at most 10.6 A between them
+  once the hazer is accounted for. A jet is a solenoid valve, so the real figure should sit far
+  below that.</p>
+
+  <div class="callout">
+    <h4>Dip switch 10 must read Switch</h4>
+    <p>The Hurricane Haze 2D's manual states outright that it must not be run on a dimmer. The
+    DP-415 selects Dimmer or Switch <b>pack-wide</b> on dip switch 10, not per channel. The hazer
+    shares that pack with both CO₂ jets, so it cannot be moved to a switch-mode pack of its own.</p>
+    <p>There is therefore exactly one correct setting, and it has not been read.</p>
+  </div>
+</section>
+
+<section id="s9">
+  <div class="shead"><span class="s">§9</span><h2>Laser safety</h2></div>
+  <p class="lede">Each LS650 carries six 500 mW emitters at 638 nm — 3 W of optical output per bar,
+  nine bars. At 500 mW per aperture these are <b>Class 4</b> by any measure: the class where the
+  beam is an eye and skin hazard including from diffuse reflections, and where audience scanning
+  stops being a design choice and becomes a regulated one.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Item</th><th>State</th></tr></thead>
+    <tbody>
+      <tr><td>Class declared by the manufacturer</td><td>Confirm from the product page or the label on the fixture</td></tr>
+      <tr><td>Whether any bar can reach audience-accessible space</td><td>Unknown — fixture positions are all <code>0,0,0</code></td></tr>
+      <tr><td>Beam-stop and mounting-angle measures</td><td>Not documented</td></tr>
+      <tr><td>Operator responsible during a show</td><td>Not documented</td></tr>
+      <tr><td>Applicable requirements and any variance held</td><td>Not documented</td></tr>
+    </tbody>
+  </table></div>
+  <p class="tnote">This is an open compliance item for whoever runs the venue, to be resolved with
+  their own safety advisor. It is recorded here because nothing in the repo recorded it, not
+  because this document can answer it.</p>
+</section>
+
+<section id="s10">
+  <div class="shead"><span class="s">§10</span><h2>Open items</h2></div>
+  <p class="lede">What is not known, and what would settle it. Everything above the fold here is
+  readable off a fixture panel in a single walk round the rig.</p>
+  <div class="open"><ul>
+<li class="must"><b>DP-415 dip switch 10</b><span>The Hurricane Haze 2D must not be run on a dimmer, the pack's Dimmer/Switch selection is pack-wide, and the hazer shares the pack with both CO₂ jets — so it cannot be isolated. It must read <b>Switch</b>. The only question in this document with a single correct answer.</span></li><li class="open"><b>Strobe-bar DMX mode</b><span>13CH is impossible, so whatever the panel reads is new information. <code>CH16</code> means five bars are colliding; <code>CH04</code> means nine of thirteen channels per bar are dead.</span></li><li class="open"><b>Beam model plate</b><span>Confirms the YF BEAM 230 against the load schedule. Four discharge beams are 1400–1600 W where four LED mini heads would have been 400 W — a 1.2 kW swing in the total.</span></li><li class="open"><b>CO₂ jet make, model and wattage</b><span>The last load with no figure. Bounded by the pack at ≤5 A each and ≤10.6 A between them once the hazer's 4.44 A is accounted for, but unmeasured.</span></li><li class="open"><b>Hazer DMX — connected or not</b><span>Decides whether the 1CH patch is a correct pack channel or a truncated 2CH personality.</span></li><li class="open"><b>DP-415 start address and socket assignment</b><span>Gives the CO₂ jets and the hazer their real addresses. They are pack channels, so the long-standing “CO₂ unpatched at address 0” item was asking the wrong question.</span></li><li class="open"><b>Inverted hang — M.Wash 7, M.Wash 10, Laser.BAR(6) 1</b><span>Confirms the duplicate-profile reading and is the only fixture-orientation data the repo holds. Every <code>AbsolutePosition</code> in the showfile is <code>0,0,0</code>.</span></li><li class="open"><b>Laser class label</b><span>Confirms the Class 4 declaration on the fixture body.</span></li><li class="open"><b>Fixture positions</b><span>No to-scale plot can be drawn without a survey. This also blocks any assessment of whether a laser bar can reach audience-accessible space.</span></li><li class="open"><b>DMX node make, model and universe/port mapping</b><span>The showfile patches addresses but records nothing about what physically drives U1 and U2.</span></li><li class="open"><b>Lighting mains feed, breakers and power factor</b><span>Per-fixture draw is known; the feed that carries it is not. The currents in §8 assume unity power factor and are a floor, not a design figure.</span></li><li class="open"><b>Console hardware and booth position</b><span>“Nomad” is the dongle-licensed software. Whether the surface on site is onPC with a dongle, a command wing or a full console is not in the export.</span></li>
+  </ul></div>
+</section>
+
+<section id="s11">
+  <div class="shead"><span class="s">§11</span><h2>Provenance</h2></div>
+  <p class="lede">What each claim in this document rests on, and what it does not.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Source</th><th>Supplies</th><th>Confidence</th></tr></thead>
+    <tbody>
+      <tr><td><code>NOMADFIXPATCHJUNE2026.xml</code></td>
+        <td>Every address, footprint, fixture ID, layer and sub-fixture structure</td>
+        <td>Authoritative — grandMA2's own export</td></tr>
+      <tr><td>Seven vendor manuals, <code>08-lighting/manuals/</code></td>
+        <td>DMX modes, channel maps, electrical ratings</td>
+        <td>Authoritative for the fixture; the <em>link</em> to a profile is inference — §5</td></tr>
+      <tr><td>Manufacturer product pages, relayed 2026-08-25</td>
+        <td>Power figures where the manual omits them</td>
+        <td>Not measured</td></tr>
+      <tr><td>Venue, 2026-08-25</td>
+        <td>That some fixtures are pan/tilt-inverted duplicates; that one DP-415 carries both CO₂ jets and the hazer</td>
+        <td>Stated by the venue</td></tr>
+      <tr><td>Not in any source</td>
+        <td>Fixture positions, DMX node topology, mains feed, console hardware, CO₂ jet make</td>
+        <td>Recorded as unknown rather than estimated</td></tr>
+    </tbody>
+  </table></div>
+  <p class="tnote">The showfile records a fixture-profile <em>name</em> and a start address, and no
+  fixture-type definitions — so a profile's internal channel order cannot be read back from it. Two
+  things can be checked mechanically, and they are what this document rests on: whether the patched
+  footprint is a mode the fixture can be set to, and what address stride the patch actually leaves
+  between fixtures.</p>
+</section>
+
+<footer>
+  <span>EMBLEM PROJECTS INC. · NØMAD Toronto · lighting dossier rev 3.1 · 2026-08-25</span>
+  <span>Generated by <code>scripts/build-lighting-dossier.py</code></span>
+</footer>
+
+</main>
+</div>
