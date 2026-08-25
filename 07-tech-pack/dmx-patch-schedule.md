@@ -1,7 +1,7 @@
 ---
 title: NØMAD Toronto — DMX Patch Schedule
 description: Complete DMX patch schedule for the NØMAD Toronto grandMA2 lighting rig, decoded from the venue showfile (2026-06-13, exported 2026-06-24). The lighting analog of the audio cable schedule.
-version: 1.3.0
+version: 1.3.1
 created: 2026-06-24T00:00:00Z
 last_updated: 2026-08-25T00:00:00Z
 ---
@@ -150,9 +150,10 @@ MA layer `--M.Laser-BAR`. All 26 ch, 7 sub-cells. Bars 2–9 use `8 LASER BARS 2
 
 MA layers `--Co2(2x)` and `~Atmos~`. All `2 Dimmer 00`, 1 ch.
 
-> 🔌 **These are not DMX fixtures.** All three are mains loads on an **Elation DP-415** 4-channel
+> 🔌 **These are not DMX fixtures.** All three are mains loads on **one Elation DP-415** 4-channel
 > dimmer/switch pack — 120 V, **15 A total, 5 A per channel**, dual Edison sockets per channel,
-> 9-way dip-switch address. Each `2 Dimmer 00` entry is a pack *channel*.
+> 9-way dip-switch address. Three of its four channels are used, one spare. Confirmed by the venue
+> 2026-08-25. Each `2 Dimmer 00` entry is a pack *channel*.
 > `08-lighting/fixture-identification-audit.md` §8.
 
 | # | Fixture | Group/Layer | MA Profile | Ch | Universe | Start | End | Cells | Notes |
@@ -165,7 +166,8 @@ MA layers `--Co2(2x)` and `~Atmos~`. All `2 Dimmer 00`, 1 ch.
 > they occupy. Read the pack, do not assume an address.
 >
 > ⚠️ **The Haze 2D must not be run on a dimmer** (its manual says so outright), and the DP-415's
-> Dimmer/Switch selection is **pack-wide** — dip switch 10. Read it before the next show.
+> Dimmer/Switch selection is **pack-wide** — dip switch 10. The hazer shares the pack with both
+> jets, so it cannot be isolated: **dip 10 must read Switch.** Read it before the next show.
 >
 > ⚠️ **The hazer's own DMX personality is a fixed 2 channels** (blower speed, haze volume) and it is
 > patched as 1. If the patch is a pack channel this is correct; if it is the hazer's own DMX, haze

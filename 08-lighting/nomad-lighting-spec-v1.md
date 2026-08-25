@@ -1,7 +1,7 @@
 ---
 title: NØMAD Toronto — Lighting System Specification
 description: Lighting system specification for NØMAD Toronto, decoded from the grandMA2 "Nomad" showfile export (showfile 2026-06-13, exported 2026-06-24). Rev 1.0 — desktop decode; physical site verification pending.
-version: 1.3.0
+version: 1.3.1
 created: 2026-06-24T00:00:00Z
 last_updated: 2026-08-25T00:00:00Z
 ---
@@ -260,8 +260,9 @@ The MA showfile organises the rig into named layers, grouped under three section
 
 ## §7 Effects Devices
 
-All three effects devices are **mains loads on an Elation DP-415 4-channel dimmer/switch pack**
-(120 V, 15 A total, **5 A per channel**, dual Edison sockets per channel, 9-way dip address). The
+All three effects devices are **mains loads on a single Elation DP-415 4-channel dimmer/switch
+pack** (120 V, 15 A total, **5 A per channel**, dual Edison sockets per channel, 9-way dip
+address) — confirmed by the venue 2026-08-25. Three of its four channels are used, one spare. The
 `2 Dimmer 00` entries in the patch are pack *channels*, not fixtures with their own DMX.
 
 - **CO₂ jets** — `Co2-HL.HR`, one MA fixture multipatched to two physical jets. **Unpatched**
@@ -270,8 +271,9 @@ All three effects devices are **mains loads on an Elation DP-415 4-channel dimme
   **88% of its 5 A pack channel**. Its own DMX personality is 2CH; it is patched as 1CH.
 
 > ⚠️ **The Haze 2D must not be run on a dimmer** — its manual states so outright, and the DP-415's
-> Dimmer/Switch selection is **pack-wide** (dip switch 10), not per channel. Read that dip switch
-> before the next show (Open Item §9.8).
+> Dimmer/Switch selection is **pack-wide** (dip switch 10), not per channel. Because the hazer and
+> both jets are confirmed on the *same* pack, the hazer cannot be isolated onto a switch-mode pack
+> of its own: **dip 10 must read Switch.** Read it before the next show (Open Item §9.8).
 
 ---
 
@@ -284,8 +286,8 @@ All three effects devices are **mains loads on an Elation DP-415 4-channel dimme
 |------|--------|
 | Per-fixture power draw | ✅ **Manufacturer figures on file** for every fixture except the CO₂ jets |
 | Total connected load | 🟡 **5.73–5.93 kW ≈ 48–49 A @ 120 V** — a *subtotal*; only the CO₂ jets are missing. Table in `fixture-identification-audit.md` §11 |
-| FX distribution | ✅ **Elation DP-415** 4-ch pack, 120 V, 15 A total / 5 A per channel, feeding the hazer (4.4 A — 88% of its channel) and both CO₂ jets |
-| DP-415 Dimmer vs Switch mode | ⚠️ **Unverified, and it matters** — the Haze 2D must not be dimmed and the pack's mode is pack-wide (dip 10) |
+| FX distribution | ✅ **One Elation DP-415** 4-ch pack, 120 V, 15 A total / 5 A per channel — hazer (4.44 A, 89% of its channel) plus both CO₂ jets, 3 of 4 channels used, 1 spare. Confirmed by the venue |
+| DP-415 Dimmer vs Switch mode | ⚠️ **Unverified, and it has one correct answer** — the Haze 2D must not be dimmed, the pack's mode is pack-wide (dip 10), and the hazer shares the pack with the jets, so it must read **Switch** |
 | Lighting mains feed / breaker(s) | ❓ TBC |
 | Power factor / inrush allowance | ❓ TBC — the currents above assume unity PF and are a floor, not a design figure |
 | Laser safety class and controls | ☢️ **Class 4** (9 bars × 6 × 500 mW, 638 nm). Compliance items unrecorded — audit §11 |
@@ -334,8 +336,10 @@ readable.
 7. **Laser class 4 — compliance items unrecorded.** Nine bars at 6 × 500 mW / 638 nm. Audience
    reachability cannot be assessed while fixture positions are unknown (item 9). Resolve with the
    venue's safety advisor, not from the desk (audit §11).
-8. **DP-415 Dimmer/Switch mode unverified.** The Haze 2D manual states it must not be run on a
-   dimmer, and the pack's mode is set pack-wide by dip switch 10. Read it before the next show.
+8. **DP-415 Dimmer/Switch mode unverified — and there is only one correct setting.** The Haze 2D
+   manual states it must not be run on a dimmer; the pack's mode is set pack-wide by dip switch 10;
+   and the hazer shares the pack with both CO₂ jets, so it cannot be moved to a pack of its own.
+   Dip 10 must read **Switch**. Read it before the next show.
 9. **Lighting power/breakers** — per-fixture draw is now known (§8) but the mains feed, breaker
    sizing and power-factor allowance are not. Confirm with the venue electrician.
 
@@ -345,10 +349,11 @@ readable.
    to-scale **physical plot** can be drawn without a site survey. (A schematic **DMX patch map** —
    address allocation, not geography — is provided at `assets/svg/dmx-patch-map.svg`.) The only
    orientation data the repo holds is the three inverted fixtures in §5.1.
-11. **CO₂ jets — make, model and wattage unknown.** They are DP-415 channels, not fixtures needing
-   a patch of their own; the long-standing "unpatched at address 0" item was asking the wrong
-   question. What they need is the pack's dip-switch address. Their draw is the last gap in the
-   load schedule.
+11. **CO₂ jets — make, model and wattage unknown.** Confirmed as two jets on the single DP-415,
+   alongside the hazer. They are pack channels, not fixtures needing a patch of their own; the
+   long-standing "unpatched at address 0" item was asking the wrong question. What they need is the
+   pack's dip-switch address. Their draw is the last gap in the load schedule — bounded by the pack
+   at ≤5 A each and ≤10.6 A between them, but unmeasured.
 12. **DMX node/output topology** — map U1/U2 to physical nodes/ports.
 13. **Strobe-bar address gaps** — confirm intentional spares vs. stale patch (e.g. 370–382 free).
    *Note:* that 13-channel gap is exactly the extra room a 16CH Light4Me bar would need, which may

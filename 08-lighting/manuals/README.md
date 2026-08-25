@@ -1,7 +1,7 @@
 ---
 title: NØMAD Toronto — Lighting Vendor Manuals
 description: Index of the seven lighting manuals supplied by the venue, with manufacturer electrical data and the MA fixture profile each one belongs to.
-version: 4.0.0
+version: 4.1.0
 created: 2026-06-24T00:00:00Z
 last_updated: 2026-08-25T00:00:00Z
 ---
@@ -32,14 +32,15 @@ manual settles it outright. Confidence is recorded per row rather than smoothed 
 
 | Manual | Device | Spec | What it drives |
 |--------|--------|------|----------------|
-| `elation-dp-415-dimmer-switch-pack.pdf` | **Elation DP-415** 4-channel dimmer/switch pack | 120 V 60 Hz, **15 A total, 5 A per channel**, dual Edison per channel, 9-way dip address, **dip 10 selects Dimmer or Switch for the whole pack** | The three `2 Dimmer 00` entries — CO₂ jets ×2 and the hazer — are **pack channels, not DMX fixtures** |
+| `elation-dp-415-dimmer-switch-pack.pdf` | **Elation DP-415** 4-channel dimmer/switch pack — **×1** | 120 V 60 Hz, **15 A total, 5 A per channel**, dual Edison per channel, 9-way dip address, **dip 10 selects Dimmer or Switch for the whole pack** | The three `2 Dimmer 00` entries — **CO₂ jets ×2 and the hazer, all on this one pack** (3 of 4 channels, 1 spare; confirmed by the venue) — are **pack channels, not DMX fixtures** |
 
 > ❌ **Five of the eight profiles are patched to a footprint their fixture has no mode for** —
 > beams 14CH, strobes 13CH, lasers 26CH, DJ bar 11CH, hazer 1CH. Only the moving washes match.
 > Read `../fixture-identification-audit.md` before re-patching anything.
 >
-> ⚠️ **Check DP-415 dip switch 10.** The Haze 2D must not be run on a dimmer, and the pack's mode
-> is pack-wide.
+> ⚠️ **Check DP-415 dip switch 10 — it must read Switch.** The Haze 2D must not be run on a
+> dimmer, the pack's mode is pack-wide, and the hazer shares the pack with both CO₂ jets, so it
+> cannot be isolated onto a pack of its own.
 >
 > ☢️ **The laser bars are Class 4.** Nine bars × 6 × 500 mW at 638 nm. See audit §11.
 
@@ -47,7 +48,7 @@ manual settles it outright. Confidence is recorded per row rather than smoothed 
 
 | Category | MA profile | Manual | Power figure |
 |----------|-----------|--------|--------------|
-| CO₂ jets (×2, on DP-415 channels) | `2 Dimmer 00` | ❓ Not supplied | ❓ Unknown — the last gap in the load schedule |
+| CO₂ jets (×2, on DP-415 channels) | `2 Dimmer 00` | ❓ Not supplied | ❓ Unknown — the last gap in the load schedule. Bounded by the pack at ≤5 A each |
 | Console | grandMA2 "Nomad" v3.9.60 | ⏳ Reference available from MA Lighting | — |
 
 > When a manual is obtained but cannot be committed (e.g. no download endpoint), follow the repo

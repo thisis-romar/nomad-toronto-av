@@ -49,8 +49,8 @@ Deliverables that mirror the audio tech pack live alongside the audio docs:
 | Real fixture makes/models | ✅ Identified | Beams **YF BEAM 230**, lasers **Panda LS650/LS652**, washes **BETOPPER LM70S**, strobes **Light4Me**, DJ bar **Microh LEDBAR RGB**, haze **Chauvet Hurricane Haze 2D**, FX distribution **Elation DP-415**. Only the CO₂ jets remain |
 | Patch vs. fixture modes | ❌ **5 mismatches** | Beams 14CH, strobes 13CH, lasers 26CH, DJ bar 11CH, hazer 1CH — only the washes match (audit §3) |
 | Beam lamp control | ❌ **Unreachable** | The 14CH profile stops before ch15 Reset / ch16 Lamp control — the discharge lamps cannot be struck or doused from the console (audit §6) |
-| CO₂ jets "unpatched" | 🔧 Restated | They are **DP-415 pack channels**, not fixtures needing a patch. Read the pack's dip switches (audit §8) |
-| DP-415 Dimmer vs Switch | ⚠️ **Unverified** | The Haze 2D must not be dimmed; the pack's mode is pack-wide (dip 10) (audit §8) |
+| CO₂ jets "unpatched" | 🔧 Restated | Both jets are **channels on the one DP-415**, not fixtures needing a patch. Read the pack's dip switches (audit §8) |
+| DP-415 Dimmer vs Switch | ⚠️ **Must read Switch** | One pack carries the hazer and both CO₂ jets, its mode is pack-wide (dip 10), and the Haze 2D must not be dimmed — so there is only one correct setting (audit §8) |
 | Inverted fixtures | 🔁 3 known | M.Wash 7, M.Wash 10, Laser.BAR 1 run on pan/tilt-inverted duplicate profiles — the repo's only orientation data (audit §12) |
 | Lighting connected load | 🟡 Subtotal | **5.73–5.93 kW ≈ 48–49 A @ 120 V**; only the CO₂ jets missing (audit §11) |
 | Laser safety class | ☢️ **Class 4** | 9 bars × 6 × 500 mW @ 638 nm. Compliance items unrecorded (audit §11) |

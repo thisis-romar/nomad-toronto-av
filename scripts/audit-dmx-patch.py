@@ -120,15 +120,19 @@ FIXTURES = {
     ),
 }
 
-# Devices that carry no load figure of their own but change how the load is distributed.
+# Devices that carry no load figure of their own but determine how the load is distributed.
+# Confirmed by the venue 2026-08-25: ONE pack carries both CO2 jets and the hazer.
 DISTRIBUTION = {
     "elation-dp-415": dict(
         model="Elation DP-415 4-channel dimmer/switch pack",
         manual="elation-dp-415-dimmer-switch-pack.pdf",
-        spec="AC 120 V 60 Hz, 15 A total, 5 A per channel, dual Edison per channel, "
-             "9-way dip address, dip 10 selects Dimmer or Switch mode pack-wide",
-        drives="The three `2 Dimmer 00` fixtures -- CO2 jets x2 and the hazer -- are pack channels, "
-               "not fixtures with their own DMX.",
+        qty=1, channels=4, amps_total=15.0, amps_per_channel=5.0,
+        spec="AC 120 V 60 Hz, dual Edison per channel, 9-way dip address, "
+             "dip 10 selects Dimmer or Switch mode PACK-WIDE",
+        # (label, MA fixture name, amps or None if unknown)
+        loads=(("Hazer -- Chauvet Hurricane Haze 2D", "-Atmos-", 4.44),
+               ("CO2 jet 1", "Co2-HL.HR", None),
+               ("CO2 jet 2", "Co2-HL.HR", None)),
     ),
 }
 
@@ -402,6 +406,26 @@ def main():
         for what, qty, prof in unknown:
             p(f"| {what} | {qty} | ❓ | ❓ | " + " | ".join("❓" for _ in VOLTAGES) +
               f" | not identified (`{prof}`) |")
+        pack = DISTRIBUTION["elation-dp-415"]
+        used = sum(a for _, _, a in pack["loads"] if a)
+        n_unknown = sum(1 for _, _, a in pack["loads"] if a is None)
+        spare_ch = pack["channels"] - len(pack["loads"])
+        p(f"\n### Effects distribution — {pack['model']}\n")
+        p(f"| Load | Pack channel | A @ 120 V | Channel rating |")
+        p(f"|---|---|---:|---:|")
+        for label, _name, amps in pack["loads"]:
+            a = f"{amps:.2f}" if amps else "❓"
+            pct = f" ({amps / pack['amps_per_channel'] * 100:.0f}% of channel)" if amps else ""
+            p(f"| {label} | ❓ unread | {a}{pct} | {pack['amps_per_channel']:.0f} A |")
+        for _ in range(len(pack["loads"]), pack["channels"]):
+            p(f"| *(spare)* | — | — | {pack['amps_per_channel']:.0f} A |")
+        p(f"| **Pack total** | {len(pack['loads'])} of {pack['channels']} used, {spare_ch} spare "
+          f"| **{used:.2f} A known** | **{pack['amps_total']:.0f} A** |")
+        p(f"\n> The two CO₂ jets are the only loads in the rig with no figure. The pack bounds them "
+          f"even so: at most **{pack['amps_per_channel']:.0f} A each** by channel rating, and at "
+          f"most **{pack['amps_total'] - used:.1f} A between them** once the hazer's "
+          f"{used:.1f} A is accounted for. A CO₂ jet is a solenoid valve, so the real figure should "
+          f"be far below that — but it is still a figure someone has to read off the jets.")
         p("\n> **This is a subtotal, not a total.** " +
           "; ".join(f"{q}x {w}" for w, q, _ in unknown) + " carry no power figure. "
           "Currents are real power ÷ voltage and assume unity power factor, so they are a floor: "
