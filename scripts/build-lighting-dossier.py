@@ -184,6 +184,16 @@ MISMATCHES = [
      "Confirm the mode reads 24CH, then load a 24-channel profile and reclaim the two channels."),
 ]
 
+# 120 V / 20 A branch allocation, adopted from EMBLEM Rev 7.2 (24 Aug 2026) and verified against
+# the load figures here. A 20 A branch derates to 16 A / 1920 W for a continuous load.
+BRANCH_W = 1920.0
+CIRCUITS = [
+    ("LX-1", "4 × YF Beam 230", 1600),
+    ("LX-2", "7 × Light4Me Strobe Multi Bar", 1400),
+    ("LX-3", "9 × Panda LS650", 1350),
+    ("LX-4", "10 × BETOPPER LM70S + Microh LEDBAR + Hurricane Haze 2D", 1583),
+]
+
 OPEN = [
     ("must", "DP-415 dip switch 10",
      "The Hurricane Haze 2D must not be run on a dimmer, the pack's Dimmer/Switch selection is "
@@ -216,6 +226,11 @@ OPEN = [
     ("open", "Lighting mains feed, breakers and power factor",
      "Per-fixture draw is known; the feed that carries it is not. The currents in §8 assume unity "
      "power factor and are a floor, not a design figure."),
+    ("open", "Rev 7.2's repo link points at <code>main</code>",
+     "The Rev 7.2 sources page cites <code>08-lighting/nomad-lighting-spec-v1.md</code> on "
+     "<code>main</code>, which is 22 commits behind this work and still carries the retracted "
+     "Clay Paky Sharpy attribution. Anyone following that link from the PDF lands on a claim the "
+     "PDF itself supersedes. Merge the branch or repoint the link."),
     ("open", "Console hardware and booth position",
      "“Nomad” is the dongle-licensed software. Whether the surface on site is onPC with a dongle, "
      "a command wing or a full console is not in the export."),
@@ -367,6 +382,18 @@ def main():
     lrows.append('<tr class="unk"><td>CO₂ jets — make unknown</td><td class="n">2</td>'
                  '<td class="n">❓</td><td class="n">❓</td><td class="n">❓</td></tr>')
 
+    crows, ctot = "", 0
+    for cid, alloc, w in CIRCUITS:
+        ctot += w
+        a, mw, ma = w / 120, BRANCH_W - w, 16 - w / 120
+        tight = ' class="tight"' if ma < 3 else ""
+        crows += (f'<tr{tight}><td class="n strong">{cid}</td><td>{alloc}</td>'
+                  f'<td class="n">{w:,}</td><td class="n">{a:.2f}</td>'
+                  f'<td class="n">{mw:.0f} W · {ma:.2f} A</td></tr>')
+    crows += (f'<tr class="tot"><td class="n strong">Total</td><td>4 branches</td>'
+              f'<td class="n">{ctot:,}</td><td class="n">{ctot / 120:.2f}</td>'
+              f'<td class="n">{BRANCH_W * len(CIRCUITS) - ctot:.0f} W aggregate</td></tr>')
+
     packrows = ""
     for label, _n, amps in pk["loads"]:
         name = escape(label.split(" -- ")[0]).replace("CO2", "CO₂")
@@ -392,7 +419,7 @@ def main():
         schedule=schedule(rows), maps="\n".join(chanmap(m) for m in CHANNEL_MAPS),
         mismatches=mm, open=op, legend=legend,
         u1=universe_bar(patched, 1), u2=universe_bar(patched, 2),
-        load="".join(lrows), pack=packrows,
+        load="".join(lrows), pack=packrows, circuits=crows,
         n_total=len(rows), n_patched=len(patched), n_unpatched=len(rows) - len(patched),
         pack_known=f"{known:.2f}", pack_free=f"{pk['amps_total'] - known:.1f}",
     )
@@ -611,6 +638,7 @@ table.cm tr.lost td:nth-child(2){{color:var(--fault)}}
 
 .pack{{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin-top:18px}}
 tr.tot td{{border-top:1px solid var(--line); font-weight:600; color:var(--ink)}}
+tr.tight td{{background:var(--warn-soft)}}
 tr.unk td{{color:var(--ink-3)}}
 tr.sp td{{color:var(--ink-3)}}
 
@@ -793,7 +821,24 @@ footer code{{font-size:12px}}
     </tbody>
   </table></div>
   <p class="tnote">A subtotal, not a total — the two CO₂ jets are the only loads in the rig with no
-  figure.</p>
+  figure. Two voltage caveats, both from EMBLEM Rev 7.2: the <b>Hurricane Haze 2D is a
+  fixed-voltage product family</b>, so the 120 V unit must not be treated as universal input (the
+  230 V model draws the same 533 W at 2.3 A); and the <b>Microh LEDBAR</b> manual contradicts
+  itself — its specification page says AC 100–240 V while its connection page says 120–220 V
+  switchable. Take the narrower reading until the data plate is read.</p>
+
+  <h4>Branch allocation — 120 V / 20 A</h4>
+  <p class="lede">Adopted from EMBLEM's <em>Complete Lighting Power &amp; DMX Schedule</em> Rev 7.2
+  (24 Aug 2026) and checked against the figures above. A 20 A branch derates to <b>16 A / 1920 W</b>
+  for a continuous load; the margin column is what is left against that, not against 20 A.</p>
+  <div class="tw"><table>
+    <thead><tr><th class="n">Circuit</th><th>Allocation</th><th class="n">W</th><th class="n">A @ 120 V</th><th class="n">Margin to 80%</th></tr></thead>
+    <tbody>{circuits}</tbody>
+  </table></div>
+  <p class="tnote"><b>The CO₂ jets are not in this plan.</b> They are DP-415 channels and the
+  DP-415's feed sits inside <b>LX-4</b>, which has the second-smallest margin of the four at
+  2.81 A. Whatever the jets draw comes out of that margin — and out of the pack's own 15 A. Neither
+  this document nor Rev 7.2 has a figure for them.</p>
 
   <h4>Effects distribution — Elation DP-415</h4>
   <p class="lede">One 4-channel dimmer/switch pack carries all three effects devices: 120 V 60 Hz,
@@ -862,6 +907,12 @@ footer code{{font-size:12px}}
       <tr><td>Manufacturer product pages, relayed 2026-08-25</td>
         <td>Power figures where the manual omits them</td>
         <td>Not measured</td></tr>
+      <tr><td>EMBLEM <em>Complete Lighting Power &amp; DMX Schedule</em> Rev 7.2, 24 Aug 2026<br>
+        <code>08-lighting/nomad-lighting-power-dmx-schedule-rev7.2.pdf</code></td>
+        <td>The 120 V branch allocation in §8, the fixed-voltage and switchable-voltage caveats,
+        and independent confirmation of the fixture list</td>
+        <td>Arrived at the same seven devices, quantities, modes and wattages from the manuals
+        alone, without the patch — see <code>rev7-2-reconciliation.md</code></td></tr>
       <tr><td>Venue, 2026-08-25</td>
         <td>That some fixtures are pan/tilt-inverted duplicates; that one DP-415 carries both CO₂ jets and the hazer</td>
         <td>Stated by the venue</td></tr>

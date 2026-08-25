@@ -288,7 +288,8 @@ address) — confirmed by the venue 2026-08-25. Three of its four channels are u
 | Total connected load | 🟡 **5.73–5.93 kW ≈ 48–49 A @ 120 V** — a *subtotal*; only the CO₂ jets are missing. Table in `fixture-identification-audit.md` §11 |
 | FX distribution | ✅ **One Elation DP-415** 4-ch pack, 120 V, 15 A total / 5 A per channel — hazer (4.44 A, 89% of its channel) plus both CO₂ jets, 3 of 4 channels used, 1 spare. Confirmed by the venue |
 | DP-415 Dimmer vs Switch mode | ⚠️ **Unverified, and it has one correct answer** — the Haze 2D must not be dimmed, the pack's mode is pack-wide (dip 10), and the hazer shares the pack with the jets, so it must read **Switch** |
-| Lighting mains feed / breaker(s) | ❓ TBC |
+| Recommended branch allocation | ✅ **4 × 120 V/20 A** — LX-1 beams, LX-2 strobes, LX-3 lasers, LX-4 washes + Microh + hazer. Adopted from EMBLEM Rev 7.2 and verified; see `rev7-2-reconciliation.md` §2 |
+| Lighting mains feed / breaker(s) as installed | ❓ TBC — the allocation above is a recommendation |
 | Power factor / inrush allowance | ❓ TBC — the currents above assume unity PF and are a floor, not a design figure |
 | Laser safety class and controls | ☢️ **Class 4** (9 bars × 6 × 500 mW, 638 nm). Compliance items unrecorded — audit §11 |
 | DMX node make/model (ArtNet/sACN/DMX) | ❓ TBC |
@@ -376,6 +377,7 @@ readable.
 |-------|-------|
 | Showfile | `08-lighting/source-showfile/NOMADFIXPATCHJUNE2026.xml` |
 | Fixture manuals | `08-lighting/manuals/` (7 supplied 2026-08-25) |
+| EMBLEM Rev 7.2 schedule | `08-lighting/nomad-lighting-power-dmx-schedule-rev7.2.pdf` (24 Aug 2026) · reconciled in `rev7-2-reconciliation.md` |
 | Manufacturer electrical data | Vendor product pages, relayed by the venue 2026-08-25 |
 | Identification audit | `08-lighting/fixture-identification-audit.md` |
 | Provenance | `08-lighting/source-showfile/README.md` |

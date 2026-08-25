@@ -207,6 +207,7 @@ table.cm tr.lost td:nth-child(2){color:var(--fault)}
 
 .pack{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin-top:18px}
 tr.tot td{border-top:1px solid var(--line); font-weight:600; color:var(--ink)}
+tr.tight td{background:var(--warn-soft)}
 tr.unk td{color:var(--ink-3)}
 tr.sp td{color:var(--ink-3)}
 
@@ -566,7 +567,24 @@ footer code{font-size:12px}
     </tbody>
   </table></div>
   <p class="tnote">A subtotal, not a total — the two CO₂ jets are the only loads in the rig with no
-  figure.</p>
+  figure. Two voltage caveats, both from EMBLEM Rev 7.2: the <b>Hurricane Haze 2D is a
+  fixed-voltage product family</b>, so the 120 V unit must not be treated as universal input (the
+  230 V model draws the same 533 W at 2.3 A); and the <b>Microh LEDBAR</b> manual contradicts
+  itself — its specification page says AC 100–240 V while its connection page says 120–220 V
+  switchable. Take the narrower reading until the data plate is read.</p>
+
+  <h4>Branch allocation — 120 V / 20 A</h4>
+  <p class="lede">Adopted from EMBLEM's <em>Complete Lighting Power &amp; DMX Schedule</em> Rev 7.2
+  (24 Aug 2026) and checked against the figures above. A 20 A branch derates to <b>16 A / 1920 W</b>
+  for a continuous load; the margin column is what is left against that, not against 20 A.</p>
+  <div class="tw"><table>
+    <thead><tr><th class="n">Circuit</th><th>Allocation</th><th class="n">W</th><th class="n">A @ 120 V</th><th class="n">Margin to 80%</th></tr></thead>
+    <tbody><tr class="tight"><td class="n strong">LX-1</td><td>4 × YF Beam 230</td><td class="n">1,600</td><td class="n">13.33</td><td class="n">320 W · 2.67 A</td></tr><tr><td class="n strong">LX-2</td><td>7 × Light4Me Strobe Multi Bar</td><td class="n">1,400</td><td class="n">11.67</td><td class="n">520 W · 4.33 A</td></tr><tr><td class="n strong">LX-3</td><td>9 × Panda LS650</td><td class="n">1,350</td><td class="n">11.25</td><td class="n">570 W · 4.75 A</td></tr><tr class="tight"><td class="n strong">LX-4</td><td>10 × BETOPPER LM70S + Microh LEDBAR + Hurricane Haze 2D</td><td class="n">1,583</td><td class="n">13.19</td><td class="n">337 W · 2.81 A</td></tr><tr class="tot"><td class="n strong">Total</td><td>4 branches</td><td class="n">5,933</td><td class="n">49.44</td><td class="n">1747 W aggregate</td></tr></tbody>
+  </table></div>
+  <p class="tnote"><b>The CO₂ jets are not in this plan.</b> They are DP-415 channels and the
+  DP-415's feed sits inside <b>LX-4</b>, which has the second-smallest margin of the four at
+  2.81 A. Whatever the jets draw comes out of that margin — and out of the pack's own 15 A. Neither
+  this document nor Rev 7.2 has a figure for them.</p>
 
   <h4>Effects distribution — Elation DP-415</h4>
   <p class="lede">One 4-channel dimmer/switch pack carries all three effects devices: 120 V 60 Hz,
@@ -616,7 +634,7 @@ footer code{font-size:12px}
   <p class="lede">What is not known, and what would settle it. Everything above the fold here is
   readable off a fixture panel in a single walk round the rig.</p>
   <div class="open"><ul>
-<li class="must"><b>DP-415 dip switch 10</b><span>The Hurricane Haze 2D must not be run on a dimmer, the pack's Dimmer/Switch selection is pack-wide, and the hazer shares the pack with both CO₂ jets — so it cannot be isolated. It must read <b>Switch</b>. The only question in this document with a single correct answer.</span></li><li class="open"><b>Strobe-bar DMX mode</b><span>13CH is impossible, so whatever the panel reads is new information. <code>CH16</code> means five bars are colliding; <code>CH04</code> means nine of thirteen channels per bar are dead.</span></li><li class="open"><b>Beam model plate</b><span>Confirms the YF BEAM 230 against the load schedule. Four discharge beams are 1400–1600 W where four LED mini heads would have been 400 W — a 1.2 kW swing in the total.</span></li><li class="open"><b>CO₂ jet make, model and wattage</b><span>The last load with no figure. Bounded by the pack at ≤5 A each and ≤10.6 A between them once the hazer's 4.44 A is accounted for, but unmeasured.</span></li><li class="open"><b>Hazer DMX — connected or not</b><span>Decides whether the 1CH patch is a correct pack channel or a truncated 2CH personality.</span></li><li class="open"><b>DP-415 start address and socket assignment</b><span>Gives the CO₂ jets and the hazer their real addresses. They are pack channels, so the long-standing “CO₂ unpatched at address 0” item was asking the wrong question.</span></li><li class="open"><b>Inverted hang — M.Wash 7, M.Wash 10, Laser.BAR(6) 1</b><span>Confirms the duplicate-profile reading and is the only fixture-orientation data the repo holds. Every <code>AbsolutePosition</code> in the showfile is <code>0,0,0</code>.</span></li><li class="open"><b>Laser class label</b><span>Confirms the Class 4 declaration on the fixture body.</span></li><li class="open"><b>Fixture positions</b><span>No to-scale plot can be drawn without a survey. This also blocks any assessment of whether a laser bar can reach audience-accessible space.</span></li><li class="open"><b>DMX node make, model and universe/port mapping</b><span>The showfile patches addresses but records nothing about what physically drives U1 and U2.</span></li><li class="open"><b>Lighting mains feed, breakers and power factor</b><span>Per-fixture draw is known; the feed that carries it is not. The currents in §8 assume unity power factor and are a floor, not a design figure.</span></li><li class="open"><b>Console hardware and booth position</b><span>“Nomad” is the dongle-licensed software. Whether the surface on site is onPC with a dongle, a command wing or a full console is not in the export.</span></li>
+<li class="must"><b>DP-415 dip switch 10</b><span>The Hurricane Haze 2D must not be run on a dimmer, the pack's Dimmer/Switch selection is pack-wide, and the hazer shares the pack with both CO₂ jets — so it cannot be isolated. It must read <b>Switch</b>. The only question in this document with a single correct answer.</span></li><li class="open"><b>Strobe-bar DMX mode</b><span>13CH is impossible, so whatever the panel reads is new information. <code>CH16</code> means five bars are colliding; <code>CH04</code> means nine of thirteen channels per bar are dead.</span></li><li class="open"><b>Beam model plate</b><span>Confirms the YF BEAM 230 against the load schedule. Four discharge beams are 1400–1600 W where four LED mini heads would have been 400 W — a 1.2 kW swing in the total.</span></li><li class="open"><b>CO₂ jet make, model and wattage</b><span>The last load with no figure. Bounded by the pack at ≤5 A each and ≤10.6 A between them once the hazer's 4.44 A is accounted for, but unmeasured.</span></li><li class="open"><b>Hazer DMX — connected or not</b><span>Decides whether the 1CH patch is a correct pack channel or a truncated 2CH personality.</span></li><li class="open"><b>DP-415 start address and socket assignment</b><span>Gives the CO₂ jets and the hazer their real addresses. They are pack channels, so the long-standing “CO₂ unpatched at address 0” item was asking the wrong question.</span></li><li class="open"><b>Inverted hang — M.Wash 7, M.Wash 10, Laser.BAR(6) 1</b><span>Confirms the duplicate-profile reading and is the only fixture-orientation data the repo holds. Every <code>AbsolutePosition</code> in the showfile is <code>0,0,0</code>.</span></li><li class="open"><b>Laser class label</b><span>Confirms the Class 4 declaration on the fixture body.</span></li><li class="open"><b>Fixture positions</b><span>No to-scale plot can be drawn without a survey. This also blocks any assessment of whether a laser bar can reach audience-accessible space.</span></li><li class="open"><b>DMX node make, model and universe/port mapping</b><span>The showfile patches addresses but records nothing about what physically drives U1 and U2.</span></li><li class="open"><b>Lighting mains feed, breakers and power factor</b><span>Per-fixture draw is known; the feed that carries it is not. The currents in §8 assume unity power factor and are a floor, not a design figure.</span></li><li class="open"><b>Rev 7.2&#x27;s repo link points at &lt;code&gt;main&lt;/code&gt;</b><span>The Rev 7.2 sources page cites <code>08-lighting/nomad-lighting-spec-v1.md</code> on <code>main</code>, which is 22 commits behind this work and still carries the retracted Clay Paky Sharpy attribution. Anyone following that link from the PDF lands on a claim the PDF itself supersedes. Merge the branch or repoint the link.</span></li><li class="open"><b>Console hardware and booth position</b><span>“Nomad” is the dongle-licensed software. Whether the surface on site is onPC with a dongle, a command wing or a full console is not in the export.</span></li>
   </ul></div>
 </section>
 
@@ -635,6 +653,12 @@ footer code{font-size:12px}
       <tr><td>Manufacturer product pages, relayed 2026-08-25</td>
         <td>Power figures where the manual omits them</td>
         <td>Not measured</td></tr>
+      <tr><td>EMBLEM <em>Complete Lighting Power &amp; DMX Schedule</em> Rev 7.2, 24 Aug 2026<br>
+        <code>08-lighting/nomad-lighting-power-dmx-schedule-rev7.2.pdf</code></td>
+        <td>The 120 V branch allocation in §8, the fixed-voltage and switchable-voltage caveats,
+        and independent confirmation of the fixture list</td>
+        <td>Arrived at the same seven devices, quantities, modes and wattages from the manuals
+        alone, without the patch — see <code>rev7-2-reconciliation.md</code></td></tr>
       <tr><td>Venue, 2026-08-25</td>
         <td>That some fixtures are pan/tilt-inverted duplicates; that one DP-415 carries both CO₂ jets and the hazer</td>
         <td>Stated by the venue</td></tr>

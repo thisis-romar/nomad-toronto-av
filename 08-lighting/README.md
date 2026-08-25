@@ -27,6 +27,8 @@ universes**, decoded from the venue showfile (June 2026).
 | `source-showfile/README.md` | Showfile provenance + decoding conventions |
 | `manuals/` | Vendor manuals — 7 supplied by the venue 2026-08-25 |
 | `fixture-identification-audit.md` | Which real fixture is behind each MA profile, and five patch/mode mismatches |
+| `rev7-2-reconciliation.md` | Reconciles EMBLEM's Rev 7.2 power/DMX schedule against this audit — no conflicts of fact, three items adopted |
+| `nomad-lighting-power-dmx-schedule-rev7.2.pdf` | EMBLEM's own schedule, 24 Aug 2026 — inventory, every DMX personality, 120/240 V comparison, branch allocation |
 | `assets/correlation.html` | The same finding laid out to be scanned — correlation table, evidence per fixture, both universes to scale. Regenerate with `python3 scripts/build-correlation-page.py` |
 | `assets/lighting-dossier.html` | **The full reference document** — every fixture, every address, and the DMX channel map of every fixture from its own manual. Regenerate with `python3 scripts/build-lighting-dossier.py` |
 
@@ -58,7 +60,7 @@ Deliverables that mirror the audio tech pack live alongside the audio docs:
 | Laser safety class | ☢️ **Class 4** | 9 bars × 6 × 500 mW @ 638 nm. Compliance items unrecorded (audit §11) |
 | Patch address integrity | ✅ Verified | No overlaps, no universe-boundary crossings (`scripts/audit-dmx-patch.py`) |
 | DMX node/output topology | ❓ TBC | Map U1/U2 to physical nodes/ports |
-| Lighting power/breakers | 🟡 Partly | Per-fixture W from manufacturers; feed, breakers and PF still TBC |
+| Lighting power/breakers | 🟡 Partly | Per-fixture W known; a 4-branch 120 V/20 A allocation adopted from Rev 7.2. The installed feed, breakers and PF are still TBC |
 | Console make/model/location | ❓ TBC | grandMA2 "Nomad" per export; confirm hardware on-site |
 | Lighting plot (SVG) | ❌ Blocked | Cannot draw without real positions |
 
