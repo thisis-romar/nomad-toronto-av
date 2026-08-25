@@ -1,0 +1,463 @@
+<title>NØMAD Patch Reconciliation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#f2f5f5; --card:#ffffff; --ink:#12181b; --ink-2:#46585d; --ink-3:#76898e;
+  --line:#d8e0e1; --line-2:#e8eeee;
+  --accent:#0d6e86; --accent-soft:#e2eff3;
+  --warn:#8a5a00; --warn-soft:#f8eed6;
+  --fault:#a82c27; --fault-soft:#f9e3e1;
+  --unknown-soft:#eceff0;
+  --shadow:0 1px 2px rgba(18,24,27,.05), 0 8px 24px -16px rgba(18,24,27,.28);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0d1215; --card:#141c20; --ink:#e6eded; --ink-2:#a3b5b9; --ink-3:#71868b;
+    --line:#253338; --line-2:#1c272b;
+    --accent:#4bb8d4; --accent-soft:#10333e;
+    --warn:#e0a33a; --warn-soft:#33280f;
+    --fault:#f08078; --fault-soft:#3a1a18;
+    --unknown-soft:#1b2427;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0d1215; --card:#141c20; --ink:#e6eded; --ink-2:#a3b5b9; --ink-3:#71868b;
+  --line:#253338; --line-2:#1c272b;
+  --accent:#4bb8d4; --accent-soft:#10333e;
+  --warn:#e0a33a; --warn-soft:#33280f;
+  --fault:#f08078; --fault-soft:#3a1a18;
+  --unknown-soft:#1b2427;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.9);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:400 16px/1.6 "IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1140px; margin:0 auto; padding:0 24px 96px}
+h1,h2,h3{font-family:"IBM Plex Sans Condensed","IBM Plex Sans",Arial,sans-serif; text-wrap:balance; margin:0}
+code,.n,.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums}
+
+/* ---------- masthead ---------- */
+.mast{padding:72px 0 40px; border-bottom:1px solid var(--line)}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 18px
+}
+h1{font-size:clamp(34px,5.4vw,58px); font-weight:700; letter-spacing:-.02em; line-height:1.04}
+.dek{max-width:64ch; color:var(--ink-2); font-size:17.5px; margin:20px 0 0}
+.counts{display:flex; flex-wrap:wrap; gap:0; margin:36px 0 0; border:1px solid var(--line); border-radius:3px; overflow:hidden}
+.counts div{flex:1 1 150px; padding:16px 18px; border-right:1px solid var(--line); background:var(--card)}
+.counts div:last-child{border-right:0}
+.counts b{display:block; font-family:"IBM Plex Mono",monospace; font-size:26px; font-weight:600; letter-spacing:-.02em}
+.counts span{display:block; font-size:12.5px; color:var(--ink-3); margin-top:3px; letter-spacing:.02em}
+.counts .is-fault b{color:var(--fault)}
+.counts .is-ok b{color:var(--accent)}
+
+/* ---------- sections ---------- */
+section{padding:56px 0 0}
+.shead{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:0 0 6px}
+.shead h2{font-size:26px; font-weight:600; letter-spacing:-.01em}
+.shead .num{
+  font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-3);
+  letter-spacing:.1em; text-transform:uppercase
+}
+.lede{color:var(--ink-2); max-width:68ch; margin:0 0 26px; font-size:16px}
+
+/* ---------- correlation table ---------- */
+.tw{overflow-x:auto; border:1px solid var(--line); border-radius:3px; background:var(--card)}
+table{border-collapse:collapse; width:100%; min-width:820px; font-size:14.5px}
+thead th{
+  font-family:"IBM Plex Sans Condensed",sans-serif; font-weight:600; font-size:12px;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3);
+  text-align:left; padding:12px 14px; border-bottom:1px solid var(--line); white-space:nowrap
+}
+thead th.n{text-align:right}
+tbody td{padding:13px 14px; border-bottom:1px solid var(--line-2); vertical-align:middle}
+tbody tr:last-child td{border-bottom:0}
+td.n{text-align:right; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; color:var(--ink-2); white-space:nowrap}
+td.n.strong{color:var(--ink); font-weight:600}
+td.n sub{font-size:9.5px; color:var(--ink-3)}
+td code{font-size:13px}
+td.model{color:var(--ink); font-weight:500}
+.swatch{display:inline-block; width:9px; height:9px; border-radius:1px; background:var(--c); margin-right:9px; vertical-align:baseline}
+.inv-tag{
+  font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.08em;
+  text-transform:uppercase; padding:1px 4px; border:1px solid var(--line);
+  border-radius:2px; color:var(--ink-3); margin-left:6px
+}
+.pill{
+  display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:11.5px;
+  padding:3px 9px; border-radius:2px; white-space:nowrap; font-weight:500
+}
+.pill.ok{background:var(--accent-soft); color:var(--accent)}
+.pill.warn{background:var(--warn-soft); color:var(--warn)}
+.pill.fault{background:var(--fault-soft); color:var(--fault)}
+.pill.unknown{background:var(--unknown-soft); color:var(--ink-3)}
+.tnote{font-size:14px; color:var(--ink-3); margin:14px 0 0; max-width:70ch}
+
+/* ---------- universe map ---------- */
+.legend{display:flex; flex-wrap:wrap; gap:8px 20px; margin:0 0 22px}
+.lg{display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--ink-2)}
+.lg i{width:16px; height:8px; border-radius:1px; background:var(--c); display:block}
+.umap{display:flex; flex-direction:column; gap:26px}
+.ulab{
+  display:flex; justify-content:space-between; align-items:baseline;
+  font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-3);
+  letter-spacing:.06em; margin:0 0 7px
+}
+.ulab b{color:var(--ink); font-weight:600; letter-spacing:.1em; text-transform:uppercase}
+.uni{position:relative}
+.unibar{
+  position:relative; height:34px; background:var(--line-2);
+  border:1px solid var(--line); border-radius:2px; overflow:hidden
+}
+.seg{position:absolute; top:0; bottom:0; background:var(--c); border-radius:0}
+.seg[data-inv]{
+  background:repeating-linear-gradient(135deg,var(--c) 0 4px,color-mix(in srgb,var(--c) 55%,#000) 4px 8px)
+}
+.ruler{position:relative; height:16px; margin-top:5px}
+.tick{position:absolute; top:0; width:1px; height:5px; background:var(--line)}
+.tick b{
+  position:absolute; left:0; top:7px; font-family:"IBM Plex Mono",monospace;
+  font-size:10px; font-weight:400; color:var(--ink-3); letter-spacing:.04em
+}
+.umap-note{font-size:14px; color:var(--ink-3); margin:20px 0 0; max-width:70ch}
+
+/* ---------- evidence ---------- */
+.evgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:16px}
+.ev{
+  background:var(--card); border:1px solid var(--line); border-radius:3px;
+  padding:20px 20px 16px; border-top:2px solid var(--c); box-shadow:var(--shadow);
+  display:flex; flex-direction:column; gap:12px
+}
+.ev header{display:flex; justify-content:space-between; align-items:start; gap:12px}
+.ev h3{font-size:17.5px; font-weight:600; letter-spacing:-.005em}
+.grade{
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.05em;
+  padding:3px 7px; border-radius:2px; white-space:nowrap; flex-shrink:0
+}
+.grade.confirmed{background:var(--accent-soft); color:var(--accent)}
+.grade.strong{background:var(--accent-soft); color:var(--accent)}
+.grade.probable{background:var(--unknown-soft); color:var(--ink-2)}
+.grade.weak{background:var(--warn-soft); color:var(--warn)}
+.profs{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:6px}
+.profs li{
+  font-family:"IBM Plex Mono",monospace; font-size:11.5px; background:var(--line-2);
+  border-radius:2px; padding:3px 7px; color:var(--ink-2)
+}
+.profs .qty{color:var(--ink-3)}
+.ev p{margin:0; font-size:14.5px}
+.ev .proof{color:var(--ink)}
+.ev .extra{color:var(--ink-2); font-size:13.5px; padding-top:11px; border-top:1px solid var(--line-2)}
+.ev .src{
+  display:flex; gap:8px; align-items:center; font-size:11px; color:var(--ink-3);
+  margin-top:auto; padding-top:11px
+}
+.ev .src span{letter-spacing:.09em; text-transform:uppercase}
+.ev .src code{font-size:11px; color:var(--ink-2); word-break:break-all}
+
+.dist{
+  margin-top:16px; background:var(--card); border:1px solid var(--line);
+  border-top:2px solid var(--accent); border-radius:3px; padding:20px 22px 16px;
+  box-shadow:var(--shadow); display:flex; flex-direction:column; gap:12px
+}
+.dist header{display:flex; justify-content:space-between; align-items:start; gap:12px; flex-wrap:wrap}
+.dist h3{font-size:17.5px; font-weight:600}
+.dist p{margin:0; font-size:14.5px; max-width:82ch}
+.dist .proof{color:var(--ink)}
+.dist .extra{color:var(--ink-2); font-size:13.5px; padding-top:11px; border-top:1px solid var(--line-2)}
+.dist .src{display:flex; gap:8px; align-items:center; font-size:11px; color:var(--ink-3)}
+.dist .src span{letter-spacing:.09em; text-transform:uppercase}
+.dist .src code{font-size:11px; color:var(--ink-2)}
+.chans{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:8px}
+.chans li{
+  border:1px solid var(--line); border-radius:2px; padding:9px 11px;
+  display:flex; flex-direction:column; gap:2px
+}
+.chans b{font-size:12.5px; font-weight:500; color:var(--ink-2)}
+.chans span{font-family:"IBM Plex Mono",monospace; font-size:14px; color:var(--ink-3)}
+.chans li.known span{color:var(--warn); font-weight:500}
+.chans li.spare{border-style:dashed}
+.chans li.spare b,.chans li.spare span{color:var(--ink-3)}
+
+/* ---------- mismatches ---------- */
+.mmlist{display:flex; flex-direction:column; gap:14px}
+.mm{
+  background:var(--card); border:1px solid var(--line); border-left:3px solid var(--ink-3);
+  border-radius:3px; padding:20px 22px
+}
+.mm.fault{border-left-color:var(--fault)}
+.mm.warn{border-left-color:var(--warn)}
+.mm.benign{border-left-color:var(--ink-3)}
+.rank{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--ink-3)
+}
+.mm.fault .rank{color:var(--fault)}
+.mm.warn .rank{color:var(--warn)}
+.mm h3{font-size:18px; font-weight:600; margin:7px 0 10px}
+.mm p{margin:0; font-size:15px; color:var(--ink-2); max-width:78ch}
+.mm .tell{
+  margin-top:12px; padding-top:12px; border-top:1px solid var(--line-2);
+  font-size:13.5px; color:var(--ink-3)
+}
+.mm strong,.ev strong{color:var(--ink); font-weight:600}
+.mm em{font-style:italic}
+
+/* ---------- open ---------- */
+.open{
+  background:var(--card); border:1px solid var(--line); border-radius:3px; overflow:hidden
+}
+.open li{
+  display:flex; gap:16px; align-items:baseline; padding:15px 20px;
+  border-bottom:1px solid var(--line-2); font-size:14.5px; color:var(--ink-2)
+}
+.open li:last-child{border-bottom:0}
+.open ul{list-style:none; margin:0; padding:0}
+.open .k{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.07em;
+  text-transform:uppercase; color:var(--ink-3); flex:0 0 108px
+}
+.open .must .k{color:var(--fault)}
+.open b{color:var(--ink); font-weight:600}
+
+footer{
+  margin-top:64px; padding-top:22px; border-top:1px solid var(--line);
+  font-size:13px; color:var(--ink-3); display:flex; justify-content:space-between;
+  gap:16px; flex-wrap:wrap
+}
+footer code{font-size:12px}
+@media (max-width:640px){
+  .mast{padding:48px 0 32px}
+  .counts div{flex-basis:50%; border-bottom:1px solid var(--line)}
+}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">NØMAD Toronto · grandMA2 · showfile 2026-06-13</p>
+  <h1>What the manuals say,<br>and what the patch says</h1>
+  <p class="dek">Seven vendor manuals against a grandMA2 patch that names none of its fixtures.
+  Every profile in the rig now has a real fixture behind it — and only one of them is patched to a
+  mode that fixture can actually be set to.</p>
+  <div class="counts">
+    <div><b>7</b><span>manuals correlated</span></div>
+    <div><b>8</b><span>MA profiles in the rig</span></div>
+    <div class="is-fault"><b>5</b><span>patched to an impossible mode</span></div>
+    <div class="is-ok"><b>1</b><span>profile that agrees</span></div>
+    <div><b>0</b><span>address overlaps</span></div>
+  </div>
+</header>
+
+<section>
+  <div class="shead"><span class="num">The correlation</span><h2>Manual → profile → patch</h2></div>
+  <p class="lede">One row per MA fixture profile. <b>Patched</b> is the footprint the patch
+  occupies; <b>stride</b> is the gap the patcher actually left between consecutive fixtures. Where
+  those two disagree, the stride is usually the truth about the fixture and the profile is the
+  mistake.</p>
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th>MA profile</th><th class="n">Qty</th><th>Real fixture</th>
+        <th class="n">Modes</th><th class="n">Patched</th><th class="n">Stride</th><th>Verdict</th>
+      </tr></thead>
+      <tbody>
+<tr><td><span class="swatch" style="--c:#56B4E9"></span><code>2 Dimmer 00</code></td><td class="n">1</td><td class="model">Chauvet Hurricane Haze 2D</td><td class="n">2</td><td class="n strong">1</td><td class="n">—</td><td><span class="pill fault">No 1CH mode</span></td></tr>
+<tr><td><span class="swatch" style="--c:#E69F00"></span><code>3 LED Bar 2 11CH</code></td><td class="n">1</td><td class="model">Microh LEDBAR RGB</td><td class="n">13</td><td class="n strong">11</td><td class="n">—</td><td><span class="pill fault">No 11CH mode</span></td></tr>
+<tr><td><span class="swatch" style="--c:#CC79A7"></span><code>4 rgbw-13ch 13CH</code></td><td class="n">7</td><td class="model">Light4Me Strobe Multi Bar</td><td class="n">4 / 16 / 168</td><td class="n strong">13</td><td class="n">13<sub>5/6</sub></td><td><span class="pill fault">No 13CH mode</span></td></tr>
+<tr><td><span class="swatch" style="--c:#D55E00"></span><code>7 LASER BARS - Invert 26CH</code> <span class="inv-tag" title="pan/tilt-inverted duplicate profile">inv</span></td><td class="n">1</td><td class="model">Panda LS650 / LS652</td><td class="n">11 / 19 / 24</td><td class="n strong">26</td><td class="n">—</td><td><span class="pill fault">No 26CH mode</span></td></tr>
+<tr><td><span class="swatch" style="--c:#D55E00"></span><code>8 LASER BARS 26CH</code></td><td class="n">8</td><td class="model">Panda LS650 / LS652</td><td class="n">11 / 19 / 24</td><td class="n strong">26</td><td class="n">26</td><td><span class="pill fault">No 26CH mode</span></td></tr>
+<tr><td><span class="swatch" style="--c:#0072B2"></span><code>9 Sharpy Standard Lamp on</code></td><td class="n">4</td><td class="model">YF BEAM 230</td><td class="n">16 / 20</td><td class="n strong">14</td><td class="n">16</td><td><span class="pill warn">Stride says 16</span></td></tr>
+<tr class="unpatched"><td><span class="swatch" style="--c:#56B4E9"></span><code>2 Dimmer 00</code> <span class="inv-tag">unpatched</span></td><td class="n">2</td><td class="model">CO₂ jets — make unknown</td><td class="n">—</td><td class="n strong">1</td><td class="n">—</td><td><span class="pill unknown">Address 0</span></td></tr>
+<tr><td><span class="swatch" style="--c:#009E73"></span><code>5 NEW WASH</code></td><td class="n">8</td><td class="model">BETOPPER LM70S</td><td class="n">9 / 14</td><td class="n strong">9</td><td class="n">9<sub>3/5</sub></td><td><span class="pill ok">Agrees</span></td></tr>
+<tr><td><span class="swatch" style="--c:#009E73"></span><code>6 movingwash zone</code> <span class="inv-tag" title="pan/tilt-inverted duplicate profile">inv</span></td><td class="n">2</td><td class="model">BETOPPER LM70S</td><td class="n">9 / 14</td><td class="n strong">9</td><td class="n">—</td><td><span class="pill ok">Agrees</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tnote">A stride shown as <code>13<sub>5/6</sub></code> means five of the six gaps are
+  that size. <span class="inv-tag">inv</span> marks a pan/tilt-inverted duplicate profile — a
+  fixture hung upside down, not a different mode.</p>
+</section>
+
+<section>
+  <div class="shead"><span class="num">The evidence</span><h2>What actually made each link</h2></div>
+  <p class="lede">The showfile records a profile <em>name</em> and a start address, and nothing
+  else — no fixture-type definitions, no makes, no models. So each identification rests on a
+  specific fact. These are those facts, strongest first.</p>
+  <div class="evgrid">
+<article class="ev" style="--c:#0072B2">
+  <header>
+    <h3>YF BEAM 230</h3>
+    <span class="grade confirmed">Confirmed by manual</span>
+  </header>
+  <ul class="profs"><li><code>9 Sharpy Standard Lamp on</code> <span class="qty">×4</span></li></ul>
+  <p class="proof">The four beams are patched on a uniform <strong>16-channel stride</strong> — exactly this fixture's 16CH mode, and two wider than the 14CH profile loaded against them. The manual confirms 16/20CH and the 189 W 5R Philips / 230 W 7R Osram lamp.</p>
+  <p class="extra">“Standard Lamp on” is a Clay&nbsp;Paky Sharpy mode name, and a Sharpy's own lamp is a 189 W MSD Platinum 5R — so the profile was a sensible pick for a Sharpy-clone. The brand was never right; the class was.</p>
+  <p class="src"><span>Manual</span><code>yf-beam-230-moving-head.pdf</code></p>
+</article>
+<article class="ev" style="--c:#D55E00">
+  <header>
+    <h3>Panda LS650 / LS652</h3>
+    <span class="grade strong">Near-certain</span>
+  </header>
+  <ul class="profs"><li><code>8 LASER BARS 26CH</code> <span class="qty">×8</span></li><li><code>7 LASER BARS - Invert 26CH</code> <span class="qty">×1</span></li></ul>
+  <p class="proof">Six laser eyes against the MA fixture name <code>Laser.BAR(6)</code> and its <strong>six sub-fixture cells</strong>.</p>
+  <p class="extra">The structure matches attribute for attribute: MA records one master of 7 attributes plus 6 cells of 2. The LS650's 24CH mode gives each eye exactly two — a tilt position and a laser on/off — with seven whole-fixture attributes. 7&nbsp;+&nbsp;6×2&nbsp;=&nbsp;19, which is what the export holds.</p>
+  <p class="src"><span>Manual</span><code>panda-lighting-ls650-ls652-6-head-laser-bar.pdf</code></p>
+</article>
+<article class="ev" style="--c:#009E73">
+  <header>
+    <h3>BETOPPER LM70S</h3>
+    <span class="grade probable">Probable</span>
+  </header>
+  <ul class="profs"><li><code>5 NEW WASH</code> <span class="qty">×8</span></li><li><code>6 movingwash zone</code> <span class="qty">×2</span></li></ul>
+  <p class="proof">Its 9CH mode is the wash footprint <em>and</em> the address stride. Both agree, which no other profile in the rig manages.</p>
+  <p class="extra">The only fixture here whose patch is correct as it stands.</p>
+  <p class="src"><span>Manual</span><code>betopper-lm70s-mini-moving-head.pdf</code></p>
+</article>
+<article class="ev" style="--c:#CC79A7">
+  <header>
+    <h3>Light4Me Strobe Multi Bar</h3>
+    <span class="grade weak">Likely — weakest link</span>
+  </header>
+  <ul class="profs"><li><code>4 rgbw-13ch 13CH</code> <span class="qty">×7</span></li></ul>
+  <p class="proof">An RGB-background + white-strobe bar against the MA layer <code>--LED.STROBE-BAR</code> and the RGBW in the profile name.</p>
+  <p class="extra">Circumstantial rather than structural. No mode of this fixture is 13CH, so the patch cannot corroborate it the way the beams and lasers corroborate theirs.</p>
+  <p class="src"><span>Manual</span><code>light4me-strobe-multi-bar.pdf</code></p>
+</article>
+<article class="ev" style="--c:#E69F00">
+  <header>
+    <h3>Microh LEDBAR RGB</h3>
+    <span class="grade probable">Likely</span>
+  </header>
+  <ul class="profs"><li><code>3 LED Bar 2 11CH</code> <span class="qty">×1</span></li></ul>
+  <p class="proof">Its <strong>three RGB segments</strong> match the profile's three cells on a 3-channel stride, exactly.</p>
+  <p class="extra">Which is also how the mismatch shows: the profile's master is 2 channels where the fixture has 4 (function + all-R/G/B), so 2&nbsp;+&nbsp;9&nbsp;=&nbsp;11 against the fixture's 13.</p>
+  <p class="src"><span>Manual</span><code>microh-ledbar-rgb.pdf</code></p>
+</article>
+<article class="ev" style="--c:#56B4E9">
+  <header>
+    <h3>Chauvet Hurricane Haze 2D</h3>
+    <span class="grade probable">Likely</span>
+  </header>
+  <ul class="profs"><li><code>2 Dimmer 00</code> <span class="qty">×1</span></li></ul>
+  <p class="proof">The only hazer in the rig, and the only hazer manual supplied.</p>
+  <p class="extra">Weak as identification goes — but its 533 W and its “use on dimmer: no” are what make the DP-415's mode setting matter.</p>
+  <p class="src"><span>Manual</span><code>chauvet-hurricane-haze-2d.pdf</code></p>
+</article>
+  </div>
+<article class="dist">
+  <header>
+    <h3>Elation DP-415 — 4-channel dimmer/switch pack</h3>
+    <span class="grade confirmed">Confirmed by the venue</span>
+  </header>
+  <p class="proof">The three <code>2 Dimmer 00</code> entries are not fixtures. They are
+  <strong>channels on this pack</strong> — mains switching for the hazer and both CO₂ jets, three
+  of its four channels. 120 V, 15 A total, 5 A per channel.</p>
+  <ul class="chans"><li class="known"><b>Hazer</b><span>4.44 A</span></li><li><b>CO₂ jet 1</b><span>❓ unread</span></li><li><b>CO₂ jet 2</b><span>❓ unread</span></li><li class="spare"><b>Spare</b><span>—</span></li></ul>
+  <p class="extra">Dimmer or Switch is chosen <strong>pack-wide</strong> by dip switch 10. The
+  Haze 2D must not be dimmed and it shares this pack with the jets, so it cannot be isolated:
+  the pack has to be in Switch mode.</p>
+  <p class="src"><span>Manual</span><code>elation-dp-415-dimmer-switch-pack.pdf</code></p>
+</article>
+</section>
+
+<section>
+  <div class="shead"><span class="num">The patch</span><h2>Where everything sits</h2></div>
+  <p class="lede">Both universes to scale, 512 addresses each. Hatched blocks are the three
+  fixtures hung inverted. The empty stretches are real — the patch leaves 173 clear addresses
+  between the lone laser bar on U2 and the washes above it.</p>
+  <div class="legend"><span class="lg"><i style="--c:#0072B2"></i>Moving beams</span><span class="lg"><i style="--c:#D55E00"></i>Laser bars</span><span class="lg"><i style="--c:#009E73"></i>Moving washes</span><span class="lg"><i style="--c:#CC79A7"></i>Strobe bars</span><span class="lg"><i style="--c:#E69F00"></i>DJ-deck bar</span><span class="lg"><i style="--c:#56B4E9"></i>Effects</span></div>
+  <div class="umap">
+    <div>
+      <p class="ulab"><b>Universe 1</b><span>abs 1–512 · 28 fixtures · 438 ch used</span></p>
+      <div class="uni"><div class="unibar"><i class="seg" style="left:1.9531%;width:2.1484%;--c:#E69F00" title="DJ-LED — 11–21 (11–21 in U1)"></i><i class="seg" style="left:5.0781%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 8 — 27–52 (27–52 in U1)"></i><i class="seg" style="left:10.1562%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 7 — 53–78 (53–78 in U1)"></i><i class="seg" style="left:15.2344%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 6 — 79–104 (79–104 in U1)"></i><i class="seg" style="left:20.3125%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 5 — 105–130 (105–130 in U1)"></i><i class="seg" style="left:25.3906%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 4 — 131–156 (131–156 in U1)"></i><i class="seg" style="left:30.4688%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 3 — 157–182 (157–182 in U1)"></i><i class="seg" style="left:35.5469%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 2 — 183–208 (183–208 in U1)"></i><i class="seg" style="left:40.6250%;width:5.0781%;--c:#D55E00" data-inv="1" title="Laser.BAR(6) 1 — 209–234 (209–234 in U1)"></i><i class="seg" style="left:45.7031%;width:1.7578%;--c:#009E73" title="M.Wash 4 — 235–243 (235–243 in U1)"></i><i class="seg" style="left:47.4609%;width:1.7578%;--c:#009E73" title="M.Wash 3 — 244–252 (244–252 in U1)"></i><i class="seg" style="left:49.2188%;width:1.7578%;--c:#009E73" title="M.Wash 8 — 253–261 (253–261 in U1)"></i><i class="seg" style="left:50.9766%;width:1.7578%;--c:#009E73" data-inv="1" title="M.Wash 7 — 262–270 (262–270 in U1)"></i><i class="seg" style="left:52.7344%;width:1.7578%;--c:#009E73" title="M.Wash 5 — 271–279 (271–279 in U1)"></i><i class="seg" style="left:54.4922%;width:2.7344%;--c:#0072B2" title="M.BEAM 2 — 280–293 (280–293 in U1)"></i><i class="seg" style="left:57.6172%;width:2.7344%;--c:#0072B2" title="M.BEAM 3 — 296–309 (296–309 in U1)"></i><i class="seg" style="left:60.7422%;width:2.7344%;--c:#0072B2" title="M.BEAM 1 — 312–325 (312–325 in U1)"></i><i class="seg" style="left:63.8672%;width:2.7344%;--c:#0072B2" title="M.BEAM 4 — 328–341 (328–341 in U1)"></i><i class="seg" style="left:69.5312%;width:2.5391%;--c:#CC79A7" title="LED.Strobe-BAR 7 — 357–369 (357–369 in U1)"></i><i class="seg" style="left:74.6094%;width:2.5391%;--c:#CC79A7" title="LED.Strobe-BAR 6 — 383–395 (383–395 in U1)"></i><i class="seg" style="left:77.1484%;width:2.5391%;--c:#CC79A7" title="LED.Strobe-BAR 5 — 396–408 (396–408 in U1)"></i><i class="seg" style="left:79.6875%;width:2.5391%;--c:#CC79A7" title="LED.Strobe-BAR 4 — 409–421 (409–421 in U1)"></i><i class="seg" style="left:82.2266%;width:2.5391%;--c:#CC79A7" title="LED.Strobe-BAR 3 — 422–434 (422–434 in U1)"></i><i class="seg" style="left:84.7656%;width:2.5391%;--c:#CC79A7" title="LED.Strobe-BAR 2 — 435–447 (435–447 in U1)"></i><i class="seg" style="left:87.3047%;width:2.5391%;--c:#CC79A7" title="LED.Strobe-BAR 1 — 448–460 (448–460 in U1)"></i><i class="seg" style="left:91.4062%;width:1.7578%;--c:#009E73" title="M.Wash 2 — 469–477 (469–477 in U1)"></i><i class="seg" style="left:95.3125%;width:1.7578%;--c:#009E73" title="M.Wash 6 — 489–497 (489–497 in U1)"></i><i class="seg" style="left:97.0703%;width:1.7578%;--c:#009E73" title="M.Wash 1 — 498–506 (498–506 in U1)"></i></div><div class="ruler"><i class="tick" style="left:0.0000%"><b>1</b></i><i class="tick" style="left:25.0000%"><b>128</b></i><i class="tick" style="left:50.0000%"><b>256</b></i><i class="tick" style="left:75.0000%"><b>384</b></i></div></div>
+    </div>
+    <div>
+      <p class="ulab"><b>Universe 2</b><span>abs 513–1024 · 4 fixtures · 45 ch used</span></p>
+      <div class="uni"><div class="unibar"><i class="seg" style="left:0.0000%;width:5.0781%;--c:#D55E00" title="Laser.BAR(6) 9 — 513–538 (1–26 in U2)"></i><i class="seg" style="left:38.8672%;width:1.7578%;--c:#009E73" data-inv="1" title="M.Wash 10 — 712–720 (200–208 in U2)"></i><i class="seg" style="left:40.8203%;width:1.7578%;--c:#009E73" title="M.Wash 9 — 722–730 (210–218 in U2)"></i><i class="seg" style="left:69.3359%;width:0.1953%;--c:#56B4E9" title="-Atmos- — 868–868 (356–356 in U2)"></i></div><div class="ruler"><i class="tick" style="left:0.0000%"><b>513</b></i><i class="tick" style="left:25.0000%"><b>640</b></i><i class="tick" style="left:50.0000%"><b>768</b></i><i class="tick" style="left:75.0000%"><b>896</b></i></div></div>
+    </div>
+  </div>
+  <p class="umap-note">Two CO₂ jets are not shown: they sit at address 0, unpatched. They are
+  channels on an Elation DP-415 mains pack rather than DMX fixtures, so what they need is the
+  pack's dip-switch address, not a patch of their own.</p>
+</section>
+
+<section>
+  <div class="shead"><span class="num">The disagreements</span><h2>Five mismatches, five different costs</h2></div>
+  <p class="lede">Ordered by what each one actually does to the rig, not by profile number. Only the
+  first can corrupt another fixture's channels; the last is merely untidy.</p>
+  <div class="mmlist">
+<article class="mm fault">
+  <span class="rank">Can collide</span>
+  <h3>Strobe bars — patched 13CH, fixture offers 4 / 16 / 168</h3>
+  <p>If the bars are in 16CH they are three channels wider than their slot, and <strong>five of the seven run into the bar addressed next</strong>: 396–398, 409–411, 422–424, 435–437, 448–450. Those are ch14–16 of the overrun bar — RGBW-effect speed, background colour, background dimmer — driven by ch1–3 of its neighbour. If instead they are in 4CH, nothing collides but nine of every thirteen patched channels are dead.</p>
+  <p class="tell">BAR 7 is not in that list. It sits at 357 with the 370–382 gap after it — exactly the room a 16-channel bar needs. That gap was filed as an unexplained spare in June.</p>
+</article><article class="mm fault">
+  <span class="rank">Costs a function</span>
+  <h3>Moving beams — patched 14CH, fixture offers 16 / 20</h3>
+  <p>Nothing collides: the stride is already 16. But the 14-channel profile stops at <em>Pan and Tilt speed</em>, so <strong>ch15 Reset and ch16 Lamp control</strong> are unreachable. On four discharge fixtures that means the lamps cannot be struck, doused or reset from the console.</p>
+  <p class="tell">Everything look-critical — colour, gobo, prism, frost, focus, pan, tilt, both fine channels — sits inside 1–14 and works. The loss is entirely in lamp handling.</p>
+</article><article class="mm warn">
+  <span class="rank">Lands on the wrong channel</span>
+  <h3>DJ-deck bar — patched 11CH, fixture is a fixed 13</h3>
+  <p>The profile's master is 2 channels where the Microh has 4, so the whole segment block is <strong>offset by two</strong>: the console's cell-1 red drives the fixture's all-blue, and so on down the bar.</p>
+  <p class="tell">Nothing collides — the bar occupies 11–23 and the next fixture is a laser at 27.</p>
+</article><article class="mm warn">
+  <span class="rank">Half a fixture</span>
+  <h3>Hazer — patched 1CH, personality is a fixed 2</h3>
+  <p>The Hurricane Haze 2D's own DMX is two channels: blower speed, then haze volume. If what is patched is the hazer's DMX, <strong>haze volume never responds</strong>. If it is a DP-415 pack channel instead, the patch is correct as written.</p>
+  <p class="tell">Which of the two it is decides whether this is a fault or a non-issue. It is one look at the back of the hazer.</p>
+</article><article class="mm benign">
+  <span class="rank">Wastes addresses</span>
+  <h3>Laser bars — patched 26CH, fixture offers 11 / 19 / 24</h3>
+  <p>Because 24 &lt; 26 nothing collides; each bar simply leaves two dead channels, eighteen across the nine bars.</p>
+  <p class="tell">What cannot be checked from here is the profile's internal channel order — the export carries fixture-type names, not their definitions.</p>
+</article>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">Still unread</span><h2>What a walk round the rig would settle</h2></div>
+  <p class="lede">Every one of these fixtures shows its mode and address on its own panel. Nothing
+  here should be re-patched from a desk — the patch is internally consistent as it stands.</p>
+  <div class="open"><ul>
+    <li class="must"><span class="k">Must read</span><span><b>DP-415 dip switch 10.</b> The
+      Hurricane Haze 2D must not be run on a dimmer, the pack's mode is pack-wide, and the hazer
+      shares that pack with both CO₂ jets — so it cannot be isolated. It must read
+      <b>Switch</b>. The only question here with a single correct answer.</span></li>
+    <li><span class="k">Highest value</span><span><b>One strobe bar's DMX mode.</b> 13CH is
+      impossible, so whatever the panel says is news. <code>CH16</code> means five bars are
+      colliding.</span></li>
+    <li><span class="k">Worth 1.2 kW</span><span><b>A beam's model plate.</b> Confirms the YF BEAM
+      230 against the load schedule — four discharge beams are 1400–1600 W where four LED mini
+      heads would have been 400 W.</span></li>
+    <li><span class="k">Last unknown</span><span><b>The CO₂ jets' wattage.</b> Bounded by the pack
+      at ≤5 A each and ≤10.6 A between them, but nobody has read the real figure.</span></li>
+    <li><span class="k">Rigging</span><span><b>M.Wash 7, M.Wash 10, Laser.BAR 1 — hung
+      inverted?</b> Confirms the duplicate-profile reading, and is the only fixture-orientation
+      data the repo holds. Every position in the showfile is <code>0,0,0</code>.</span></li>
+  </ul></div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">Load</span><h2>5.73–5.93 kW · 48–49 A at 120 V</h2></div>
+  <p class="lede">A subtotal, not a total: only the CO₂ jets are missing a figure. Currents are
+  real power ÷ voltage at unity power factor, so they are a <em>floor</em> — the fixtures' actual
+  power factor and the discharge ballasts' inrush go on top before anything is sized. Nine laser
+  bars at 6 × 500 mW / 638 nm each make this a <b>Class 4</b> installation, which is a regulated
+  question rather than a lighting-design one.</p>
+</section>
+
+<footer>
+  <span>EMBLEM PROJECTS INC. · audit rev 3.1 · 2026-08-25</span>
+  <span>Generated from <code>NOMADFIXPATCHJUNE2026.xml</code> by <code>scripts/build-correlation-page.py</code></span>
+</footer>
+
+</div>

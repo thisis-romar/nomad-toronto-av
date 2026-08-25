@@ -26,7 +26,8 @@ universes**, decoded from the venue showfile (June 2026).
 | `source-showfile/NOMADFIXPATCHJUNE2026.xml` | Source-of-truth grandMA2 export |
 | `source-showfile/README.md` | Showfile provenance + decoding conventions |
 | `manuals/` | Vendor manuals — 7 supplied by the venue 2026-08-25 |
-| `fixture-identification-audit.md` | Which real fixture is behind each MA profile, and two patch/mode mismatches |
+| `fixture-identification-audit.md` | Which real fixture is behind each MA profile, and five patch/mode mismatches |
+| `assets/correlation.html` | The same finding laid out to be scanned — correlation table, evidence per fixture, both universes to scale. Regenerate with `python3 scripts/build-correlation-page.py` |
 
 > The SVG is **regenerable** from the showfile: `python3 scripts/build-lighting-patch-map.py`.
 > The patch/mode audit is regenerable too: `python3 scripts/audit-dmx-patch.py`.
