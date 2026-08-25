@@ -1,9 +1,9 @@
 ---
 title: NØMAD Toronto — DMX Patch Schedule
 description: Complete DMX patch schedule for the NØMAD Toronto grandMA2 lighting rig, decoded from the venue showfile (2026-06-13, exported 2026-06-24). The lighting analog of the audio cable schedule.
-version: 1.0.0
+version: 1.1.0
 created: 2026-06-24T00:00:00Z
-last_updated: 2026-06-24T00:00:00Z
+last_updated: 2026-08-25T00:00:00Z
 ---
 
 # NØMAD Toronto — DMX Patch Schedule
@@ -39,6 +39,11 @@ MA layer `--LED.DJ-Decks`.
 
 MA layer `--LED.STROBE-BAR`. All `4 rgbw-13ch 13CH`, 13 ch, Universe 1.
 
+> ❌ **Mode mismatch — do not re-patch on this alone.** These are believed to be **Light4Me STROBE
+> MULTI BAR**, which offers 4CH / 16CH / 168CH. There is no 13CH mode. If they are running 16CH,
+> five of the seven overrun their slot and collide with the next bar by 3 channels. Read the mode
+> off a bar's LCD first — `08-lighting/fixture-identification-audit.md` §4.
+
 | # | Fixture | Group/Layer | MA Profile | Ch | Universe | Start | End | Cells | Notes |
 |---|---------|-------------|------------|---:|----------|-------|-----|------:|-------|
 | 2 | LED.Strobe-BAR 1 | LED.STROBE-BAR | `4 rgbw-13ch 13CH` | 13 | U1 | 448 (448) | 460 (460) | — | FID 801 |
@@ -57,6 +62,8 @@ MA layer `--LED.STROBE-BAR`. All `4 rgbw-13ch 13CH`, 13 ch, Universe 1.
 
 MA layer `--M.WASH`. All 9 ch. Two profiles mixed: `5 NEW WASH` (×8) and `6 movingwash zone` (×2).
 
+> ✅ Believed to be **BETOPPER LM70S** in its 9CH mode — footprint matches a real mode, no conflict.
+
 | # | Fixture | Group/Layer | MA Profile | Ch | Universe | Start | End | Cells | Notes |
 |---|---------|-------------|------------|---:|----------|-------|-----|------:|-------|
 | 9  | M.Wash 1  | M.WASH | `5 NEW WASH` | 9 | U1 | 498 (498) | 506 (506) | — | FID 101 |
@@ -72,9 +79,14 @@ MA layer `--M.WASH`. All 9 ch. Two profiles mixed: `5 NEW WASH` (×8) and `6 mov
 
 ---
 
-## Section 4 — Moving Beams (Sharpy)
+## Section 4 — Moving Beams
 
-MA layer `--M.Beam`. All `9 Sharpy Standard Lamp on`, 14 ch, Universe 1. Profile implies Clay Paky Sharpy — confirm model on-site.
+MA layer `--M.Beam`. All `9 Sharpy Standard Lamp on`, 14 ch, Universe 1.
+
+> ⚠️ **Not a Clay Paky Sharpy.** The profile name is an MA label; 14CH is not a Sharpy mode, and it
+> *is* the 14CH mode of the **BETOPPER LM70S** (7×8 W RGBW mini head, 100 W) whose manual the venue
+> supplied. Footprint and patch are unaffected — only the presumed model changes. Confirm from the
+> model plate: `08-lighting/fixture-identification-audit.md` §2.
 
 | # | Fixture | Group/Layer | MA Profile | Ch | Universe | Start | End | Cells | Notes |
 |---|---------|-------------|------------|---:|----------|-------|-----|------:|-------|
@@ -88,6 +100,11 @@ MA layer `--M.Beam`. All `9 Sharpy Standard Lamp on`, 14 ch, Universe 1. Profile
 ## Section 5 — Laser Bars
 
 MA layer `--M.Laser-BAR`. All 26 ch, 7 sub-cells. Bars 2–9 use `8 LASER BARS 26CH`; bar 1 uses the inverted profile.
+
+> ⚠️ **Mode mismatch, benign as patched.** These are the **LS650 six-eye swing laser**, which
+> offers 11CH / 19CH / 24CH. There is no 26CH mode. Because 24 < 26 nothing collides — each bar
+> just leaves 2 dead channels — but the profile's internal channel order cannot be verified from
+> the showfile. `08-lighting/fixture-identification-audit.md` §5.
 
 | # | Fixture | Group/Layer | MA Profile | Ch | Universe | Start | End | Cells | Notes |
 |---|---------|-------------|------------|---:|----------|-------|-----|------:|-------|

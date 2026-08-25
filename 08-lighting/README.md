@@ -1,9 +1,9 @@
 ---
 title: NØMAD Toronto — Lighting Subsystem
 description: Index and status dashboard for the venue lighting subsystem (grandMA2 rig), decoded from the showfile export.
-version: 1.0.0
+version: 1.1.0
 created: 2026-06-24T00:00:00Z
-last_updated: 2026-06-24T00:00:00Z
+last_updated: 2026-08-25T00:00:00Z
 ---
 
 # NØMAD Toronto — Lighting Subsystem
@@ -25,9 +25,11 @@ universes**, decoded from the venue showfile (June 2026).
 | `assets/svg/dmx-patch-map.svg` | Schematic DMX patch map (address allocation per universe) |
 | `source-showfile/NOMADFIXPATCHJUNE2026.xml` | Source-of-truth grandMA2 export |
 | `source-showfile/README.md` | Showfile provenance + decoding conventions |
-| `manuals/` | Vendor manuals (placeholders until fixtures are identified on-site) |
+| `manuals/` | Vendor manuals — 3 supplied by the venue 2026-08-25 |
+| `fixture-identification-audit.md` | Which real fixture is behind each MA profile, and two patch/mode mismatches |
 
 > The SVG is **regenerable** from the showfile: `python3 scripts/build-lighting-patch-map.py`.
+> The patch/mode audit is regenerable too: `python3 scripts/audit-dmx-patch.py`.
 > It is a patch/address map, **not** a physical plot (positions are unknown — all `0,0,0`).
 
 Deliverables that mirror the audio tech pack live alongside the audio docs:
@@ -44,7 +46,10 @@ Deliverables that mirror the audio tech pack live alongside the audio docs:
 | Rig documented from showfile | ⚠️ Desktop decode | Physical verification pending |
 | CO₂ jets DMX patch | ❓ Unpatched | Address 0 in showfile — patch & verify on-site |
 | Fixture positions | ❓ Unknown | All `0,0,0` in showfile — survey on next visit |
-| Real fixture makes/models | ❓ TBC | Only generic MA profiles present (Sharpy name-suggestive) |
+| Real fixture makes/models | 🟡 Partly identified | 3 manuals on file — lasers LS650, moving heads BETOPPER LM70S, strobes Light4Me. DJ bar, CO₂ and haze still unknown |
+| Strobe bars patched 13CH | ❌ **Mismatch** | Light4Me offers 4/16/168 — read the mode off a bar's LCD (audit §4) |
+| Laser bars patched 26CH | ⚠️ **Mismatch** | LS650 offers 11/19/24 — no collision, 2 dead channels per bar (audit §5) |
+| Patch address integrity | ✅ Verified | No overlaps, no universe-boundary crossings (`scripts/audit-dmx-patch.py`) |
 | DMX node/output topology | ❓ TBC | Map U1/U2 to physical nodes/ports |
 | Lighting power/breakers | ❓ TBC | No data in showfile |
 | Console make/model/location | ❓ TBC | grandMA2 "Nomad" per export; confirm hardware on-site |

@@ -26,7 +26,7 @@ last_updated: 2026-06-24T00:00:00Z
 | DJ-deck LED bar | `3 LED Bar 2 11CH` | 1 | U1 |
 | LED strobe bars | `4 rgbw-13ch 13CH` | 7 | U1 |
 | Moving washes | `5 NEW WASH` ×8 · `6 movingwash zone` ×2 | 10 | U1 + U2 |
-| Moving beams (Sharpy) | `9 Sharpy Standard Lamp on` | 4 | U1 |
+| Moving beams | `9 Sharpy Standard Lamp on` | 4 | U1 |
 | Laser bars | `8 LASER BARS 26CH` ×8 · `7 LASER BARS - Invert 26CH` ×1 | 9 | U1 + U2 |
 | CO₂ jets | `2 Dimmer 00` (multipatch ×2) | 1 | **unpatched** |
 | Atmospheric haze | `2 Dimmer 00` | 1 | U2 |

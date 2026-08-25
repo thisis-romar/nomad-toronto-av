@@ -1,14 +1,14 @@
 ---
 title: NØMAD Toronto — Lighting System Specification
 description: Lighting system specification for NØMAD Toronto, decoded from the grandMA2 "Nomad" showfile export (showfile 2026-06-13, exported 2026-06-24). Rev 1.0 — desktop decode; physical site verification pending.
-version: 1.0.0
+version: 1.1.0
 created: 2026-06-24T00:00:00Z
-last_updated: 2026-06-24T00:00:00Z
+last_updated: 2026-08-25T00:00:00Z
 ---
 
 # NØMAD Toronto — Lighting System Specification
 
-**Revision:** 1.0
+**Revision:** 1.1
 **Date:** June 2026
 **Prepared by:** Emblem Projects Inc.
 **Venue:** NØMAD Toronto
@@ -189,20 +189,29 @@ All 26 ch, 7 sub-cells.
 
 ## §5 Fixture Types / Profiles — Real-World Model Status
 
-The showfile carries **generic MA fixture-profile names**, not confirmed manufacturer models.
-Only the Sharpy profile is name-suggestive. Everything else requires on-site identification
-(Open Item §9.3).
+The showfile carries **generic MA fixture-profile names**, not confirmed manufacturer models. In
+August 2026 the venue supplied three fixture manuals (`manuals/`), which identify three of the six
+fixture families. Full working in `fixture-identification-audit.md`.
 
-| MA profile | Qty | Ch | Presumed real-world fixture | Status |
-|------------|----:|---:|-----------------------------|--------|
-| `9 Sharpy Standard Lamp on` | 4 | 14 | Clay Paky Sharpy (beam) | ⚠️ Name-suggestive — confirm |
-| `5 NEW WASH` | 8 | 9 | Moving wash (unknown make) | ❓ TBC |
-| `6 movingwash zone` | 2 | 9 | Moving wash, zoned/cell mode (unknown make) | ❓ TBC |
-| `8 LASER BARS 26CH` | 8 | 26 | Laser bar (unknown make) | ❓ TBC |
-| `7 LASER BARS - Invert 26CH` | 1 | 26 | Laser bar, inverted patch (unknown make) | ❓ TBC |
-| `4 rgbw-13ch 13CH` | 7 | 13 | RGBW LED strobe bar (unknown make) | ❓ TBC |
-| `3 LED Bar 2 11CH` | 1 | 11 | LED bar (unknown make) | ❓ TBC |
-| `2 Dimmer 00` | 3 | 1 | Single-channel relay/dimmer (CO₂ ×2, hazer ×1) | ❓ TBC |
+| MA profile | Qty | Ch | Real-world fixture | Modes it offers | Status |
+|------------|----:|---:|--------------------|-----------------|--------|
+| `9 Sharpy Standard Lamp on` | 4 | 14 | **BETOPPER LM70S** — 7×8 W RGBW mini moving head, 100 W | 9 / **14** | ⚠️ Probable — **not** a Clay Paky Sharpy, see below |
+| `5 NEW WASH` | 8 | 9 | **BETOPPER LM70S** | **9** / 14 | ⚠️ Probable — footprint matches |
+| `6 movingwash zone` | 2 | 9 | **BETOPPER LM70S** | **9** / 14 | ⚠️ Probable — footprint matches |
+| `8 LASER BARS 26CH` | 8 | 26 | **LS650 six-eye swing laser** (OEM, unbranded) | 11 / 19 / 24 | ❌ **No 26CH mode** — audit §5 |
+| `7 LASER BARS - Invert 26CH` | 1 | 26 | **LS650 six-eye swing laser** | 11 / 19 / 24 | ❌ **No 26CH mode** — audit §5 |
+| `4 rgbw-13ch 13CH` | 7 | 13 | **Light4Me STROBE MULTI BAR** | 4 / 16 / 168 | ❌ **No 13CH mode** — audit §4 |
+| `3 LED Bar 2 11CH` | 1 | 11 | LED bar (unknown make) | — | ❓ TBC — no manual supplied |
+| `2 Dimmer 00` | 3 | 1 | Single-channel relay/dimmer (CO₂ ×2, hazer ×1) | — | ❓ TBC — no manual supplied |
+
+> ⚠️ **"Clay Paky Sharpy" is retracted.** `9 Sharpy Standard Lamp on` is an MA profile *name*, and
+> nothing more. Its 14-channel footprint is not a Sharpy mode, and it is exactly the LM70S's 14CH
+> mode. A Sharpy is a 189 W discharge beam with no RGBW mixing; the LM70S is a 100 W LED RGBW head.
+> Confirm from the model plate on site.
+
+> ❌ **Two profiles are patched to footprints their fixture cannot be set to** — the strobe bars at
+> 13CH and the laser bars at 26CH. The patch is internally consistent (no address overlaps), so
+> **do not re-patch** until the on-site panel check in `fixture-identification-audit.md` §6 is done.
 
 ---
 
@@ -258,11 +267,21 @@ verified").
 2. **Fixture positions unknown** — every `<AbsolutePosition>` in the showfile is `0,0,0`. No
    to-scale **physical plot** can be drawn without a site survey. (A schematic **DMX patch map**
    — address allocation, not geography — is provided at `assets/svg/dmx-patch-map.svg`.)
-3. **Real makes/models behind generic MA profiles** — only `9 Sharpy…` is name-suggestive.
-   `5 NEW WASH`, `6 movingwash zone`, `8 LASER BARS`, `4 rgbw-13ch`, `3 LED Bar 2`, `2 Dimmer 00`
-   need on-site identification.
+3. **Real makes/models behind generic MA profiles** — *partly resolved.* Three manuals supplied
+   2026-08-25 identify the moving heads (BETOPPER LM70S, probable), the laser bars (LS650 six-eye
+   swing laser, near-certain) and the strobe bars (Light4Me STROBE MULTI BAR, likely). Still
+   unidentified: `3 LED Bar 2 11CH` (DJ-deck bar) and `2 Dimmer 00` (CO₂ ×2 + hazer). The Clay Paky
+   Sharpy assumption is **retracted** — see §5 and `fixture-identification-audit.md`.
+8. **Strobe bars patched 13CH — the Light4Me offers 4/16/168.** If the bars are really in 16CH mode
+   they overrun their slots and five of them collide with the next bar by 3 channels
+   (`fixture-identification-audit.md` §4). Read the mode off a bar's LCD before changing anything.
+9. **Laser bars patched 26CH — the LS650 offers 11/19/24.** No collision (24 < 26), but 2 channels
+   per bar are dead and the profile's internal channel order cannot be verified from the export
+   (audit §5).
 4. **DMX node/output topology** — map U1/U2 to physical nodes/ports.
 5. **Strobe-bar address gaps** — confirm intentional spares vs. stale patch (e.g. 370–382 free).
+   *Note:* that 13-channel gap is exactly the extra room a 16CH Light4Me bar would need, which may
+   be the explanation — see Open Item 8.
 6. **Lighting power/breakers** — no PSU/load/breaker data; confirm with venue electrician.
 7. **Console make/model/location** — confirm grandMA2 hardware and booth position.
 
@@ -273,6 +292,8 @@ verified").
 | Field | Value |
 |-------|-------|
 | Showfile | `08-lighting/source-showfile/NOMADFIXPATCHJUNE2026.xml` |
+| Fixture manuals | `08-lighting/manuals/` (3 supplied 2026-08-25) |
+| Identification audit | `08-lighting/fixture-identification-audit.md` |
 | Provenance | `08-lighting/source-showfile/README.md` |
 | Console | grandMA2 "Nomad" v3.9.60 |
 | Showfile name | `nomad_2026-06-13_kayo-toronto-ft-pools` |

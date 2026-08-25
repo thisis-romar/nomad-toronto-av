@@ -19,7 +19,7 @@ A **Drawmer SP2120** stereo processor sits in the signal chain ahead of the ampl
 
 The system was designed and installed by **Emblem Projects Inc.** and verified against the Armonía DSP network in March 2026, with the CQ-12T installation confirmed April 2026.
 
-NØMAD Toronto also operates a **grandMA2-controlled lighting rig** — 31 intelligent/LED fixtures (4 Sharpy moving beams, 10 moving washes, 7 LED strobe bars, 9 laser bars, 1 DJ-deck LED bar) plus CO₂ jets and atmospheric haze across 2 DMX universes. The rig is **decoded from the venue showfile (June 2026)**; physical fixture positions, real-world fixture models, DMX-node topology, and lighting power are pending on-site verification. See the [Lighting Subsystem](08-lighting/README.md).
+NØMAD Toronto also operates a **grandMA2-controlled lighting rig** — 31 intelligent/LED fixtures (4 moving beams, 10 moving washes, 7 LED strobe bars, 9 laser bars, 1 DJ-deck LED bar) plus CO₂ jets and atmospheric haze across 2 DMX universes. The rig is **decoded from the venue showfile (June 2026)**; physical fixture positions, real-world fixture models, DMX-node topology, and lighting power are pending on-site verification. See the [Lighting Subsystem](08-lighting/README.md).
 
 ---
 
@@ -37,7 +37,8 @@ NØMAD Toronto also operates a **grandMA2-controlled lighting rig** — 31 intel
 | Lighting rig | ⚠️ Documented from showfile | 2026-06-24 | grandMA2 patch decoded; physical verification pending. See [Lighting Subsystem](08-lighting/README.md). |
 | Lighting — CO₂ jets patch | ❓ Unpatched | — | Both CO₂ jets at DMX address 0 in showfile. Patch & verify on-site. |
 | Lighting — fixture positions | ❓ Unknown | — | All fixtures at 0,0,0 in showfile. Survey on next visit. |
-| Lighting — fixture makes/models | ❓ Unconfirmed | — | Only generic MA profiles in showfile (Sharpy name-suggestive). Identify on-site. |
+| Lighting — fixture makes/models | 🟡 Partly identified | — | 3 vendor manuals on file (LS650 lasers, BETOPPER LM70S heads, Light4Me strobes); DJ bar / CO₂ / haze still unknown. See [audit](08-lighting/fixture-identification-audit.md). |
+| Lighting — patch vs. fixture modes | ⚠️ 2 mismatches | — | Strobes patched 13CH and lasers 26CH; neither is a mode those fixtures offer. Panel check needed before re-patching. |
 | Open issues | 5 | 2026-04-27 | See [Open Issues](#open-issues) section |
 | Tech pack | ✅ Complete | 2026-06-24 | 7 audio documents + lighting subsystem. See [Tech Pack](#tech-pack) section. |
 

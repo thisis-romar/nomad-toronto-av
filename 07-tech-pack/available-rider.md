@@ -157,7 +157,7 @@ Managed by house technician. Handles routing to:
 
 NØMAD Toronto has a **house lighting rig** controlled from a grandMA2 console:
 
-- **Fixtures:** moving beams (Sharpy-type), moving washes, LED strobe bars, laser bars, plus
+- **Fixtures:** moving beams, moving washes, LED strobe bars, laser bars, plus
   CO₂ jets and atmospheric haze.
 - **Operation:** programmed and run by the **house LD / technician**. Lighting is operated to the
   music in-house; touring acts are not expected to bring lighting.

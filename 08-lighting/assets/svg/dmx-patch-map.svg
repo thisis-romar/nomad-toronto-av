@@ -66,16 +66,16 @@
 <rect x="631.0" y="140" width="16.7" height="34" fill="#1abc9c" stroke="#1a1a2e" stroke-width="0.5"><title>W5 · Moving wash · abs 271 (U1/271) · 9ch</title></rect>
 <line x1="639.3" y1="124" x2="639.3" y2="140" stroke="#bbb" stroke-width="0.5"/>
 <text x="639.3" y="122" fill="#333" font-size="8.5" text-anchor="middle">W5</text>
-<rect x="647.7" y="140" width="26.0" height="34" fill="#3498db" stroke="#1a1a2e" stroke-width="0.5"><title>B2 · Moving beam (Sharpy) · abs 280 (U1/280) · 14ch</title></rect>
+<rect x="647.7" y="140" width="26.0" height="34" fill="#3498db" stroke="#1a1a2e" stroke-width="0.5"><title>B2 · Moving beam (14CH) · abs 280 (U1/280) · 14ch</title></rect>
 <line x1="660.7" y1="112" x2="660.7" y2="140" stroke="#bbb" stroke-width="0.5"/>
 <text x="660.7" y="110" fill="#333" font-size="8.5" text-anchor="middle">B2</text>
-<rect x="677.4" y="140" width="26.0" height="34" fill="#3498db" stroke="#1a1a2e" stroke-width="0.5"><title>B3 · Moving beam (Sharpy) · abs 296 (U1/296) · 14ch</title></rect>
+<rect x="677.4" y="140" width="26.0" height="34" fill="#3498db" stroke="#1a1a2e" stroke-width="0.5"><title>B3 · Moving beam (14CH) · abs 296 (U1/296) · 14ch</title></rect>
 <line x1="690.4" y1="136" x2="690.4" y2="140" stroke="#bbb" stroke-width="0.5"/>
 <text x="690.4" y="134" fill="#333" font-size="8.5" text-anchor="middle">B3</text>
-<rect x="707.1" y="140" width="26.0" height="34" fill="#3498db" stroke="#1a1a2e" stroke-width="0.5"><title>B1 · Moving beam (Sharpy) · abs 312 (U1/312) · 14ch</title></rect>
+<rect x="707.1" y="140" width="26.0" height="34" fill="#3498db" stroke="#1a1a2e" stroke-width="0.5"><title>B1 · Moving beam (14CH) · abs 312 (U1/312) · 14ch</title></rect>
 <line x1="720.0" y1="124" x2="720.0" y2="140" stroke="#bbb" stroke-width="0.5"/>
 <text x="720.0" y="122" fill="#333" font-size="8.5" text-anchor="middle">B1</text>
-<rect x="736.7" y="140" width="26.0" height="34" fill="#3498db" stroke="#1a1a2e" stroke-width="0.5"><title>B4 · Moving beam (Sharpy) · abs 328 (U1/328) · 14ch</title></rect>
+<rect x="736.7" y="140" width="26.0" height="34" fill="#3498db" stroke="#1a1a2e" stroke-width="0.5"><title>B4 · Moving beam (14CH) · abs 328 (U1/328) · 14ch</title></rect>
 <line x1="749.7" y1="112" x2="749.7" y2="140" stroke="#bbb" stroke-width="0.5"/>
 <text x="749.7" y="110" fill="#333" font-size="8.5" text-anchor="middle">B4</text>
 <rect x="790.5" y="140" width="24.1" height="34" fill="#e74c3c" stroke="#1a1a2e" stroke-width="0.5"><title>S7 · LED strobe bar · abs 357 (U1/357) · 13ch</title></rect>
@@ -151,7 +151,7 @@
 <rect x="390" y="442" width="14" height="14" fill="#1abc9c" stroke="#1a1a2e" stroke-width="0.5"/>
 <text x="410" y="453" fill="#333" font-size="10">Moving wash</text>
 <rect x="565" y="442" width="14" height="14" fill="#3498db" stroke="#1a1a2e" stroke-width="0.5"/>
-<text x="585" y="453" fill="#333" font-size="10">Moving beam (Sharpy)</text>
+<text x="585" y="453" fill="#333" font-size="10">Moving beam (14CH)</text>
 <rect x="740" y="442" width="14" height="14" fill="#e67e22" stroke="#1a1a2e" stroke-width="0.5"/>
 <text x="760" y="453" fill="#333" font-size="10">Laser bar</text>
 <rect x="915" y="442" width="14" height="14" fill="#95a5a6" stroke="#1a1a2e" stroke-width="0.5"/>

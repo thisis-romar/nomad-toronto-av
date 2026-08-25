@@ -115,7 +115,7 @@ models, DMX-node topology, and power are pending site verification.
 | DJ-deck LED bar | `3 LED Bar 2 11CH` | 1 | U1 |
 | LED strobe bars | `4 rgbw-13ch 13CH` | 7 | U1 |
 | Moving washes | `5 NEW WASH` / `6 movingwash zone` | 10 | U1 + U2 |
-| Moving beams (Sharpy) | `9 Sharpy Standard Lamp on` | 4 | U1 |
+| Moving beams | `9 Sharpy Standard Lamp on` | 4 | U1 |
 | Laser bars | `8 LASER BARS 26CH` / invert | 9 | U1 + U2 |
 | CO₂ jets | `2 Dimmer 00` (×2, **unpatched**) | 1 | — |
 | Atmospheric haze | `2 Dimmer 00` | 1 | U2 |

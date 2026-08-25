@@ -32,7 +32,9 @@ GROUP = {
     "djled":  ("#f1c40f", "DJ LED bar"),
     "strobe": ("#e74c3c", "LED strobe bar"),
     "wash":   ("#1abc9c", "Moving wash"),
-    "beam":   ("#3498db", "Moving beam (Sharpy)"),
+    # Label deliberately neutral: "9 Sharpy Standard Lamp on" is an MA profile name, not a model.
+    # The 14CH footprint is not a Clay Paky Sharpy mode -- see 08-lighting/fixture-identification-audit.md.
+    "beam":   ("#3498db", "Moving beam (14CH)"),
     "laser":  ("#e67e22", "Laser bar"),
     "fx":     ("#95a5a6", "CO2 / haze (FX)"),
 }

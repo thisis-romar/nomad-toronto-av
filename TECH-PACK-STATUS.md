@@ -79,7 +79,8 @@ Decoded from the grandMA2 showfile; to be registered on the GitHub project. See
 
 - 🟡 **L1 — CO₂ jets unpatched:** both CO₂ jets at DMX address 0 in the showfile. Patch & verify on-site.
 - 🟡 **L2 — Fixture positions unknown:** all fixtures at 0,0,0 in showfile. Survey before producing a lighting plot.
-- 🟡 **L3 — Generic MA profiles → real models:** confirm makes behind `5 NEW WASH`, `6 movingwash zone`, `8 LASER BARS`, `4 rgbw-13ch`, `3 LED Bar 2`, `2 Dimmer 00`. Sharpy beams likely Clay Paky — confirm.
+- 🟡 **L3 — Generic MA profiles → real models:** *partly resolved.* Three manuals supplied 2026-08-25 identify the laser bars (LS650 six-eye swing laser), the moving heads (BETOPPER LM70S) and the strobe bars (Light4Me STROBE MULTI BAR). Still unknown: `3 LED Bar 2 11CH` and `2 Dimmer 00` (CO₂ ×2 + hazer). **The Clay Paky Sharpy assumption is retracted** — 14CH is not a Sharpy mode. See `08-lighting/fixture-identification-audit.md`.
+- 🔴 **L8 — Patch/mode mismatch:** the 7 strobe bars are patched 13CH but the Light4Me offers 4/16/168; the 9 laser bars are patched 26CH but the LS650 offers 11/19/24. The patch has no address overlaps as written, so **do not re-patch** until the panel check in the audit §6 is done.
 - 🟡 **L4 — DMX node/output topology:** map U1/U2 to physical nodes/ports. Not in showfile.
 - 🟢 **L5 — Strobe-bar address gaps:** confirm spare room (e.g. 370–382 free) vs. stale patch.
 - 🟡 **L6 — Lighting power/breakers:** no PSU/load/breaker data. Confirm with venue electrician.
